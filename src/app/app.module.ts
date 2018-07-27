@@ -10,6 +10,7 @@ import { ActionDetailsListComponent } from './actions/action-details-list/action
 import { ActionDetailsComponent } from './actions/action-details/action-details.component';
 import { ActionsListComponent } from './actions/actions-list/actions-list.component';
 import { CreateActionComponent } from './actions/create-action/create-action.component';
+import {ActionService} from './actions/action.service';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { CreateActionComponent } from './actions/create-action/create-action.com
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule // imports firebase/storage only needed for storage features
   ],
-  providers: [],
+  providers: [ActionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
