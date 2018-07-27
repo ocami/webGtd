@@ -3,3 +3,15 @@
 </p>
 
 <p>{{action.name}} : {{action.content}}</p>
+
+<form [formGroup]="actionForm" (ngSubmit)="onSubmitForm()">
+  <label for="name">Name</label>
+  <input type="text" id="name" class="form-control" formControlName="name">
+  <label for="content">content</label>
+  <input type="text" id="content" class="form-control" formControlName="content">
+  <label for="name">valuable</label>
+  <input type="text" id="valuable" class="form-control" formControlName="valuable">
+  <label for="name">localization</label>
+  <input type="text" id="localization" class="form-control" formControlName="localization">
+  <button type="submit" class="btn btn-primary">Soumettre</button>
+</form>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ActionService} from './actions/action.service';
 import { Observable } from 'rxjs';
 import {Action} from './actions/models/action';
@@ -22,12 +22,10 @@ export class AppComponent implements OnInit {
 
   actionAdd() {
     this.$displayShow = 'action-view-create';
-    console.log('action-view-create');
   }
 
   actionShow($event) {
       this.$displayShow = 'action-view-details';
       this.action = $event;
-      console.log(this.action);
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import {Action} from './models/action';
 
 @Injectable({
@@ -8,6 +8,7 @@ import {Action} from './models/action';
 export class ActionService {
 
   private dbPath = 'actions';
+  private actionsCollection: AngularFirestoreCollection;
 
   constructor(private afs: AngularFirestore) {
   }
@@ -20,11 +21,15 @@ export class ActionService {
     return this.afs.doc<Action>(this.dbPath + '/' + key);
   }
 
-  add(action: Action): void {
-    this.getCollection().add(action);
+  add(action: Action) {
+    this.getCollection().add(this.parse(action));
+  }
+
+  parse(action: Action) {
+    return JSON.parse(JSON.stringify(action));
   }
 
   update(key: string, action: Action) {
-    this.getDocument(key).update(action);
+    this.getDocument(key).update(this.parse(action));
   }
 }
