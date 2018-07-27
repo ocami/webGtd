@@ -1,4 +1,5 @@
 export class Action {
+  id: string;
   name: string;
   content: string;
   valuable: number;

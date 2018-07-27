@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Output, Input, OnInit, OnChanges, SimpleChanges, SimpleChange} from '@angular/core';
 import { FormGroup, FormBuilder,  FormArray  } from '@angular/forms';
 import {ActionService} from '../action.service';
 import {Action} from '../models/action';
@@ -10,7 +10,7 @@ import {Action} from '../models/action';
   templateUrl: './action-details.component.html',
   styleUrls: ['./action-details.component.css']
 })
-export class ActionDetailsComponent implements OnInit {
+export class ActionDetailsComponent implements OnInit, OnChanges {
 
   @Input() action: Action;
 
@@ -23,6 +23,10 @@ export class ActionDetailsComponent implements OnInit {
 
   ngOnInit() {
       this.initForm();
+  }
+
+  ngOnChanges() {
+    this.initForm();
   }
 
   initForm() {
@@ -40,6 +44,7 @@ export class ActionDetailsComponent implements OnInit {
     this.action.content = formValue['content'];
     this.action.valuable = formValue['valuable'];
     this.action.localization = formValue['localization'];
-    this.actionService.update('yQ2xmnTdQJpEwK6Hz9wv', this.action);
+    console.log(formValue);
+    this.actionService.update(this.action);
   }
 }

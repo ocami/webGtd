@@ -22,14 +22,16 @@ export class ActionService {
   }
 
   add(action: Action) {
-    this.getCollection().add(this.parse(action));
+    const id = this.afs.createId();
+    action.id = id;
+    this.getCollection().doc(id).set(this.parse(action));
   }
 
   parse(action: Action) {
     return JSON.parse(JSON.stringify(action));
   }
 
-  update(key: string, action: Action) {
-    this.getDocument(key).update(this.parse(action));
+  update(action: Action) {
+    this.getDocument(action.id).update(this.parse(action));
   }
 }

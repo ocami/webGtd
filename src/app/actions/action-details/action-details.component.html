@@ -1,17 +1,22 @@
-<p>
-  action-details works!
-</p>
-
-<p>{{action.name}} : {{action.content}}</p>
+<p>{{action.name}} {{action.content}}</p>
 
 <form [formGroup]="actionForm" (ngSubmit)="onSubmitForm()">
-  <label for="name">Name</label>
-  <input type="text" id="name" class="form-control" formControlName="name">
-  <label for="content">content</label>
-  <input type="text" id="content" class="form-control" formControlName="content">
-  <label for="name">valuable</label>
-  <input type="text" id="valuable" class="form-control" formControlName="valuable">
-  <label for="name">localization</label>
-  <input type="text" id="localization" class="form-control" formControlName="localization">
+  <input type="text" class="form-control" formControlName="name">
+  <hr>
+
+  <div class="row tags">
+
+    <select class="col-sm-1" formControlName="valuable">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+
+    <input placeholder="localisation" type="text" class="col-sm-2" formControlName="localization">
+  </div>
+
+  <hr>
+  <textarea type="text" class="form-control" rows="5" formControlName="content"></textarea>
+
   <button type="submit" class="btn btn-primary">Soumettre</button>
 </form>
