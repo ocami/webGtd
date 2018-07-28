@@ -1,0 +1,22 @@
+<p>{{action.name}} {{action.content}}</p>
+
+<form [formGroup]="actionForm" (ngSubmit)="onSubmitForm()">
+  <input type="text" class="form-control" formControlName="name">
+  <hr>
+
+  <div class="row tags">
+
+    <select class="col-sm-1" formControlName="location">
+      <div *ngFor="let location of locations">
+        <option value="1">{{location.name}}</option>
+      </div>
+    </select>
+
+    <input placeholder="valuable" type="text" class="col-sm-2" formControlName="valuable">
+  </div>
+
+  <hr>
+  <textarea type="text" class="form-control" rows="5" formControlName="content"></textarea>
+
+  <button type="submit" class="btn btn-primary">Soumettre</button>
+</form>

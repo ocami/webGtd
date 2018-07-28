@@ -1,10 +1,31 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ActionService} from './actions/action.service';
+import { Observable } from 'rxjs';
+import {Action} from './actions/models/action';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'my-app';
+export class AppComponent implements OnInit {
+  actions: Observable<Action[]>;
+  action: Observable<Action>;
+  $displayShow = '';
+
+  constructor(private actionService: ActionService) { }
+
+  ngOnInit() {
+    this.actions = this.actionService.getCollection().valueChanges();
+  }
+
+  actionAdd() {
+    this.$displayShow = 'action-view-create';
+  }
+
+  actionShow($event) {
+      this.$displayShow = 'action-view-details';
+      this.action = $event;
+  }
 }
