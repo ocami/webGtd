@@ -26,7 +26,7 @@ export class CreateActionComponent implements OnInit {
       name: '',
       content: '',
       valuable: '',
-      localization: ''
+      location: ''
     });
   }
 
@@ -36,7 +36,7 @@ export class CreateActionComponent implements OnInit {
     newAction.name = formValue['name'];
     newAction.content = formValue['content'];
     newAction.valuable = formValue['valuable'];
-    newAction.localization = formValue['localization'];
+    newAction.location = formValue['location'];
     this.actionService.add(newAction);
   }
 

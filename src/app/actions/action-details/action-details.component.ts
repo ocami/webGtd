@@ -2,7 +2,8 @@ import {Component, EventEmitter, Output, Input, OnInit, OnChanges, SimpleChanges
 import { FormGroup, FormBuilder,  FormArray  } from '@angular/forms';
 import {ActionService} from '../action.service';
 import {Action} from '../models/action';
-
+import {Observable} from 'rxjs';
+import {TagsService} from '../../tags/tags.service';
 
 
 @Component({
@@ -15,14 +16,17 @@ export class ActionDetailsComponent implements OnInit, OnChanges {
   @Input() action: Action;
 
   actionForm: FormGroup;
+  locations: Observable<any[]>;
 
   constructor(
     private formBuilder: FormBuilder,
-    private actionService: ActionService
-  ) { }
+    private actionService: ActionService,
+    private tagService: TagsService
+  ) {}
 
   ngOnInit() {
-      this.initForm();
+    this.locations = this.tagService.locations;
+    this.initForm();
   }
 
   ngOnChanges() {
@@ -34,16 +38,17 @@ export class ActionDetailsComponent implements OnInit, OnChanges {
       name: this.action.name,
       content: this.action.content,
       valuable: this.action.valuable,
-      localization: this.action.localization
+      location: this.action.location
     });
   }
 
   onSubmitForm() {
+    console.log(this.locations);
     const formValue = this.actionForm.value;
     this.action.name = formValue['name'];
     this.action.content = formValue['content'];
     this.action.valuable = formValue['valuable'];
-    this.action.localization = formValue['localization'];
+    this.action.location = formValue['location'];
     console.log(formValue);
     this.actionService.update(this.action);
   }

@@ -6,13 +6,13 @@
 
   <div class="row tags">
 
-    <select class="col-sm-1" formControlName="valuable">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+    <select class="col-sm-1" formControlName="location">
+      <div *ngFor="let location of locations">
+        <option value="1">{{location.name}}</option>
+      </div>
     </select>
 
-    <input placeholder="localisation" type="text" class="col-sm-2" formControlName="localization">
+    <input placeholder="valuable" type="text" class="col-sm-2" formControlName="valuable">
   </div>
 
   <hr>

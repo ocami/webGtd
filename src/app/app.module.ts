@@ -13,6 +13,8 @@ import { CreateActionComponent } from './actions/create-action/create-action.com
 import {ActionService} from './actions/action.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { LocationComponent } from './tags/location/location.component';
+import { SelectComponent } from './tags/select/select.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { FormsModule } from '@angular/forms';
     ActionDetailsListComponent,
     ActionDetailsComponent,
     ActionsListComponent,
-    CreateActionComponent
+    CreateActionComponent,
+    LocationComponent,
+    SelectComponent
   ],
   imports: [
     BrowserModule,
