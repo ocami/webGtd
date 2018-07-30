@@ -1,15 +1,19 @@
-<p>{{action.name}} {{action.content}}</p>
+<p xmlns="">{{action.name}} {{action.content}}</p>
 
 <form [formGroup]="actionForm" (ngSubmit)="onSubmitForm()">
   <input type="text" class="form-control" formControlName="name">
   <hr>
 
   <div class="row tags">
-
-    <select class="col-sm-1" formControlName="location">
-      <div *ngFor="let location of locations">
-        <option value="1">{{location.name}}</option>
-      </div>
+    <select
+      (change)="inputChange($event)"
+      class="col-sm-2"
+      formControlName="location">
+      <option
+        *ngFor="let location of locations | async"
+              [ngClass]="{'header-option': !location.value}"
+        value="{{location.value}}"
+      >{{location.name}} / {{location.value}}</option>
     </select>
 
     <input placeholder="valuable" type="text" class="col-sm-2" formControlName="valuable">
@@ -20,3 +24,5 @@
 
   <button type="submit" class="btn btn-primary">Soumettre</button>
 </form>
+
+

@@ -4,6 +4,7 @@ import {ActionService} from '../action.service';
 import {Action} from '../models/action';
 import {Observable} from 'rxjs';
 import {TagsService} from '../../tags/tags.service';
+import {Tag} from '../../tags/models/tag';
 
 
 @Component({
@@ -16,7 +17,9 @@ export class ActionDetailsComponent implements OnInit, OnChanges {
   @Input() action: Action;
 
   actionForm: FormGroup;
-  locations: Observable<any[]>;
+
+  actions: Observable<Action[]>;
+  locations: Observable<Tag[]>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,7 +28,7 @@ export class ActionDetailsComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnInit() {
-    this.locations = this.tagService.getCollection();
+    this.locations = this.tagService.getCollectionTriee().valueChanges();
     this.initForm();
   }
 
@@ -43,7 +46,6 @@ export class ActionDetailsComponent implements OnInit, OnChanges {
   }
 
   onSubmitForm() {
-    console.log(this.locations);
     const formValue = this.actionForm.value;
     this.action.name = formValue['name'];
     this.action.content = formValue['content'];
@@ -51,5 +53,15 @@ export class ActionDetailsComponent implements OnInit, OnChanges {
     this.action.location = formValue['location'];
     console.log(formValue);
     this.actionService.update(this.action);
+  }
+
+  inputChange(event) {
+    if (event.target.value === 'false') {
+      console.log('c est vrai');
+      event.target.classList.add('header-option');
+    }
+    else {
+      event.target.classList.remove('header-option');
+    }
   }
 }

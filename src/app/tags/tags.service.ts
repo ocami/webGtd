@@ -1,23 +1,26 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import {Action} from '../actions/models/action';
+import {Tag} from './models/tag';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TagsService {
 
-  private dbPath = 'actions';
-  private actionsCollection: AngularFirestoreCollection;
+  private dbPath = 'location';
 
   constructor(private afs: AngularFirestore) {
   }
 
   getCollection() {
-    return this.afs.collection<Action>(this.dbPath);
+    return this.afs.collection<Tag>(this.dbPath);
   }
 
-  getDocument(key: string) {
+  getCollectionTriee() {
+    return this.afs.collection<Tag>('location', ref => ref.orderBy('rank', 'asc'));
+  }
+
+ /* getDocument(key: string) {
     return this.afs.doc<Action>(this.dbPath + '/' + key);
   }
 
@@ -33,5 +36,5 @@ export class TagsService {
 
   update(action: Action) {
     this.getDocument(action.id).update(this.parse(action));
-  }
+  }*/
 }
