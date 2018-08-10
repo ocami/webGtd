@@ -12,17 +12,31 @@
 
 <div id="app" class="container-fluid">
 
-    <h5>initAction</h5>
-    <autre-component></autre-component>
+    <div class="row">
 
-    <mon-component></mon-component>
+        <div @click="saveEdit" class="col-sm-3">
+            <!--speed add-->
+            <button @click="receiptAddEdit" class="btn">Speed</button>
 
-    <p>seen : {{control.seen}}</p>
+            <!-- Menu -->
+            <div id="col-menu" class="col-xs-12">
+                <button @click="todoAddEdit" class="btn btn-sm"><i class="fa fa-plus"></i></button>
+            </div>
 
-    <div v-for="(action, index) in actions.receipt" >{{ action.name }}</div>
-    <br>
-    <span>---------------------------------------------------</span>
-    <div v-for="(action, index) in actions.todo" >{{ action.name }}</div>
+            <actions-list v-bind:actions="actions.receipt"></actions-list>
+            <actions-list v-bind:actions="actions.todo"></actions-list>
+            <actions-list v-bind:actions="actions.done"></actions-list>
+            <actions-list v-bind:actions="actions.incubation"></actions-list>
+            <actions-list v-bind:actions="actions.destroy"></actions-list>
+
+
+
+        </div>
+
+    </div>
+
+
+
 
 </div>
 
@@ -31,7 +45,7 @@
         src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
-<script src="js/actions.js"></script>
+<script src="js/app_store.js"></script>
 <script src="js/components.js"></script>
 <script src="js/main.js"></script>
 </body>
