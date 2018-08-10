@@ -6,12 +6,8 @@ new Vue({
 
     el: '#app',
     components : {
-        'mon-component': MonComponent,
-        'autre-component': AutreComponent,
-        'mon-truc': MonTruc,
-
-        'receipt-menu': ReceiptMenu,
         'actions-list': ActionsList,
+        'actions-edit-layout': ActionsEditLayout,
     },
     data:
         function () { return { data: app_store.data}
@@ -35,13 +31,13 @@ new Vue({
         },
 
         receiptEdit: function (index) {
-            receiptEdit(index)
+            app_store.receiptAddEdit(index)
         },
         receiptSwitch : function (index) {
             receiptSwitch(index)
         },
         receiptAddEdit : function (){
-            receiptAddEdit()
+           app_store.receiptAddEdit()
         },
         receiptAdd : function (){
             receiptAdd()

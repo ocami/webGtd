@@ -1,47 +1,3 @@
-let MonComponent = {
-    template: `<div>
-                    <button @click="switchAction">switch</button>
-                    <button @click="initAction">initAction</button>
-                    <button @click="seenChange">seenChange</button>
-                    </div>`,
-    data:
-        function () { return { data: app_store.data}
-        },
-    computed:{
-        action: function () { return this.data.actions }
-    },
-    methods: {
-        switchAction : function () {
-            app_store.switch(0,'receipt','todo')
-        },
-        initAction : function () {
-            app_store.initAction()
-        },
-        seenChange: function () {
-            app_store.changeSeen()
-        }
-
-
-    }
-}
-
-let AutreComponent = {
-    template: `<div>{{ action }}</div>`,
-    data:
-        function () { return { data: app_store.data}
-        },
-    computed:{
-        action: function () { return this.data.action }
-    }
-
-}
-
-let SwitchActionBtn = {
-    template:`<div>
-        <button class="ui"></button>
-    </div>
-    `
-}
 
 let ActionsList = {
     template:`<div>
@@ -56,11 +12,11 @@ let ActionsList = {
                :class="{
                'fa fa-play': action.status == 'receipt',
                'fa fa-check-circle': action.status == 'todo',
-               'fa fa-reply': action.status == 'done',
-               'fa fa-trash': action.status == 'incubation',
+               'fa fa-trash': action.status == 'done',
+               'fa fa-reply': action.status == 'incubation',
                'fa fa-recycle': action.status == 'destroy',
                }"
-                @click.stop="switchAction(index,actions.name,actions.toSwitch)"
+                @click.stop="switchAction(actions.name,actions.toSwitch,index)"
              ></i>
 
             {{ action.name }}
@@ -73,31 +29,99 @@ let ActionsList = {
         actionEdit: function (index, listName) {
             app_store.actionEdit(index, listName)
         },
-        switchAction: function (index, listName, newListName) {
-            app_store.switch(index, listName, newListName)
+        switchAction: function (listName, newListName, index) {
+            app_store.switch(listName, newListName, index)
         }
     }
 };
 
-
-let MonTruc = {
-    template: `<div> <h5>Mon truc</h5> </div>`
-}
-
-let ReceiptMenu = {
-
-    components:{
-        'switch-action-btn': SwitchActionBtn,
-        'actions-list': ActionsList
+let FormEdit = {
+    template: `<div>
+            <input v-model="action.name" @blur="inputChange()" class="form-control">
+            <textarea v-model="action.content" @blur="inputChange" class="form-control" rows="12"></textarea>
+            <button class="btn btn-primary btn-block">Ajouter</button>
+    </div>`,
+    data:
+        function () { return { data: app_store.data}
+        },
+    computed:{
+        action: function () { return this.data.action},
+        control: function () { return this.data.control}
     },
-    template: `<div> 
-        <switch-actions-btn></switch-actions-btn>
-        <h5>receipt</h5>
-        <actions-list
-                v-bind:actions="actions.receipt"
-                @edit="receiptEdit"
-                @switch="receiptSwitch"
-        ></actions-list>           
-    </div>`
+    methods:{
+        inputChange: function () {
+            app_store.inputChange()
+        }
+    }
 }
 
+let EditSwitchBtn = {
+    template: `<div>
+     <button 
+        v-if="actions.acceptSwitch.todo"
+        @click="switchAction(actions.name,'todo')"    
+     >Je Fait</button>
+     <button 
+        v-if="actions.acceptSwitch.done"
+        @click="switchAction(actions.name,'done')"    
+        >J'ai Fait</button >
+     <button 
+        v-if="actions.acceptSwitch.incubation"
+        @click="switchAction(actions.name,'incubation')"
+        >Incubation</button>
+        
+     <button 
+        v-if="actions.acceptSwitch.destroy"
+        @click="switchAction(actions.name,'destroy')"
+        >Corbeille</button>
+    </div>`,
+    props: {
+        actions: Object
+    },
+    methods:{
+        switchAction: function (listName, newListName) {
+            app_store.switch(listName, newListName)
+        }
+    }
+}
+
+let ActionsEdit = {
+    template:`<div>
+        <hr>
+        <h5>{{actions.name}}</h5>
+        <edit-switch-bts v-bind:actions="actions"></edit-switch-bts>
+        <form-edit></form-edit>
+    </div>`,
+    props: {
+        actions: Object
+    },
+    components : {
+        'edit-switch-bts': EditSwitchBtn,
+        'form-edit': FormEdit
+    }
+}
+
+let ActionsEditLayout = {
+
+    template:`<div>
+        <actions-edit v-if="control.seen == 'receiptEdit'" v-bind:actions="actions.receipt"></actions-edit>
+        <actions-edit v-if="control.seen == 'todoEdit'" v-bind:actions="actions.todo"></actions-edit>
+        <actions-edit v-if="control.seen == 'doneEdit'" v-bind:actions="actions.done"></actions-edit>
+        <actions-edit v-if="control.seen == 'incubationEdit'" v-bind:actions="actions.incubation"></actions-edit>
+        <actions-edit v-if="control.seen == 'destroyEdit'" v-bind:actions="actions.destroy"></actions-edit>
+        <form-edit v-if="control.seen == 'receiptAddEdit'"></form-edit>
+    </div>
+`,
+    props: {
+        actions: Object
+    },
+    components : {
+        'actions-edit': ActionsEdit,
+        'form-edit': FormEdit
+    }, data:
+        function () { return { data: app_store.data}
+        },
+    computed:{
+        control: function () { return this.data.control},
+    },
+}

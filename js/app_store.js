@@ -23,7 +23,7 @@ class AppStore {
             name: 'receipt',
             toString: 'Réception',
             toSwitch: 'todo',
-            acceptSwitch: [{todo: true}, {done:true}, {incubation:true}, {destroy:true}] ,
+            acceptSwitch: {todo: 'true', done:true, incubation:true, destroy:true},
             list:  [
                 { index:0, id: 0, name: 'receipt-popo', content: 'receipt-content popo', status: 'receipt', isActive: false},
                 { index:0, id: 1, name: 'receipt-lolo', content: 'receipt-content lolo', status: 'receipt', isActive: false},
@@ -127,41 +127,65 @@ class AppStore {
                 destroy: this.destroy,
             },
             control:{
-                seen: 2,
+                seen: '',
                 actionCreated: '',
-                actionInput: { index:0, id:0, name: '', content: '', status: 0, isActive: false  }
+                actionChange: false,
+                actionInput: { index:0, id:0, name: '', content: '', status: 0, isActive: false},
+                curentIndex: 0
             }
         }
     }
+
+    receiptAddEdit  () {
+        console.log('coucou')
+        this.data.control.seen = 'receiptAddEdit'
+        this.refreshAction()
+    }
+
+    inputChange () {
+        let ctr = this.data.control
+        ctr.actionChange = true
+        if(ctr.seen === 'receiptAddEdit')
+            ctr.actionCreated = true
+    }
+
 
     actionEdit  (index, status){
         let list = this.getList(status).list
         let action = this.data.action
         action.isActive = false
         action = list[index]
-        console.log(list)
         this.data.control.seen = status + 'Edit'
         action.isActive = true
         action.index = index
         this.data.action = action
+        this.data.control.curentIndex = index
     }
 
-    switch(index,listName,newListName){
+    switch(listName,newListName,index){
+        if(!index)
+            index = this.data.control.curentIndex
+
         let list = this.getList(listName).list
         let newList = this.getList(newListName).list
+        this.data.action.isActive = false
         this.data.action = list[index]
         this.data.action.status = newListName
         newList.push(this.data.action)
         list.splice(index, 1)
+
+        let i = 0;
+        let l = list.length;
+        if(l){
+            index < l ? i = index : i = index - 1;
+            this.actionEdit(i,listName)
+        }else {
+            this.refreshAction()
+            this.data.control.seen = 'empty'
+        }
     }
 
-    initAction(){
-        this.data.action = new Action('todo');
-    }
-
-    changeSeen(){
-        this.data.control.seen = 'baba';
-    }
+    /*----------------------------------------------------------*/
 
     getList (status) {
 
@@ -186,6 +210,28 @@ class AppStore {
             default :
                 console.log('actions.js getList error')
         }
+    }
+
+    refreshInput  () {
+        this.data.control.actionInput = new Action();
+        this.data.control.actionCreated = false;
+    }
+
+    refreshAction  () {
+        console.log('héhé')
+        this.data.action = new Action();
+        this.data.control.actionCreated = false;
+    }
+
+    /*----------------------------------------------------------*/
+    /*----------------------------------------------------------*/
+
+    initAction(){
+        this.data.action = new Action('todo');
+    }
+
+    changeSeen(){
+        this.data.control.seen = 'baba';
     }
 
     getListToSwitch (status) {
@@ -213,16 +259,12 @@ class AppStore {
         }
     }
 
-
-    /*----------------------------------------------------------*/
-
     saveEdit (){
         if(!this.data.control.actionInput.name)
             return
 
         this.actionAdd()
     }
-
         actionAdd () {
             let status = this.data.control.actionCreated
             let action = this.data.control.actionInput
@@ -231,7 +273,6 @@ class AppStore {
             list.push(action)
             this.refreshInput()
         }
-
 
         receiptSwitch  (index, list){
             let action = vm.actions.receipt[index]
@@ -250,10 +291,7 @@ class AppStore {
             }
 
         }
-        receiptAddEdit  () {
-            vm.seen = 'receiptAddEdit'
-            vm.action.isActive = false
-        }
+
 
 
         todoEdit  (index){
@@ -306,18 +344,6 @@ class AppStore {
             console.log('destroySwitch :'+index)
         }
 
-//---------------------------------------------------------------------------//
-        refreshInput  () {
-            this.data.control.actionInput = new Action();
-            this.data.control.actionCreated = false;
-        }
-
-        refreshAction  () {
-            vm.action.isActive = false
-            vm.action = actionInit
-        }
-
-//---------------------------------------------------------------------------//
 
         
 }
