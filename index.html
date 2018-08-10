@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app" class="container-fluid">
+
+    <h5>initAction</h5>
+    <autre-component></autre-component>
+
+    <mon-component></mon-component>
+
+    <div v-for="(action, index) in actions.receipt" >{{ action.name }}</div>
+    <br>
+    <span>---------------------------------------------------</span>
+    <div v-for="(action, index) in actions.todo" >{{ action.name }}</div>
+
+</div>
+
+
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+<script>
+
+    class Action{
+
+        constructor(status){
+
+            switch (status){
+                case 'receipt':
+                    this.action= { index:0, id:0, name: 'receipt', content: '', status: 1, isActive: false  };
+                    break;
+
+                case 'todo':
+                    this.action= { index:0, id:0, name: 'todo', content: '', status: 2, isActive: false  };
+                    break;
+
+                default :
+                    this.action= { index:0, id:0, name: '', content: '', status: 0, isActive: false  };
+            }
+        }
+    }
+
+    class ActionsStore {
+        constructor () {
+
+            this.receipt = [
+                { index:0, id: 0, name: 'receipt-popo', content: 'receipt-content popo', status: 1, isActive: false},
+                { index:0, id: 1, name: 'receipt-lolo', content: 'receipt-content lolo', status: 1, isActive: false},
+                { index:0, id: 1, name: 'receipt-roro', content: 'receipt-content roro', status: 1, isActive: false},
+            ]
+            this.todo = [
+                { index:0, id: 0, name: 'todo-popo', content: 'tod ocontent popo', status: 2, isActive: false},
+                { index:0, id: 1, name: 'todo-lolo', content: 'todo content lolo', status: 2, isActive: false},
+                { index:0, id: 2, name: 'todo-roro', content: 'todo content roro', status: 2, isActive: false},
+            ]
+            this.done = [
+                { index:0, id: 0, name: 'done-popo', content: 'content popo', status: 3, isActive: false},
+                { index:0, id: 1, name: 'done-lolo', content: 'content lolo', status: 3, isActive: false},
+                { index:0, id: 3, name: 'done-roro', content: 'content roro', status: 3, isActive: false},
+            ]
+            this.incubation =  [
+                { index:0, id: 0, name: 'incubation-popo', content: 'content popo', status: 4, isActive: false},
+                { index:0, id: 1, name: 'incubation-lolo', content: 'content lolo', status: 4, isActive: false},
+                { index:0, id: 4, name: 'incubation-roro', content: 'content roro', status: 4, isActive: false},
+            ]
+            this.destroy = [
+                { index:0, id: 0, name: 'destroy-popo', content: 'destroy content popo', status: 5, isActive: false},
+                { index:0, id: 1, name: 'destroy-lolo', content: 'destroy content lolo', status: 5, isActive: false},
+                { index:0, id: 5, name: 'destroy-roro', content: 'destroy content roro', status: 5, isActive: false},
+            ]
+
+            this.action = { index:0, id: 0, name: 'destroy-popo', content: 'destroy content popo', status: 5, isActive: false};
+
+            this.actions =  {
+                action: this.action,
+                receipt: this.receipt,
+                todo: this.todo,
+                done: this.done,
+                incubation: this.incubation,
+                destroy: this.destroy
+            }
+
+
+        }
+
+        switch(index){
+            this.action = this.receipt[index]
+            this.todo.push(this.action)
+            this.receipt.splice(index, 1)
+        }
+
+        initAction(){
+            this.action.index = 0;
+            this.action.name = 0;
+            this.action.content = 0;
+            this.action.status = 0;
+            this.action.isActive = 0;
+        }
+    }
+
+    let actions_store = new ActionsStore();
+
+    let MonComponent = {
+        template: `<div>
+                    <button @click="switchAction">switch</button>
+                    <button @click="initAction">initAction</button>
+                    </div>`,
+        methods: {
+            switchAction : function () {
+
+                actions_store.switch(0)
+            },
+            initAction : function () {
+                actions_store.initAction()
+            }
+        }
+    }
+
+    let AutreComponent = {
+        template: `<div>{{ actions.action }}</div>`,
+        data:
+            function () { return { actions_: actions_store.actions}
+            },
+        computed:{
+            actions: function () { return this.actions_ }
+        }
+
+    }
+
+    new Vue({
+
+        el: '#app',
+        components : {
+            'mon-component': MonComponent,
+            'autre-component': AutreComponent
+        },
+        data:
+            function () { return { actions_: actions_store.actions}
+            },
+        computed:{
+            actions: function () { return this.actions_ }
+        },
+
+
+    })
+
+
+
+</script>
+
+</body>
+</html>
