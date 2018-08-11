@@ -37,8 +37,8 @@ let ActionsList = {
 
 let FormEdit = {
     template: `<div>
-            <input v-model="action.name" @blur="inputChange()" class="form-control">
-            <textarea v-model="action.content" @blur="inputChange" class="form-control" rows="12"></textarea>
+            <input v-model="action.name" @blur="inputChange($event)" class="form-control">
+            <textarea v-model="action.content" @blur="inputChange($event, true)" class="form-control" rows="12"></textarea>
             <button class="btn btn-primary btn-block">Ajouter</button>
     </div>`,
     data:
@@ -49,8 +49,8 @@ let FormEdit = {
         control: function () { return this.data.control}
     },
     methods:{
-        inputChange: function () {
-            app_store.inputChange()
+        inputChange: function (event, isTextarea) {
+            app_store.inputChange(event, isTextarea)
         }
     }
 }

@@ -11,7 +11,7 @@ class Action{
                 break;
 
             default :
-                this.action= { index:0, id:0, name: '', content: '', status: 0, isActive: false  };
+                this.action= { index:0, id:0, name: 'dddddddddddddd', content: '', status: 0, isActive: false  };
         }
     }
 }
@@ -128,7 +128,7 @@ class AppStore {
             },
             control:{
                 seen: '',
-                actionCreated: '',
+                actionCreated: false,
                 actionChange: false,
                 actionInput: { index:0, id:0, name: '', content: '', status: 0, isActive: false},
                 curentIndex: 0
@@ -137,16 +137,31 @@ class AppStore {
     }
 
     receiptAddEdit  () {
-        console.log('coucou')
         this.data.control.seen = 'receiptAddEdit'
-        this.refreshAction()
+        this.data.control.actionCreated = 'receipt';
+        this.refreshAction('receipt')
     }
 
-    inputChange () {
-        let ctr = this.data.control
-        ctr.actionChange = true
-        if(ctr.seen === 'receiptAddEdit')
-            ctr.actionCreated = true
+    inputChange (event, isTextarea) {
+
+        if (!this.data.control.actionCreated)
+            return
+
+        if (!event.target.value)
+            return
+
+        if (isTextarea)
+            if(!this.data.action.name)
+                this.data.action.name = this.data.action.content.substring(0,30)+'...';
+
+        switch (this.data.control.actionCreated){
+            case '':
+                break;
+
+            case 'receipt':
+                this.data.actions.receipt.list.push(this.data.action)
+                this.data.control.actionCreated = ''
+        }
     }
 
 
@@ -217,10 +232,8 @@ class AppStore {
         this.data.control.actionCreated = false;
     }
 
-    refreshAction  () {
-        console.log('héhé')
-        this.data.action = new Action();
-        this.data.control.actionCreated = false;
+    refreshAction  (status) {
+        this.data.action = {index: 0, id: 0, name: '', content: '', status: status, isActive: false}
     }
 
     /*----------------------------------------------------------*/

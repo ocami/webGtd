@@ -19,10 +19,6 @@ new Vue({
         receipt: function () { return this.data.actions },
     },
     methods: {
-        test: function ()
-        {
-            console.log('test')
-        },
         createIsActive : function (status) {
             this.actionCreated = status
         },
