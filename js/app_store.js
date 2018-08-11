@@ -47,7 +47,8 @@ class AppStore {
             list: [
                 {index: 0, id: 0, name: 'todo-popo', content: 'tod ocontent popo', status: 'todo', isActive: false, visible: true,
                     tags:{
-                        location: 'locationTest'
+                        location: 'locationTest',
+                        context : 'contextTest'
                     }},
                 {index: 0, id: 1, name: 'todo-lolo', content: 'todo content lolo', status: 'todo', isActive: false, visible: true,
                     tags:{
@@ -55,7 +56,8 @@ class AppStore {
                     }},
                 {index: 0, id: 2, name: 'todo-roro', content: 'todo content roro', status: 'todo', isActive: false, visible: true,
                     tags:{
-                        location: null
+                        location: null,
+                        context : null
                     }},
             ]
         }
@@ -150,7 +152,7 @@ class AppStore {
             },
             tags:{
                 location:{
-                    name: 'Lieux',
+                    name: 'location',
                     selected: '',
                     options: [
                         {text: 'Jardin', value: 'jardin'},
@@ -159,7 +161,7 @@ class AppStore {
                     ]
                 },
                 context:{
-                    name: 'Context',
+                    name: 'context',
                     selected: '',
                     options: [
                         {text: 'Tel', value: 'tel'},
@@ -234,8 +236,16 @@ class AppStore {
         }
     }
 
-    tagSelected(){
-        this.data.action.tags.location = this.data.tags.location.selected
+    tagSelected(tagName){
+        switch (tagName){
+            case 'location':
+                this.data.action.tags.location = this.data.tags.location.selected
+                break
+            case 'context':
+                this.data.action.tags.context = this.data.tags.context.selected
+                break
+        }
+
     }
 
     /*----------------------------------------------------------*/
@@ -263,6 +273,23 @@ class AppStore {
             default :
                 console.log('actions.js getList error')
         }
+    }
+
+    getActionTag (name) {
+        let t = this.data.action.tags
+
+        switch (name){
+            case 'location':
+                return t.location;
+
+            case 'context':
+                return t.context;
+
+            default :
+                console.log('actions.js getActionTag error')
+        }
+
+
     }
 
     refreshInput  () {

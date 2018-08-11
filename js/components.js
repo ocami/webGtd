@@ -87,9 +87,9 @@ let EditSwitchBtn = {
 
 let TagSelect = {
     template: `
-            <select v-model="tags.location.selected" @change="tagSelected">
-                <option disabled value="">{{tags.location.name}}</option>
-                <option v-for="option in tags.location.options" :value="option.value">
+            <select  v-model="tag.selected" @change="tagSelected(tag.name)">
+                <option disabled value="">{{tag.name}}</option>
+                <option v-for="option in tag.options" :value="option.value">
                     {{ option.text }}
                 </option>
             </select>
@@ -101,9 +101,12 @@ let TagSelect = {
         tags: function () { return this.data.tags}
     },
     methods:{
-        tagSelected: function () {
-            app_store.tagSelected()
+        tagSelected: function (tagName) {
+            app_store.tagSelected(tagName)
         }
+    },
+    props:{
+        tag: Object
     }
 }
 
