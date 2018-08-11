@@ -25,7 +25,10 @@ class AppStore {
             toSwitch: 'todo',
             acceptSwitch: {todo: 'true', done:true, incubation:true, destroy:true},
             list:  [
-                { index:0, id: 0, name: 'receipt-popo', content: 'receipt-content popo', status: 'receipt', isActive: false},
+                { index:0, id: 0, name: 'receipt-popo', content: 'receipt-content popo', status: 'receipt', isActive: false, visible: true,
+                    tags:{
+                        location: null
+                    }},
                 { index:0, id: 1, name: 'receipt-lolo', content: 'receipt-content lolo', status: 'receipt', isActive: false},
                 { index:0, id: 2, name: 'receipt-roro', content: 'receipt-content roro', status: 'receipt' , isActive: false},
             ]
@@ -132,6 +135,26 @@ class AppStore {
                 actionChange: false,
                 actionInput: { index:0, id:0, name: '', content: '', status: 0, isActive: false},
                 curentIndex: 0
+            },
+            tags:{
+                location:{
+                    name: 'Lieux',
+                    selected: '',
+                    options: [
+                        {text: 'Jardin', value: 'jardin'},
+                        {text: 'Maison', value: 'maison'},
+                        {text: 'Travail', value: 'travail'},
+                    ]
+                }
+            },
+
+            test:{
+                selected: 'A',
+                options: [
+                    { text: 'Un', value: 'A' },
+                    { text: 'Deux', value: 'B' },
+                    { text: 'Trois', value: 'C' }
+                ]
             }
         }
     }
