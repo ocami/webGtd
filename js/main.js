@@ -8,6 +8,8 @@ new Vue({
     components : {
         'actions-list': ActionsList,
         'actions-edit-layout': ActionsEditLayout,
+        'tag-select': TagSelect
+
     },
     data:
         function () { return { data: app_store.data}
@@ -17,8 +19,7 @@ new Vue({
         actions: function () { return this.data.actions},
         control: function () { return this.data.control},
         receipt: function () { return this.data.actions },
-        test: function () { return this.data.test},
-        tags: function () { return this.data.tags}
+        tags: function () { return this.data.tags },
     },
     methods: {
         createIsActive : function (status) {

@@ -40,13 +40,10 @@
             <actions-edit-layout v-bind:actions="actions"></actions-edit-layout>
 
             <br>
-            
-            <select v-model="tags.location.selected">
-                <option disabled value="">Lieux</option>
-                <option v-for="option in tags.location.options" :value="option.value">
-                    {{ option.text }}
-                </option>
-            </select>
+
+
+            <tag-select></tag-select>
+
 
         </div>
 

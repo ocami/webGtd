@@ -29,8 +29,14 @@ class AppStore {
                     tags:{
                         location: null
                     }},
-                { index:0, id: 1, name: 'receipt-lolo', content: 'receipt-content lolo', status: 'receipt', isActive: false},
-                { index:0, id: 2, name: 'receipt-roro', content: 'receipt-content roro', status: 'receipt' , isActive: false},
+                { index:0, id: 1, name: 'receipt-lolo', content: 'receipt-content lolo', status: 'receipt', isActive: false, visible: true,
+                    tags:{
+                        location: null
+                    }},
+                { index:0, id: 2, name: 'receipt-roro', content: 'receipt-content roro', status: 'receipt' , isActive: false, visible: true,
+                    tags:{
+                        location: null
+                    }},
             ]
         }
         this.todo = {
@@ -39,9 +45,18 @@ class AppStore {
             toSwitch: 'done',
             acceptSwitch: {todo: false, done: true, incubation: true, destroy: true},
             list: [
-                {index: 0, id: 0, name: 'todo-popo', content: 'tod ocontent popo', status: 'todo', isActive: false},
-                {index: 0, id: 1, name: 'todo-lolo', content: 'todo content lolo', status: 'todo', isActive: false},
-                {index: 0, id: 2, name: 'todo-roro', content: 'todo content roro', status: 'todo', isActive: false},
+                {index: 0, id: 0, name: 'todo-popo', content: 'tod ocontent popo', status: 'todo', isActive: false, visible: true,
+                    tags:{
+                        location: 'locationTest'
+                    }},
+                {index: 0, id: 1, name: 'todo-lolo', content: 'todo content lolo', status: 'todo', isActive: false, visible: true,
+                    tags:{
+                        location: null
+                    }},
+                {index: 0, id: 2, name: 'todo-roro', content: 'todo content roro', status: 'todo', isActive: false, visible: true,
+                    tags:{
+                        location: null
+                    }},
             ]
         }
         this.done = {
@@ -50,9 +65,18 @@ class AppStore {
             toSwitch: 'destroy',
             acceptSwitch: {todo: true, done: false, incubation: false, destroy: true},
             list: [
-                {index: 0, id: 0, name: 'done-popo', content: 'content popo', status: 'done', isActive: false},
-                {index: 0, id: 1, name: 'done-lolo', content: 'content lolo', status: 'done', isActive: false},
-                {index: 0, id: 3, name: 'done-roro', content: 'content roro', status: 'done', isActive: false},
+                {index: 0, id: 0, name: 'done-popo', content: 'content popo', status: 'done', isActive: false, visible: true,
+                    tags:{
+                        location: null
+                    }},
+                {index: 0, id: 1, name: 'done-lolo', content: 'content lolo', status: 'done', isActive: false, visible: true,
+                    tags:{
+                        location: null
+                    }},
+                {index: 0, id: 3, name: 'done-roro', content: 'content roro', status: 'done', isActive: false, visible: true,
+                    tags:{
+                        location: null
+                    }},
             ]
         }
         this.incubation = {
@@ -93,30 +117,18 @@ class AppStore {
             toSwitch: 'todo',
             acceptSwitch: {todo: true, done: false, incubation: true, destroy: false},
             list: [
-                {
-                    index: 0,
-                    id: 0,
-                    name: 'destroy-popo',
-                    content: 'destroy content popo',
-                    status: 'destroy',
-                    isActive: false
-                },
-                {
-                    index: 0,
-                    id: 1,
-                    name: 'destroy-lolo',
-                    content: 'destroy content lolo',
-                    status: 'destroy',
-                    isActive: false
-                },
-                {
-                    index: 0,
-                    id: 5,
-                    name: 'destroy-roro',
-                    content: 'destroy content roro',
-                    status: 'destroy',
-                    isActive: false
-                },
+                {index: 0, id: 0, name: 'destroy-popo', content: 'destroy content popo', status: 'destroy', isActive: false, visible: true,
+                    tags:{
+                        location: null
+                    }},
+                {index: 0, id: 1, name: 'destroy-lolo', content: 'destroy content lolo', status: 'destroy',isActive: false, visible: true,
+                    tags:{
+                        location: null
+                    }},
+                {index: 0, id: 5, name: 'destroy-roro', content: 'destroy content roro', status: 'destroy', isActive: false, visible: true,
+                    tags:{
+                        location: null
+                    }},
             ]
         }
 
@@ -145,17 +157,17 @@ class AppStore {
                         {text: 'Maison', value: 'maison'},
                         {text: 'Travail', value: 'travail'},
                     ]
+                },
+                context:{
+                    name: 'Context',
+                    selected: '',
+                    options: [
+                        {text: 'Tel', value: 'tel'},
+                        {text: 'Mail', value: 'mail'},
+                        {text: 'Déplacement', value: 'deplacement'},
+                    ]
                 }
             },
-
-            test:{
-                selected: 'A',
-                options: [
-                    { text: 'Un', value: 'A' },
-                    { text: 'Deux', value: 'B' },
-                    { text: 'Trois', value: 'C' }
-                ]
-            }
         }
     }
 
@@ -186,7 +198,6 @@ class AppStore {
                 this.data.control.actionCreated = ''
         }
     }
-
 
     actionEdit  (index, status){
         let list = this.getList(status).list
@@ -221,6 +232,10 @@ class AppStore {
             this.refreshAction()
             this.data.control.seen = 'empty'
         }
+    }
+
+    tagSelected(){
+        this.data.action.tags.location = this.data.tags.location.selected
     }
 
     /*----------------------------------------------------------*/
