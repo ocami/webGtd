@@ -26,17 +26,11 @@ class AppStore {
             acceptSwitch: {todo: 'true', done:true, incubation:true, destroy:true},
             list:  [
                 { index:0, id: 0, name: 'receipt-popo', content: 'receipt-content popo', status: 'receipt', isActive: false, visible: true,
-                    tags:{
-                        location: null
-                    }},
+                    tags:['','']},
                 { index:0, id: 1, name: 'receipt-lolo', content: 'receipt-content lolo', status: 'receipt', isActive: false, visible: true,
-                    tags:{
-                        location: null
-                    }},
+                    tags:['','']},
                 { index:0, id: 2, name: 'receipt-roro', content: 'receipt-content roro', status: 'receipt' , isActive: false, visible: true,
-                    tags:{
-                        location: null
-                    }},
+                    tags:['','']},
             ]
         }
         this.todo = {
@@ -45,18 +39,12 @@ class AppStore {
             toSwitch: 'done',
             acceptSwitch: {todo: false, done: true, incubation: true, destroy: true},
             list: [
-                {index: 0, id: 0, name: 'todo-popo', content: 'tod ocontent popo', status: 'todo', isActive: false, visible: true, tags:[
-                    'locationTest','contextTest'
-                    ]},
+                {index: 0, id: 0, name: 'todo-popo', content: 'tod ocontent popo', status: 'todo', isActive: false, visible: true, 
+                    tags:['','']},
                 {index: 0, id: 1, name: 'todo-lolo', content: 'todo content lolo', status: 'todo', isActive: false, visible: true,
-                    tags:{
-                        location: null
-                    }},
+                    tags:['','']},
                 {index: 0, id: 2, name: 'todo-roro', content: 'todo content roro', status: 'todo', isActive: false, visible: true,
-                    tags:{
-                        location: null,
-                        context : null
-                    }},
+                    tags:['','']},
             ]
         }
         this.done = {
@@ -66,17 +54,11 @@ class AppStore {
             acceptSwitch: {todo: true, done: false, incubation: false, destroy: true},
             list: [
                 {index: 0, id: 0, name: 'done-popo', content: 'content popo', status: 'done', isActive: false, visible: true,
-                    tags:{
-                        location: null
-                    }},
+                    tags:['','']},
                 {index: 0, id: 1, name: 'done-lolo', content: 'content lolo', status: 'done', isActive: false, visible: true,
-                    tags:{
-                        location: null
-                    }},
+                    tags:['','']},
                 {index: 0, id: 3, name: 'done-roro', content: 'content roro', status: 'done', isActive: false, visible: true,
-                    tags:{
-                        location: null
-                    }},
+                    tags:['','']},
             ]
         }
         this.incubation = {
@@ -85,30 +67,12 @@ class AppStore {
             toSwitch: 'todo',
             acceptSwitch: {todo: true, done: false, incubation: false, destroy: true},
             list: [
-                {
-                    index: 0,
-                    id: 0,
-                    name: 'incubation-popo',
-                    content: 'content popo',
-                    status: 'incubation',
-                    isActive: false
-                },
-                {
-                    index: 0,
-                    id: 1,
-                    name: 'incubation-lolo',
-                    content: 'content lolo',
-                    status: 'incubation',
-                    isActive: false
-                },
-                {
-                    index: 0,
-                    id: 4,
-                    name: 'incubation-roro',
-                    content: 'content roro',
-                    status: 'incubation',
-                    isActive: false
-                },
+                {index: 0, id: 0, name: 'incubation-popo', content: 'content popo', status: 'incubation', isActive: false, visible: true,
+                    tags:['','']},
+                {index: 0, id: 1, name: 'incubation-lolo', content: 'content lolo', status: 'incubation', isActive: false, visible: true,
+                    tags:['','']},
+                {index: 0, id: 3, name: 'incubation-roro', content: 'content roro', status: 'incubation', isActive: false, visible: true,
+                    tags:['','']},
             ]
         }
         this.destroy = {
@@ -118,17 +82,11 @@ class AppStore {
             acceptSwitch: {todo: true, done: false, incubation: true, destroy: false},
             list: [
                 {index: 0, id: 0, name: 'destroy-popo', content: 'destroy content popo', status: 'destroy', isActive: false, visible: true,
-                    tags:{
-                        location: null
-                    }},
+                    tags:['','']},
                 {index: 0, id: 1, name: 'destroy-lolo', content: 'destroy content lolo', status: 'destroy',isActive: false, visible: true,
-                    tags:{
-                        location: null
-                    }},
+                    tags:['','']},
                 {index: 0, id: 5, name: 'destroy-roro', content: 'destroy content roro', status: 'destroy', isActive: false, visible: true,
-                    tags:{
-                        location: null
-                    }},
+                    tags:['','']},
             ]
         }
 
@@ -294,7 +252,8 @@ class AppStore {
     }
 
     refreshAction  (status) {
-        this.data.action = {index: 0, id: 0, name: '', content: '', status: status, isActive: false}
+        this.data.action =  {index: 0, id: 5, name: '', content: '', status: status, isActive: false, visible: true,
+            tags:['','']}
     }
 
     /*----------------------------------------------------------*/

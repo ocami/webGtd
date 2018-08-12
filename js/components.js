@@ -86,16 +86,13 @@ let EditSwitchBtn = {
 }
 
 let TagSelect = {
-    template: `<div>
-
-<select  v-model="tag.selected" @change="tagSelected(tag.selected, tag.position)">
+    template: `
+            <select  v-model="tag.selected" @change="tagSelected(tag.selected, tag.position)">
                 <option disabled value="">{{tag.name}}</option>
                 <option v-for="option in tag.options" :value="option.value">
                     {{ option.text }}
                 </option>
             </select>
-</div>
-            
     `,
     data:
         function () { return { data: app_store.data}
@@ -120,7 +117,9 @@ let ActionsEdit = {
         <hr>
         <h5>{{actions.name}}</h5>
         <edit-switch-bts v-bind:actions="actions"></edit-switch-bts>
-        <tag-select></tag-select>
+        <span v-if="control.seen == 'todoEdit'" v-for="tag in tags" :key="tag.name">
+            <tag-select :tag="tag"></tag-select>
+        </span>
         <form-edit></form-edit>
     </div>`,
     props: {
@@ -130,6 +129,13 @@ let ActionsEdit = {
         'edit-switch-bts': EditSwitchBtn,
         'form-edit': FormEdit,
         'tag-select': TagSelect
+    },
+    data:
+        function () { return { data: app_store.data}
+        },
+    computed:{
+        tags: function () { return this.data.tags },
+        control: function () { return this.data.control },
     }
 }
 
