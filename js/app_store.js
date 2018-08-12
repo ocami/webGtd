@@ -45,11 +45,9 @@ class AppStore {
             toSwitch: 'done',
             acceptSwitch: {todo: false, done: true, incubation: true, destroy: true},
             list: [
-                {index: 0, id: 0, name: 'todo-popo', content: 'tod ocontent popo', status: 'todo', isActive: false, visible: true,
-                    tags:{
-                        location: 'locationTest',
-                        context : 'contextTest'
-                    }},
+                {index: 0, id: 0, name: 'todo-popo', content: 'tod ocontent popo', status: 'todo', isActive: false, visible: true, tags:[
+                    'locationTest','contextTest'
+                    ]},
                 {index: 0, id: 1, name: 'todo-lolo', content: 'todo content lolo', status: 'todo', isActive: false, visible: true,
                     tags:{
                         location: null
@@ -152,6 +150,7 @@ class AppStore {
             },
             tags:{
                 location:{
+                    position:0,
                     name: 'location',
                     selected: '',
                     options: [
@@ -161,6 +160,7 @@ class AppStore {
                     ]
                 },
                 context:{
+                    position:1,
                     name: 'context',
                     selected: '',
                     options: [
@@ -236,15 +236,11 @@ class AppStore {
         }
     }
 
-    tagSelected(tagName){
-        switch (tagName){
-            case 'location':
-                this.data.action.tags.location = this.data.tags.location.selected
-                break
-            case 'context':
-                this.data.action.tags.context = this.data.tags.context.selected
-                break
-        }
+    tagSelected(tag,position){
+
+        let array = this.data.action.tags.slice(0)
+        array[position]=tag;
+        this.data.action.tags = array;
 
     }
 
