@@ -40,7 +40,7 @@ class AppStore {
             acceptSwitch: {todo: false, done: true, incubation: true, destroy: true},
             list: [
                 {index: 0, id: 0, name: 'todo-popo', content: 'tod ocontent popo', status: 'todo', isActive: false, visible: true, 
-                    tags:['','']},
+                    tags:['maison','']},
                 {index: 0, id: 1, name: 'todo-lolo', content: 'todo content lolo', status: 'todo', isActive: false, visible: true,
                     tags:['','']},
                 {index: 0, id: 2, name: 'todo-roro', content: 'todo content roro', status: 'todo', isActive: false, visible: true,
@@ -126,6 +126,16 @@ class AppStore {
                         {text: 'Mail', value: 'mail'},
                         {text: 'Déplacement', value: 'deplacement'},
                     ]
+                },
+                unTruc:{
+                    position:2,
+                    name: 'untruc',
+                    selected: '',
+                    options: [
+                        {text: 'one', value: 'one'},
+                        {text: 'two', value: 'two'},
+                        {text: 'three', value: 'three'},
+                    ]
                 }
             },
         }
@@ -194,10 +204,11 @@ class AppStore {
         }
     }
 
-    tagSelected(tag,position){
+    tagSelected(event,position){
 
+        console.log(event.target.value)
         let array = this.data.action.tags.slice(0)
-        array[position]=tag;
+        array[position] = event.target.value;
         this.data.action.tags = array;
 
     }

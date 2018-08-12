@@ -87,12 +87,18 @@ let EditSwitchBtn = {
 
 let TagSelect = {
     template: `
-            <select  v-model="tag.selected" @change="tagSelected(tag.selected, tag.position)">
-                <option disabled value="">{{tag.name}}</option>
-                <option v-for="option in tag.options" :value="option.value">
-                    {{ option.text }}
+            <select :class="{ select_title: !toto }"  @change="tagSelected($event,tag.position)">
+                <option v-if="toto === ''" value=""  selected>-{{tag.name}}</option>
+                <option v-if="toto !== ''" value="">-{{tag.name}}</option>
+                <option v-for="option in tag.options" :value="option.value" v-if="toto === option.value" selected>
+                    <span >{{ option.text }}</span>
                 </option>
+                <option v-for="option in tag.options" :value="option.value" v-if="toto != option.value">
+                    <span >{{ option.text }}</span>
+                </option>                  
             </select>
+            
+          
     `,
     data:
         function () { return { data: app_store.data}
@@ -100,11 +106,14 @@ let TagSelect = {
     computed:{
         tags: function () { return this.data.tags},
         action: function () { return this.data.action},
-
+        isActive: function () { return false},
+        toto: function () {
+            let pos = this.tag.position
+            return this.data.action.tags[pos]},
     },
     methods:{
-        tagSelected: function (tagSelected,tagPosition) {
-            app_store.tagSelected(tagSelected,tagPosition)
+        tagSelected: function (event,tagPosition) {
+            app_store.tagSelected(event,tagPosition)
         }
     },
     props:{

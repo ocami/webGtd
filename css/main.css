@@ -16,3 +16,21 @@
     border-bottom: solid black;
     cursor: pointer;
 }
+
+
+option
+{
+    color: #000;
+}
+option:first-child
+{
+    color: #ccc;
+}
+
+.select_option{
+    color: #000;
+}
+
+.select_title{
+    color: #ccc;
+}
