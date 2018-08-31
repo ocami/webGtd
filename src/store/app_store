@@ -1,0 +1,875 @@
+class Action{
+    constructor(name,content){
+                this.action= { index:0, id: 0, name: name, content: content, status: 'receipt', isActive: false, visible: true,
+                    tags:['','','','']}
+    }
+}
+
+class AppStore {
+    constructor () {
+
+        this.locations = [
+            {id:"11", name:'ma location', x:1234, y:5678},
+            {id:"12", name:'ma location2', x:0, y:0},
+            {id:"13", name:'ma location3', x:4321, y:8765},
+        ]
+        this.receipt = {
+            index:0,
+            name: 'receipt',
+            toString: 'Réception',
+            toSwitch: 'todo',
+            acceptSwitch: {todo: 'true', done:true, incubation:true, destroy:true},
+            defaultSearch: ['','','',''],
+            curentSearch: ['','','',''],
+            list:  [
+                { index:0, id: 0, name: 'receipt-popo-0', content: 'receipt-content popo', status: 'receipt', isActive: false, visible: true,
+                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
+                { index:0, id: 1, name: 'receipt-lolo1-1', content: 'receipt-content lolo', status: 'receipt', isActive: false, visible: true,
+                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
+                { index:0, id: 2, name: 'receipt-roro-2', content: 'receipt-content roro', status: 'receipt' , isActive: false, visible: true,
+                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
+            ]
+        }
+        this.todo = {
+            index:1,
+            name: 'todo',
+            toString: 'A faire',
+            toSwitch: 'done',
+            acceptSwitch: {todo: false, done: true, incubation: true, destroy: true},
+            defaultSearch: ['','','',''],
+            curentSearch: ['','','',''],
+            sortAsc: true,
+            sortTag: 'autoTag-0',
+            sortAscDefault: true,
+            sortTagDefault: 'autoTag-0',
+            sortAsc: true,
+            list: [
+                {
+                    id: 0,
+                    name: 'todo-popo-0',
+                    content: 'todo content popo',
+                    location: {
+                        x:'49.46800006494457',
+                        y:'17.11514008755796',
+                        city:'rennes'
+                    },
+                    dateTime : {
+                        date: '30/09/2018',
+                        time: '15:35',
+                        minutes : '',
+                        expiry: true,
+                        toString: ''
+                    },
+                    whith: {company:'',firstName:'',lastName:'',mail:'',tel:''},
+                    status: 'todo',
+                    isActive: false,
+                    visible: true,
+                    tags:['+','','','','','@'],
+                    autoTags:['1535383467157',0,null]
+                    },
+                {
+                    id: 0,
+                    name: 'todo-toto-1',
+                    content: 'todo content lolo',
+                    location: {x:'47.981101',y:'-1.476062'},
+                    dateTime : {
+                        date: null,
+                        time: null,
+                        minutes : null,
+                        expiry: true,
+                        toString: null
+                    },
+                    whith: {company:'',firstName:'',lastName:'',mail:'',tel:''},
+                    status: 'todo',
+                    isActive: false,
+                    visible: true,
+                    tags:['+','','','','',''],
+                    autoTags:['1535383467157',0,null]
+                },
+                {
+                    id: 0,
+                    name: 'todo-lolo-2',
+                    content: 'tod ocontent popo',
+                    location: {x:'',y:''},
+                    dateTime : {
+                        date: null,
+                        time: null,
+                        minutes : null,
+                        expiry: true,
+                        toString: null
+                    },
+                    whith: {company:'',firstName:'',lastName:'',mail:'',tel:''},
+                    status: 'todo',
+                    isActive: false,
+                    visible: true,
+                    tags:['+','','','','',''],
+                    autoTags:['1535383467157',0,null]
+                },
+            ]
+        }
+        this.done = {
+            index:2,
+            name: 'done',
+            toString: 'Fait',
+            toSwitch: 'destroy',
+            acceptSwitch: {todo: true, done: false, incubation: false, destroy: true},
+            defaultSearch: ['','','',''],
+            curentSearch: ['','','',''],
+            list: [
+                {index: 0, id: 0, name: 'done-popo', content: 'content popo', status: 'done', isActive: false, visible: true,
+                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
+                {index: 0, id: 1, name: 'done-lolo', content: 'content lolo', status: 'done', isActive: false, visible: true,
+                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
+                {index: 0, id: 3, name: 'done-roro', content: 'content roro', status: 'done', isActive: false, visible: true,
+                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
+            ]
+        }
+        this.incubation = {
+            index:3,
+            name: 'incubation',
+            toString: 'Incubation',
+            toSwitch: 'todo',
+            acceptSwitch: {todo: true, done: false, incubation: false, destroy: true},
+            defaultSearch: ['','','',''],
+            curentSearch: ['','','',''],
+            list: [
+                {index: 0, id: 0, name: 'incubation-popo', content: 'content popo', status: 'incubation', isActive: false, visible: true,
+                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
+                {index: 0, id: 1, name: 'incubation-lolo', content: 'content lolo', status: 'incubation', isActive: false, visible: true,
+                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
+                {index: 0, id: 3, name: 'incubation-roro', content: 'content roro', status: 'incubation', isActive: false, visible: true,
+                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
+            ]
+        }
+        this.destroy = {
+            index:4,
+            name: 'destroy',
+            toString: 'Corbeille',
+            toSwitch: 'todo',
+            acceptSwitch: {todo: true, done: false, incubation: true, destroy: false},
+            defaultSearch: ['','','',''],
+            curentSearch: ['','','',''],
+            list: [
+                {index: 0, id: 0, name: 'destroy-popo', content: 'destroy content popo', status: 'destroy', isActive: false, visible: true,
+                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
+                {index: 0, id: 1, name: 'destroy-lolo', content: 'destroy content lolo', status: 'destroy',isActive: false, visible: true,
+                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
+                {index: 0, id: 5, name: 'destroy-roro', content: 'destroy content roro', status: 'destroy', isActive: false, visible: true,
+                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
+            ]
+        }
+
+        this.data = {
+            option: {
+              endOfDay : '18:00',
+              endOfWeek : 'friday'
+            },
+            action: this.todo.list[0],
+            actions: {
+                receipt: this.receipt,
+                todo: this.todo,
+                done: this.done,
+                incubation: this.incubation,
+                destroy: this.destroy,
+                tags:[]
+            },
+            control:{
+                editSeen: 'todoEdit',
+                menuSeen: 'todoMenu',
+                tagModalSeen: false,
+                actionCreated: false,
+                actionChange: false,
+                curentIndex: 0,
+                curentList: 'todo',
+                tagsSearch: ['','','',''],
+            },
+            tags:{
+                location:{
+                    position:0,
+                    name: 'location',
+                    toString: 'Localisation',
+                    selected: '',
+                    options: [
+                        {text: 'Jardin', value: 'jardin'},
+                        {text: 'Maison', value: 'maison'},
+                        {text: 'Bureau', value: 'bureau'},
+                        {text: '+', value: '+'},
+                    ]
+                },
+                whith:{
+                    position:1,
+                    name: 'whith',
+                    toString: 'Avec',
+                    selected: '',
+                    options: [
+                        {text: 'Equipe1', value: 'equipe1'},
+                        {text: 'Henry', value: 'henry'},
+                        {text: 'Famille', value: 'famille'},
+                        {text: '+', value: '+'},
+                    ]
+                },
+                tools:{
+                    position:2,
+                    name: 'tools',
+                    toString: 'Outils',
+                    selected: '',
+                    options: [
+                        {text: 'Ordinateur', value: 'ordinateur'},
+                        {text: 'Tel', value: 'tel'},
+                    ]
+                },
+                priority:{
+                    position:3,
+                    name: 'priority',
+                    toString: 'Priorité',
+                    selected: '',
+                    options: [
+                        {text: '1', value: '1'},
+                        {text: '2', value: '2'},
+                        {text: '3', value: '3'},
+                    ]
+                },
+                duration:{
+                    position:4,
+                    name: 'duration',
+                    toString: 'Durée',
+                    selected: '',
+                    options: [
+                        {text: '10 min', value: '10'},
+                        {text: '20 min', value: '20'},
+                        {text: '30 min', value: '30'},
+                        {text: '45 min', value: '45'},
+                        {text: '1 h', value: '120'},
+                        {text: '2 h', value: '180'},
+                        {text: '3 h', value: '240'},
+
+                    ]
+                },
+                date:{
+                    position:5,
+                    name: 'date',
+                    toString: 'Date',
+                    selected: '',
+                    options: [
+                        {text: 'Aujourd hui', value: '@today'},
+                        {text: 'Demain', value: '@today'},
+                        {text: 'Dans la semaine', value: '@week'},
+                        {text: 'Prochaine semaine', value: '@nextYear'},
+                        {text: 'Prochain mois', value: '@nextYear'},
+                        {text: '+', value: '+'},
+                    ]
+                },
+            },
+            autoTags:{
+                createOn:{
+                    position:0,
+                    name: 'createOn',
+                    toString: 'Création',
+                },
+                updateOn:{
+                    position:1,
+                    name: 'updateOn',
+                    toString: 'Modification',
+                },
+                inListOn:{
+                    position:2,
+                    name: 'inListOn',
+                    toString: 'inListOn',
+                }
+            },
+            date:{
+                expiryDate:{
+                    position:5,
+                    name: 'expiryDate',
+                    toString: 'Date',
+                    selected: '',
+                    options: [
+                        {text: 'Aujourd hui', value: '@today'},
+                        {text: 'Demain', value: '@today'},
+                        {text: 'Dans la semaine', value: '@week'},
+                        {text: 'Dans le mois', value: '@month'},
+                        {text: 'Dans l année', value: '@year'},
+                        {text: 'Prochaine journée', value: '@nextYear'},
+                        {text: 'Prochaine semaine', value: '@nextYear'},
+                        {text: 'Prochain mois', value: '@nextYear'},
+                        {text: 'Prochaine année', value: '@nextYear'},
+                        {text: 'Lundi', value: '@nextYear'},
+                        {text: 'Mardi', value: '@nextYear'},
+                        {text: 'Mercredi', value: '@nextYear'},
+                        {text: 'Jeudi', value: '@nextYear'},
+                        {text: 'Vendredi', value: '@nextYear'},
+                        {text: 'Samedi', value: '@nextYear'},
+                        {text: 'Dimanche', value: '@nextYear'},
+                        {text: '+', value: '+'},
+                    ]
+                },
+                expiryTime:{
+                    position:6,
+                    name: 'expiryTime',
+                    toString: 'Heure',
+                    selected: '',
+                    options: [
+                        {text: '+', value: 'tel'},
+                    ]
+                },
+            }
+        }
+    }
+    /*-------------------------------ACTIONS---------------------------*/
+
+    /*init*/
+    speedAdd(content) {
+        console.log('==> app_store/speedAdd')
+
+        let name = this.generateName(content)
+        let action =  this.newAction('receipt')
+        action.name = name
+        action.content = content
+
+        this.data.actions.receipt.list.push(action)
+    }
+
+    actionAddSeen () {
+        console.log('==> app_store/actionAddSeen')
+
+        this.data.action.isActive = false
+        this.data.control.editSeen = 'edit'
+        this.data.control.actionCreated = true
+        this.data.action = this.newAction(this.getCurentList().name)
+    }
+
+    actionAdd () {
+        console.log('==> app_store/actionAdd')
+
+        this.data.control.curentIndex = this.getCurentList().list.push(this.data.action) -1
+        this.data.control.actionCreated = false
+        this.data.action.isActive = true
+    }
+
+    actionEdit (index, status){
+        console.log('==> app_store/actionEdit')
+        let list = this.getList(status).list
+        let action = this.data.action
+        action.isActive = false
+        if (list.length > 0){
+            action = list[index]
+            this.data.control.editSeen = 'edit'
+            action.isActive = true
+            this.data.action = action
+            this.data.control.curentIndex = index
+        }
+        else {
+            this.data.control.editSeen = 'empty'
+        }
+    }
+
+    switch(listName,newListName,index){
+        console.log('==> app_store/switch')
+
+        if(!index)
+            index = this.data.control.curentIndex
+
+        let list = this.getList(listName).list
+        let newList = this.getList(newListName).list
+        this.data.action.isActive = false
+        this.data.action = list[index]
+        this.data.action.status = newListName
+        this.setInListOn()
+        newList.push(this.data.action)
+        list.splice(index, 1)
+
+        let i = 0;
+        let l = list.length;
+        if(l){
+            index < l ? i = index : i = index - 1;
+            this.actionEdit(i,listName)
+        }else {
+            this.data.control.editSeen = 'empty'
+        }
+    }
+
+    /*event*/
+    inputChange (event, isTextarea) {
+        console.log('==> app_store/inputChange')
+
+        if (this.data.control.actionCreated){
+            if (!event.target.value)
+                return
+
+            if (isTextarea)
+                if(!this.data.action.name)
+                    this.data.action.name = this.generateName(this.data.action.content)
+
+            this.actionAdd()
+        }else {
+            this.setUpdateOn()
+        }
+    }
+
+    setUpdateOn(){
+        let array = this.data.action.autoTags.slice()
+        array[1] = new Date().getTime()
+        this.data.action.autoTags = array
+    }
+
+    setInListOn(){
+        let array = this.data.action.autoTags.slice()
+        array[2] = new Date().getTime()
+        this.data.action.autoTags = array
+    }
+
+    /*tools*/
+    generateName(content) {
+        let firstLine = content.match(/[^\r\n]+/g);
+        let name = firstLine[0].substring(0,20)
+
+        if (name.length < firstLine[0].length)
+            name = name + '...'
+
+        return name
+    }
+
+
+    /*-------------------------------TAGS---------------------------*/
+
+    actionSearch () {
+        console.log('app_store/actionSearch')
+
+        this.data.control.editSeen = 'actionSearch'
+        this.data.action.isActive = false
+    }
+
+    tagSelected(tagValue,position){
+        console.log('==> app_store/tagSelected')
+
+        if(this.data.control.editSeen === 'actionSearch')
+            this.tagSearch(tagValue,position)
+        else
+            this.actionTagSelect(tagValue,position)
+    }
+
+    actionTagSelect (tagValue,position){
+        console.log('==> app_store/actionTagSelect')
+        console.log('event =' + tagValue)
+        console.log('postition =' + position)
+
+        let action  = this.data.action
+
+        let array = action.tags.slice(0)
+        array[position] = tagValue;
+        this.data.action.tags = array;
+
+        this.setUpdateOn()
+    }
+
+    tagSearch(tagValue,position){
+        console.log('==> app_store/tagSearch')
+
+        let curentSearch = this.getCurentList().curentSearch.slice()
+        curentSearch[position] = tagValue
+        this.getCurentList().curentSearch = curentSearch
+
+    }
+
+    tagsCompare(search){
+        console.log('==> app_store/tagsCompare')
+
+        let searchTags
+        let list = this.getCurentList()
+        let actions = list.list.slice()
+
+        if(search)
+            searchTags = search
+        else
+            searchTags = list.curentSearch
+
+        for (var i = 0; i < actions.length; i++) {
+            actions[i].visible = this.arrayCompare(actions[i].tags,searchTags)
+        }
+
+        list.list = actions;
+    }
+
+    tagsEmpty() {
+        let array = this.getCurentList().curentSearch.slice()
+        let actions = this.getCurentList().list.slice()
+
+        for (var i = 0; i < array.length; i++) {
+            array[i] = ''
+        }
+
+        for (var i = 0; i < actions.length; i++) {
+            actions[i].visible = true
+        }
+
+        this.getCurentList().curentSearch = array;
+        this.getCurentList().list;
+    }
+
+    arrayCompare(source,search){
+        console.log('==> app_store/arrayCompare')
+
+        for (var i = 0; i < search.length; i++) {
+            if(search[i])
+                if(search[i] !== source[i])
+                    return false
+        }
+        return true
+    }
+
+    preModal(tagName){
+        console.log('appStore/preModal')
+        if (tagName === 'date'){
+            let dt = this.data.action.dateTime
+            console.log(dt)
+            if(!dt.date)
+                dt.date = todayDate()
+
+            if(!dt.time)
+                dt.time = this.data.option.endOfDay
+        }
+    }
+
+    /*-------------------------------TIME---------------------------*/
+    dateAutoEdit(tagValue,tagPosition, tagName) {
+        console.log('==> app_store/dateAutoEdit')
+        let action = this.data.action
+
+        action.dateTime.date = '20180830'
+    }
+
+    dateEdit(tagPosition){
+        console.log('==> app_store/dateEdit')
+        let dt = this.data.action.dateTime
+        dt.minutes = parseToMinutes(dt.date,dt.time)
+        this.tagSelected('@'+dt.minutes,tagPosition)
+    }
+
+    dateTimeRefresh(){
+        this.data.action.dateTime = {
+            date: null,
+            time: null,
+            minutes : null,
+            expiry: true,
+            toString: null
+        }
+    }
+
+    getTodayDate(){
+        return todayDate()
+    }
+    /*-------------------------------SEARCH---------------------------*/
+    searchAll(){
+        console.log('app_store/searchAll')
+        let actions = this.getCurentList().list.slice()
+        for (var i = 0; i < actions.length; i++) {
+            actions[i].visible = true
+        }
+        this.sortByTag('autoTag-0',true)
+
+        this.actionEdit(0,this.data.control.curentList)
+    }
+
+    searchAuto(){
+        console.log('app_store/searchAuto')
+
+        let curentList = this.getCurentList()
+        let list = curentList.list
+
+        this.tagsCompare(curentList.defaultSearch)
+        this.sortByTag(curentList.sortTagDefault,curentList.sortAscDefault)
+
+        //editSenn empty if no result
+        for (var i = 0; i < list.length; i++) {
+            if(list[i].visible){
+                this.actionEdit(i,this.data.control.curentList)
+                return
+            }
+            this.data.control.editSeen = 'empty'
+        }
+
+
+    }
+
+    searchEdit(){
+        console.log('app_store/searchEdit')
+        this.tagsCompare()
+        let list = this.getCurentList()
+        this.sortByTag(list.sortTag,list.sortAsc)
+        this.data.control.editSeen = 'actionSearch'
+        this.data.action.isActive = false
+    }
+
+    defaultSearchEdit(){
+        console.log('==> app_store/defaultSearchEdit')
+        let list = this.getCurentList()
+        list.defaultSearch = list.curentSearch
+        list.sortTagDefault = list.sortTag
+        list.sortAscDefault = list.sortAsc
+    }
+
+
+    /*-------------------------------SORT--------------------*/
+
+    sortTagChange(tag) {
+        console.log('==> app_store/sortTagChange')
+        let asc = this.getCurentList().sortAsc
+
+        this.getCurentList().sortTag = tag
+        this.sortByTag(tag,asc)
+    }
+
+    sortAscChange(asc) {
+        console.log('==> app_store/sortAscChange')
+        let tag = this.getCurentList().sortTag
+        this.getCurentList().sortAsc = asc
+        this.sortByTag(tag,asc)
+    }
+
+    sortByTag(tag, ascending) {
+        console.log('==> app_store/sortByTag')
+
+        tag = tag.split("-")
+        let curentList = this.getCurentList()
+        let actions = curentList.list.slice()
+        let index = tag[1]
+
+        console.log('!!!!TAGS!!!!!!')
+        console.log(tag[0])
+        console.log(tag[1])
+
+
+        if (tag[0] === 'tag'){
+            var tagsCompare = function(ascending){
+                return function(a,b){
+                    if(a.tags[index] === ""){
+                        return 1;
+                    }
+                    else if(b.tags[index] === ""){
+                        return -1;
+                    }
+                    else if(a.tags[index] === b.tags[index]){
+                        return 0;
+                    }
+                    else if(ascending) {
+                        return a.tags[index] < b.tags[index] ? -1 : 1;
+                    }
+                    else if(!ascending) {
+                        return a.tags[index] < b.tags[index] ? 1 : -1;
+                    }
+                };
+            }
+            curentList.list = actions.sort(tagsCompare(ascending))
+        }
+
+        if(tag[0] === 'autoTag'){
+            var tagsCompare = function(ascending){
+
+                return function(a,b){
+                    if(a.autoTags[index] === b.autoTags[index]){
+                        return 0;
+                    }
+                    else if(ascending) {
+                        return a.autoTags[index] < b.autoTags[index] ? -1 : 1;
+                    }
+                    else if(!ascending) {
+                        return a.autoTags[index] < b.autoTags[index] ? 1 : -1;
+                    }
+                };
+            }
+            curentList.list = actions.sort(tagsCompare(ascending))
+        }
+    }
+
+    /*-------------------------------MODALS--------------------*/
+    openTagModal(tagName) {
+        console.log('==> app_store/openTagModal')
+        console.log('ooooooooooooooooooooooooooooo')
+        console.log(tagName)
+
+
+        this.data.control.tagModalSeen = true
+    }
+
+
+    /*-------------------------------SETTER---------------------------*/
+    setMenuSeen(status){
+        console.log('==> app_store/setMenuSeen')
+        this.data.action.isActive = false
+
+        this.data.control.curentList = status
+
+        let list = this.getList(status).list
+        this.data.control.menuSeen = status + 'Menu'
+
+        if(list.length > 0){
+            this.data.control.editSeen = status + 'Edit'
+            this.data.action = list[0]
+            this.data.action.isActive = true
+        }
+        else{
+            this.data.control.editSeen = 'empty'
+        }
+    }
+
+    /*-------------------------------GETTER---------------------------*/
+    getSortFilters(){
+        console.log('==> app_store/getSortFilters')
+
+        let options = []
+
+        Object.entries(this.data.tags).forEach(([key, value]) => {
+            options.push({text:value.toString, value: 'tag-' + value.position})
+        });
+
+        Object.entries(this.data.autoTags).forEach(([key, value]) => {
+            options.push({text:value.toString, value: 'autoTag-' + value.position})
+        });
+
+        return options
+    }
+
+
+    /*----------------------------------------------------------*/
+
+    getList (status) {
+
+        let a = this.data.actions
+
+        switch (status){
+            case 'receipt':
+                return a.receipt;
+
+            case 'todo':
+                return a.todo;
+
+            case 'done':
+                return a.done;
+
+            case 'incubation':
+                return a.incubation;
+
+            case 'destroy':
+                return a.destroy;
+
+            default :
+                console.log('actions.js getList error')
+        }
+    }
+
+    getCurentList() {
+        let a = this.data.actions
+
+        switch (this.data.control.curentList){
+            case 'receipt':
+                return a.receipt;
+
+            case 'todo':
+                return a.todo;
+
+            case 'done':
+                return a.done;
+
+            case 'incubation':
+                return a.incubation;
+
+            case 'destroy':
+                return a.destroy;
+
+            default :
+                console.log('actions.js getList error')
+        }
+    }
+
+    newAction (status) {
+        return {
+            id: this.guid(),
+            name: '',
+            content: '',
+            status: status,
+            isActive: false,
+            visible: true,
+            tags:['','','',''],
+            autoTags:[new Date().getTime(),null,null]
+    }
+
+    }
+
+    guid () {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        }
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+    }
+
+    /*----------------------------------------------------------*/
+    /*----------------------------------------------------------*/
+
+    test(){
+        console.log('-------TRUE------------')
+        console.log('1 '+ this.arrayCompare(['','','',''],['','','','']))
+        console.log('1 '+ this.arrayCompare(['popo','papa','pipi'],['','','','']))
+        console.log('1 '+ this.arrayCompare(['','papa',''],['','','','']))
+        console.log('2 '+ this.arrayCompare(['popo','papa','pipi'],['popo','papa','pipi']))
+        console.log('3 '+ this.arrayCompare(['popo','papa','pipi'],['popo','papa','']))
+        console.log('4 '+ this.arrayCompare(['popo','papa','pipi'],['popo','','']))
+
+        console.log('5 '+ this.arrayCompare(['popo','',''],['popo','','']))
+        console.log('6 '+ this.arrayCompare(['','papa','pipi'],['','papa','']))
+        console.log('7 '+ this.arrayCompare(['','papa','pipi'],['','papa','pipi']))
+
+        console.log('8 '+ this.arrayCompare(['popo','ff','ddd','eee','dezf','czdvrever'],['popo','','','','','']))
+        console.log('9 '+ this.arrayCompare(['popo','ff','ddd','eee','papa','czdvrever'],['popo','','','','papa','']))
+
+        console.log('10 '+ this.arrayCompare(['popo','ff','ddd','eee','papa','czdvrever'],['popo','ff','ddd','eee','papa','czdvrever']))
+        console.log('11 '+ this.arrayCompare(['popo','ff','ddd','eee','papa',''],['popo','ff','ddd','eee','papa','']))
+        console.log('12 '+ this.arrayCompare(['popo','ff','ddd','','papa',''],['popo','ff','ddd','','papa','']))
+
+
+
+        console.log('-------FALSE------------')
+        console.log('1 '+ this.arrayCompare(['','','pipi'],['','roro','']))
+        console.log('1 '+ this.arrayCompare(['popo','papa','pipi'],['roro','rara','riri']))
+
+        console.log('2 '+ this.arrayCompare(['popo','papa','pipi'],['popo','papa','riri']))
+        console.log('3 '+ this.arrayCompare(['popo','papa','pipi'],['popo','rara','']))
+        console.log('4 '+ this.arrayCompare(['popo','papa','pipi'],['roro','','',]))
+
+        console.log('5 '+ this.arrayCompare(['popo','ff','ddd','eee','dezf','czdvrever'],['papa','','','','','','']))
+        console.log('6 '+ this.arrayCompare(['popo','ff','ddd','eee','papa','czdvrever'],['popo','','','','rara','']))
+        console.log('7 '+ this.arrayCompare(['popo','ff','ddd','eee','papa','czdvrever'],['popo','ff','ddd','eee','rara','czdvrever']))
+        console.log('8 '+ this.arrayCompare(['popo','ff','ddd','eee','papa','czdvrever'],['popo','zz','ddd','eee','','czdvrever']))
+        console.log('9 '+ this.arrayCompare(['popo','ff','ddd','eee','papa','czdvrever'],['roro','ff','ddd','eee','papa','czdvrever']))
+    }
+}
+
+export default new AppStore();
+
+
+/*-------------------------------DATETIME---------------------------*/
+
+function parseToMinutes (dateStr,timeStr) {
+    const [day, month, year] = dateStr.split("/")
+    const [hour,minute] = timeStr.split(":")
+    return new Date(year, month - 1, day, hour, minute).getTime() / 10000
+}
+
+function todayDate() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+    today = dd + '/' + mm + '/' + yyyy;
+
+    return today;
+}
