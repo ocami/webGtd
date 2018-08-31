@@ -53,7 +53,16 @@ module.exports = {
   performance: {
     hints: false
   },
-  plugins: [new ExtractTextPlugin("main.css")],
+  plugins: [
+      new ExtractTextPlugin("main.css"),
+      new webpack.ProvidePlugin({
+          Vue: ['vue/dist/vue.esm.js', 'default'],
+          jQuery: 'jquery',
+          'window.jQuery': 'jquery',
+          $: 'jquery',
+          moment: 'moment',
+      })
+  ],
   devtool: '#eval-source-map'
 }
 
