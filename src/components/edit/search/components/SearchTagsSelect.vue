@@ -1,17 +1,19 @@
 <template>
     <section>
-        <p>model</p>
+        <h4>search-tags-select</h4>
+        <search-modal-layout></search-modal-layout>
     </section>
 </template>
 
 <script>
 
-    import app_store from '../../store/app_store'
+    import app_store from '../../../../store/app_store'
+    import SearchModalLayout from './modal/SearchModalLayout.vue'
 
     export default {
-        name: 'model',
+        name: 'search-tags-select',
         components : {
-
+            SearchModalLayout
         },
         data ()  {
             return {

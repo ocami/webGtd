@@ -1,25 +1,42 @@
 <template>
-  <div>
-    <un-test></un-test>
+  <section>
+      <test v-if="test"></test>
 
-    <p>C'est parti!!!</p>
+      <section>
+          <span>menu seen : {{data.control.menuSeen}}</span>
+      </section>
 
-  </div>
 
+      <b-row>
+          <b-col cols="3">
+              <menu-layout></menu-layout>
+          </b-col>
+          <b-col cols="9">
+              <edit-layout></edit-layout>
+          </b-col>
+      </b-row>
+
+  </section>
 </template>
 
 <script>
 
-  import UnTest from './components/test/test.vue'
+  import Test from './components/test/test.vue'
+  import app_store from './store/app_store'
+  import MenuLayout from './components/menu/MenuLayout.vue'
+  import EditLayout from './components/edit/EditLayout.vue'
 
   export default {
       name: 'app',
       components : {
-          UnTest
+          Test,
+          MenuLayout,
+          EditLayout
       },
       data ()  {
           return {
-              truc: 'untruc'
+            data: app_store.data,
+            test: false
           }
       },
       computed:{

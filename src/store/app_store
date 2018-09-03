@@ -1,18 +1,27 @@
-class Action{
-    constructor(name,content){
-                this.action= { index:0, id: 0, name: name, content: content, status: 'receipt', isActive: false, visible: true,
-                    tags:['','','','']}
-    }
-}
-
 class AppStore {
     constructor () {
 
         this.locations = [
-            {id:"11", name:'ma location', x:1234, y:5678},
-            {id:"12", name:'ma location2', x:0, y:0},
-            {id:"13", name:'ma location3', x:4321, y:8765},
-        ]
+            {
+                id:"Maison",
+                x:'49.46800006494457',
+                y:'17.11514008755796',
+                city:'Amanlis'
+            },
+            {
+                id:"Jardin",
+                x:'49.46800006494457',
+                y:'17.11514008755796',
+                city:'Vannes'
+            },
+            {
+                id:"Bureau",
+                x:'49.46800006494457',
+                y:'17.11514008755796',
+                city:'Lanouée'
+            },
+        ],
+
         this.receipt = {
             index:0,
             name: 'receipt',
@@ -49,9 +58,9 @@ class AppStore {
                     name: 'todo-popo-0',
                     content: 'todo content popo',
                     location: {
-                        x:'49.46800006494457',
-                        y:'17.11514008755796',
-                        city:'rennes'
+                        x:'',
+                        y:'',
+                        city:''
                     },
                     dateTime : {
                         date: '30/09/2018',
@@ -64,14 +73,18 @@ class AppStore {
                     status: 'todo',
                     isActive: false,
                     visible: true,
-                    tags:['+','','','','','@'],
+                    tags:['','','','','','@'],
                     autoTags:['1535383467157',0,null]
                     },
                 {
-                    id: 0,
+                    id: 1,
                     name: 'todo-toto-1',
                     content: 'todo content lolo',
-                    location: {x:'47.981101',y:'-1.476062'},
+                    location: {
+                        x:'49.46800006494457',
+                        y:'17.11514008755796',
+                        city:'Rennes'
+                    },
                     dateTime : {
                         date: null,
                         time: null,
@@ -83,14 +96,18 @@ class AppStore {
                     status: 'todo',
                     isActive: false,
                     visible: true,
-                    tags:['+','','','','',''],
+                    tags:['+Rennes','','','','',''],
                     autoTags:['1535383467157',0,null]
                 },
                 {
-                    id: 0,
+                    id: 2,
                     name: 'todo-lolo-2',
                     content: 'tod ocontent popo',
-                    location: {x:'',y:''},
+                    location: {
+                        x:'',
+                        y:'',
+                        city:''
+                    },
                     dateTime : {
                         date: null,
                         time: null,
@@ -102,7 +119,7 @@ class AppStore {
                     status: 'todo',
                     isActive: false,
                     visible: true,
-                    tags:['+','','','','',''],
+                    tags:['','','','','',''],
                     autoTags:['1535383467157',0,null]
                 },
             ]
@@ -160,6 +177,7 @@ class AppStore {
         }
 
         this.data = {
+            locations: this.locations,
             option: {
               endOfDay : '18:00',
               endOfWeek : 'friday'
@@ -175,7 +193,7 @@ class AppStore {
             },
             control:{
                 editSeen: 'todoEdit',
-                menuSeen: 'todoMenu',
+                menuSeen: 'todo',
                 tagModalSeen: false,
                 actionCreated: false,
                 actionChange: false,
@@ -190,9 +208,9 @@ class AppStore {
                     toString: 'Localisation',
                     selected: '',
                     options: [
-                        {text: 'Jardin', value: 'jardin'},
-                        {text: 'Maison', value: 'maison'},
-                        {text: 'Bureau', value: 'bureau'},
+                        {text: 'Jardin', value: 'Jardin'},
+                        {text: 'Maison', value: 'Maison'},
+                        {text: 'Bureau', value: 'Bureau'},
                         {text: '+', value: '+'},
                     ]
                 },
@@ -315,19 +333,171 @@ class AppStore {
             }
         }
     }
-    /*-------------------------------ACTIONS---------------------------*/
 
-    /*init*/
+
+    /*-------------------------------Event---------------------------------*/
+
+    /*-------------------------------SETTER----------------------------*/
+
+    setCurrentAction(action){
+        this.data.action.isActive = false
+        this.data.action = action
+        this.data.action.isActive = true
+    }
+
+    setCurrentList(listName){
+        this.data.control.curentList = listName
+        return this.getCurentList()
+    }
+
+    /*-------------------------------GETTER----------------------------*/
+
+    getCurentList() {
+        let a = this.data.actions
+
+        switch (this.data.control.curentList){
+            case 'receipt':
+                return a.receipt;
+
+            case 'todo':
+                return a.todo;
+
+            case 'done':
+                return a.done;
+
+            case 'incubation':
+                return a.incubation;
+
+            case 'destroy':
+                return a.destroy;
+
+            default :
+                console.log('actions.js getList error')
+        }
+    }
+
+    /*-------------------------------ChangeView----------------------------*/
+    setMenuSeen(listName){
+        console.log('> app_store/setMenuSeen')
+
+        let actionsList = this.setCurrentList(listName)
+
+        if(actionsList.list.length > 0){
+            this.data.control.menuSeen = listName
+            this.setCurrentAction(this.getList(listName).list[0])
+        }
+        else{
+            this.data.control.editSeen = 'empty'
+        }
+    }
+
+    /*-------------------------------CreateActions-------------------------*/
     speedAdd(content) {
         console.log('==> app_store/speedAdd')
 
-        let name = this.generateName(content)
+        let name = AppStore.generateName(content)
         let action =  this.newAction('receipt')
         action.name = name
         action.content = content
 
         this.data.actions.receipt.list.push(action)
     }
+
+    /*-------------------------------UpdateActions-------------------------*/
+    inputChange (event, isTextarea) {
+        console.log('> app_store/inputChange')
+
+        if (this.data.control.actionCreated){
+            if (!event.target.value)
+                return
+
+            if (isTextarea)
+                if(!this.data.action.name)
+                    this.data.action.name = AppStore.generateName(this.data.action.content)
+
+            this.actionAdd()
+        }else {
+            this.setUpdateOn()
+        }
+    }
+
+    /*-------------------------------SwithActions--------------------------*/
+
+
+    /*-------------------------------TAGS-SELECT---------------------------*/
+
+
+    /*-------------------------------TAGS-SEARCH---------------------------*/
+    searchAll(){
+        console.log('app_store/searchAll')
+        let actions = this.getCurentList().list.slice()
+        for (var i = 0; i < actions.length; i++) {
+            actions[i].visible = true
+        }
+        this.sortByTag('autoTag-0',true)
+
+        this.actionEdit(0,this.data.control.curentList)
+    }
+
+    searchAuto(){
+        console.log('app_store/searchAuto')
+
+        let curentList = this.getCurentList()
+        let list = curentList.list
+
+        this.tagsCompare(curentList.defaultSearch)
+        this.sortByTag(curentList.sortTagDefault,curentList.sortAscDefault)
+
+        //editSenn empty if no result
+        for (var i = 0; i < list.length; i++) {
+            if(list[i].visible){
+                this.actionEdit(i,this.data.control.curentList)
+                return
+            }
+            this.data.control.editSeen = 'empty'
+        }
+    }
+
+    searchEdit(){
+        console.log('app_store/searchEdit')
+        this.tagsCompare()
+        let list = this.getCurentList()
+        this.sortByTag(list.sortTag,list.sortAsc)
+        this.data.control.editSeen = 'actionSearch'
+        this.data.action.isActive = false
+    }
+
+    /*-------------------------------TAGS-SORT-----------------------------*/
+
+    /*---------------------------------DATE--------------------------------*/
+
+
+    /*---------------------------------LOCATION----------------------------*/
+
+
+    /*---------------------------------WITH--------------------------------*/
+
+
+    /*---------------------------------TOOLS--------------------------------*/
+
+    static generateName(content) {
+        let firstLine = content.match(/[^\r\n]+/g);
+        let name = firstLine[0].substring(0,20)
+
+        if (name.length < firstLine[0].length)
+            name = name + '...'
+
+        return name
+    }
+
+
+
+
+
+    /*-------------------------------ACTIONS---------------------------*/
+
+    /*init*/
+
 
     actionAddSeen () {
         console.log('==> app_store/actionAddSeen')
@@ -389,22 +559,7 @@ class AppStore {
     }
 
     /*event*/
-    inputChange (event, isTextarea) {
-        console.log('==> app_store/inputChange')
 
-        if (this.data.control.actionCreated){
-            if (!event.target.value)
-                return
-
-            if (isTextarea)
-                if(!this.data.action.name)
-                    this.data.action.name = this.generateName(this.data.action.content)
-
-            this.actionAdd()
-        }else {
-            this.setUpdateOn()
-        }
-    }
 
     setUpdateOn(){
         let array = this.data.action.autoTags.slice()
@@ -419,15 +574,7 @@ class AppStore {
     }
 
     /*tools*/
-    generateName(content) {
-        let firstLine = content.match(/[^\r\n]+/g);
-        let name = firstLine[0].substring(0,20)
 
-        if (name.length < firstLine[0].length)
-            name = name + '...'
-
-        return name
-    }
 
 
     /*-------------------------------TAGS---------------------------*/
@@ -559,46 +706,7 @@ class AppStore {
         return todayDate()
     }
     /*-------------------------------SEARCH---------------------------*/
-    searchAll(){
-        console.log('app_store/searchAll')
-        let actions = this.getCurentList().list.slice()
-        for (var i = 0; i < actions.length; i++) {
-            actions[i].visible = true
-        }
-        this.sortByTag('autoTag-0',true)
 
-        this.actionEdit(0,this.data.control.curentList)
-    }
-
-    searchAuto(){
-        console.log('app_store/searchAuto')
-
-        let curentList = this.getCurentList()
-        let list = curentList.list
-
-        this.tagsCompare(curentList.defaultSearch)
-        this.sortByTag(curentList.sortTagDefault,curentList.sortAscDefault)
-
-        //editSenn empty if no result
-        for (var i = 0; i < list.length; i++) {
-            if(list[i].visible){
-                this.actionEdit(i,this.data.control.curentList)
-                return
-            }
-            this.data.control.editSeen = 'empty'
-        }
-
-
-    }
-
-    searchEdit(){
-        console.log('app_store/searchEdit')
-        this.tagsCompare()
-        let list = this.getCurentList()
-        this.sortByTag(list.sortTag,list.sortAsc)
-        this.data.control.editSeen = 'actionSearch'
-        this.data.action.isActive = false
-    }
 
     defaultSearchEdit(){
         console.log('==> app_store/defaultSearchEdit')
@@ -693,24 +801,7 @@ class AppStore {
 
 
     /*-------------------------------SETTER---------------------------*/
-    setMenuSeen(status){
-        console.log('==> app_store/setMenuSeen')
-        this.data.action.isActive = false
 
-        this.data.control.curentList = status
-
-        let list = this.getList(status).list
-        this.data.control.menuSeen = status + 'Menu'
-
-        if(list.length > 0){
-            this.data.control.editSeen = status + 'Edit'
-            this.data.action = list[0]
-            this.data.action.isActive = true
-        }
-        else{
-            this.data.control.editSeen = 'empty'
-        }
-    }
 
     /*-------------------------------GETTER---------------------------*/
     getSortFilters(){
@@ -757,29 +848,7 @@ class AppStore {
         }
     }
 
-    getCurentList() {
-        let a = this.data.actions
 
-        switch (this.data.control.curentList){
-            case 'receipt':
-                return a.receipt;
-
-            case 'todo':
-                return a.todo;
-
-            case 'done':
-                return a.done;
-
-            case 'incubation':
-                return a.incubation;
-
-            case 'destroy':
-                return a.destroy;
-
-            default :
-                console.log('actions.js getList error')
-        }
-    }
 
     newAction (status) {
         return {

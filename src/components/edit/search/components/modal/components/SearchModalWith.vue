@@ -1,15 +1,15 @@
 <template>
     <section>
-        <p>model</p>
+        <li>form-modal-with</li>
     </section>
 </template>
 
 <script>
 
-    import app_store from '../../store/app_store'
+    import app_store from '../../../../../../store/app_store'
 
     export default {
-        name: 'model',
+        name: 'form-modal-with',
         components : {
 
         },
