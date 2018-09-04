@@ -3,9 +3,8 @@
       <test v-if="test"></test>
 
       <section>
-          <p>action tags : {{data.action.tags}}</p>
-          <pre>data tags : {{data.tags}}</pre>
-          <pre>Userlocations : {{data.userData.locations}}</pre>
+          <!--<p>action tags : {{data.action.tags}}</p>
+          <pre>Userlocations : {{data.userData.locations}}</pre>-->
       </section>
 
 
@@ -23,7 +22,7 @@
 
 <script>
 
-  import Test from './components/test/test.vue'
+  import Test from './components/test/model.vue'
   import app_store from './store/app_store'
   import MenuLayout from './components/menu/MenuLayout.vue'
   import EditLayout from './components/edit/EditLayout.vue'
@@ -38,13 +37,10 @@
       data ()  {
           return {
             data: app_store.data,
-            test: false
+            test: true
           }
       },
       computed:{
-          dataTags: function () {
-              return app_store.getDataTags('location','Jardin')
-          }
       }
 
   }

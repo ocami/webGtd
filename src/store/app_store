@@ -577,6 +577,23 @@ class AppStore {
     }
 
 
+    getSelectTag(tagName){
+        this.data.tags.find(function (obj) { return obj.name === tagName })
+    }
+
+    getSelectTagOption(tagName, optionValue){
+        let selectTag = this.getSelectTag(tagName)
+        selectTag.options.find(function (obj) { return obj.value === optionValue })
+    }
+
+    getActionTagList(tagName){
+        this.data.action.find(function (obj) { return obj.name === tagName })
+    }
+
+    getActionTag(){
+
+    }
+
     /*-------------------------------Event---------------------------------*/
 
     /*-------------------------------SETTER----------------------------*/
