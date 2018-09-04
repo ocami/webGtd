@@ -3,7 +3,8 @@
       <test v-if="test"></test>
 
       <section>
-          <span>menu seen : {{data.control.menuSeen}}</span>
+          <span>tags : {{data.action.tags}}</span>
+          <pre>locations : {{data.userData.locations}}</pre>
       </section>
 
 

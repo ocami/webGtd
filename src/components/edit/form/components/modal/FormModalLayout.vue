@@ -1,16 +1,13 @@
 <template>
     <section>
         <form-modal-date v-if="tagName === 'date'"
-                         :tagPosition="tagPosition" :tagName="tagName"
                          @submit="closeFormModal"
         ></form-modal-date>
         <form-modal-location v-if="tagName === 'location'"
-                             :tagPosition="tagPosition" :tagName="tagName"
                              @submit="closeFormModal"
 
         ></form-modal-location>
         <form-modal-with v-if="tagName === 'with'"
-                         :tagPosition="tagPosition" :tagName="tagName"
                          @submit="closeFormModal"
         ></form-modal-with>
     </section>
@@ -39,7 +36,6 @@
             action: function () {return this.data.action}
         },
         props:{
-            tagPosition : Number,
             tagName: String
         },
         methods:{

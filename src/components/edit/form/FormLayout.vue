@@ -7,7 +7,7 @@
         ></form-tags-select>
 
         <b-modal ref="formModal" id="form-modal" hide-footer hide-header>
-            <form-modal-layout @submit="closeFormModal" :tagPosition="tagPosition" :tagName="tagName" ></form-modal-layout>
+            <form-modal-layout @submit="closeFormModal" :tagName="tagName" ></form-modal-layout>
         </b-modal>
 
         <input v-model="action.name" @blur="inputChange($event)" class="form-control">
@@ -31,7 +31,6 @@
         data ()  {
             return {
                 data : app_store.data,
-                tagPosition : null,
                 tagName : null
             }
         },
@@ -44,10 +43,9 @@
                 console.log('> FormLayout.vue/inputChange')
                 app_store.inputChange(event, isTextarea)
             },
-            openFormModal: function (tagPosition,tagName) {
+            openFormModal: function (tagName) {
                 console.log('> FormLayout.vue/openFormModal')
-                console.log(tagPosition + '/' + tagName)
-                this.tagPosition = tagPosition
+                console.log(tagName)
                 this.tagName = tagName
                 this.$refs.formModal.show()
             },
