@@ -1,6 +1,39 @@
 class AppStore {
     constructor () {
 
+        this.userData2 = [
+            {
+                name:'locations',
+                list:[
+                    {
+                        id:"Rennes",
+                        x: 1111,
+                        y: 2222,
+                        city: "Rennes",
+                        created: true,
+                        shortcut: true
+                    },
+                    {
+                        id:"Jardin",
+                        x: null,
+                        y: null,
+                        city: null,
+                        created: true,
+                        shortcut: true
+
+                    },
+                    {
+                        id:"Bureau",
+                        x: null,
+                        y: null,
+                        city: null,
+                        created: true,
+                        shortcut: false
+                    },
+                ]
+            }
+        ]
+
         this.userData = {
             locations : [
                 {
@@ -231,7 +264,84 @@ class AppStore {
                 curentList: 'todo',
                 tagsSearch: ['','','',''],
             },
-            tags:{
+            tags:[
+                {
+                    name: 'location',
+                    toString: 'Localisation',
+                    selected: '',
+                    modal: true,
+                    options: [
+                        {text: 'Rennes', value: 'Rennes', shortcut: true},
+                        {text: 'Jardin', value: 'Jardin', shortcut: true},
+                        {text: 'Bureau', value: 'Bureau', shortcut: false},
+                        {text: '+', value: '+', shortcut: true},
+                    ]
+                },
+                {
+                    name: 'whith',
+                    toString: 'Avec',
+                    selected: '',
+                    modal: true,
+                    options: [
+                        {text: 'Equipe1', value: 'equipe1', shortcut: true},
+                        {text: 'Henry', value: 'henry', shortcut: true},
+                        {text: 'Famille', value: 'famille', shortcut: true},
+                        {text: '+', value: '+'},
+                    ]
+                },
+                {
+                    name: 'tools',
+                    toString: 'Outils',
+                    selected: '',
+                    modal: false,
+                    options: [
+                        {text: 'Ordinateur', value: 'ordinateur', shortcut: true},
+                        {text: 'Tel', value: 'tel', shortcut: true},
+                    ]
+                },
+                {
+                    name: 'priority',
+                    toString: 'Priorité',
+                    selected: '',
+                    modal: false,
+                    options: [
+                {text: '1', value: '1'},
+                {text: '2', value: '2'},
+                {text: '3', value: '3'},
+            ]
+                 },
+                {
+                    name: 'duration',
+                    toString: 'Durée',
+                    selected: '',
+                    modal: false,
+                    options: [
+                        {text: '10 min', value: '10'},
+                        {text: '20 min', value: '20'},
+                        {text: '30 min', value: '30'},
+                        {text: '45 min', value: '45'},
+                        {text: '1 h', value: '120'},
+                        {text: '2 h', value: '180'},
+                        {text: '3 h', value: '240'},
+
+                    ]
+                },
+                {
+                    name: 'date',
+                    toString: 'Date',
+                    selected: '',
+                    modal: true,
+                    options: [
+                        {text: 'Aujourd hui', value: '@today'},
+                        {text: 'Demain', value: '@today'},
+                        {text: 'Dans la semaine', value: '@week'},
+                        {text: 'Prochaine semaine', value: '@nextYear'},
+                        {text: 'Prochain mois', value: '@nextYear'},
+                        {text: '+', value: '+'},
+                    ]
+                },
+            ],
+            tags2:{
                 location:{
                     position:0,
                     name: 'location',
@@ -376,14 +486,30 @@ class AppStore {
 
     }
 
-    createLocation(location){
+    createLocation(tagName,tag,shortcut){
         console.log('> app_store/setLocation')
-        let actionLocation = this.data.action.tags.find(function (obj) { return obj.name === 'location' })
-        location.created = true
-        this.data.userData.locations.push(location)
-        actionLocation.value = location.id
-        actionLocation.button = true
-        this.data.tags.location.options.push({text: location.id, value: location.id})
+        tag.created = true
+        let actionTag = this.data.action.tags.find(function (obj) { return obj.name === tagName })
+        let tagList = this.data.tags.find(function (obj) { return obj.name === tagName })
+        // let userList = this.data.tags.find(function (obj) { return obj.name === tagName })
+
+
+        actionTag.value = tag.id
+        actionTag.button = true
+
+
+
+
+        if(shortcut === false){
+            console.log('c est faux')
+            tag.shortcut = false
+        }
+        else{
+            console.log('c est vrai')
+            tag.shortcut = true
+        }
+
+        tagList.options.push({text: tag.id, value: tag.id, shortcut: shortcut})
         var compare = function(ascending){
             return function(a,b){
                 if(a.value === "+"){
@@ -403,10 +529,9 @@ class AppStore {
                 }
             };
         }
-        console.log('PPPPPPPPP')
-        console.log(this.data.tags.location.options)
-        console.log('SORT')
-        console.log(this.data.tags.location.options.sort(compare(true)))
+        tagList.options.sort(compare(true))
+
+        return tag
     }
 
     deleteActionLocation(){
@@ -434,6 +559,21 @@ class AppStore {
 
     shortcutChange(tagName,optionName,isShortCut){
         console.log('>app_store/shortcutChange')
+        let dt = this.data.tags.find(function (obj) { return obj.name === tagName })
+        let option = dt.options.find(function (obj) { return obj.value === optionName })
+        console.log(isShortCut)
+        if(option.shortcut === false)
+            option.shortcut = true
+        else
+            option.shortcut = false
+        console.log(option.shortcut)
+    }
+
+    getDataTags(tagName,optionName){
+        let dt = this.data.tags.find(function (obj) { return obj.name === tagName })
+        console.log('DT DT DT')
+        console.log(dt)
+        return dt.options.find(function (obj) { return obj.value === optionName })
     }
 
 

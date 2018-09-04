@@ -3,8 +3,9 @@
       <test v-if="test"></test>
 
       <section>
-          <span>tags : {{data.action.tags}}</span>
-          <pre>locations : {{data.userData.locations}}</pre>
+          <p>action tags : {{data.action.tags}}</p>
+          <pre>data tags : {{data.tags}}</pre>
+          <pre>Userlocations : {{data.userData.locations}}</pre>
       </section>
 
 
@@ -41,6 +42,9 @@
           }
       },
       computed:{
+          dataTags: function () {
+              return app_store.getDataTags('location','Jardin')
+          }
       }
 
   }
