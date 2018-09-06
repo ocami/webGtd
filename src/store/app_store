@@ -1,39 +1,6 @@
 class AppStore {
     constructor () {
 
-        this.userData2 = [
-            {
-                name:'locations',
-                list:[
-                    {
-                        id:"Rennes",
-                        x: 1111,
-                        y: 2222,
-                        city: "Rennes",
-                        created: true,
-                        shortcut: true
-                    },
-                    {
-                        id:"Jardin",
-                        x: null,
-                        y: null,
-                        city: null,
-                        created: true,
-                        shortcut: true
-
-                    },
-                    {
-                        id:"Bureau",
-                        x: null,
-                        y: null,
-                        city: null,
-                        created: true,
-                        shortcut: false
-                    },
-                ]
-            }
-        ]
-
         this.userData = {
             locations : [
                 {
@@ -72,13 +39,80 @@ class AppStore {
             acceptSwitch: {todo: 'true', done:true, incubation:true, destroy:true},
             defaultSearch: ['','','',''],
             curentSearch: ['','','',''],
-            list:  [
-                { index:0, id: 0, name: 'receipt-popo-0', content: 'receipt-content popo', status: 'receipt', isActive: false, visible: true,
-                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
-                { index:0, id: 1, name: 'receipt-lolo1-1', content: 'receipt-content lolo', status: 'receipt', isActive: false, visible: true,
-                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
-                { index:0, id: 2, name: 'receipt-roro-2', content: 'receipt-content roro', status: 'receipt' , isActive: false, visible: true,
-                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
+            list: [
+                {
+                    id: 0,
+                    name: 'receipt-popo-0',
+                    content: 'receipt content popo',
+                    dateTime : {
+                        date: null,
+                        time: null,
+                        minutes : null,
+                        expiry: true,
+                        toString: null
+                    },
+                    status: 'receipt',
+                    isActive: false,
+                    visible: true,
+                    tags:[
+                        {name:'location',value: null, button: false},
+                        {name:'whith',value: null, button: false},
+                        {name:'tools',value: null, button: false},
+                        {name:'priority',value: null, button: false},
+                        {name:'duration',value: null, button: false},
+                        {name:'date',value: null, button: false},
+                    ],
+                    autoTags:['1535383467157',0,null]
+                },
+                {
+                    id: 1,
+                    name: 'receipt-toto-1',
+                    content: 'receipt content lolo',
+
+                    dateTime : {
+                        date: null,
+                        time: null,
+                        minutes : null,
+                        expiry: true,
+                        toString: null
+                    },
+                    status: 'receipt',
+                    isActive: false,
+                    visible: true,
+                    tags:[
+                        {name:'location',value: null, button: false},
+                        {name:'whith',value: null, button: false},
+                        {name:'tools',value: null, button: false},
+                        {name:'priority',value: null, button: false},
+                        {name:'duration',value: null, button: false},
+                        {name:'date',value: null, button: false},
+                    ],
+                    autoTags:['1535383467157',0,null]
+                },
+                {
+                    id: 2,
+                    name: 'receipt-lolo-2',
+                    content: 'tod ocontent popo',
+                    dateTime : {
+                        date: null,
+                        time: null,
+                        minutes : null,
+                        expiry: true,
+                        toString: null
+                    },
+                    status: 'receipt',
+                    isActive: false,
+                    visible: true,
+                    tags:[
+                        {name:'location',value: null, button: false},
+                        {name:'whith',value: null, button: false},
+                        {name:'tools',value: null, button: false},
+                        {name:'priority',value: null, button: false},
+                        {name:'duration',value: null, button: false},
+                        {name:'date',value: null, button: false},
+                    ],
+                    autoTags:['1535383467157',0,null]
+                },
             ]
         }
         this.todo = {
@@ -99,11 +133,6 @@ class AppStore {
                     id: 0,
                     name: 'todo-popo-0',
                     content: 'todo content popo',
-                    location: {
-                        x:'',
-                        y:'',
-                        city:''
-                    },
                     dateTime : {
                         date: '30/09/2018',
                         time: '15:35',
@@ -111,15 +140,14 @@ class AppStore {
                         expiry: true,
                         toString: ''
                     },
-                    whith: {company:'',firstName:'',lastName:'',mail:'',tel:''},
                     status: 'todo',
                     isActive: false,
                     visible: true,
                     tags:[
                         {name:'location',value:'Rennes', button: true},
-                        {name:'whith',value:'Michel', button: true},
+                        {name:'whith',value:'b', button: true},
                         {name:'tools',value:'Ordinateur', button: false},
-                        {name:'priority',value:1, button: false},
+                        {name:'priority',value:3, button: false},
                         {name:'duration',value:10, button: false},
                         {name:'date',value:'2018/09/04', button: true},
                     ],
@@ -129,11 +157,6 @@ class AppStore {
                     id: 1,
                     name: 'todo-toto-1',
                     content: 'todo content lolo',
-                    location: {
-                        x:'49.46800006494457',
-                        y:'17.11514008755796',
-                        city:'Rennes'
-                    },
                     dateTime : {
                         date: null,
                         time: null,
@@ -141,15 +164,14 @@ class AppStore {
                         expiry: true,
                         toString: null
                     },
-                    whith: {company:'',firstName:'',lastName:'',mail:'',tel:''},
                     status: 'todo',
                     isActive: false,
                     visible: true,
                     tags:[
-                        {name:'location',value: null, button: false},
-                        {name:'whith',value: null, button: false},
+                        {name:'location',value: 'Jardin', button: true},
+                        {name:'whith',value: 'a', button: true},
                         {name:'tools',value: null, button: false},
-                        {name:'priority',value: null, button: false},
+                        {name:'priority',value: 2, button: false},
                         {name:'duration',value: null, button: false},
                         {name:'date',value: null, button: false},
                     ],
@@ -159,11 +181,6 @@ class AppStore {
                     id: 2,
                     name: 'todo-lolo-2',
                     content: 'tod ocontent popo',
-                    location: {
-                        x:'',
-                        y:'',
-                        city:''
-                    },
                     dateTime : {
                         date: null,
                         time: null,
@@ -171,16 +188,15 @@ class AppStore {
                         expiry: true,
                         toString: null
                     },
-                    whith: {company:'',firstName:'',lastName:'',mail:'',tel:''},
                     status: 'todo',
                     isActive: false,
                     visible: true,
                     tags:[
-                        {name:'location',value: null, button: false},
-                        {name:'whith',value: null, button: false},
+                        {name:'location',value: 'Bureau', button: true},
+                        {name:'whith',value: 'c', button: true},
                         {name:'tools',value: null, button: false},
-                        {name:'priority',value: null, button: false},
-                        {name:'duration',value: null, button: false},
+                        {name:'priority',value: 1, button: false},
+                        {name:'duration',value: 45, button: false},
                         {name:'date',value: null, button: false},
                     ],
                     autoTags:['1535383467157',0,null]
@@ -196,12 +212,79 @@ class AppStore {
             defaultSearch: ['','','',''],
             curentSearch: ['','','',''],
             list: [
-                {index: 0, id: 0, name: 'done-popo', content: 'content popo', status: 'done', isActive: false, visible: true,
-                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
-                {index: 0, id: 1, name: 'done-lolo', content: 'content lolo', status: 'done', isActive: false, visible: true,
-                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
-                {index: 0, id: 3, name: 'done-roro', content: 'content roro', status: 'done', isActive: false, visible: true,
-                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
+                {
+                    id: 0,
+                    name: 'done-popo-0',
+                    content: 'done content popo',
+                    dateTime : {
+                        date: null,
+                        time: null,
+                        minutes : null,
+                        expiry: true,
+                        toString: null
+                    },
+                    status: 'done',
+                    isActive: false,
+                    visible: true,
+                    tags:[
+                        {name:'location',value: null, button: false},
+                        {name:'whith',value: null, button: false},
+                        {name:'tools',value: null, button: false},
+                        {name:'priority',value: null, button: false},
+                        {name:'duration',value: null, button: false},
+                        {name:'date',value: null, button: false},
+                    ],
+                    autoTags:['1535383467157',0,null]
+                },
+                {
+                    id: 1,
+                    name: 'done-toto-1',
+                    content: 'done content lolo',
+
+                    dateTime : {
+                        date: null,
+                        time: null,
+                        minutes : null,
+                        expiry: true,
+                        toString: null
+                    },
+                    status: 'done',
+                    isActive: false,
+                    visible: true,
+                    tags:[
+                        {name:'location',value: null, button: false},
+                        {name:'whith',value: null, button: false},
+                        {name:'tools',value: null, button: false},
+                        {name:'priority',value: null, button: false},
+                        {name:'duration',value: null, button: false},
+                        {name:'date',value: null, button: false},
+                    ],
+                    autoTags:['1535383467157',0,null]
+                },
+                {
+                    id: 2,
+                    name: 'done-lolo-2',
+                    content: 'tod ocontent popo',
+                    dateTime : {
+                        date: null,
+                        time: null,
+                        minutes : null,
+                        expiry: true,
+                        toString: null
+                    },
+                    status: 'done',
+                    isActive: false,
+                    visible: true,
+                    tags:[
+                        {name:'location',value: null, button: false},
+                        {name:'whith',value: null, button: false},
+                        {name:'tools',value: null, button: false},
+                        {name:'priority',value: null, button: false},
+                        {name:'duration',value: null, button: false},
+                        {name:'date',value: null, button: false},
+                    ],
+                    autoTags:['1535383467157',0,null]
+                },
             ]
         }
         this.incubation = {
@@ -213,12 +296,79 @@ class AppStore {
             defaultSearch: ['','','',''],
             curentSearch: ['','','',''],
             list: [
-                {index: 0, id: 0, name: 'incubation-popo', content: 'content popo', status: 'incubation', isActive: false, visible: true,
-                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
-                {index: 0, id: 1, name: 'incubation-lolo', content: 'content lolo', status: 'incubation', isActive: false, visible: true,
-                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
-                {index: 0, id: 3, name: 'incubation-roro', content: 'content roro', status: 'incubation', isActive: false, visible: true,
-                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
+                {
+                    id: 0,
+                    name: 'incubation-popo-0',
+                    content: 'incubation content popo',
+                    dateTime : {
+                        date: null,
+                        time: null,
+                        minutes : null,
+                        expiry: true,
+                        toString: null
+                    },
+                    status: 'incubation',
+                    isActive: false,
+                    visible: true,
+                    tags:[
+                        {name:'location',value: null, button: false},
+                        {name:'whith',value: null, button: false},
+                        {name:'tools',value: null, button: false},
+                        {name:'priority',value: null, button: false},
+                        {name:'duration',value: null, button: false},
+                        {name:'date',value: null, button: false},
+                    ],
+                    autoTags:['1535383467157',0,null]
+                },
+                {
+                    id: 1,
+                    name: 'incubation-toto-1',
+                    content: 'incubation content lolo',
+
+                    dateTime : {
+                        date: null,
+                        time: null,
+                        minutes : null,
+                        expiry: true,
+                        toString: null
+                    },
+                    status: 'incubation',
+                    isActive: false,
+                    visible: true,
+                    tags:[
+                        {name:'location',value: null, button: false},
+                        {name:'whith',value: null, button: false},
+                        {name:'tools',value: null, button: false},
+                        {name:'priority',value: null, button: false},
+                        {name:'duration',value: null, button: false},
+                        {name:'date',value: null, button: false},
+                    ],
+                    autoTags:['1535383467157',0,null]
+                },
+                {
+                    id: 2,
+                    name: 'incubation-lolo-2',
+                    content: 'tod ocontent popo',
+                    dateTime : {
+                        date: null,
+                        time: null,
+                        minutes : null,
+                        expiry: true,
+                        toString: null
+                    },
+                    status: 'incubation',
+                    isActive: false,
+                    visible: true,
+                    tags:[
+                        {name:'location',value: null, button: false},
+                        {name:'whith',value: null, button: false},
+                        {name:'tools',value: null, button: false},
+                        {name:'priority',value: null, button: false},
+                        {name:'duration',value: null, button: false},
+                        {name:'date',value: null, button: false},
+                    ],
+                    autoTags:['1535383467157',0,null]
+                },
             ]
         }
         this.destroy = {
@@ -230,12 +380,79 @@ class AppStore {
             defaultSearch: ['','','',''],
             curentSearch: ['','','',''],
             list: [
-                {index: 0, id: 0, name: 'destroy-popo', content: 'destroy content popo', status: 'destroy', isActive: false, visible: true,
-                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
-                {index: 0, id: 1, name: 'destroy-lolo', content: 'destroy content lolo', status: 'destroy',isActive: false, visible: true,
-                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
-                {index: 0, id: 5, name: 'destroy-roro', content: 'destroy content roro', status: 'destroy', isActive: false, visible: true,
-                    tags:['','','',''], createOn:'2018-08-27-00-00-00'},
+                {
+                    id: 0,
+                    name: 'destroy-popo-0',
+                    content: 'destroy content popo',
+                    dateTime : {
+                        date: null,
+                        time: null,
+                        minutes : null,
+                        expiry: true,
+                        toString: null
+                    },
+                    status: 'destroy',
+                    isActive: false,
+                    visible: true,
+                    tags:[
+                        {name:'location',value: null, button: false},
+                        {name:'whith',value: null, button: false},
+                        {name:'tools',value: null, button: false},
+                        {name:'priority',value: null, button: false},
+                        {name:'duration',value: null, button: false},
+                        {name:'date',value: null, button: false},
+                    ],
+                    autoTags:['1535383467157',0,null]
+                },
+                {
+                    id: 1,
+                    name: 'destroy-toto-1',
+                    content: 'destroy content lolo',
+
+                    dateTime : {
+                        date: null,
+                        time: null,
+                        minutes : null,
+                        expiry: true,
+                        toString: null
+                    },
+                    status: 'destroy',
+                    isActive: false,
+                    visible: true,
+                    tags:[
+                        {name:'location',value: null, button: false},
+                        {name:'whith',value: null, button: false},
+                        {name:'tools',value: null, button: false},
+                        {name:'priority',value: null, button: false},
+                        {name:'duration',value: null, button: false},
+                        {name:'date',value: null, button: false},
+                    ],
+                    autoTags:['1535383467157',0,null]
+                },
+                {
+                    id: 2,
+                    name: 'destroy-lolo-2',
+                    content: 'tod ocontent popo',
+                    dateTime : {
+                        date: null,
+                        time: null,
+                        minutes : null,
+                        expiry: true,
+                        toString: null
+                    },
+                    status: 'destroy',
+                    isActive: false,
+                    visible: true,
+                    tags:[
+                        {name:'location',value: null, button: false},
+                        {name:'whith',value: null, button: false},
+                        {name:'tools',value: null, button: false},
+                        {name:'priority',value: null, button: false},
+                        {name:'duration',value: null, button: false},
+                        {name:'date',value: null, button: false},
+                    ],
+                    autoTags:['1535383467157',0,null]
+                },
             ]
         }
 
@@ -262,7 +479,14 @@ class AppStore {
                 actionChange: false,
                 curentIndex: 0,
                 curentList: 'todo',
-                tagsSearch: ['','','',''],
+                tagsSearch:[
+                    {name:'location',value:null, button: false},
+                    {name:'whith',value:'Michel', button: true},
+                    {name:'tools',value:'Ordinateur', button: false},
+                    {name:'priority',value:1, button: false},
+                    {name:'duration',value:10, button: false},
+                    {name:'date',value:null, button: false},
+                ],
             },
             tags:[
                 {
@@ -283,9 +507,9 @@ class AppStore {
                     selected: '',
                     modal: true,
                     options: [
-                        {text: 'Equipe1', value: 'equipe1', shortcut: true},
-                        {text: 'Henry', value: 'henry', shortcut: true},
-                        {text: 'Famille', value: 'famille', shortcut: true},
+                        {text: 'Equipe1', value: 'Equipe1', shortcut: true},
+                        {text: 'Henry', value: 'Henry', shortcut: true},
+                        {text: 'Famille', value: 'Famille', shortcut: true},
                         {text: '+', value: '+'},
                     ]
                 },
@@ -295,7 +519,7 @@ class AppStore {
                     selected: '',
                     modal: false,
                     options: [
-                        {text: 'Ordinateur', value: 'ordinateur', shortcut: true},
+                        {text: 'Ordinateur', value: 'Ordinateur', shortcut: true},
                         {text: 'Tel', value: 'tel', shortcut: true},
                     ]
                 },
@@ -305,10 +529,10 @@ class AppStore {
                     selected: '',
                     modal: false,
                     options: [
-                {text: '1', value: '1'},
-                {text: '2', value: '2'},
-                {text: '3', value: '3'},
-            ]
+                        {text: '1', value: 1, shortcut: true},
+                        {text: '2', value: 2, shortcut: true},
+                        {text: '3', value: 3, shortcut: true},
+                    ]
                  },
                 {
                     name: 'duration',
@@ -316,13 +540,13 @@ class AppStore {
                     selected: '',
                     modal: false,
                     options: [
-                        {text: '10 min', value: '10'},
-                        {text: '20 min', value: '20'},
-                        {text: '30 min', value: '30'},
-                        {text: '45 min', value: '45'},
-                        {text: '1 h', value: '120'},
-                        {text: '2 h', value: '180'},
-                        {text: '3 h', value: '240'},
+                        {text: '10 min', value: 10, shortcut: true},
+                        {text: '20 min', value: 20, shortcut: true},
+                        {text: '30 min', value: 30, shortcut: true},
+                        {text: '45 min', value: 45, shortcut: true},
+                        {text: '1 h', value: 120, shortcut: true},
+                        {text: '2 h', value: 180, shortcut: true},
+                        {text: '3 h', value: 240, shortcut: true},
 
                     ]
                 },
@@ -375,8 +599,8 @@ class AppStore {
                     selected: '',
                     modal: false,
                     options: [
-                        {text: 'Ordinateur', value: 'ordinateur', shortcut: true},
-                        {text: 'Tel', value: 'tel', shortcut: true},
+                        {text: 'Ordinateur', value: 'Ordinateur', shortcut: true},
+                        {text: 'Tel', value: 'Tel', shortcut: true},
                     ]
                 },
                 priority:{
@@ -482,117 +706,17 @@ class AppStore {
 
     /*-------------------------------!!!CURENT!!!!---------------------------------*/
 
-    setActionTag(tagName, value){
-
-    }
-
-    createLocation(tagName,tag,shortcut){
-        console.log('> app_store/setLocation')
-        tag.created = true
-        let actionTag = this.data.action.tags.find(function (obj) { return obj.name === tagName })
-        let tagList = this.data.tags.find(function (obj) { return obj.name === tagName })
-        // let userList = this.data.tags.find(function (obj) { return obj.name === tagName })
-
-
-        actionTag.value = tag.id
-        actionTag.button = true
-
-
-
-
-        if(shortcut === false){
-            console.log('c est faux')
-            tag.shortcut = false
-        }
-        else{
-            console.log('c est vrai')
-            tag.shortcut = true
-        }
-
-        tagList.options.push({text: tag.id, value: tag.id, shortcut: shortcut})
-        var compare = function(ascending){
-            return function(a,b){
-                if(a.value === "+"){
-                    return 1;
-                }
-                else if(b.value === "+"){
-                    return -1;
-                }
-                else if(a.value === b.value){
-                    return 0;
-                }
-                else if(ascending) {
-                    return a.value < b.value ? -1 : 1;
-                }
-                else if(!ascending) {
-                    return a.value < b.value ? 1 : -1;
-                }
-            };
-        }
-        tagList.options.sort(compare(true))
-
-        return tag
-    }
-
-    deleteActionLocation(){
-        let actionLocation = this.data.action.tags.find(function (obj) { return obj.name === 'location' })
-        actionLocation.value = null
-        actionLocation.button = false
-    }
-
-
+    /*-------------------------------LOCATION---------------------------------*/
     getLocation(){
         console.log('> app_store/getLocation')
-        let actionLocation = this.data.action.tags.find(function (obj) { return obj.name === 'location' })
-        console.log(actionLocation.value)
+        let actionLocation = this.getOnceActionTag('location')
+        console.log(actionLocation)
         if(actionLocation.value === null)
             return new Location()
 
         return this.data.userData.locations.find(function (obj) { return obj.id === actionLocation.value })
     }
 
-    curentSetlect(tagName){
-        console.log('> app_store/getLocation')
-        let tags = this.data.action.tags
-        return tags.find(function (obj) { return obj.name === tagName })
-    }
-
-    shortcutChange(tagName,optionName,isShortCut){
-        console.log('>app_store/shortcutChange')
-        let dt = this.data.tags.find(function (obj) { return obj.name === tagName })
-        let option = dt.options.find(function (obj) { return obj.value === optionName })
-        console.log(isShortCut)
-        if(option.shortcut === false)
-            option.shortcut = true
-        else
-            option.shortcut = false
-        console.log(option.shortcut)
-    }
-
-    getDataTags(tagName,optionName){
-        let dt = this.data.tags.find(function (obj) { return obj.name === tagName })
-        console.log('DT DT DT')
-        console.log(dt)
-        return dt.options.find(function (obj) { return obj.value === optionName })
-    }
-
-
-    getSelectTag(tagName){
-        this.data.tags.find(function (obj) { return obj.name === tagName })
-    }
-
-    getSelectTagOption(tagName, optionValue){
-        let selectTag = this.getSelectTag(tagName)
-        selectTag.options.find(function (obj) { return obj.value === optionValue })
-    }
-
-    getActionTagList(tagName){
-        this.data.action.find(function (obj) { return obj.name === tagName })
-    }
-
-    getActionTag(){
-
-    }
 
     /*-------------------------------Event---------------------------------*/
 
@@ -635,14 +759,32 @@ class AppStore {
         }
     }
 
+    getOnceSelectTag(tagName){
+        return this.data.tags.find(function (obj) { return obj.name === tagName })
+    }
+
+    getOnceSelectTagOption(tagName, optionValue){
+        let selectTag = this.getOnceSelectTag(tagName)
+        return selectTag.options.find(function (obj) { return obj.value === optionValue })
+    }
+
+    getOnceActionTag(tagName){
+        return this.data.action.tags.find(function (obj) { return obj.name === tagName })
+    }
+
+    getOnceSearchTag(tagName){
+        return this.data.control.tagsSearch.find(function (obj) { return obj.name === tagName })
+    }
+
     /*-------------------------------ChangeView----------------------------*/
     setMenuSeen(listName){
         console.log('> app_store/setMenuSeen')
-
         let actionsList = this.setCurrentList(listName)
 
+        this.data.control.menuSeen = listName
+
         if(actionsList.list.length > 0){
-            this.data.control.menuSeen = listName
+            this.data.control.editSeen = 'edit'
             this.setCurrentAction(this.getList(listName).list[0])
         }
         else{
@@ -681,7 +823,84 @@ class AppStore {
     }
 
     /*-------------------------------SwithActions--------------------------*/
+    switch(newListName,listName,index){
+        console.log('==> app_store/switch')
 
+        if(!listName)
+            listName = this.getCurentList()
+
+        if(!index)
+            index = this.data.control.curentIndex
+
+        let list = this.getList(listName).list
+        let newList = this.getList(newListName).list
+        this.data.action.isActive = false
+        this.data.action = list[index]
+        this.data.action.status = newListName
+        this.setInListOn()
+        newList.push(this.data.action)
+        list.splice(index, 1)
+
+        let i = 0;
+        let l = list.length;
+        if(l){
+            index < l ? i = index : i = index - 1;
+            this.actionEdit(i,listName)
+        }else {
+            this.data.control.editSeen = 'empty'
+        }
+    }
+    /*-------------------------------TAGS-EDIT---------------------------*/
+    createTag(tagName,tag,shortcut){
+        console.log('> app_store/createTag')
+        let actionTag = this.getOnceActionTag(tagName)
+        let appTagList = this.getOnceSelectTag(tagName)
+
+        shortcut ? tag.shortcut = true : tag.shortcut = false
+        tag.created = true
+
+        actionTag.value = tag.id
+        actionTag.button = true
+
+        appTagList.options.push({text: tag.id, value: tag.id, shortcut: shortcut})
+        var compare = function(ascending){
+            return function(a,b){
+                if(a.value === "+"){
+                    return 1;
+                }
+                else if(b.value === "+"){
+                    return -1;
+                }
+                else if(a.value === b.value){
+                    return 0;
+                }
+                else if(ascending) {
+                    return a.value < b.value ? -1 : 1;
+                }
+                else if(!ascending) {
+                    return a.value < b.value ? 1 : -1;
+                }
+            };
+        }
+        appTagList.options.sort(compare(true))
+
+        return tag
+    }
+
+    deleteActionTag(tagName){
+        console.log('> app_store/deleteActionTag')
+        let actionLocation = this.getOnceActionTag(tagName)
+        actionLocation.value = null
+        actionLocation.button = false
+    }
+
+    shortcutChange(tagName,optionName,isShortCut){
+        console.log('>app_store/shortcutChange')
+        let dt = this.getOnceSelectTag(tagName)
+        let option = dt.options.find(function (obj) { return obj.value === optionName })
+
+        isShortCut ? option.shortcut = true : option.shortcut = false
+    }
 
     /*-------------------------------TAGS-SELECT---------------------------*/
 
@@ -719,11 +938,11 @@ class AppStore {
 
     searchEdit(){
         console.log('app_store/searchEdit')
-        this.tagsCompare()
+        /*this.tagsCompare()
         let list = this.getCurentList()
-        this.sortByTag(list.sortTag,list.sortAsc)
-        this.data.control.editSeen = 'actionSearch'
-        this.data.action.isActive = false
+        this.sortByTag(list.sortTag,list.sortAsc)*/
+        this.data.control.editSeen = 'search'
+        /*this.data.action.isActive = false*/
     }
 
     /*-------------------------------TAGS-SORT-----------------------------*/
@@ -792,30 +1011,7 @@ class AppStore {
         }
     }
 
-    switch(listName,newListName,index){
-        console.log('==> app_store/switch')
 
-        if(!index)
-            index = this.data.control.curentIndex
-
-        let list = this.getList(listName).list
-        let newList = this.getList(newListName).list
-        this.data.action.isActive = false
-        this.data.action = list[index]
-        this.data.action.status = newListName
-        this.setInListOn()
-        newList.push(this.data.action)
-        list.splice(index, 1)
-
-        let i = 0;
-        let l = list.length;
-        if(l){
-            index < l ? i = index : i = index - 1;
-            this.actionEdit(i,listName)
-        }else {
-            this.data.control.editSeen = 'empty'
-        }
-    }
 
     /*event*/
 
@@ -999,35 +1195,66 @@ class AppStore {
         tag = tag.split("-")
         let curentList = this.getCurentList()
         let actions = curentList.list.slice()
-        let index = tag[1]
-
-        console.log('!!!!TAGS!!!!!!')
-        console.log(tag[0])
-        console.log(tag[1])
-
+        let tagName = tag[1]
+        console.log(tagName)
 
         if (tag[0] === 'tag'){
             var tagsCompare = function(ascending){
-                return function(a,b){
-                    if(a.tags[index] === ""){
+               /* return function(a,b)
+                {
+                    console.log('!!!!TEST!!!!!!')
+                    let indexA = a.tags.map(function (e) { return e.name}).indexOf(tagName)
+                    let indexB = b.tags.map(function (e) { return e.name}).indexOf(tagName)
+
+                    console.log(a.tags[indexA].value)
+                    console.log(a.tags[indexB].value)
+
+                    if(a.tags[indexA].value){
                         return 1;
                     }
-                    else if(b.tags[index] === ""){
+                    else if(b.tags[indexB].value){
                         return -1;
                     }
-                    else if(a.tags[index] === b.tags[index]){
+                    else if(a.tags[indexA].value === b.tags[indexB].value){
                         return 0;
                     }
                     else if(ascending) {
-                        return a.tags[index] < b.tags[index] ? -1 : 1;
+                        return a.tags[indexA].value < b.tags[indexB].value ? -1 : 1;
                     }
                     else if(!ascending) {
-                        return a.tags[index] < b.tags[index] ? 1 : -1;
+                        return a.tags[indexB].value < b.tags[indexB].value ? 1 : -1;
+                    }
+                };*/
+
+                return function(a,b){
+                    let indexA = a.tags.map(function (e) { return e.name}).indexOf(tagName)
+                    let indexB = b.tags.map(function (e) { return e.name}).indexOf(tagName)
+                    console.log('!!!!TEST!!!!!!')
+                    console.log(a.tags[indexA].value)
+                    console.log(b.tags[indexB].value)
+
+                    if(a.tags[indexA].value === ""){
+                        return 1;
+                    }
+                    else if(b.tags[indexB].value === ""){
+                        return -1;
+                    }
+                    else if(a.tags[indexA].value === b.tags[indexB].value){
+                        return 1;
+                    }
+                    else if(ascending) {
+                        return a.tags[indexA].value < b.tags[indexB].value ? -1 : 1;
+                    }
+                    else if(!ascending) {
+                        return a.tags[indexA].value < b.tags[indexB].value ? 1 : -1;
                     }
                 };
             }
             curentList.list = actions.sort(tagsCompare(ascending))
         }
+
+        console.log(curentList.list)
+
 
         if(tag[0] === 'autoTag'){
             var tagsCompare = function(ascending){
@@ -1069,7 +1296,7 @@ class AppStore {
         let options = []
 
         Object.entries(this.data.tags).forEach(([key, value]) => {
-            options.push({text:value.toString, value: 'tag-' + value.position})
+            options.push({text:value.toString, value: 'tag-' + value.name})
         });
 
         Object.entries(this.data.autoTags).forEach(([key, value]) => {
@@ -1114,10 +1341,24 @@ class AppStore {
             id: this.guid(),
             name: '',
             content: '',
+            dateTime : {
+                date: null,
+                time: null,
+                minutes : null,
+                expiry: true,
+                toString: null
+            },
             status: status,
             isActive: false,
             visible: true,
-            tags:['','','',''],
+            tags:[
+                {name:'location',value: null, button: false},
+                {name:'whith',value: null, button: false},
+                {name:'tools',value: null, button: false},
+                {name:'priority',value: null, button: false},
+                {name:'duration',value: null, button: false},
+                {name:'date',value: null, button: false},
+            ],
             autoTags:[new Date().getTime(),null,null]
     }
 
@@ -1202,12 +1443,6 @@ function todayDate() {
     return today;
 }
 
-var stylo = {
-    type: "bille",
-    couleur: "bleu",
-    marque: "Bic"
-};
-
 function Location() {
     this.id = ""
     this.x = null
@@ -1217,7 +1452,4 @@ function Location() {
     this.shortcut = true
 }
 
-var truc = new Location()
-
-console.log(truc)
 

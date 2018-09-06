@@ -45,7 +45,7 @@
             },
             switchAction: function (listName, newListName, index) {
                 console.log(' ==> ActionsList.vue/switchAction')
-                app_store.switch(listName, newListName, index)
+                app_store.switch(newListName, listName, index)
             },
         }
     }

@@ -1,5 +1,7 @@
 <template>
     <section>
+        <form-swith-action></form-swith-action>
+
         <form-tags-select v-for="tag in tags"
                           @open-form-modal="openFormModal"
                           :key="tag.name"
@@ -19,6 +21,7 @@
 
     import app_store from '../../../store/app_store'
     import FormTagsSelect from './components/FormTagsSelect.vue'
+    import FormSwithAction from './components/FormSwithAction.vue'
     import FormModalLayout from './components/modal/FormModalLayout.vue'
 
 
@@ -26,7 +29,8 @@
         name: 'form-layout',
         components : {
             FormTagsSelect,
-            FormModalLayout
+            FormModalLayout,
+            FormSwithAction
         },
         data ()  {
             return {

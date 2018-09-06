@@ -2,7 +2,6 @@
     <section>
         <speed-add></speed-add>
         <switch-menu></switch-menu>
-
         <actions-list v-if="seen === 'receipt'" :actions="actions.receipt"></actions-list>
         <actions-list v-if="seen === 'todo'"    :actions="actions.todo"></actions-list>
         <actions-list v-if="seen === 'done'"    :actions="actions.done"></actions-list>

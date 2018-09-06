@@ -2,21 +2,22 @@
     <span>
         <select
                 v-if="curentSelect.button === false"
-                :class="{ select_title: !curentSelect }"
+                :class="{ select_title: !curentSelect.value }"
                 @change="tagSelected(tag.name, $event)">
 
-            <option v-if="curentSelect === ''" value=""  selected>-{{tag.name}}</option>
-            <option v-if="curentSelect !== ''" value="">-{{tag.name}}</option>
-            <!--<option v-for="option in tag.options" :value="option.value" v-if="curentSelect === option.value" selected>
+            <option v-if="!curentSelect.value" value = null  selected>-{{tag.name}}</option>
+            <option v-if="curentSelect.value" value = null>-{{tag.name}}</option>
+            <option
+                    v-for="option in tag.options"
+                    v-if="curentSelect.value && curentSelectString === option.value" selected
+                    :value="option.value">
                 <span >{{ option.text }}</span>
             </option>
-            <option v-for="option in tag.options" :value="option.value" v-if="curentSelect != option.value">
-                <span >{{ option.text }} {{option.shortcut}}</span>
-            </option>-->
-            <option v-for="option in tag.options" :value="option.value" v-if="option.shortcut">
-                <span>{{ option.text }} {{option.shortcut}}</span>
+            <option v-for="option in tag.options"
+                    v-if="option.shortcut && curentSelectString !== option.value.toString()"
+                    :value="option.value">
+                <span >{{ option.text }}</span>
             </option>
-
         </select>
 
         <b-button
@@ -47,7 +48,17 @@
             tags: function () { return this.data.tags},
             action: function () { return this.data.action},
             control: function () { return this.data.control},
-            curentSelect: function () {return app_store.curentSetlect(this.tag.name)},
+            curentSelect: function () {
+                return app_store.getOnceActionTag(this.tag.name)
+            },
+            curentSelectString: function () {
+                let c = this.curentSelect.value
+                return c ? c : c = ''
+            },
+
+            isSelect: function () {
+
+            }
 
         },
         props:{
@@ -56,7 +67,6 @@
         methods:{
             tagSelected: function (tagName, event) {
                 console.log('TagSelect.vue/tagSelected')
-                console.log(this.tag)
 
                 let tagValue = event.target.value
 
@@ -76,5 +86,7 @@
 </script>
 
 <style scoped>
-
+    .select_title{
+        color: grey;
+    }
 </style>

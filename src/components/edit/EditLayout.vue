@@ -1,7 +1,8 @@
 <template>
     <section>
-        <form-layout></form-layout>
-        <SearchLayout></SearchLayout>
+        <form-layout v-if="seen === 'edit'"></form-layout>
+        <SearchLayout v-if="seen === 'search'"></SearchLayout>
+        <empty v-if="seen === 'empty'"></empty>
     </section>
 </template>
 
@@ -10,12 +11,14 @@
     import app_store from '../../store/app_store'
     import FormLayout from './form/FormLayout.vue'
     import SearchLayout from './search/SearchLayout.vue'
+    import Empty from './empty/Empty.vue'
 
     export default {
         name: 'edit-layout',
         components : {
             FormLayout,
-            SearchLayout
+            SearchLayout,
+            Empty
         },
         data ()  {
             return {
@@ -23,6 +26,9 @@
             }
         },
         computed:{
+            seen: function () {
+                return this.data.control.editSeen
+            }
         },
         methods:{
 

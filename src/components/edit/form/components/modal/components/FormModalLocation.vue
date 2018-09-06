@@ -3,8 +3,7 @@
         <div>
             <p>{{location.id}}</p>
 
-
-            <select
+            <!--<select
                     v-if="!location.created"
                     @change="tagSelected($event)">
                     <option value=""  selected>-</option>
@@ -12,11 +11,9 @@
                         <span>{{ option.text }} {{option.shortcut}}</span>
                     </option>
 
-            </select>
-
+            </select>-->
 
             <span v-if="!location.created" >
-                <span>id</span>
                 <input v-model="location.id" class="form-control">
             </span>
             <span>x</span>
@@ -27,28 +24,15 @@
             <input v-model="location.city" class="form-control">
 
 
-            <!--<b-form-checkbox id="checkbox1"
-                             v-model="location.shortcut"
-                             value=false
-                             unchecked-value=true
-                             @change="shortcutChange"
-            >Raccourcis
-            </b-form-checkbox>-->
-
+            <label>Définir comme raccourcis</label>
             <input v-if="this.location.created" type="checkbox" v-model="location.shortcut" @change="shortcutChange">
-            1-{{location.shortcut}}
 
-            <input v-if="!this.location.created" type="checkbox" v-model="checked" @change="shortcutChange">
-            2-{{checked}}
-
-
+            <input name="Définir comme raccourcis" v-if="!this.location.created" type="checkbox" v-model="checked" @change="shortcutChange">
+            <br>
             <b-button @click="submit">Valider</b-button>
             <b-button @click="destroy">Supprimer</b-button>
-            <b-button @click="test">test</b-button>
             <a v-if="map" :href="mapHref" target="_blank">map</a>
         </div>
-
-        {{location}}
 
     </section>
 </template>
@@ -80,9 +64,12 @@
         computed:{
             action: function () { return this.data.action},
             myLocation: function () { return this.data.userData.locations},
-            location: function () { return app_store.getLocation()},
+            location: function () {
+                console.log(app_store.getLocation())
+                return app_store.getLocation()
+            },
             mapHref: function () {
-                return 'http://www.google.com/maps/place/'+this.action.location.x+','+this.action.location.y
+                return 'http://www.google.com/maps/place/'+this.location.x+','+this.location.y
             },
             tag:function () {
                 return this.data.tags.find(function (obj) { return obj.name === 'location' })
@@ -93,7 +80,7 @@
         methods:{
             submit : function () {
                 if(!this.location.created){
-                    let tag = app_store.createLocation('location',this.location, this.checked)
+                    let tag = app_store.createTag('location',this.location, this.checked)
                     this.data.userData.locations.push(tag)
                 }
 
@@ -101,7 +88,7 @@
             },
             destroy : function () {
                 console.log('>FormModalLocation/destroy')
-                app_store.deleteActionLocation()
+                app_store.deleteActionTag('location')
                 this.$emit('submit')
             },
             test : function () {
@@ -117,16 +104,13 @@
                 console.log('>FormModalLocation.vue/shortcutChange')
                 if(this.location.created)
                     app_store.shortcutChange('location',this.location.id,this.location.shortcut)
-                else {
-                    console.log('not created')
-                }
+
             },
-            tagSelected: function (event) {
-                let tag = this.data.action.tags.find(function (obj) { return obj.name === 'location' })
-                tag.value = event.target.value
-                let truc = app_store.getLocation()
-                this.location = truc
-            }
+            /*tagSelected: function (event) {
+                let actionTag = app_store.getOnceActionTag('location')
+                actionTag.value = event.target.value
+                this.location = app_store.getLocation()
+            }*/
         }
     }
 </script>
