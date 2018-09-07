@@ -1,5 +1,6 @@
 <template>
     <section>
+        <pre>{{curentSearch}}</pre>
         <pre>{{defaultSearch}}</pre>
         <pre>{{sortTagDefault}}</pre>
         <pre>{{sortAscDefault}}</pre>
@@ -22,7 +23,10 @@
         },
         computed:{
             defaultSearch: function () {
-                return app_store.getList().defaultSearch
+                return app_store.getList().defaultSearch[0]
+            },
+            curentSearch: function () {
+                return app_store.getList().curentSearch[0]
             },
             sortTagDefault: function () {
                 return app_store.getList().sortTagDefault

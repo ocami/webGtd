@@ -13,6 +13,8 @@
             <b-button variant="outline-primary" @click="searchAuto">auto</b-button>
             <b-button variant="outline-primary" @click="searchEdit">perso</b-button>
         </b-button-group>
+
+        <b-button @click="actionAdd">+</b-button>
     </section>
 </template>
 
@@ -38,6 +40,10 @@
             searchEdit: function () {
                 console.log('> SwitchMenuSeen.vue/searchEdit')
                 app_store.searchEdit()
+            },
+            actionAdd: function () {
+                console.log('> SwitchMenuSeen.vue/addAction')
+                app_store.actionAddSeen()
             }
         }
     }

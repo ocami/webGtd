@@ -8,7 +8,7 @@
 
         <button @click="tagsCompare">Appliquer</button>
         <button @click="tagsEmpty">Vider</button>
-        <button @click="defaultSearchEdit">Définir comme requête auto</button>
+        <button @click="setDefaultSearch">Définir comme requête auto</button>
 
         <b-form-group>
             <b-form-radio-group id="radioAsc"
@@ -68,9 +68,9 @@
                 app_store.tagsCompare()
             },
             tagsEmpty: function () { app_store.tagsEmpty() },
-            defaultSearchEdit: function () {
+            setDefaultSearch: function () {
                 console.log('==> actionSearch/defaultSearch')
-                app_store.defaultSearchEdit()
+                app_store.setDefaultSearch()
             },
             sortAscChange: function (event) {
                 console.log('==> actionSearch/sortAscChange')

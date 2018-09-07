@@ -90,7 +90,7 @@ class AppStore {
                         {name:'duration',value: null, button: false},
                         {name:'date',value: null, button: false},
                     ],
-                    autoTags:['1535383467157',0,null]
+                    autoTags:[1535383467157,0,null]
                 },
                 {
                     id: 1,
@@ -115,7 +115,7 @@ class AppStore {
                         {name:'duration',value: null, button: false},
                         {name:'date',value: null, button: false},
                     ],
-                    autoTags:['1535383467157',0,null]
+                    autoTags:[1535383467157,0,null]
                 },
                 {
                     id: 2,
@@ -139,7 +139,7 @@ class AppStore {
                         {name:'duration',value: null, button: false},
                         {name:'date',value: null, button: false},
                     ],
-                    autoTags:['1535383467157',0,null]
+                    autoTags:[1535383467157,0,null]
                 },
             ]
         }
@@ -191,9 +191,9 @@ class AppStore {
                         {name:'tools',value:'Ordinateur', button: false},
                         {name:'priority',value:3, button: false},
                         {name:'duration',value:10, button: false},
-                        {name:'date',value:'2018/09/04', button: true},
+                        {name:'date',value: 'Date', button: true},
                     ],
-                    autoTags:['1535383467157',0,null]
+                    autoTags:[1535383467157,1535383467157,1535383467157]
                     },
                 {
                     id: 1,
@@ -217,7 +217,7 @@ class AppStore {
                         {name:'duration',value: null, button: false},
                         {name:'date',value: null, button: false},
                     ],
-                    autoTags:['1535383467157',0,null]
+                    autoTags:[1535383467157,1535383467157,1535383467157],
                 },
                 {
                     id: 2,
@@ -241,7 +241,7 @@ class AppStore {
                         {name:'duration',value: 30, button: false},
                         {name:'date',value: null, button: false},
                     ],
-                    autoTags:['1535383467157',0,null]
+                    autoTags:[1535383467157,1535383467157,1535383467157]
                 },
             ]
         }
@@ -290,7 +290,7 @@ class AppStore {
                         {name:'duration',value: null, button: false},
                         {name:'date',value: null, button: false},
                     ],
-                    autoTags:['1535383467157',0,null]
+                    autoTags:[1535383467157,0,null]
                 },
                 {
                     id: 1,
@@ -315,7 +315,7 @@ class AppStore {
                         {name:'duration',value: null, button: false},
                         {name:'date',value: null, button: false},
                     ],
-                    autoTags:['1535383467157',0,null]
+                    autoTags:[1535383467157,0,null]
                 },
                 {
                     id: 2,
@@ -339,7 +339,7 @@ class AppStore {
                         {name:'duration',value: null, button: false},
                         {name:'date',value: null, button: false},
                     ],
-                    autoTags:['1535383467157',0,null]
+                    autoTags:[1535383467157,0,null]
                 },
             ]
         }
@@ -374,7 +374,7 @@ class AppStore {
                         {name:'duration',value: null, button: false},
                         {name:'date',value: null, button: false},
                     ],
-                    autoTags:['1535383467157',0,null]
+                    autoTags:[1535383467157,0,null]
                 },
                 {
                     id: 1,
@@ -399,7 +399,7 @@ class AppStore {
                         {name:'duration',value: null, button: false},
                         {name:'date',value: null, button: false},
                     ],
-                    autoTags:['1535383467157',0,null]
+                    autoTags:[1535383467157,0,null]
                 },
                 {
                     id: 2,
@@ -423,7 +423,7 @@ class AppStore {
                         {name:'duration',value: null, button: false},
                         {name:'date',value: null, button: false},
                     ],
-                    autoTags:['1535383467157',0,null]
+                    autoTags:[1535383467157,0,null]
                 },
             ]
         }
@@ -458,7 +458,7 @@ class AppStore {
                         {name:'duration',value: null, button: false},
                         {name:'date',value: null, button: false},
                     ],
-                    autoTags:['1535383467157',0,null]
+                    autoTags:[1535383467157,0,null]
                 },
                 {
                     id: 1,
@@ -483,7 +483,7 @@ class AppStore {
                         {name:'duration',value: null, button: false},
                         {name:'date',value: null, button: false},
                     ],
-                    autoTags:['1535383467157',0,null]
+                    autoTags:[1535383467157,0,null]
                 },
                 {
                     id: 2,
@@ -507,7 +507,7 @@ class AppStore {
                         {name:'duration',value: null, button: false},
                         {name:'date',value: null, button: false},
                     ],
-                    autoTags:['1535383467157',0,null]
+                    autoTags:[1535383467157,0,null]
                 },
             ]
         }
@@ -620,89 +620,6 @@ class AppStore {
                     ]
                 },
             ],
-            tags2:{
-                location:{
-                    position:0,
-                    name: 'location',
-                    toString: 'Localisation',
-                    selected: '',
-                    modal: true,
-                    options: [
-                        {text: 'Rennes', value: 'Rennes', shortcut: true},
-                        {text: 'Jardin', value: 'Jardin', shortcut: true},
-                        {text: 'Bureau', value: 'Bureau', shortcut: false},
-                        {text: '+', value: '+', shortcut: true},
-                    ]
-                },
-                contact:{
-                    position:1,
-                    name: 'contact',
-                    toString: 'Avec',
-                    selected: '',
-                    modal: true,
-                    options: [
-                        {text: 'Equipe1', value: 'equipe1', shortcut: true},
-                        {text: 'Henry', value: 'henry', shortcut: true},
-                        {text: 'Famille', value: 'famille', shortcut: true},
-                        {text: '+', value: '+'},
-                    ]
-                },
-                tools:{
-                    position:2,
-                    name: 'tools',
-                    toString: 'Outils',
-                    selected: '',
-                    modal: false,
-                    options: [
-                        {text: 'Ordinateur', value: 'Ordinateur', shortcut: true},
-                        {text: 'Tel', value: 'Tel', shortcut: true},
-                    ]
-                },
-                priority:{
-                    position:3,
-                    name: 'priority',
-                    toString: 'Priorité',
-                    selected: '',
-                    modal: false,
-                    options: [
-                        {text: '1', value: '1'},
-                        {text: '2', value: '2'},
-                        {text: '3', value: '3'},
-                    ]
-                },
-                duration:{
-                    position:4,
-                    name: 'duration',
-                    toString: 'Durée',
-                    selected: '',
-                    modal: false,
-                    options: [
-                        {text: '10 min', value: '10'},
-                        {text: '20 min', value: '20'},
-                        {text: '30 min', value: '30'},
-                        {text: '45 min', value: '45'},
-                        {text: '1 h', value: '120'},
-                        {text: '2 h', value: '180'},
-                        {text: '3 h', value: '240'},
-
-                    ]
-                },
-                date:{
-                    position:5,
-                    name: 'date',
-                    toString: 'Date',
-                    selected: '',
-                    modal: true,
-                    options: [
-                        {text: 'Aujourd hui', value: '@today'},
-                        {text: 'Demain', value: '@today'},
-                        {text: 'Dans la semaine', value: '@week'},
-                        {text: 'Prochaine semaine', value: '@nextYear'},
-                        {text: 'Prochain mois', value: '@nextYear'},
-                        {text: '+', value: '+'},
-                    ]
-                },
-            },
             autoTags:{
                 createOn:{
                     position:0,
@@ -759,9 +676,9 @@ class AppStore {
         }
     }
 
-    /*-------------------------------!!!CURENT!!!!---------------------------------*/
+    /*------------------------------------------------------------------!!!CURENT!!!!---------------------------------*/
 
-    /*-------------------------------USERDATA---------------------------------*/
+    /*--------------------------------------------------------------------USERDATA------------------------------------*/
     getLocation(){
         console.log('> app_store/getLocation')
         let actionLocation = this.getOnceActionTag('location')
@@ -782,7 +699,7 @@ class AppStore {
         return this.data.userData.contacts.find(function (obj) { return obj.id === actionContact.value })
     }
 
-    /*-------------------------------SETTER----------------------------*/
+    /*---------------------------------------------------------------------SETTER-------------------------------------*/
 
     setCurrentAction(action){
         console.log('> app_store/setCurrentAction')
@@ -792,12 +709,12 @@ class AppStore {
     }
 
     setCurrentList(listName){
-        console.log('> app_store/listName')
+        console.log('> app_store/setCurrentList')
         this.data.control.curentList = listName
         return this.getList()
     }
 
-    /*-------------------------------GETTER----------------------------*/
+    /*---------------------------------------------------------------------GETTER-------------------------------------*/
 
     getList(listName) {
         let a = this.data.actions
@@ -848,7 +765,7 @@ class AppStore {
     }
 
 
-    /*-------------------------------ChangeView----------------------------*/
+    /*--------------------------------------------------------------------ChangeView----------------------------------*/
     setMenuSeen(listName){
         console.log('> app_store/setMenuSeen')
         let actionsList = this.setCurrentList(listName)
@@ -864,7 +781,16 @@ class AppStore {
         }
     }
 
-    /*-------------------------------ACTIONS-------------------------*/
+    actionAddSeen () {
+        console.log('> app_store/actionAddSeen')
+
+        this.data.action.isActive = false
+        this.data.control.editSeen = 'edit'
+        this.data.control.actionCreated = true
+        this.data.action = this.newAction(this.getList().name)
+    }
+
+    /*---------------------------------------------------------------------ACTIONS------------------------------------*/
     speedAdd(content) {
         console.log('> app_store/speedAdd')
 
@@ -938,7 +864,60 @@ class AppStore {
         }
     }
 
-    /*-------------------------------SELECT-TAG---------------------------*/
+    actionAdd () {
+        console.log('> app_store/actionAdd')
+
+        this.data.control.curentIndex = this.getList().list.push(this.data.action) -1
+        this.data.control.actionCreated = false
+        this.data.action.isActive = true
+    }
+
+    newAction (status) {
+        let time = new Date().getTime()
+        return {
+            id: this.guid(),
+            name: '',
+            content: '',
+            dateTime : {
+                date: null,
+                time: null,
+                minutes : null,
+                expiry: true,
+                toString: null
+            },
+            status: status,
+            isActive: false,
+            visible: true,
+            tags:[
+                {name:'location',value: null, button: false},
+                {name:'contact',value: null, button: false},
+                {name:'tools',value: null, button: false},
+                {name:'priority',value: null, button: false},
+                {name:'duration',value: null, button: false},
+                {name:'date',value: null, button: false},
+            ],
+            autoTags:[time,time,time]
+        }
+
+    }
+
+    /*---------------------------------------------------------------------AUTO-TAGS----------------------------------*/
+    setUpdateOn(){
+        console.log('> app_store/setUpdateOn')
+        let array = this.data.action.autoTags.slice()
+        array[1] = new Date().getTime()
+        this.data.action.autoTags = array
+    }
+
+    setInListOn(){
+        console.log('> app_store/setInListOn')
+        let array = this.data.action.autoTags.slice()
+        array[2] = new Date().getTime()
+        console.log(array)
+        this.data.action.autoTags = array
+    }
+
+    /*---------------------------------------------------------------------SELECT-TAG---------------------------------*/
     createTag(tagName,tag,shortcut){
         console.log('> app_store/createTag')
         let actionTag = this.getOnceActionTag(tagName)
@@ -991,7 +970,7 @@ class AppStore {
     }
 
 
-    /*-------------------------------TAGS-SEARCH---------------------------*/
+    /*---------------------------------------------------------------------TAGS-SEARCH--------------------------------*/
     searchAll(){
         console.log('> app_store/searchAll')
         let actions = this.getList().list.slice()
@@ -1024,11 +1003,8 @@ class AppStore {
 
     searchEdit(){
         console.log('> app_store/searchEdit')
-        /*this.tagsCompare()
-        let list = this.getList()
-        this.sortByTag(list.sortTag,list.sortAsc)*/
         this.data.control.editSeen = 'search'
-        /*this.data.action.isActive = false*/
+        this.data.action.isActive = false
     }
 
     tagsCompare(search){
@@ -1044,6 +1020,16 @@ class AppStore {
             actions[i].visible = this.arrayCompare(actions[i],search)
 
         list.list = actions;
+    }
+
+    setDefaultSearch(){
+        console.log('> app_store/setDefaultSearch')
+        let list = this.getList()
+        for (let i=0;i<list.curentSearch.length;i++)
+            list.defaultSearch[i].value = list.curentSearch[i].value
+
+        list.sortTagDefault  = list.sortTag
+        list.sortAscDefault  = list.sortAsc
     }
 
     tagsEmpty() {
@@ -1077,7 +1063,7 @@ class AppStore {
         return true
     }
 
-    /*-------------------------------TAGS-SORT-----------------------------*/
+    /*---------------------------------------------------------------------TAGS-SORT----------------------------------*/
 
     //init
     getSortFilters(){
@@ -1119,7 +1105,6 @@ class AppStore {
         let curentList = this.getList()
         let actions = curentList.list.slice()
         let tagName = tag[1]
-        console.log(tagName)
 
         if (tag[0] === 'tag'){
             var tagsCompare = function(ascending){
@@ -1150,12 +1135,9 @@ class AppStore {
             curentList.list = actions.sort(tagsCompare(ascending))
         }
 
-        console.log(curentList.list)
-
-
         if(tag[0] === 'autoTag'){
             var tagsCompare = function(ascending){
-
+                let index = tag[1]
                 return function(a,b){
                     if(a.autoTags[index] === b.autoTags[index]){
                         return 0;
@@ -1172,7 +1154,7 @@ class AppStore {
         }
     }
 
-    /*---------------------------------DATE--------------------------------*/
+    /*-----------------------------------------------------------------------DATE-------------------------------------*/
 
     dateAutoEdit(tagValue,tagPosition, tagName) {
         console.log('> app_store/dateAutoEdit')
@@ -1203,7 +1185,7 @@ class AppStore {
         return todayDate()
     }
 
-    /*-------------------------------TOOLS---------------------------*/
+    /*-----------------------------------------------------------------------TOOLS------------------------------------*/
     static generateName(content) {
         console.log('> app_store/generateName')
         let firstLine = content.match(/[^\r\n]+/g);
@@ -1215,40 +1197,18 @@ class AppStore {
         return name
     }
 
-
-    /*-------------------------------ATTENTE---------------------------*/
-    actionAddSeen () {
-        console.log('> app_store/actionAddSeen')
-
-        this.data.action.isActive = false
-        this.data.control.editSeen = 'edit'
-        this.data.control.actionCreated = true
-        this.data.action = this.newAction(this.getList().name)
+    static guid () {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        }
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
 
-    actionAdd () {
-        console.log('> app_store/actionAdd')
+    /*---------------------------------------------------------------------ATTENTE------------------------------------*/
 
-        this.data.control.curentIndex = this.getList().list.push(this.data.action) -1
-        this.data.control.actionCreated = false
-        this.data.action.isActive = true
-    }
-
-    setUpdateOn(){
-        console.log('> app_store/setUpdateOn')
-        let array = this.data.action.autoTags.slice()
-        array[1] = new Date().getTime()
-        this.data.action.autoTags = array
-    }
-
-    setInListOn(){
-        console.log('> app_store/setInListOn')
-        let array = this.data.action.autoTags.slice()
-        array[2] = new Date().getTime()
-        this.data.action.autoTags = array
-    }
-
-    actionSearch () {
+    /*    actionSearch () {
         console.log('> app_store/actionSearch')
 
         this.data.control.editSeen = 'actionSearch'
@@ -1278,51 +1238,6 @@ class AppStore {
             if(!dt.time)
                 dt.time = this.data.option.endOfDay
         }
-    }
-
-    defaultSearchEdit(){
-        console.log('> app_store/defaultSearchEdit')
-        let list = this.getList()
-        list.defaultSearch = list.curentSearch
-        list.sortTagDefault = list.sortTag
-        list.sortAscDefault = list.sortAsc
-    }
-
-    newAction (status) {
-        return {
-            id: this.guid(),
-            name: '',
-            content: '',
-            dateTime : {
-                date: null,
-                time: null,
-                minutes : null,
-                expiry: true,
-                toString: null
-            },
-            status: status,
-            isActive: false,
-            visible: true,
-            tags:[
-                {name:'location',value: null, button: false},
-                {name:'contact',value: null, button: false},
-                {name:'tools',value: null, button: false},
-                {name:'priority',value: null, button: false},
-                {name:'duration',value: null, button: false},
-                {name:'date',value: null, button: false},
-            ],
-            autoTags:[new Date().getTime(),null,null]
-    }
-
-    }
-
-    guid () {
-        function s4() {
-            return Math.floor((1 + Math.random()) * 0x10000)
-                .toString(16)
-                .substring(1);
-        }
-        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
 
     test(){
@@ -1360,14 +1275,32 @@ class AppStore {
         console.log('7 '+ this.arrayCompare(['popo','ff','ddd','eee','papa','czdvrever'],['popo','ff','ddd','eee','rara','czdvrever']))
         console.log('8 '+ this.arrayCompare(['popo','ff','ddd','eee','papa','czdvrever'],['popo','zz','ddd','eee','','czdvrever']))
         console.log('9 '+ this.arrayCompare(['popo','ff','ddd','eee','papa','czdvrever'],['roro','ff','ddd','eee','papa','czdvrever']))
-    }
+    }*/
 }
 
 export default new AppStore();
 
 
-/*-------------------------------DATETIME---------------------------*/
+/*-------------------------------OBJECTS---------------------------*/
+function Location() {
+    this.id = ""
+    this.x = null
+    this.y = null
+    this.city = ""
+    this.created = false
+    this.shortcut = true
+}
 
+function Contact() {
+    this.id = ""
+    this.firstName = null
+    this.lastName = null
+    this.tel = ""
+    this.created = false
+    this.shortcut = true
+}
+
+/*-------------------------------TOOLS---------------------------*/
 function parseToMinutes (dateStr,timeStr) {
     const [day, month, year] = dateStr.split("/")
     const [hour,minute] = timeStr.split(":")
@@ -1392,20 +1325,11 @@ function todayDate() {
     return today;
 }
 
-function Location() {
-    this.id = ""
-    this.x = null
-    this.y = null
-    this.city = ""
-    this.created = false
-    this.shortcut = true
-}
-
-function Contact() {
-    this.id = ""
-    this.firstName = null
-    this.lastName = null
-    this.tel = ""
-    this.created = false
-    this.shortcut = true
+function clone(obj) {
+    if (null == obj || "object" != typeof obj) return obj;
+    var copy = obj.constructor();
+    for (var attr in obj) {
+        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+    }
+    return copy;
 }
