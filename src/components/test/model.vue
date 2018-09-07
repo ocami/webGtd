@@ -1,13 +1,8 @@
 <template>
     <section>
-        <!--<b>getOnceSelectTag : </b>
-        <pre>{{getOnceSelectTag}}</pre>
-        <b>getOnceSelectTagOption : </b>
-        <pre>{{getOnceSelectTagOption}}</pre>
-        <b>getOnceActionTag : </b>
-        <pre>{{getOnceActionTag}}</pre>-->
-
-        <pre>{{action}}</pre>
+        <pre>{{defaultSearch}}</pre>
+        <pre>{{sortTagDefault}}</pre>
+        <pre>{{sortAscDefault}}</pre>
     </section>
 </template>
 
@@ -26,16 +21,15 @@
             }
         },
         computed:{
-            getOnceSelectTag: function () {
-                return app_store.getOnceSelectTag('location')
+            defaultSearch: function () {
+                return app_store.getList().defaultSearch
             },
-            getOnceSelectTagOption :function () {
-                return app_store.getOnceSelectTagOption('location','Rennes')
+            sortTagDefault: function () {
+                return app_store.getList().sortTagDefault
             },
-            getOnceActionTag :function () {
-                return app_store.getOnceActionTag('location')
+            sortAscDefault: function () {
+                return app_store.getList().sortAscDefault
             },
-            action: function () { return this.data.action}
 
         },
         methods:{

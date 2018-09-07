@@ -53,8 +53,8 @@
         data ()  {
             return {
                 data: app_store.data,
-                sortTagModel: app_store.getCurentList().sortTag,
-                sortAscModel: app_store.getCurentList().sortAsc,
+                sortTagModel: app_store.getList().sortTag,
+                sortAscModel: app_store.getList().sortAsc,
                 sortTagOptions: app_store.getSortFilters(),
                 sortAscOptions: [{text:'up', value: true},{text:'down', value: false}]
             }
@@ -64,6 +64,7 @@
         },
         methods:{
             tagsCompare: function () {
+                console.log('==> actionSearch/tagsCompare')
                 app_store.tagsCompare()
             },
             tagsEmpty: function () { app_store.tagsEmpty() },

@@ -1,6 +1,6 @@
 <template>
     <section>
-        <li>form-modal-with</li>
+        <li>form-modal-contact</li>
     </section>
 </template>
 
@@ -9,7 +9,7 @@
     import app_store from '../../../../../../store/app_store'
 
     export default {
-        name: 'form-modal-with',
+        name: 'form-modal-contact',
         components : {
 
         },

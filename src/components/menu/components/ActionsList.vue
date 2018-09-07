@@ -1,5 +1,7 @@
 <template>
     <section id="actions-list">
+
+
         <div v-for="(action, index) in actions.list"
              @click="actionEdit(index,actions.name)"
              :class="{'text-danger':action.isActive, 'd-none':!action.visible}"

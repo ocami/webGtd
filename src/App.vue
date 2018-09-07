@@ -37,7 +37,7 @@
       data ()  {
           return {
             data: app_store.data,
-            test: false
+            test: true
           }
       },
       computed:{

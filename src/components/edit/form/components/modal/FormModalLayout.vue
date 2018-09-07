@@ -7,9 +7,9 @@
                              @submit="closeFormModal"
 
         ></form-modal-location>
-        <form-modal-with v-if="tagName === 'with'"
+        <form-modal-contact v-if="tagName === 'contact'"
                          @submit="closeFormModal"
-        ></form-modal-with>
+        ></form-modal-contact>
     </section>
 </template>
 
@@ -18,14 +18,14 @@
     import app_store from '../../../../../store/app_store'
     import FormModalDate from './components/FormModalDate.vue'
     import FormModalLocation from './components/FormModalLocation.vue'
-    import FormModalWith from './components/FormModalWith.vue'
+    import FormModalContact from './components/FormModalContact.vue'
 
     export default {
         name: 'form-modal-layout',
         components : {
             FormModalDate,
             FormModalLocation,
-            FormModalWith
+            FormModalContact
         },
         data ()  {
             return {

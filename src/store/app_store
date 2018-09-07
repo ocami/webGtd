@@ -1,6 +1,5 @@
 class AppStore {
     constructor () {
-
         this.userData = {
             locations : [
                 {
@@ -28,9 +27,38 @@ class AppStore {
                     created: true,
                     shortcut: false
                 },
+            ],
+            contacts : [
+                {
+                    id:"Alexandre",
+                    firstName: 'Le Cam',
+                    lastName: 'Alexandre',
+                    mail: "ocami@contact.fr",
+                    tel: "07 50 32 69 97",
+                    created: true,
+                    shortcut: true
+                },
+                {
+                    id:"Toto",
+                    firstName: 'Toto',
+                    lastName: 'Toto',
+                    mail: "toto@contact.fr",
+                    tel: null,
+                    created: true,
+                    shortcut: true
+
+                },
+                {
+                    id:"Jojo",
+                    firstName: 'Jojo',
+                    lastName: 'Jojo',
+                    mail: "jojo@contact.fr",
+                    tel: null,
+                    created: true,
+                    shortcut: true
+                },
             ]
         }
-
         this.receipt = {
             index:0,
             name: 'receipt',
@@ -56,7 +84,7 @@ class AppStore {
                     visible: true,
                     tags:[
                         {name:'location',value: null, button: false},
-                        {name:'whith',value: null, button: false},
+                        {name:'contact',value: null, button: false},
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
@@ -81,7 +109,7 @@ class AppStore {
                     visible: true,
                     tags:[
                         {name:'location',value: null, button: false},
-                        {name:'whith',value: null, button: false},
+                        {name:'contact',value: null, button: false},
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
@@ -105,7 +133,7 @@ class AppStore {
                     visible: true,
                     tags:[
                         {name:'location',value: null, button: false},
-                        {name:'whith',value: null, button: false},
+                        {name:'contact',value: null, button: false},
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
@@ -121,8 +149,22 @@ class AppStore {
             toString: 'A faire',
             toSwitch: 'done',
             acceptSwitch: {todo: false, done: true, incubation: true, destroy: true},
-            defaultSearch: ['','','',''],
-            curentSearch: ['','','',''],
+            defaultSearch:[
+                {name:'location',value:null, button: false},
+                {name:'contact',value:null, button: false},
+                {name:'tools',value:'Ordinateur', button: false},
+                {name:'priority',value:1, button: false},
+                {name:'duration',value:10, button: false},
+                {name:'date',value:null, button: false},
+            ],
+            curentSearch: [
+                {name:'location',value:null, button: false},
+                {name:'contact',value:null, button: false},
+                {name:'tools',value:null, button: false},
+                {name:'priority',value:null, button: false},
+                {name:'duration',value:null, button: false},
+                {name:'date',value:null, button: false},
+            ],
             sortAsc: true,
             sortTag: 'autoTag-0',
             sortAscDefault: true,
@@ -145,7 +187,7 @@ class AppStore {
                     visible: true,
                     tags:[
                         {name:'location',value:'Rennes', button: true},
-                        {name:'whith',value:'b', button: true},
+                        {name:'contact',value:'Alexandre', button: true},
                         {name:'tools',value:'Ordinateur', button: false},
                         {name:'priority',value:3, button: false},
                         {name:'duration',value:10, button: false},
@@ -169,8 +211,8 @@ class AppStore {
                     visible: true,
                     tags:[
                         {name:'location',value: 'Jardin', button: true},
-                        {name:'whith',value: 'a', button: true},
-                        {name:'tools',value: null, button: false},
+                        {name:'contact',value: 'Jojo', button: true},
+                        {name:'tools',value: 'Tel', button: false},
                         {name:'priority',value: 2, button: false},
                         {name:'duration',value: null, button: false},
                         {name:'date',value: null, button: false},
@@ -193,10 +235,10 @@ class AppStore {
                     visible: true,
                     tags:[
                         {name:'location',value: 'Bureau', button: true},
-                        {name:'whith',value: 'c', button: true},
-                        {name:'tools',value: null, button: false},
+                        {name:'contact',value: null, button: false},
+                        {name:'tools',value: 'Ordinateur', button: false},
                         {name:'priority',value: 1, button: false},
-                        {name:'duration',value: 45, button: false},
+                        {name:'duration',value: 30, button: false},
                         {name:'date',value: null, button: false},
                     ],
                     autoTags:['1535383467157',0,null]
@@ -209,8 +251,22 @@ class AppStore {
             toString: 'Fait',
             toSwitch: 'destroy',
             acceptSwitch: {todo: true, done: false, incubation: false, destroy: true},
-            defaultSearch: ['','','',''],
-            curentSearch: ['','','',''],
+            defaultSearch:[
+                {name:'location',value:null, button: false},
+                {name:'contact',value:'Michel', button: true},
+                {name:'tools',value:'Ordinateur', button: false},
+                {name:'priority',value:1, button: false},
+                {name:'duration',value:10, button: false},
+                {name:'date',value:null, button: false},
+            ],
+            curentSearch: [
+                {name:'location',value:null, button: false},
+                {name:'contact',value:null, button: false},
+                {name:'tools',value:'Tel', button: false},
+                {name:'priority',value:2, button: false},
+                {name:'duration',value:45, button: false},
+                {name:'date',value:null, button: false},
+            ],
             list: [
                 {
                     id: 0,
@@ -228,7 +284,7 @@ class AppStore {
                     visible: true,
                     tags:[
                         {name:'location',value: null, button: false},
-                        {name:'whith',value: null, button: false},
+                        {name:'contact',value: null, button: false},
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
@@ -253,7 +309,7 @@ class AppStore {
                     visible: true,
                     tags:[
                         {name:'location',value: null, button: false},
-                        {name:'whith',value: null, button: false},
+                        {name:'contact',value: null, button: false},
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
@@ -277,7 +333,7 @@ class AppStore {
                     visible: true,
                     tags:[
                         {name:'location',value: null, button: false},
-                        {name:'whith',value: null, button: false},
+                        {name:'contact',value: null, button: false},
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
@@ -312,7 +368,7 @@ class AppStore {
                     visible: true,
                     tags:[
                         {name:'location',value: null, button: false},
-                        {name:'whith',value: null, button: false},
+                        {name:'contact',value: null, button: false},
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
@@ -337,7 +393,7 @@ class AppStore {
                     visible: true,
                     tags:[
                         {name:'location',value: null, button: false},
-                        {name:'whith',value: null, button: false},
+                        {name:'contact',value: null, button: false},
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
@@ -361,7 +417,7 @@ class AppStore {
                     visible: true,
                     tags:[
                         {name:'location',value: null, button: false},
-                        {name:'whith',value: null, button: false},
+                        {name:'contact',value: null, button: false},
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
@@ -396,7 +452,7 @@ class AppStore {
                     visible: true,
                     tags:[
                         {name:'location',value: null, button: false},
-                        {name:'whith',value: null, button: false},
+                        {name:'contact',value: null, button: false},
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
@@ -421,7 +477,7 @@ class AppStore {
                     visible: true,
                     tags:[
                         {name:'location',value: null, button: false},
-                        {name:'whith',value: null, button: false},
+                        {name:'contact',value: null, button: false},
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
@@ -445,7 +501,7 @@ class AppStore {
                     visible: true,
                     tags:[
                         {name:'location',value: null, button: false},
-                        {name:'whith',value: null, button: false},
+                        {name:'contact',value: null, button: false},
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
@@ -455,7 +511,6 @@ class AppStore {
                 },
             ]
         }
-
         this.data = {
             userData: this.userData,
             option: {
@@ -481,7 +536,7 @@ class AppStore {
                 curentList: 'todo',
                 tagsSearch:[
                     {name:'location',value:null, button: false},
-                    {name:'whith',value:'Michel', button: true},
+                    {name:'contact',value:'Michel', button: true},
                     {name:'tools',value:'Ordinateur', button: false},
                     {name:'priority',value:1, button: false},
                     {name:'duration',value:10, button: false},
@@ -502,15 +557,15 @@ class AppStore {
                     ]
                 },
                 {
-                    name: 'whith',
+                    name: 'contact',
                     toString: 'Avec',
                     selected: '',
                     modal: true,
                     options: [
-                        {text: 'Equipe1', value: 'Equipe1', shortcut: true},
-                        {text: 'Henry', value: 'Henry', shortcut: true},
-                        {text: 'Famille', value: 'Famille', shortcut: true},
-                        {text: '+', value: '+'},
+                        {text: 'Alexandre', value: 'Alexandre', shortcut: true},
+                        {text: 'Toto', value: 'Toto', shortcut: true},
+                        {text: 'Jojo', value: 'Jojo', shortcut: true},
+                        {text: '+', value: '+', shortcut: true},
                     ]
                 },
                 {
@@ -520,7 +575,7 @@ class AppStore {
                     modal: false,
                     options: [
                         {text: 'Ordinateur', value: 'Ordinateur', shortcut: true},
-                        {text: 'Tel', value: 'tel', shortcut: true},
+                        {text: 'Tel', value: 'Tel', shortcut: true},
                     ]
                 },
                 {
@@ -579,9 +634,9 @@ class AppStore {
                         {text: '+', value: '+', shortcut: true},
                     ]
                 },
-                whith:{
+                contact:{
                     position:1,
-                    name: 'whith',
+                    name: 'contact',
                     toString: 'Avec',
                     selected: '',
                     modal: true,
@@ -697,7 +752,7 @@ class AppStore {
                     toString: 'Heure',
                     selected: '',
                     options: [
-                        {text: '+', value: 'tel'},
+                        {text: '+', value: 'Tel'},
                     ]
                 },
             }
@@ -706,7 +761,7 @@ class AppStore {
 
     /*-------------------------------!!!CURENT!!!!---------------------------------*/
 
-    /*-------------------------------LOCATION---------------------------------*/
+    /*-------------------------------USERDATA---------------------------------*/
     getLocation(){
         console.log('> app_store/getLocation')
         let actionLocation = this.getOnceActionTag('location')
@@ -717,28 +772,40 @@ class AppStore {
         return this.data.userData.locations.find(function (obj) { return obj.id === actionLocation.value })
     }
 
+    getContact(){
+        console.log('> app_store/getContact')
+        let actionContact = this.getOnceActionTag('contact')
+        console.log(actionContact)
+        if(actionContact.value === null)
+            return new Contact()
 
-    /*-------------------------------Event---------------------------------*/
+        return this.data.userData.contacts.find(function (obj) { return obj.id === actionContact.value })
+    }
 
     /*-------------------------------SETTER----------------------------*/
 
     setCurrentAction(action){
+        console.log('> app_store/setCurrentAction')
         this.data.action.isActive = false
         this.data.action = action
         this.data.action.isActive = true
     }
 
     setCurrentList(listName){
+        console.log('> app_store/listName')
         this.data.control.curentList = listName
-        return this.getCurentList()
+        return this.getList()
     }
 
     /*-------------------------------GETTER----------------------------*/
 
-    getCurentList() {
+    getList(listName) {
         let a = this.data.actions
 
-        switch (this.data.control.curentList){
+        if(!listName)
+            listName = this.data.control.curentList
+
+        switch (listName){
             case 'receipt':
                 return a.receipt;
 
@@ -768,13 +835,18 @@ class AppStore {
         return selectTag.options.find(function (obj) { return obj.value === optionValue })
     }
 
-    getOnceActionTag(tagName){
-        return this.data.action.tags.find(function (obj) { return obj.name === tagName })
+    getOnceActionTag(tagName, action){
+        if(!action)
+            action = this.data.action
+
+        return action.tags.find(function (obj) { return obj.name === tagName })
     }
 
     getOnceSearchTag(tagName){
-        return this.data.control.tagsSearch.find(function (obj) { return obj.name === tagName })
+        return this.getList().curentSearch.find(function (obj) { return obj.name === tagName })
+        // return this.data.control.tagsSearch.find(function (obj) { return obj.name === tagName })
     }
+
 
     /*-------------------------------ChangeView----------------------------*/
     setMenuSeen(listName){
@@ -792,9 +864,9 @@ class AppStore {
         }
     }
 
-    /*-------------------------------CreateActions-------------------------*/
+    /*-------------------------------ACTIONS-------------------------*/
     speedAdd(content) {
-        console.log('==> app_store/speedAdd')
+        console.log('> app_store/speedAdd')
 
         let name = AppStore.generateName(content)
         let action =  this.newAction('receipt')
@@ -804,7 +876,23 @@ class AppStore {
         this.data.actions.receipt.list.push(action)
     }
 
-    /*-------------------------------UpdateActions-------------------------*/
+    actionEdit (index, status){
+        console.log('> app_store/actionEdit')
+        let list = this.getList(status).list
+        let action = this.data.action
+        action.isActive = false
+        if (list.length > 0){
+            action = list[index]
+            this.data.control.editSeen = 'edit'
+            action.isActive = true
+            this.data.action = action
+            this.data.control.curentIndex = index
+        }
+        else {
+            this.data.control.editSeen = 'empty'
+        }
+    }
+
     inputChange (event, isTextarea) {
         console.log('> app_store/inputChange')
 
@@ -822,12 +910,11 @@ class AppStore {
         }
     }
 
-    /*-------------------------------SwithActions--------------------------*/
     switch(newListName,listName,index){
-        console.log('==> app_store/switch')
+        console.log('> app_store/switch')
 
         if(!listName)
-            listName = this.getCurentList()
+            listName = this.getList()
 
         if(!index)
             index = this.data.control.curentIndex
@@ -850,7 +937,8 @@ class AppStore {
             this.data.control.editSeen = 'empty'
         }
     }
-    /*-------------------------------TAGS-EDIT---------------------------*/
+
+    /*-------------------------------SELECT-TAG---------------------------*/
     createTag(tagName,tag,shortcut){
         console.log('> app_store/createTag')
         let actionTag = this.getOnceActionTag(tagName)
@@ -902,13 +990,11 @@ class AppStore {
         isShortCut ? option.shortcut = true : option.shortcut = false
     }
 
-    /*-------------------------------TAGS-SELECT---------------------------*/
-
 
     /*-------------------------------TAGS-SEARCH---------------------------*/
     searchAll(){
-        console.log('app_store/searchAll')
-        let actions = this.getCurentList().list.slice()
+        console.log('> app_store/searchAll')
+        let actions = this.getList().list.slice()
         for (var i = 0; i < actions.length; i++) {
             actions[i].visible = true
         }
@@ -918,9 +1004,9 @@ class AppStore {
     }
 
     searchAuto(){
-        console.log('app_store/searchAuto')
+        console.log('> app_store/searchAuto')
 
-        let curentList = this.getCurentList()
+        let curentList = this.getList()
         let list = curentList.list
 
         this.tagsCompare(curentList.defaultSearch)
@@ -937,306 +1023,117 @@ class AppStore {
     }
 
     searchEdit(){
-        console.log('app_store/searchEdit')
+        console.log('> app_store/searchEdit')
         /*this.tagsCompare()
-        let list = this.getCurentList()
+        let list = this.getList()
         this.sortByTag(list.sortTag,list.sortAsc)*/
         this.data.control.editSeen = 'search'
         /*this.data.action.isActive = false*/
     }
 
-    /*-------------------------------TAGS-SORT-----------------------------*/
-
-    /*---------------------------------DATE--------------------------------*/
-
-
-    /*---------------------------------LOCATION----------------------------*/
-
-
-    /*---------------------------------WITH--------------------------------*/
-
-
-    /*---------------------------------TOOLS--------------------------------*/
-
-    static generateName(content) {
-        let firstLine = content.match(/[^\r\n]+/g);
-        let name = firstLine[0].substring(0,20)
-
-        if (name.length < firstLine[0].length)
-            name = name + '...'
-
-        return name
-    }
-
-
-
-
-
-    /*-------------------------------ACTIONS---------------------------*/
-
-    /*init*/
-
-
-    actionAddSeen () {
-        console.log('==> app_store/actionAddSeen')
-
-        this.data.action.isActive = false
-        this.data.control.editSeen = 'edit'
-        this.data.control.actionCreated = true
-        this.data.action = this.newAction(this.getCurentList().name)
-    }
-
-    actionAdd () {
-        console.log('==> app_store/actionAdd')
-
-        this.data.control.curentIndex = this.getCurentList().list.push(this.data.action) -1
-        this.data.control.actionCreated = false
-        this.data.action.isActive = true
-    }
-
-    actionEdit (index, status){
-        console.log('==> app_store/actionEdit')
-        let list = this.getList(status).list
-        let action = this.data.action
-        action.isActive = false
-        if (list.length > 0){
-            action = list[index]
-            this.data.control.editSeen = 'edit'
-            action.isActive = true
-            this.data.action = action
-            this.data.control.curentIndex = index
-        }
-        else {
-            this.data.control.editSeen = 'empty'
-        }
-    }
-
-
-
-    /*event*/
-
-
-    setUpdateOn(){
-        let array = this.data.action.autoTags.slice()
-        array[1] = new Date().getTime()
-        this.data.action.autoTags = array
-    }
-
-    setInListOn(){
-        let array = this.data.action.autoTags.slice()
-        array[2] = new Date().getTime()
-        this.data.action.autoTags = array
-    }
-
-    /*tools*/
-
-
-
-    /*-------------------------------TAGS---------------------------*/
-
-    actionSearch () {
-        console.log('app_store/actionSearch')
-
-        this.data.control.editSeen = 'actionSearch'
-        this.data.action.isActive = false
-    }
-
-    tagSelected(tagValue,position){
-        console.log('==> app_store/tagSelected')
-
-        if(this.data.control.editSeen === 'actionSearch')
-            this.tagSearch(tagValue,position)
-        else
-            this.actionTagSelect(tagValue,position)
-    }
-
-    actionTagSelect (tagValue,position){
-        console.log('==> app_store/actionTagSelect')
-        console.log('event =' + tagValue)
-        console.log('postition =' + position)
-
-        let action  = this.data.action
-
-        let array = action.tags.slice(0)
-        array[position] = tagValue;
-        this.data.action.tags = array;
-
-        this.setUpdateOn()
-    }
-
-    tagSearch(tagValue,position){
-        console.log('==> app_store/tagSearch')
-
-        let curentSearch = this.getCurentList().curentSearch.slice()
-        curentSearch[position] = tagValue
-        this.getCurentList().curentSearch = curentSearch
-
-    }
-
     tagsCompare(search){
-        console.log('==> app_store/tagsCompare')
+        console.log('> app_store/tagsCompare')
 
-        let searchTags
-        let list = this.getCurentList()
+        let list = this.getList()
         let actions = list.list.slice()
 
-        if(search)
-            searchTags = search
-        else
-            searchTags = list.curentSearch
+        if(!search)
+            search = list.curentSearch
 
-        for (var i = 0; i < actions.length; i++) {
-            actions[i].visible = this.arrayCompare(actions[i].tags,searchTags)
-        }
+        for (var i = 0; i < actions.length ; i++ )
+            actions[i].visible = this.arrayCompare(actions[i],search)
 
         list.list = actions;
     }
 
     tagsEmpty() {
-        let array = this.getCurentList().curentSearch.slice()
-        let actions = this.getCurentList().list.slice()
+        console.log('> app_store/tagsEmpty')
+        let array = this.getList().curentSearch.slice()
+        let actions = this.getList().list.slice()
 
         for (var i = 0; i < array.length; i++) {
-            array[i] = ''
+            array[i].value = null
         }
 
         for (var i = 0; i < actions.length; i++) {
             actions[i].visible = true
         }
 
-        this.getCurentList().curentSearch = array;
-        this.getCurentList().list;
+        this.getList().curentSearch = array;
+        this.getList().list;
     }
 
-    arrayCompare(source,search){
-        console.log('==> app_store/arrayCompare')
+    arrayCompare(action,search){
+        console.log('> app_store/arrayCompare')
 
         for (var i = 0; i < search.length; i++) {
-            if(search[i])
-                if(search[i] !== source[i])
+            let tagName = search[i].name
+            let value = search[i].value
+
+            if(value)
+                if(value !== this.getOnceActionTag(tagName,action).value)
                     return false
         }
         return true
     }
 
-    preModal(tagName){
-        console.log('appStore/preModal')
-        if (tagName === 'date'){
-            let dt = this.data.action.dateTime
-            console.log(dt)
-            if(!dt.date)
-                dt.date = todayDate()
+    /*-------------------------------TAGS-SORT-----------------------------*/
 
-            if(!dt.time)
-                dt.time = this.data.option.endOfDay
-        }
+    //init
+    getSortFilters(){
+        console.log('> app_store/getSortFilters')
+
+        let options = []
+
+        Object.entries(this.data.tags).forEach(([key, value]) => {
+            options.push({text:value.toString, value: 'tag-' + value.name})
+        });
+
+        Object.entries(this.data.autoTags).forEach(([key, value]) => {
+            options.push({text:value.toString, value: 'autoTag-' + value.position})
+        });
+
+        return options
     }
 
-    /*-------------------------------TIME---------------------------*/
-    dateAutoEdit(tagValue,tagPosition, tagName) {
-        console.log('==> app_store/dateAutoEdit')
-        let action = this.data.action
-
-        action.dateTime.date = '20180830'
-    }
-
-    dateEdit(tagPosition){
-        console.log('==> app_store/dateEdit')
-        let dt = this.data.action.dateTime
-        dt.minutes = parseToMinutes(dt.date,dt.time)
-        this.tagSelected('@'+dt.minutes,tagPosition)
-    }
-
-    dateTimeRefresh(){
-        this.data.action.dateTime = {
-            date: null,
-            time: null,
-            minutes : null,
-            expiry: true,
-            toString: null
-        }
-    }
-
-    getTodayDate(){
-        return todayDate()
-    }
-    /*-------------------------------SEARCH---------------------------*/
-
-
-    defaultSearchEdit(){
-        console.log('==> app_store/defaultSearchEdit')
-        let list = this.getCurentList()
-        list.defaultSearch = list.curentSearch
-        list.sortTagDefault = list.sortTag
-        list.sortAscDefault = list.sortAsc
-    }
-
-
-    /*-------------------------------SORT--------------------*/
-
+    //event
     sortTagChange(tag) {
-        console.log('==> app_store/sortTagChange')
-        let asc = this.getCurentList().sortAsc
+        console.log('> app_store/sortTagChange')
+        let asc = this.getList().sortAsc
 
-        this.getCurentList().sortTag = tag
+        this.getList().sortTag = tag
         this.sortByTag(tag,asc)
     }
-
     sortAscChange(asc) {
-        console.log('==> app_store/sortAscChange')
-        let tag = this.getCurentList().sortTag
-        this.getCurentList().sortAsc = asc
+        console.log('> app_store/sortAscChange')
+        let tag = this.getList().sortTag
+        this.getList().sortAsc = asc
         this.sortByTag(tag,asc)
     }
 
+    //function
     sortByTag(tag, ascending) {
-        console.log('==> app_store/sortByTag')
+        console.log('> app_store/sortByTag')
 
         tag = tag.split("-")
-        let curentList = this.getCurentList()
+        let curentList = this.getList()
         let actions = curentList.list.slice()
         let tagName = tag[1]
         console.log(tagName)
 
         if (tag[0] === 'tag'){
             var tagsCompare = function(ascending){
-               /* return function(a,b)
-                {
-                    console.log('!!!!TEST!!!!!!')
-                    let indexA = a.tags.map(function (e) { return e.name}).indexOf(tagName)
-                    let indexB = b.tags.map(function (e) { return e.name}).indexOf(tagName)
-
-                    console.log(a.tags[indexA].value)
-                    console.log(a.tags[indexB].value)
-
-                    if(a.tags[indexA].value){
-                        return 1;
-                    }
-                    else if(b.tags[indexB].value){
-                        return -1;
-                    }
-                    else if(a.tags[indexA].value === b.tags[indexB].value){
-                        return 0;
-                    }
-                    else if(ascending) {
-                        return a.tags[indexA].value < b.tags[indexB].value ? -1 : 1;
-                    }
-                    else if(!ascending) {
-                        return a.tags[indexB].value < b.tags[indexB].value ? 1 : -1;
-                    }
-                };*/
-
                 return function(a,b){
                     let indexA = a.tags.map(function (e) { return e.name}).indexOf(tagName)
                     let indexB = b.tags.map(function (e) { return e.name}).indexOf(tagName)
-                    console.log('!!!!TEST!!!!!!')
+
                     console.log(a.tags[indexA].value)
                     console.log(b.tags[indexB].value)
 
-                    if(a.tags[indexA].value === ""){
+                    if(!a.tags[indexA].value){
                         return 1;
                     }
-                    else if(b.tags[indexB].value === ""){
+                    else if(!b.tags[indexB].value){
                         return -1;
                     }
                     else if(a.tags[indexA].value === b.tags[indexB].value){
@@ -1275,66 +1172,121 @@ class AppStore {
         }
     }
 
-    /*-------------------------------MODALS--------------------*/
-    openTagModal(tagName) {
-        console.log('==> app_store/openTagModal')
-        console.log('ooooooooooooooooooooooooooooo')
-        console.log(tagName)
+    /*---------------------------------DATE--------------------------------*/
 
+    dateAutoEdit(tagValue,tagPosition, tagName) {
+        console.log('> app_store/dateAutoEdit')
+        let action = this.data.action
 
-        this.data.control.tagModalSeen = true
+        action.dateTime.date = '20180830'
     }
 
+    /*dateEdit(tagPosition){
+        console.log('> app_store/dateEdit')
+        let dt = this.data.action.dateTime
+        dt.minutes = parseToMinutes(dt.date,dt.time)
+        this.tagSelected('@'+dt.minutes,tagPosition)
+    }*/
 
-    /*-------------------------------SETTER---------------------------*/
-
-
-    /*-------------------------------GETTER---------------------------*/
-    getSortFilters(){
-        console.log('==> app_store/getSortFilters')
-
-        let options = []
-
-        Object.entries(this.data.tags).forEach(([key, value]) => {
-            options.push({text:value.toString, value: 'tag-' + value.name})
-        });
-
-        Object.entries(this.data.autoTags).forEach(([key, value]) => {
-            options.push({text:value.toString, value: 'autoTag-' + value.position})
-        });
-
-        return options
-    }
-
-
-    /*----------------------------------------------------------*/
-
-    getList (status) {
-
-        let a = this.data.actions
-
-        switch (status){
-            case 'receipt':
-                return a.receipt;
-
-            case 'todo':
-                return a.todo;
-
-            case 'done':
-                return a.done;
-
-            case 'incubation':
-                return a.incubation;
-
-            case 'destroy':
-                return a.destroy;
-
-            default :
-                console.log('actions.js getList error')
+    dateTimeRefresh(){
+        console.log('> app_store/dateTimeRefresh')
+        this.data.action.dateTime = {
+            date: null,
+            time: null,
+            minutes : null,
+            expiry: true,
+            toString: null
         }
     }
 
+    getTodayDate(){
+        return todayDate()
+    }
 
+    /*-------------------------------TOOLS---------------------------*/
+    static generateName(content) {
+        console.log('> app_store/generateName')
+        let firstLine = content.match(/[^\r\n]+/g);
+        let name = firstLine[0].substring(0,20)
+
+        if (name.length < firstLine[0].length)
+            name = name + '...'
+
+        return name
+    }
+
+
+    /*-------------------------------ATTENTE---------------------------*/
+    actionAddSeen () {
+        console.log('> app_store/actionAddSeen')
+
+        this.data.action.isActive = false
+        this.data.control.editSeen = 'edit'
+        this.data.control.actionCreated = true
+        this.data.action = this.newAction(this.getList().name)
+    }
+
+    actionAdd () {
+        console.log('> app_store/actionAdd')
+
+        this.data.control.curentIndex = this.getList().list.push(this.data.action) -1
+        this.data.control.actionCreated = false
+        this.data.action.isActive = true
+    }
+
+    setUpdateOn(){
+        console.log('> app_store/setUpdateOn')
+        let array = this.data.action.autoTags.slice()
+        array[1] = new Date().getTime()
+        this.data.action.autoTags = array
+    }
+
+    setInListOn(){
+        console.log('> app_store/setInListOn')
+        let array = this.data.action.autoTags.slice()
+        array[2] = new Date().getTime()
+        this.data.action.autoTags = array
+    }
+
+    actionSearch () {
+        console.log('> app_store/actionSearch')
+
+        this.data.control.editSeen = 'actionSearch'
+        this.data.action.isActive = false
+    }
+
+    actionTagSelect (tagValue,position){
+        console.log('> app_store/actionTagSelect')
+
+        let action  = this.data.action
+
+        let array = action.tags.slice(0)
+        array[position] = tagValue;
+        this.data.action.tags = array;
+
+        this.setUpdateOn()
+    }
+
+    preModal(tagName){
+        console.log('> appStore/preModal')
+        if (tagName === 'date'){
+            let dt = this.data.action.dateTime
+            console.log(dt)
+            if(!dt.date)
+                dt.date = todayDate()
+
+            if(!dt.time)
+                dt.time = this.data.option.endOfDay
+        }
+    }
+
+    defaultSearchEdit(){
+        console.log('> app_store/defaultSearchEdit')
+        let list = this.getList()
+        list.defaultSearch = list.curentSearch
+        list.sortTagDefault = list.sortTag
+        list.sortAscDefault = list.sortAsc
+    }
 
     newAction (status) {
         return {
@@ -1353,7 +1305,7 @@ class AppStore {
             visible: true,
             tags:[
                 {name:'location',value: null, button: false},
-                {name:'whith',value: null, button: false},
+                {name:'contact',value: null, button: false},
                 {name:'tools',value: null, button: false},
                 {name:'priority',value: null, button: false},
                 {name:'duration',value: null, button: false},
@@ -1372,9 +1324,6 @@ class AppStore {
         }
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
-
-    /*----------------------------------------------------------*/
-    /*----------------------------------------------------------*/
 
     test(){
         console.log('-------TRUE------------')
@@ -1452,4 +1401,11 @@ function Location() {
     this.shortcut = true
 }
 
-
+function Contact() {
+    this.id = ""
+    this.firstName = null
+    this.lastName = null
+    this.tel = ""
+    this.created = false
+    this.shortcut = true
+}

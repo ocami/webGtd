@@ -25,7 +25,7 @@
         name: 'form-switch-action',
         computed: {
             actions: function () {
-                return app_store.getCurentList()
+                return app_store.getList()
             }
         },
         methods:{

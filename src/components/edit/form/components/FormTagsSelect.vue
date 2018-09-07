@@ -5,16 +5,16 @@
                 :class="{ select_title: !curentSelect.value }"
                 @change="tagSelected(tag.name, $event)">
 
-            <option v-if="!curentSelect.value" value = null  selected>-{{tag.name}}</option>
-            <option v-if="curentSelect.value" value = null>-{{tag.name}}</option>
-            <option
-                    v-for="option in tag.options"
-                    v-if="curentSelect.value && curentSelectString === option.value" selected
+            <option v-if="!curentSelect.value" value = 'null'  selected>-{{tag.name}}</option>
+            <option v-if="curentSelect.value" value = 'null'>-{{tag.name}}</option>
+            <option v-for="option in tag.options"
+                    v-if="option.shortcut && curentSelect.value !== option.value"
                     :value="option.value">
                 <span >{{ option.text }}</span>
             </option>
-            <option v-for="option in tag.options"
-                    v-if="option.shortcut && curentSelectString !== option.value.toString()"
+            <option
+                    v-for="option in tag.options"
+                    v-if="curentSelect.value === option.value" selected
                     :value="option.value">
                 <span >{{ option.text }}</span>
             </option>
@@ -51,15 +51,6 @@
             curentSelect: function () {
                 return app_store.getOnceActionTag(this.tag.name)
             },
-            curentSelectString: function () {
-                let c = this.curentSelect.value
-                return c ? c : c = ''
-            },
-
-            isSelect: function () {
-
-            }
-
         },
         props:{
           tag : Object
@@ -69,6 +60,10 @@
                 console.log('TagSelect.vue/tagSelected')
 
                 let tagValue = event.target.value
+
+                isNaN(Number(tagValue)) ? tagValue : tagValue = Number(tagValue)
+
+                tagValue === 'null' ? tagValue = null : tagValue
 
                 if(tagValue === '+'){
                     this.$emit('open-form-modal', tagName)

@@ -1,5 +1,6 @@
 <template>
     <section>
+        <h2>{{currentList}}</h2>
         <form-layout v-if="seen === 'edit'"></form-layout>
         <SearchLayout v-if="seen === 'search'"></SearchLayout>
         <empty v-if="seen === 'empty'"></empty>
@@ -28,6 +29,9 @@
         computed:{
             seen: function () {
                 return this.data.control.editSeen
+            },
+            currentList: function () {
+                return app_store.getList().toString
             }
         },
         methods:{
