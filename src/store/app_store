@@ -169,7 +169,6 @@ class AppStore {
             sortTag: 'autoTag-0',
             sortAscDefault: true,
             sortTagDefault: 'autoTag-0',
-            sortAsc: true,
             list: [
                 {
                     id: 0,
@@ -807,7 +806,7 @@ class AppStore {
     actionEdit (index, status){
         console.log('> app_store/actionEdit')
         let list = this.getList(status).list
-        let currentAction = this.data.action
+        let currentAction = this.data.currentAction
         currentAction.isActive = false
         if (list.length > 0){
             currentAction = list[index]
@@ -1277,9 +1276,9 @@ class AppStore {
     actionTagSelect (tagValue,position){
         console.log('> app_store/actionTagSelect')
 
-        let currentAction  = this.data.currentAction
+        let currentAction  = this.data.action
 
-        let array = currentAction.tags.slice(0)
+        let array = action.tags.slice(0)
         array[position] = tagValue;
         this.data.action.tags = array;
 
