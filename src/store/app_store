@@ -65,38 +65,55 @@ class AppStore {
             toString: 'Réception',
             toSwitch: 'todo',
             acceptSwitch: {todo: 'true', done:true, incubation:true, destroy:true},
-            defaultSearch: ['','','',''],
-            currentSearch: ['','','',''],
+            defaultSearch:[
+                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
+                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
+                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
+                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
+                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
+                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
+            ],
+            currentSearch: [
+                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
+                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
+                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
+                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
+                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
+                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
+            ],
+            sortAsc: true,
+            sortTag: 'autoTag-0',
+            sortAscDefault: true,
+            sortTagDefault: 'autoTag-0',
             list: [
                 {
                     id: 0,
                     name: 'receipt-popo-0',
                     content: 'receipt content popo',
                     dateTime : {
-                        date: null,
-                        time: null,
-                        minutes : null,
+                        date: '30/09/2018',
+                        time: '15:35',
+                        minutes : '',
                         expiry: true,
-                        toString: null
+                        toString: ''
                     },
                     status: 'receipt',
                     isActive: false,
                     visible: true,
                     tags:[
-                        {name:'location',value: null, toString:null, button: false},
-                        {name:'contact',value: null, toString:null, button: false},
-                        {name:'tools',value: null, toString:null, button: false},
-                        {name:'priority',value: null, toString:null, button: false},
-                        {name:'duration',value: null, toString:null, button: false},
-                        {name:'date',value: 'Date', button: true},
+                        {name:'location',value:'Rennes', button: true},
+                        {name:'contact',value:'Alexandre', button: true},
+                        {name:'tools',value:'Ordinateur', button: false},
+                        {name:'priority',value:3, button: false},
+                        {name:'duration',value:10, button: false},
+                        {name:'date',value: '30/09/2018', button: true},
                     ],
-                    autoTags:[1535383467157,0,null]
+                    autoTags:[1535383467157,1535383467157,1535383467157]
                 },
                 {
                     id: 1,
                     name: 'receipt-toto-1',
                     content: 'receipt content lolo',
-
                     dateTime : {
                         date: null,
                         time: null,
@@ -108,14 +125,14 @@ class AppStore {
                     isActive: false,
                     visible: true,
                     tags:[
-                        {name:'location',value: null, button: false},
-                        {name:'contact',value: null, button: false},
-                        {name:'tools',value: null, button: false},
-                        {name:'priority',value: null, button: false},
+                        {name:'location',value: 'Jardin', button: true},
+                        {name:'contact',value: 'Jojo', button: true},
+                        {name:'tools',value: 'Tel', button: false},
+                        {name:'priority',value: 2, button: false},
                         {name:'duration',value: null, button: false},
-                        {name:'date',value: 'Date', button: true},
+                        {name:'date',value: null, button: false},
                     ],
-                    autoTags:[1535383467157,0,null]
+                    autoTags:[1535383467157,1535383467157,1535383467157],
                 },
                 {
                     id: 2,
@@ -132,14 +149,14 @@ class AppStore {
                     isActive: false,
                     visible: true,
                     tags:[
-                        {name:'location',value: null, button: false},
+                        {name:'location',value: 'Bureau', button: true},
                         {name:'contact',value: null, button: false},
-                        {name:'tools',value: null, button: false},
-                        {name:'priority',value: null, button: false},
-                        {name:'duration',value: null, button: false},
+                        {name:'tools',value: 'Ordinateur', button: false},
+                        {name:'priority',value: 1, button: false},
+                        {name:'duration',value: 30, button: false},
                         {name:'date',value: 'Date', button: true},
                     ],
-                    autoTags:[1535383467157,0,null]
+                    autoTags:[1535383467157,1535383467157,1535383467157]
                 },
             ]
         }
@@ -251,51 +268,54 @@ class AppStore {
             toSwitch: 'destroy',
             acceptSwitch: {todo: true, done: false, incubation: false, destroy: true},
             defaultSearch:[
-                {name:'location',value:null, button: false},
-                {name:'contact',value:'Michel', button: true},
-                {name:'tools',value:'Ordinateur', button: false},
-                {name:'priority',value:1, button: false},
-                {name:'duration',value:10, button: false},
-                {name:'date',value:null, button: false},
+                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
+                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
+                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
+                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
+                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
+                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
             ],
             currentSearch: [
-                {name:'location',value:null, button: false},
-                {name:'contact',value:null, button: false},
-                {name:'tools',value:'Tel', button: false},
-                {name:'priority',value:2, button: false},
-                {name:'duration',value:45, button: false},
-                {name:'date',value:null, button: false},
+                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
+                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
+                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
+                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
+                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
+                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
             ],
+            sortAsc: true,
+            sortTag: 'autoTag-0',
+            sortAscDefault: true,
+            sortTagDefault: 'autoTag-0',
             list: [
                 {
                     id: 0,
                     name: 'done-popo-0',
                     content: 'done content popo',
                     dateTime : {
-                        date: null,
-                        time: null,
-                        minutes : null,
+                        date: '30/09/2018',
+                        time: '15:35',
+                        minutes : '',
                         expiry: true,
-                        toString: null
+                        toString: ''
                     },
                     status: 'done',
                     isActive: false,
                     visible: true,
                     tags:[
-                        {name:'location',value: null, button: false},
-                        {name:'contact',value: null, button: false},
-                        {name:'tools',value: null, button: false},
-                        {name:'priority',value: null, button: false},
-                        {name:'duration',value: null, button: false},
-                        {name:'date',value: 'Date', button: true},
+                        {name:'location',value:'Rennes', button: true},
+                        {name:'contact',value:'Alexandre', button: true},
+                        {name:'tools',value:'Ordinateur', button: false},
+                        {name:'priority',value:3, button: false},
+                        {name:'duration',value:10, button: false},
+                        {name:'date',value: '30/09/2018', button: true},
                     ],
-                    autoTags:[1535383467157,0,null]
+                    autoTags:[1535383467157,1535383467157,1535383467157]
                 },
                 {
                     id: 1,
                     name: 'done-toto-1',
                     content: 'done content lolo',
-
                     dateTime : {
                         date: null,
                         time: null,
@@ -307,14 +327,14 @@ class AppStore {
                     isActive: false,
                     visible: true,
                     tags:[
-                        {name:'location',value: null, button: false},
-                        {name:'contact',value: null, button: false},
-                        {name:'tools',value: null, button: false},
-                        {name:'priority',value: null, button: false},
+                        {name:'location',value: 'Jardin', button: true},
+                        {name:'contact',value: 'Jojo', button: true},
+                        {name:'tools',value: 'Tel', button: false},
+                        {name:'priority',value: 2, button: false},
                         {name:'duration',value: null, button: false},
-                        {name:'date',value: 'Date', button: true},
+                        {name:'date',value: null, button: false},
                     ],
-                    autoTags:[1535383467157,0,null]
+                    autoTags:[1535383467157,1535383467157,1535383467157],
                 },
                 {
                     id: 2,
@@ -331,14 +351,14 @@ class AppStore {
                     isActive: false,
                     visible: true,
                     tags:[
-                        {name:'location',value: null, button: false},
+                        {name:'location',value: 'Bureau', button: true},
                         {name:'contact',value: null, button: false},
-                        {name:'tools',value: null, button: false},
-                        {name:'priority',value: null, button: false},
-                        {name:'duration',value: null, button: false},
+                        {name:'tools',value: 'Ordinateur', button: false},
+                        {name:'priority',value: 1, button: false},
+                        {name:'duration',value: 30, button: false},
                         {name:'date',value: 'Date', button: true},
                     ],
-                    autoTags:[1535383467157,0,null]
+                    autoTags:[1535383467157,1535383467157,1535383467157]
                 },
             ]
         }
@@ -348,38 +368,55 @@ class AppStore {
             toString: 'Incubation',
             toSwitch: 'todo',
             acceptSwitch: {todo: true, done: false, incubation: false, destroy: true},
-            defaultSearch: ['','','',''],
-            currentSearch: ['','','',''],
+            defaultSearch:[
+                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
+                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
+                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
+                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
+                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
+                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
+            ],
+            currentSearch: [
+                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
+                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
+                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
+                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
+                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
+                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
+            ],
+            sortAsc: true,
+            sortTag: 'autoTag-0',
+            sortAscDefault: true,
+            sortTagDefault: 'autoTag-0',
             list: [
                 {
                     id: 0,
                     name: 'incubation-popo-0',
                     content: 'incubation content popo',
                     dateTime : {
-                        date: null,
-                        time: null,
-                        minutes : null,
+                        date: '30/09/2018',
+                        time: '15:35',
+                        minutes : '',
                         expiry: true,
-                        toString: null
+                        toString: ''
                     },
                     status: 'incubation',
                     isActive: false,
                     visible: true,
                     tags:[
-                        {name:'location',value: null, button: false},
-                        {name:'contact',value: null, button: false},
-                        {name:'tools',value: null, button: false},
-                        {name:'priority',value: null, button: false},
-                        {name:'duration',value: null, button: false},
-                        {name:'date',value: 'Date', button: true},
+                        {name:'location',value:'Rennes', button: true},
+                        {name:'contact',value:'Alexandre', button: true},
+                        {name:'tools',value:'Ordinateur', button: false},
+                        {name:'priority',value:3, button: false},
+                        {name:'duration',value:10, button: false},
+                        {name:'date',value: '30/09/2018', button: true},
                     ],
-                    autoTags:[1535383467157,0,null]
+                    autoTags:[1535383467157,1535383467157,1535383467157]
                 },
                 {
                     id: 1,
                     name: 'incubation-toto-1',
                     content: 'incubation content lolo',
-
                     dateTime : {
                         date: null,
                         time: null,
@@ -391,14 +428,14 @@ class AppStore {
                     isActive: false,
                     visible: true,
                     tags:[
-                        {name:'location',value: null, button: false},
-                        {name:'contact',value: null, button: false},
-                        {name:'tools',value: null, button: false},
-                        {name:'priority',value: null, button: false},
+                        {name:'location',value: 'Jardin', button: true},
+                        {name:'contact',value: 'Jojo', button: true},
+                        {name:'tools',value: 'Tel', button: false},
+                        {name:'priority',value: 2, button: false},
                         {name:'duration',value: null, button: false},
-                        {name:'date',value: 'Date', button: true},
+                        {name:'date',value: null, button: false},
                     ],
-                    autoTags:[1535383467157,0,null]
+                    autoTags:[1535383467157,1535383467157,1535383467157],
                 },
                 {
                     id: 2,
@@ -415,14 +452,14 @@ class AppStore {
                     isActive: false,
                     visible: true,
                     tags:[
-                        {name:'location',value: null, button: false},
+                        {name:'location',value: 'Bureau', button: true},
                         {name:'contact',value: null, button: false},
-                        {name:'tools',value: null, button: false},
-                        {name:'priority',value: null, button: false},
-                        {name:'duration',value: null, button: false},
+                        {name:'tools',value: 'Ordinateur', button: false},
+                        {name:'priority',value: 1, button: false},
+                        {name:'duration',value: 30, button: false},
                         {name:'date',value: 'Date', button: true},
                     ],
-                    autoTags:[1535383467157,0,null]
+                    autoTags:[1535383467157,1535383467157,1535383467157]
                 },
             ]
         }
@@ -432,38 +469,55 @@ class AppStore {
             toString: 'Corbeille',
             toSwitch: 'todo',
             acceptSwitch: {todo: true, done: false, incubation: true, destroy: false},
-            defaultSearch: ['','','',''],
-            currentSearch: ['','','',''],
+            defaultSearch:[
+                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
+                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
+                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
+                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
+                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
+                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
+            ],
+            currentSearch: [
+                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
+                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
+                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
+                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
+                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
+                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
+            ],
+            sortAsc: true,
+            sortTag: 'autoTag-0',
+            sortAscDefault: true,
+            sortTagDefault: 'autoTag-0',
             list: [
                 {
                     id: 0,
                     name: 'destroy-popo-0',
                     content: 'destroy content popo',
                     dateTime : {
-                        date: null,
-                        time: null,
-                        minutes : null,
+                        date: '30/09/2018',
+                        time: '15:35',
+                        minutes : '',
                         expiry: true,
-                        toString: null
+                        toString: ''
                     },
                     status: 'destroy',
                     isActive: false,
                     visible: true,
                     tags:[
-                        {name:'location',value: null, button: false},
-                        {name:'contact',value: null, button: false},
-                        {name:'tools',value: null, button: false},
-                        {name:'priority',value: null, button: false},
-                        {name:'duration',value: null, button: false},
-                        {name:'date',value: 'Date', button: true},
+                        {name:'location',value:'Rennes', button: true},
+                        {name:'contact',value:'Alexandre', button: true},
+                        {name:'tools',value:'Ordinateur', button: false},
+                        {name:'priority',value:3, button: false},
+                        {name:'duration',value:10, button: false},
+                        {name:'date',value: '30/09/2018', button: true},
                     ],
-                    autoTags:[1535383467157,0,null]
+                    autoTags:[1535383467157,1535383467157,1535383467157]
                 },
                 {
                     id: 1,
                     name: 'destroy-toto-1',
                     content: 'destroy content lolo',
-
                     dateTime : {
                         date: null,
                         time: null,
@@ -475,14 +529,14 @@ class AppStore {
                     isActive: false,
                     visible: true,
                     tags:[
-                        {name:'location',value: null, button: false},
-                        {name:'contact',value: null, button: false},
-                        {name:'tools',value: null, button: false},
-                        {name:'priority',value: null, button: false},
+                        {name:'location',value: 'Jardin', button: true},
+                        {name:'contact',value: 'Jojo', button: true},
+                        {name:'tools',value: 'Tel', button: false},
+                        {name:'priority',value: 2, button: false},
                         {name:'duration',value: null, button: false},
-                        {name:'date',value: 'Date', button: true},
+                        {name:'date',value: null, button: false},
                     ],
-                    autoTags:[1535383467157,0,null]
+                    autoTags:[1535383467157,1535383467157,1535383467157],
                 },
                 {
                     id: 2,
@@ -499,14 +553,14 @@ class AppStore {
                     isActive: false,
                     visible: true,
                     tags:[
-                        {name:'location',value: null, button: false},
+                        {name:'location',value: 'Bureau', button: true},
                         {name:'contact',value: null, button: false},
-                        {name:'tools',value: null, button: false},
-                        {name:'priority',value: null, button: false},
-                        {name:'duration',value: null, button: false},
+                        {name:'tools',value: 'Ordinateur', button: false},
+                        {name:'priority',value: 1, button: false},
+                        {name:'duration',value: 30, button: false},
                         {name:'date',value: 'Date', button: true},
                     ],
-                    autoTags:[1535383467157,0,null]
+                    autoTags:[1535383467157,1535383467157,1535383467157]
                 },
             ]
         }
