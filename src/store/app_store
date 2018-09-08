@@ -1281,7 +1281,7 @@ class AppStore {
 
         let array = currentAction.tags.slice(0)
         array[position] = tagValue;
-        this.data.currentAction.tags = array;
+        this.data.action.tags = array;
 
         this.setUpdateOn()
     }
@@ -1289,7 +1289,7 @@ class AppStore {
     preModal(tagName){
         console.log('> appStore/preModal')
         if (tagName === 'date'){
-            let dt = this.data.currentAction.dateTime
+            let dt = this.data.action.dateTime
             console.log(dt)
             if(!dt.date)
                 dt.date = todayDate()
