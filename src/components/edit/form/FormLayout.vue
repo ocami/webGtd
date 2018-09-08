@@ -12,8 +12,8 @@
             <form-modal-layout @submit="closeFormModal" :tagName="tagName" ></form-modal-layout>
         </b-modal>
 
-        <input v-model="action.name" @blur="inputChange($event)" class="form-control">
-        <textarea v-model="action.content" @blur="inputChange($event, true)" class="form-control" rows="12"></textarea>
+        <input v-model="currentAction.name" @blur="inputChange($event)" class="form-control">
+        <textarea v-model="currentAction.content" @blur="inputChange($event, true)" class="form-control" rows="12"></textarea>
     </section>
 </template>
 
@@ -39,7 +39,7 @@
             }
         },
         computed:{
-            action: function () { return this.data.action},
+            currentAction: function () { return this.data.currentAction},
             tags: function () { return this.data.tags }
         },
         methods:{

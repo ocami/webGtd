@@ -22,7 +22,7 @@
     import app_store from '../../../../store/app_store'
 
     export default {
-        name: 'form-switch-action',
+        name: 'form-switch-currentAction',
         computed: {
             actions: function () {
                 return app_store.getList()

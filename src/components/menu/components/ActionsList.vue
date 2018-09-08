@@ -2,21 +2,21 @@
     <section id="actions-list">
 
 
-        <div v-for="(action, index) in actions.list"
+        <div v-for="(currentAction, index) in actions.list"
              @click="actionEdit(index,actions.name)"
-             :class="{'text-danger':action.isActive, 'd-none':!action.visible}"
+             :class="{'text-danger':currentAction.isActive, 'd-none':!currentAction.visible}"
              class="item-actions-list">
 
             <i @click.stop="switchAction(actions.name,actions.toSwitch,index)"
                :class="{
-               'fa fa-play': action.status == 'receipt',
-               'fa fa-check-circle': action.status == 'todo',
-               'fa fa-trash': action.status == 'done',
-               'fa fa-reply': action.status == 'incubation',
-               'fa fa-recycle': action.status == 'destroy',
+               'fa fa-play': currentAction.status == 'receipt',
+               'fa fa-check-circle': currentAction.status == 'todo',
+               'fa fa-trash': currentAction.status == 'done',
+               'fa fa-reply': currentAction.status == 'incubation',
+               'fa fa-recycle': currentAction.status == 'destroy',
                }"
             ></i>
-            {{ action.name }}
+            {{ currentAction.name }}
         </div>
     </section>
 </template>

@@ -14,7 +14,7 @@ new Vue({
   render: h => h(App)
 })
 
-app_store.data.action.isActive = true
+app_store.data.currentAction.isActive = true
 app_store.data.control.editSeen = 'edit'
 
 window.jQuery = jQuery

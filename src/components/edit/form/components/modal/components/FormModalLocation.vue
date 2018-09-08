@@ -62,7 +62,7 @@
             }
         },
         computed:{
-            action: function () { return this.data.action},
+            currentAction: function () { return this.data.currentAction},
             myLocation: function () { return this.data.userData.locations},
             location: function () {
                 console.log(app_store.getLocation())

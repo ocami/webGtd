@@ -1,30 +1,30 @@
 <template>
         <span>
             <select
-                    v-if="curentSelect.button === false"
-                    :class="{ select_title: !curentSelect.value }"
+                    v-if="currentSelect.button === false"
+                    :class="{ select_title: !currentSelect.value }"
                     @change="tagSelected(tag.name, $event)">
 
-                <option v-if="!curentSelect.value" value = 'null'  selected>-{{tag.name}}</option>
-                <option v-if="curentSelect.value" value = 'null'>-{{tag.name}}</option>
+                <option v-if="!currentSelect.value" value = 'null'  selected>-{{tag.name}}</option>
+                <option v-if="currentSelect.value" value = 'null'>-{{tag.name}}</option>
                 <option
                         v-for="option in tag.options"
-                        v-if="curentSelect.value === option.value" selected
+                        v-if="currentSelect.value === option.value" selected
                         :value="option.value">
                     <span >{{ option.text }}</span>
                 </option>
                 <option v-for="option in tag.options"
-                        v-if="option.shortcut && curentSelect.value !== option.value && option.value !=='+'"
+                        v-if="option.shortcut && currentSelect.value !== option.value && option.value !=='+'"
                         :value="option.value">
                     <span >{{ option.text }}</span>
                 </option>
             </select>
 
             <b-button
-                    v-if="curentSelect.button"
+                    v-if="currentSelect.button"
                     @click="tagBtnChange(tag.name)"
                     size="sm">
-                {{curentSelect.button}}
+                {{currentSelect.button}}
             </b-button>
         </span>
 </template>
@@ -46,7 +46,7 @@
             tag : Object
         },
         computed:{
-            curentSelect: function () {return app_store.getOnceSearchTag(this.tag.name)},
+            currentSelect: function () {return app_store.getOnceSearchTag(this.tag.name)},
         },
         methods:{
             tagSelected: function (tagName, event) {
@@ -62,7 +62,7 @@
                 isNaN(Number(tagValue)) ? tagValue : tagValue = Number(tagValue)
                 tagValue === 'null' ? tagValue = null : tagValue
 
-                this.curentSelect.value = tagValue
+                this.currentSelect.value = tagValue
                 app_store.tagsCompare()
             },
             tagBtnChange: function (tagName) {

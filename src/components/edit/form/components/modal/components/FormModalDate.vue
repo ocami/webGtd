@@ -1,10 +1,10 @@
 <template>
     <div>
         <section>
-            <date-picker :config="fDateOptions" v-model=action.dateTime.date></date-picker>
+            <date-picker :config="fDateOptions" v-model=currentAction.dateTime.date></date-picker>
             <b-row>
                 <b-col cols="6">
-                    <date-picker :config="fTimeOptions" v-model=action.dateTime.time></date-picker>
+                    <date-picker :config="fTimeOptions" v-model=currentAction.dateTime.time></date-picker>
                 </b-col>
                 <b-col cols="6">
                     <b-form-group>
@@ -13,7 +13,7 @@
                                 stacked
                                 button-variant="outline-primary"
                                 size="md"
-                                v-model=action.dateTime.expiry
+                                v-model=currentAction.dateTime.expiry
                                 :options="expiryRadioOptions.options"
                                 name="radioBtnOutline" />
                     </b-form-group>
@@ -25,7 +25,7 @@
             </b-row>
 
 
-            <p>{{action.dateTime}}</p>
+            <p>{{currentAction.dateTime}}</p>
         </section>
     </div>
 </template>
@@ -55,7 +55,7 @@
                     inline: true,
                 },
                 expiryRadioOptions:{
-                    selected: app_store.data.action.dateTime.expiry,
+                    selected: app_store.data.currentAction.dateTime.expiry,
                     options: [
                         { text: 'Programmé', value: false },
                         { text: 'Echéance', value: true },
@@ -64,7 +64,7 @@
             }
         },
         computed:{
-            action: function () { return this.data.action},
+            currentAction: function () { return this.data.currentAction},
         },
         props:{
             tagPosition : Number

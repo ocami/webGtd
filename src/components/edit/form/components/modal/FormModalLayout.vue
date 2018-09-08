@@ -33,7 +33,7 @@
             }
         },
         computed:{
-            action: function () {return this.data.action}
+            currentAction: function () {return this.data.currentAction}
         },
         props:{
             tagName: String

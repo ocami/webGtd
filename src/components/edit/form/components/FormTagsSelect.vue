@@ -1,30 +1,30 @@
 <template>
     <span>
         <select
-                v-if="curentSelect.button === false"
-                :class="{ select_title: !curentSelect.value }"
+                v-if="currentSelect.button === false"
+                :class="{ select_title: !currentSelect.value }"
                 @change="tagSelected(tag.name, $event)">
 
-            <option v-if="!curentSelect.value" value = 'null'  selected>-{{tag.name}}</option>
-            <option v-if="curentSelect.value" value = 'null'>-{{tag.name}}</option>
+            <option v-if="!currentSelect.value" value = 'null'  selected>-{{tag.name}}</option>
+            <option v-if="currentSelect.value" value = 'null'>-{{tag.name}}</option>
             <option
                     v-for="option in tag.options"
-                    v-if="curentSelect.value === option.value" selected
+                    v-if="currentSelect.value === option.value" selected
                     :value="option.value">
                 <span >{{ option.text }}</span>
             </option>
             <option v-for="option in tag.options"
-                    v-if="option.shortcut && curentSelect.value !== option.value && option.value !=='@'"
+                    v-if="option.shortcut && currentSelect.value !== option.value && option.value !=='@'"
                     :value="option.value">
                 <span >{{ option.text }}</span>
             </option>
         </select>
 
         <b-button
-                v-if="curentSelect.button === true"
+                v-if="currentSelect.button === true"
                 @click="tagBtnChange(tag.name)"
                 size="sm">
-            {{curentSelect.value}}
+            {{currentSelect.value}}
         </b-button>
     </span>
 </template>
@@ -46,9 +46,9 @@
         },
         computed:{
             tags: function () { return this.data.tags},
-            action: function () { return this.data.action},
+            currentAction: function () { return this.data.currentAction},
             control: function () { return this.data.control},
-            curentSelect: function () {
+            currentSelect: function () {
                 return app_store.getOnceActionTag(this.tag.name)
             },
         },
@@ -68,9 +68,9 @@
 
                 isNaN(Number(tagValue)) ? tagValue : tagValue = Number(tagValue)
                 tagValue === 'null' ? tagValue = null : tagValue
-                this.curentSelect.value = tagValue
+                this.currentSelect.value = tagValue
                 if(this.tag.modal === true)
-                    this.curentSelect.button = true
+                    this.currentSelect.button = true
 
             },
             tagBtnChange: function (tagName) {

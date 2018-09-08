@@ -1,7 +1,7 @@
 <template>
     <section>
         <p>{{this.data.currentSearch}}</p>
-        <pre>{{curentSearch}}</pre>
+        <pre>{{currentSearch}}</pre>
     </section>
 </template>
 
@@ -23,7 +23,7 @@
             defaultSearch: function () {
                 return app_store.getList().defaultSearch[0]
             },
-            curentSearch: function () {
+            currentSearch: function () {
                 return app_store.getOnceSearchTag('priority')
             },
             sortTagDefault: function () {

@@ -45,7 +45,7 @@
             }
         },
         computed:{
-            action: function () { return this.data.action},
+            currentAction: function () { return this.data.currentAction},
             contact: function () {
                 return app_store.getContact()
             },
