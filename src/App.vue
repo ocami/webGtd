@@ -2,12 +2,6 @@
   <section>
       <test v-if="test"></test>
 
-      <section>
-          <!--<p>action tags : {{data.action.tags}}</p>
-          <pre>Userlocations : {{data.userData.locations}}</pre>-->
-      </section>
-
-
       <b-row>
           <b-col cols="3">
               <menu-layout></menu-layout>
@@ -26,6 +20,7 @@
   import app_store from './store/app_store'
   import MenuLayout from './components/menu/MenuLayout.vue'
   import EditLayout from './components/edit/EditLayout.vue'
+
 
   export default {
       name: 'app',

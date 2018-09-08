@@ -83,12 +83,12 @@ class AppStore {
                     isActive: false,
                     visible: true,
                     tags:[
-                        {name:'location',value: null, button: false},
-                        {name:'contact',value: null, button: false},
-                        {name:'tools',value: null, button: false},
-                        {name:'priority',value: null, button: false},
-                        {name:'duration',value: null, button: false},
-                        {name:'date',value: null, button: false},
+                        {name:'location',value: null, toString:null, button: false},
+                        {name:'contact',value: null, toString:null, button: false},
+                        {name:'tools',value: null, toString:null, button: false},
+                        {name:'priority',value: null, toString:null, button: false},
+                        {name:'duration',value: null, toString:null, button: false},
+                        {name:'date',value: 'Date', button: true},
                     ],
                     autoTags:[1535383467157,0,null]
                 },
@@ -113,7 +113,7 @@ class AppStore {
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
-                        {name:'date',value: null, button: false},
+                        {name:'date',value: 'Date', button: true},
                     ],
                     autoTags:[1535383467157,0,null]
                 },
@@ -137,7 +137,7 @@ class AppStore {
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
-                        {name:'date',value: null, button: false},
+                        {name:'date',value: 'Date', button: true},
                     ],
                     autoTags:[1535383467157,0,null]
                 },
@@ -150,20 +150,20 @@ class AppStore {
             toSwitch: 'done',
             acceptSwitch: {todo: false, done: true, incubation: true, destroy: true},
             defaultSearch:[
-                {name:'location',value:null, button: false},
-                {name:'contact',value:null, button: false},
-                {name:'tools',value:'Ordinateur', button: false},
-                {name:'priority',value:1, button: false},
-                {name:'duration',value:10, button: false},
-                {name:'date',value:null, button: false},
+                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
+                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
+                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
+                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
+                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
+                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
             ],
             curentSearch: [
-                {name:'location',value:null, button: false},
-                {name:'contact',value:null, button: false},
-                {name:'tools',value:null, button: false},
-                {name:'priority',value:null, button: false},
-                {name:'duration',value:null, button: false},
-                {name:'date',value:null, button: false},
+                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
+                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
+                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
+                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
+                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
+                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
             ],
             sortAsc: true,
             sortTag: 'autoTag-0',
@@ -191,7 +191,7 @@ class AppStore {
                         {name:'tools',value:'Ordinateur', button: false},
                         {name:'priority',value:3, button: false},
                         {name:'duration',value:10, button: false},
-                        {name:'date',value: 'Date', button: true},
+                        {name:'date',value: '30/09/2018', button: true},
                     ],
                     autoTags:[1535383467157,1535383467157,1535383467157]
                     },
@@ -239,7 +239,7 @@ class AppStore {
                         {name:'tools',value: 'Ordinateur', button: false},
                         {name:'priority',value: 1, button: false},
                         {name:'duration',value: 30, button: false},
-                        {name:'date',value: null, button: false},
+                        {name:'date',value: 'Date', button: true},
                     ],
                     autoTags:[1535383467157,1535383467157,1535383467157]
                 },
@@ -288,7 +288,7 @@ class AppStore {
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
-                        {name:'date',value: null, button: false},
+                        {name:'date',value: 'Date', button: true},
                     ],
                     autoTags:[1535383467157,0,null]
                 },
@@ -313,7 +313,7 @@ class AppStore {
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
-                        {name:'date',value: null, button: false},
+                        {name:'date',value: 'Date', button: true},
                     ],
                     autoTags:[1535383467157,0,null]
                 },
@@ -337,7 +337,7 @@ class AppStore {
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
-                        {name:'date',value: null, button: false},
+                        {name:'date',value: 'Date', button: true},
                     ],
                     autoTags:[1535383467157,0,null]
                 },
@@ -372,7 +372,7 @@ class AppStore {
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
-                        {name:'date',value: null, button: false},
+                        {name:'date',value: 'Date', button: true},
                     ],
                     autoTags:[1535383467157,0,null]
                 },
@@ -397,7 +397,7 @@ class AppStore {
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
-                        {name:'date',value: null, button: false},
+                        {name:'date',value: 'Date', button: true},
                     ],
                     autoTags:[1535383467157,0,null]
                 },
@@ -421,7 +421,7 @@ class AppStore {
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
-                        {name:'date',value: null, button: false},
+                        {name:'date',value: 'Date', button: true},
                     ],
                     autoTags:[1535383467157,0,null]
                 },
@@ -456,7 +456,7 @@ class AppStore {
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
-                        {name:'date',value: null, button: false},
+                        {name:'date',value: 'Date', button: true},
                     ],
                     autoTags:[1535383467157,0,null]
                 },
@@ -481,7 +481,7 @@ class AppStore {
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
-                        {name:'date',value: null, button: false},
+                        {name:'date',value: 'Date', button: true},
                     ],
                     autoTags:[1535383467157,0,null]
                 },
@@ -505,19 +505,21 @@ class AppStore {
                         {name:'tools',value: null, button: false},
                         {name:'priority',value: null, button: false},
                         {name:'duration',value: null, button: false},
-                        {name:'date',value: null, button: false},
+                        {name:'date',value: 'Date', button: true},
                     ],
                     autoTags:[1535383467157,0,null]
                 },
             ]
         }
         this.data = {
+            action: this.todo.list[0],
+            currentList: this.todo,
+            currentSearch: null,
             userData: this.userData,
             option: {
               endOfDay : '18:00',
               endOfWeek : 'friday'
             },
-            action: this.todo.list[0],
             actions: {
                 receipt: this.receipt,
                 todo: this.todo,
@@ -587,6 +589,7 @@ class AppStore {
                         {text: '1', value: 1, shortcut: true},
                         {text: '2', value: 2, shortcut: true},
                         {text: '3', value: 3, shortcut: true},
+                        {text: '@', value: '@', shortcut: true}
                     ]
                  },
                 {
@@ -599,10 +602,10 @@ class AppStore {
                         {text: '20 min', value: 20, shortcut: true},
                         {text: '30 min', value: 30, shortcut: true},
                         {text: '45 min', value: 45, shortcut: true},
-                        {text: '1 h', value: 120, shortcut: true},
-                        {text: '2 h', value: 180, shortcut: true},
-                        {text: '3 h', value: 240, shortcut: true},
-
+                        {text: '1 h', value: 60, shortcut: true},
+                        {text: '2 h', value: 120, shortcut: true},
+                        {text: '3 h', value: 180, shortcut: true},
+                        {text: '@', value: '@', shortcut: true}
                     ]
                 },
                 {
@@ -611,12 +614,13 @@ class AppStore {
                     selected: '',
                     modal: true,
                     options: [
-                        {text: 'Aujourd hui', value: '@today'},
-                        {text: 'Demain', value: '@today'},
-                        {text: 'Dans la semaine', value: '@week'},
-                        {text: 'Prochaine semaine', value: '@nextYear'},
-                        {text: 'Prochain mois', value: '@nextYear'},
-                        {text: '+', value: '+'},
+                        {text: 'Aujourd hui', value: 'today', shortcut: true},
+                        {text: 'Demain', value: 'tomorrow', shortcut: true},
+                        {text: 'Dans la semaine', value: 'inWeek', shortcut: true},
+                        {text: 'Prochaine semaine', value: 'nextWeek', shortcut: true},
+                        {text: 'Prochain mois', value: 'nextMonth', shortcut: true},
+                        {text: '+', value: '+', shortcut: true},
+                        {text: '@', value: '@', shortcut: true}
                     ]
                 },
             ],
@@ -682,7 +686,6 @@ class AppStore {
     getLocation(){
         console.log('> app_store/getLocation')
         let actionLocation = this.getOnceActionTag('location')
-        console.log(actionLocation)
         if(actionLocation.value === null)
             return new Location()
 
@@ -692,7 +695,6 @@ class AppStore {
     getContact(){
         console.log('> app_store/getContact')
         let actionContact = this.getOnceActionTag('contact')
-        console.log(actionContact)
         if(actionContact.value === null)
             return new Contact()
 
@@ -765,7 +767,7 @@ class AppStore {
     }
 
 
-    /*--------------------------------------------------------------------ChangeView----------------------------------*/
+    /*--------------------------------------------------------------------CHANGE-VUE----------------------------------*/
     setMenuSeen(listName){
         console.log('> app_store/setMenuSeen')
         let actionsList = this.setCurrentList(listName)
@@ -894,7 +896,7 @@ class AppStore {
                 {name:'tools',value: null, button: false},
                 {name:'priority',value: null, button: false},
                 {name:'duration',value: null, button: false},
-                {name:'date',value: null, button: false},
+                {name:'date',value: 'Date', button: true},
             ],
             autoTags:[time,time,time]
         }
@@ -1032,6 +1034,29 @@ class AppStore {
         list.sortAscDefault  = list.sortAsc
     }
 
+    intervalSearch(){
+        let cs = this.data.currentSearch
+        cs.value = null
+        cs.interval = true
+        cs.button = cs.toString  + ': '
+        if(cs.min)
+            cs.button += cs.min
+        cs.button += ' > '
+        if(cs.max)
+            cs.button += cs.max
+
+        this.data.currentSearch = null
+        this.tagsCompare()
+    }
+
+    intervalSearchDestroy(){
+        let cs = this.data.currentSearch
+        cs.interval = false
+        cs.button = false
+        this.data.currentSearch = null
+        this.tagsCompare()
+    }
+
     tagsEmpty() {
         console.log('> app_store/tagsEmpty')
         let array = this.getList().curentSearch.slice()
@@ -1055,12 +1080,38 @@ class AppStore {
         for (var i = 0; i < search.length; i++) {
             let tagName = search[i].name
             let value = search[i].value
+            let actionTagValue = this.getOnceActionTag(tagName,action).value
+
+            if(search[i].interval)
+                if(!this.arrayIntervalCompare(search[i],actionTagValue))
+                    return false
 
             if(value)
-                if(value !== this.getOnceActionTag(tagName,action).value)
+                if(value !== actionTagValue)
                     return false
         }
         return true
+    }
+
+    arrayIntervalCompare(searchTag,actionTagValue){
+        console.log('> app_store/arrayCompare2')
+
+        let min = searchTag.min
+        let max = searchTag.max
+
+        if(min && max)
+            if(actionTagValue >= min && actionTagValue <= max)
+                return true
+
+        if(min && !max)
+            if(actionTagValue >= min)
+                return true
+
+        if(!min && max)
+            if(actionTagValue <= max)
+                return true
+
+        return false
     }
 
     /*---------------------------------------------------------------------TAGS-SORT----------------------------------*/
@@ -1163,12 +1214,20 @@ class AppStore {
         action.dateTime.date = '20180830'
     }
 
-    /*dateEdit(tagPosition){
+    preDateEdit(){
+        console.log('> app_store/preDateEdit')
+        let t = this.data.action.dateTime.time
+
+        t ? t : this.data.action.dateTime.time = this.data.option.endOfDay
+
+    }
+
+    dateEdit(tagPosition){
         console.log('> app_store/dateEdit')
         let dt = this.data.action.dateTime
         dt.minutes = parseToMinutes(dt.date,dt.time)
-        this.tagSelected('@'+dt.minutes,tagPosition)
-    }*/
+        this.getOnceActionTag('date').value = dt.date
+    }
 
     dateTimeRefresh(){
         console.log('> app_store/dateTimeRefresh')
@@ -1197,7 +1256,7 @@ class AppStore {
         return name
     }
 
-    static guid () {
+    guid () {
         function s4() {
             return Math.floor((1 + Math.random()) * 0x10000)
                 .toString(16)

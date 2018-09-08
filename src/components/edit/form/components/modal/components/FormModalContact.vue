@@ -2,7 +2,7 @@
     <section>
         <h2 v-if="this.contact.created">{{contact.id}}</h2>
         <span>Nom</span>
-        <input v-model="contact.firstName" @change="firstNameChange"  class="form-control">
+        <input v-model="contact.firstName" class="form-control">
         <span>Prénom</span>
         <input v-model="contact.lastName"  class="form-control">
         <span>Couriel</span>
@@ -12,7 +12,7 @@
 
         <span v-if="!contact.created" >
                 <span>Identifiant</span>
-                <input v-model="contact.id" id="inputId" @keyup="setIdDefined" class="form-control">
+                <input v-model="contact.id" id="inputId" class="form-control">
         </span>
 
         <label>Inclure à la liste</label>
@@ -41,13 +41,12 @@
             return {
                 data : app_store.data,
                 checked : true,
-                idDefined : false
+                // idDefined : false
             }
         },
         computed:{
             action: function () { return this.data.action},
             contact: function () {
-                console.log(app_store.getContact())
                 return app_store.getContact()
             },
             tag:function () {
@@ -76,14 +75,14 @@
                     app_store.shortcutChange('contact',this.contact.id,this.contact.shortcut)
 
             },
-            firstNameChange: function () {
+           /* firstNameChange: function () {
                 if(!this.idDefined)
                     document.getElementById('inputId').value = this.contact.firstName;
             },
             setIdDefined : function () {
                 console.log('héhéhéhhé')
                 this.idDefined = true
-            }
+            }*/
         }
     }
 </script>

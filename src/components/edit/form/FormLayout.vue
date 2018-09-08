@@ -51,6 +51,7 @@
                 console.log('> FormLayout.vue/openFormModal')
                 console.log(tagName)
                 this.tagName = tagName
+                app_store.preDateEdit()
                 this.$refs.formModal.show()
             },
             closeFormModal: function () {

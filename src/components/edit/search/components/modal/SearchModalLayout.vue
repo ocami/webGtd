@@ -1,25 +1,21 @@
 <template>
     <section>
-        <h6>search-modal-layout</h6>
-        <search-modal-date></search-modal-date>
-        <search-modal-location></search-modal-location>
-        <search-modal-contact></search-modal-contact>
+        <search-modal-interval
+                v-if="data.currentSearch"
+                @submit="closeSearchModal"
+        ></search-modal-interval>
     </section>
 </template>
 
 <script>
 
     import app_store from '../../../../../store/app_store'
-    import SearchModalDate from './components/SearchModalDate.vue'
-    import SearchModalLocation from './components/SearchModalLocation.vue'
-    import SearchModalContact from './components/SearchModalContact.vue'
+    import SearchModalInterval from './components/SearchModalInterval.vue'
 
     export default {
         name: 'search-modal-layout',
         components : {
-            SearchModalDate,
-            SearchModalLocation,
-            SearchModalContact
+            SearchModalInterval,
         },
         data ()  {
             return {
@@ -28,8 +24,11 @@
         },
         computed:{
         },
+        props:{
+            tagName: String
+        },
         methods:{
-
+            closeSearchModal: function () {this.$emit('submit')}
         }
     }
 </script>

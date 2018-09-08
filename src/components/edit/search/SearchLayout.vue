@@ -1,8 +1,10 @@
 <template>
     <section>
-        <search-tags-select v-for="tag in tags"
-                          :key="tag.name"
-                          :tag="tag"
+        <search-tags-select 
+                v-for="tag in tags"
+                :key="tag.name"
+                :tag="tag"
+                @open-search-modal="openSearchModal"
         ></search-tags-select>
 
 
@@ -33,7 +35,9 @@
             />
         </b-form-group>
 
-        <search-modal-layout></search-modal-layout>
+        <b-modal ref="searchModal" id="form-modal" hide-footer hide-header>
+            <search-modal-layout @submit="closeSearchModal" :tagName="tagName" ></search-modal-layout>
+        </b-modal>
 
     </section>
 </template>
@@ -56,7 +60,8 @@
                 sortTagModel: app_store.getList().sortTag,
                 sortAscModel: app_store.getList().sortAsc,
                 sortTagOptions: app_store.getSortFilters(),
-                sortAscOptions: [{text:'up', value: true},{text:'down', value: false}]
+                sortAscOptions: [{text:'up', value: true},{text:'down', value: false}],
+                tagName : null
             }
         },
         computed:{
@@ -80,6 +85,15 @@
                 console.log('==> actionSearch/sortTagChange')
                 app_store.sortTagChange(event)
             },
+            openSearchModal: function (tagName) {
+                console.log('> SearchLayout.vue/openSearchModal')
+                this.tagName = tagName
+                this.$refs.searchModal.show()
+            },
+            closeSearchModal: function () {
+                console.log('> SearchLayout.vue/closeSearchModal')
+                this.$refs.searchModal.hide()
+            }
         }
     }
 </script>

@@ -7,14 +7,14 @@
 
             <option v-if="!curentSelect.value" value = 'null'  selected>-{{tag.name}}</option>
             <option v-if="curentSelect.value" value = 'null'>-{{tag.name}}</option>
-            <option v-for="option in tag.options"
-                    v-if="option.shortcut && curentSelect.value !== option.value"
-                    :value="option.value">
-                <span >{{ option.text }}</span>
-            </option>
             <option
                     v-for="option in tag.options"
                     v-if="curentSelect.value === option.value" selected
+                    :value="option.value">
+                <span >{{ option.text }}</span>
+            </option>
+            <option v-for="option in tag.options"
+                    v-if="option.shortcut && curentSelect.value !== option.value && option.value !=='@'"
                     :value="option.value">
                 <span >{{ option.text }}</span>
             </option>
@@ -61,17 +61,17 @@
 
                 let tagValue = event.target.value
 
-                isNaN(Number(tagValue)) ? tagValue : tagValue = Number(tagValue)
-
-                tagValue === 'null' ? tagValue = null : tagValue
-
-                if(tagValue === '+'){
+                if(tagValue === '+') {
                     this.$emit('open-form-modal', tagName)
-                }else{
-                    this.curentSelect.value = tagValue
-                    if(this.tag.modal === true)
-                        this.curentSelect.button = true
+                    return
                 }
+
+                isNaN(Number(tagValue)) ? tagValue : tagValue = Number(tagValue)
+                tagValue === 'null' ? tagValue = null : tagValue
+                this.curentSelect.value = tagValue
+                if(this.tag.modal === true)
+                    this.curentSelect.button = true
+
             },
             tagBtnChange: function (tagName) {
                 this.$emit('open-form-modal', tagName)
