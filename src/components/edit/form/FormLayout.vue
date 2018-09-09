@@ -45,17 +45,19 @@
         methods:{
             inputChange: function (event, isTextarea) {
                 console.log('> FormLayout.vue/inputChange')
+
                 app_store.inputChange(event, isTextarea)
             },
             openFormModal: function (tagName) {
                 console.log('> FormLayout.vue/openFormModal')
-                console.log(tagName)
+
                 this.tagName = tagName
                 app_store.preDateEdit()
                 this.$refs.formModal.show()
             },
             closeFormModal: function () {
                 console.log('> FormLayout.vue/closeFormModal')
+
                 this.$refs.formModal.hide()
             }
         }

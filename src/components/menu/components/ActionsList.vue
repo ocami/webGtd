@@ -1,9 +1,7 @@
 <template>
     <section id="actions-list">
-
-
         <div v-for="(currentAction, index) in actions.list"
-             @click="actionEdit(index,actions.name)"
+             @click="actionEdit(index)"
              :class="{'text-danger':currentAction.isActive, 'd-none':!currentAction.visible}"
              class="item-actions-list">
 
@@ -27,23 +25,18 @@
 
     export default {
         name: 'actions-list',
-        components : {
-
-        },
         data ()  {
             return {
                 data : app_store.data
             }
         },
-        computed:{
-        },
         props: {
             actions: Object
         },
         methods:{
-            actionEdit: function (index, listName) {
+            actionEdit: function (index) {
                 console.log(' ==>ActionsList.vue/actionEdit')
-                app_store.actionEdit(index, listName)
+                app_store.actionEdit(index)
             },
             switchAction: function (listName, newListName, index) {
                 console.log(' ==> ActionsList.vue/switchAction')

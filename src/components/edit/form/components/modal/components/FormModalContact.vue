@@ -41,19 +41,14 @@
             return {
                 data : app_store.data,
                 checked : true,
-                // idDefined : false
             }
         },
         computed:{
             currentAction: function () { return this.data.currentAction},
-            contact: function () {
-                return app_store.getContact()
-            },
+            contact: function () { return app_store.getContact() },
             tag:function () {
                 return this.data.tags.find(function (obj) { return obj.name === 'contact' })
             }
-        },
-        props:{
         },
         methods:{
             submit : function () {

@@ -35,22 +35,16 @@
 
     export default {
         name: 'form-tags-select',
-        components : {
-
-        },
         data ()  {
             return {
                 data : app_store.data,
-                buttonText: ''
             }
         },
         computed:{
             tags: function () { return this.data.tags},
             currentAction: function () { return this.data.currentAction},
             control: function () { return this.data.control},
-            currentSelect: function () {
-                return app_store.getOnceActionTag(this.tag.name)
-            },
+            currentSelect: function () { return app_store.getOnceActionTag(this.tag.name)},
         },
         props:{
           tag : Object
@@ -71,7 +65,6 @@
                 this.currentSelect.value = tagValue
                 if(this.tag.modal === true)
                     this.currentSelect.button = true
-
             },
             tagBtnChange: function (tagName) {
                 this.$emit('open-form-modal', tagName)

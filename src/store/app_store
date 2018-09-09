@@ -735,6 +735,12 @@ class AppStore {
 
     /*------------------------------------------------------------------!!!CURRENT!!!!---------------------------------*/
 
+    saveTest(){
+        var json = JSON.stringify(this.data.actions)
+        var fs = require('fs');
+        fs.writeFile('../data/myjsonfile.json', json, 'utf8', callback););
+    }
+
     /*--------------------------------------------------------------------USERDATA------------------------------------*/
     getLocation(){
         console.log('> app_store/getLocation')
@@ -775,7 +781,7 @@ class AppStore {
         let a = this.data.actions
 
         if(!listName)
-            listName = this.data.control.currentList
+            return this.data.currentList
 
         switch (listName){
             case 'receipt':
@@ -807,33 +813,33 @@ class AppStore {
         return selectTag.options.find(function (obj) { return obj.value === optionValue })
     }
 
-    getOnceActionTag(tagName, currentAction){
-        if(!currentAction)
-            currentAction = this.data.currentAction
+    getOnceActionTag(tagName, action){
+        if(!action)
+            action = this.data.currentAction
 
-        return currentAction.tags.find(function (obj) { return obj.name === tagName })
+        return action.tags.find(function (obj) { return obj.name === tagName })
     }
 
     getOnceSearchTag(tagName){
-        return this.getList().currentSearch.find(function (obj) { return obj.name === tagName })
+        return this.data.currentList.currentSearch.find(function (obj) { return obj.name === tagName })
         // return this.data.control.tagsSearch.find(function (obj) { return obj.name === tagName })
     }
-
 
     /*--------------------------------------------------------------------CHANGE-VUE----------------------------------*/
     setMenuSeen(listName){
         console.log('> app_store/setMenuSeen')
-        let actionsList = this.setCurrentList(listName)
+        this.data.currentList = this.getList(listName)
+        let cl = this.data.currentList
 
         this.data.control.menuSeen = listName
 
-        if(actionsList.list.length > 0){
-            this.data.control.editSeen = 'edit'
-            this.setCurrentAction(this.getList(listName).list[0])
-        }
-        else{
+        if(cl.list.length <= 0){
             this.data.control.editSeen = 'empty'
+            return
         }
+
+        this.data.control.editSeen = 'edit'
+        this.setCurrentAction(cl.list[0])
     }
 
     actionAddSeen () {
@@ -842,7 +848,7 @@ class AppStore {
         this.data.currentAction.isActive = false
         this.data.control.editSeen = 'edit'
         this.data.control.actionCreated = true
-        this.data.currentAction = this.newAction(this.getList().name)
+        this.data.currentAction = this.newAction(this.data.currentList.name)
     }
 
     /*---------------------------------------------------------------------ACTIONS------------------------------------*/
@@ -857,21 +863,16 @@ class AppStore {
         this.data.actions.receipt.list.push(currentAction)
     }
 
-    actionEdit (index, status){
+    actionEdit (index){
         console.log('> app_store/actionEdit')
-        let list = this.getList(status).list
-        let currentAction = this.data.currentAction
-        currentAction.isActive = false
-        if (list.length > 0){
-            currentAction = list[index]
-            this.data.control.editSeen = 'edit'
-            currentAction.isActive = true
-            this.data.currentAction = currentAction
-            this.data.control.currentIndex = index
-        }
-        else {
-            this.data.control.editSeen = 'empty'
-        }
+        let list = this.data.currentList.list
+
+        this.data.currentAction.isActive = false
+        this.data.currentAction = list[index]
+        this.data.currentAction.isActive = true
+
+        this.data.control.currentIndex = index
+        this.data.control.editSeen = 'edit'
     }
 
     inputChange (event, isTextarea) {
@@ -913,7 +914,7 @@ class AppStore {
         let l = list.length;
         if(l){
             index < l ? i = index : i = index - 1;
-            this.actionEdit(i,listName)
+            this.actionEdit(i)
         }else {
             this.data.control.editSeen = 'empty'
         }
@@ -922,7 +923,7 @@ class AppStore {
     actionAdd () {
         console.log('> app_store/actionAdd')
 
-        this.data.control.currentIndex = this.getList().list.push(this.data.currentAction) -1
+        this.data.control.currentIndex = this.data.currentList.list.push(this.data.currentAction) -1
         this.data.control.actionCreated = false
         this.data.currentAction.isActive = true
     }
@@ -1034,22 +1035,22 @@ class AppStore {
         }
         this.sortByTag('autoTag-0',true)
 
-        this.actionEdit(0,this.data.control.currentList)
+        this.actionEdit(0)
     }
 
     searchAuto(){
         console.log('> app_store/searchAuto')
 
-        let currentList = this.getList()
-        let list = currentList.list
+        let cl = this.data.currentList
+        let list = cl.list
 
-        this.tagsCompare(currentList.defaultSearch)
-        this.sortByTag(currentList.sortTagDefault,currentList.sortAscDefault)
+        this.tagsCompare(cl.defaultSearch)
+        this.sortByTag(cl.sortTagDefault,cl.sortAscDefault)
 
         //editSenn empty if no result
         for (var i = 0; i < list.length; i++) {
             if(list[i].visible){
-                this.actionEdit(i,this.data.control.currentList)
+                this.actionEdit(i)
                 return
             }
             this.data.control.editSeen = 'empty'
@@ -1058,6 +1059,7 @@ class AppStore {
 
     searchEdit(){
         console.log('> app_store/searchEdit')
+        this.tagsCompare()
         this.data.control.editSeen = 'search'
         this.data.currentAction.isActive = false
     }
@@ -1065,26 +1067,36 @@ class AppStore {
     tagsCompare(search){
         console.log('> app_store/tagsCompare')
 
-        let list = this.getList()
-        let actions = list.list.slice()
+        let cl = this.data.currentList
+        let actions = cl.list.slice()
 
         if(!search)
-            search = list.currentSearch
+            search = cl.currentSearch
 
-        for (var i = 0; i < actions.length ; i++ )
+        for (let i = 0; i < actions.length ; i++ )
             actions[i].visible = this.arrayCompare(actions[i],search)
 
-        list.list = actions;
+        cl.list = actions;
     }
 
     setDefaultSearch(){
         console.log('> app_store/setDefaultSearch')
-        let list = this.getList()
-        for (let i=0;i<list.currentSearch.length;i++)
-            list.defaultSearch[i].value = list.currentSearch[i].value
+        let cl = this.data.currentList
+        let clCs = cl.currentSearch
+        let clDs = cl.defaultSearch
+/*        for (let i=0;i<list.currentSearch.length;i++)
+            list.defaultSearch[i].value = list.currentSearch[i].value*/
 
-        list.sortTagDefault  = list.sortTag
-        list.sortAscDefault  = list.sortAsc
+        for (let i=0;i<clCs.length;i++){
+                clDs[i].name = clCs[i].name ,
+                clDs[i].value = clCs[i].value
+                clDs[i].min = clCs[i].min
+                clDs[i].max = clCs[i].max
+                clDs[i].interval = clCs[i].interval
+        }
+
+        cl.sortTagDefault  = cl.sortTag
+        cl.sortAscDefault  = cl.sortAsc
     }
 
     intervalSearch(){
@@ -1392,7 +1404,6 @@ class AppStore {
 
 export default new AppStore();
 
-
 /*-------------------------------OBJECTS---------------------------*/
 function Location() {
     this.id = ""
@@ -1437,11 +1448,3 @@ function todayDate() {
     return today;
 }
 
-function clone(obj) {
-    if (null == obj || "object" != typeof obj) return obj;
-    var copy = obj.constructor();
-    for (var attr in obj) {
-        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
-    }
-    return copy;
-}

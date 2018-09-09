@@ -57,8 +57,8 @@
         data ()  {
             return {
                 data: app_store.data,
-                sortTagModel: app_store.getList().sortTag,
-                sortAscModel: app_store.getList().sortAsc,
+                sortTagModel: app_store.data.currentList.sortTag,
+                sortAscModel: app_store.data.currentList.sortAsc,
                 sortTagOptions: app_store.getSortFilters(),
                 sortAscOptions: [{text:'up', value: true},{text:'down', value: false}],
                 tagName : null

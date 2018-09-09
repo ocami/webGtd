@@ -39,14 +39,14 @@
         },
         data ()  {
             return {
-                data : app_store.data
+                data : app_store.data,
+                currentSelect : app_store.getOnceSearchTag(this.tag.name)
             }
         },
         props:{
             tag : Object
         },
         computed:{
-            currentSelect: function () {return app_store.getOnceSearchTag(this.tag.name)},
         },
         methods:{
             tagSelected: function (tagName, event) {

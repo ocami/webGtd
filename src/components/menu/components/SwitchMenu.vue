@@ -26,23 +26,23 @@
         name: 'switch-menu',
         methods:{
             menuSeenChange: function (listName) {
-                console.log('> SwitchMenuSeen.vue/menuSeenChange')
+                console.log('> SwitchMenu/menuSeenChange')
                 app_store.setMenuSeen(listName)
             },
             searchAll: function () {
-                console.log('> SwitchMenuSeen.vue/searchAll')
+                console.log('> SwitchMenu.vue/searchAll')
                 app_store.searchAll()
             },
             searchAuto: function () {
-                console.log('> SwitchMenuSeen.vue/searchAuto')
+                console.log('> SwitchMenu.vue/searchAuto')
                 app_store.searchAuto()
             },
             searchEdit: function () {
-                console.log('> SwitchMenuSeen.vue/searchEdit')
+                console.log('> SwitchMenu.vue/searchEdit')
                 app_store.searchEdit()
             },
             actionAdd: function () {
-                console.log('> SwitchMenuSeen.vue/addAction')
+                console.log('> SwitchMenuS.vue/addAction')
                 app_store.actionAddSeen()
             }
         }

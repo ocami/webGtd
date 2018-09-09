@@ -1,6 +1,6 @@
 <template>
     <section>
-        <h2>{{currentList}}</h2>
+        <h2>{{listName}}</h2>
         <form-layout v-if="seen === 'edit'"></form-layout>
         <SearchLayout v-if="seen === 'search'"></SearchLayout>
         <empty v-if="seen === 'empty'"></empty>
@@ -30,8 +30,8 @@
             seen: function () {
                 return this.data.control.editSeen
             },
-            currentList: function () {
-                return app_store.getList().toString
+            listName: function () {
+                return this.data.currentList.name
             }
         },
         methods:{

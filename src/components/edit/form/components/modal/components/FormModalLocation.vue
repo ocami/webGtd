@@ -63,7 +63,6 @@
         },
         computed:{
             currentAction: function () { return this.data.currentAction},
-            myLocation: function () { return this.data.userData.locations},
             location: function () {
                 console.log(app_store.getLocation())
                 return app_store.getLocation()
@@ -74,8 +73,6 @@
             tag:function () {
                 return this.data.tags.find(function (obj) { return obj.name === 'location' })
             }
-        },
-        props:{
         },
         methods:{
             submit : function () {
@@ -106,11 +103,6 @@
                     app_store.shortcutChange('location',this.location.id,this.location.shortcut)
 
             },
-            /*tagSelected: function (event) {
-                let actionTag = app_store.getOnceActionTag('location')
-                actionTag.value = event.target.value
-                this.location = app_store.getLocation()
-            }*/
         }
     }
 </script>

@@ -8,7 +8,6 @@
             <b-button variant="success" @click="speedAdd(true)">Terminer</b-button>
             <b-button variant="danger" @click="close">Annuler</b-button>
         </b-modal>
-        <!-- btutton + modal -->
     </section>
 </template>
 

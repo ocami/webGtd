@@ -22,8 +22,6 @@
                 data : app_store.data
             }
         },
-        computed:{
-        },
         props:{
             tagName: String
         },

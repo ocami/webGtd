@@ -1,7 +1,10 @@
 <template>
     <section>
-        <p>{{this.data.currentSearch}}</p>
-        <pre>{{currentSearch}}</pre>
+        <p>{{this.data.currentList.name}}</p>
+        <p>{{this.data.currentAction.name}}</p>
+        <pre>{{this.data.currentList.currentSearch[3]}}</pre>
+        <pre>{{this.data.currentList.defaultSearch[3]}}</pre>
+        <button @="saveTest">Save</button>
     </section>
 </template>
 
@@ -35,7 +38,9 @@
 
         },
         methods:{
-
+            saveTest: function () {
+                app_store.saveTest()
+            }
         }
     }
 </script>
