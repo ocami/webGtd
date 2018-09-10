@@ -736,9 +736,8 @@ class AppStore {
     /*------------------------------------------------------------------!!!CURRENT!!!!---------------------------------*/
 
     saveTest(){
-        var json = JSON.stringify(this.data.actions)
-        var fs = require('fs');
-        fs.writeFile('../data/myjsonfile.json', json, 'utf8', callback););
+        console.log('> app_store/saveTest')
+
     }
 
     /*--------------------------------------------------------------------USERDATA------------------------------------*/
