@@ -1,9 +1,12 @@
+import db from "../repository/fireBase_repository"
+var Promise = require('es6-promise').Promise;
+
 class AppStore {
-    constructor () {
+    constructor() {
         this.userData = {
-            locations : [
+            locations: [
                 {
-                    id:"Rennes",
+                    id: "Rennes",
                     x: 1111,
                     y: 2222,
                     city: "Rennes",
@@ -11,7 +14,7 @@ class AppStore {
                     shortcut: true
                 },
                 {
-                    id:"Jardin",
+                    id: "Jardin",
                     x: null,
                     y: null,
                     city: null,
@@ -20,7 +23,7 @@ class AppStore {
 
                 },
                 {
-                    id:"Bureau",
+                    id: "Bureau",
                     x: null,
                     y: null,
                     city: null,
@@ -28,9 +31,9 @@ class AppStore {
                     shortcut: false
                 },
             ],
-            contacts : [
+            contacts: [
                 {
-                    id:"Alexandre",
+                    id: "Alexandre",
                     firstName: 'Le Cam',
                     lastName: 'Alexandre',
                     mail: "ocami@contact.fr",
@@ -39,7 +42,7 @@ class AppStore {
                     shortcut: true
                 },
                 {
-                    id:"Toto",
+                    id: "Toto",
                     firstName: 'Toto',
                     lastName: 'Toto',
                     mail: "toto@contact.fr",
@@ -49,7 +52,7 @@ class AppStore {
 
                 },
                 {
-                    id:"Jojo",
+                    id: "Jojo",
                     firstName: 'Jojo',
                     lastName: 'Jojo',
                     mail: "jojo@contact.fr",
@@ -60,518 +63,564 @@ class AppStore {
             ]
         }
         this.receipt = {
-            index:0,
+            index: 0,
             name: 'receipt',
             toString: 'Réception',
             toSwitch: 'todo',
-            acceptSwitch: {todo: 'true', done:true, incubation:true, destroy:true},
-            defaultSearch:[
-                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
-                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
-                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
-                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
-                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
-                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
+            acceptSwitch: {todo: 'true', done: true, incubation: true, destroy: true},
+            defaultSearch: [
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
             ],
             currentSearch: [
-                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
-                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
-                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
-                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
-                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
-                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
             ],
             sortAsc: true,
             sortTag: 'autoTag-0',
             sortAscDefault: true,
             sortTagDefault: 'autoTag-0',
-            list: [
-                {
-                    id: 0,
-                    name: 'receipt-popo-0',
-                    content: 'receipt content popo',
-                    dateTime : {
-                        date: '30/09/2018',
-                        time: '15:35',
-                        minutes : '',
-                        expiry: true,
-                        toString: ''
-                    },
-                    status: 'receipt',
-                    isActive: false,
-                    visible: true,
-                    tags:[
-                        {name:'location',value:'Rennes', button: true},
-                        {name:'contact',value:'Alexandre', button: true},
-                        {name:'tools',value:'Ordinateur', button: false},
-                        {name:'priority',value:3, button: false},
-                        {name:'duration',value:10, button: false},
-                        {name:'date',value: '30/09/2018', button: true},
-                    ],
-                    autoTags:[1535383467157,1535383467157,1535383467157]
-                },
-                {
-                    id: 1,
-                    name: 'receipt-toto-1',
-                    content: 'receipt content lolo',
-                    dateTime : {
-                        date: null,
-                        time: null,
-                        minutes : null,
-                        expiry: true,
-                        toString: null
-                    },
-                    status: 'receipt',
-                    isActive: false,
-                    visible: true,
-                    tags:[
-                        {name:'location',value: 'Jardin', button: true},
-                        {name:'contact',value: 'Jojo', button: true},
-                        {name:'tools',value: 'Tel', button: false},
-                        {name:'priority',value: 2, button: false},
-                        {name:'duration',value: null, button: false},
-                        {name:'date',value: null, button: false},
-                    ],
-                    autoTags:[1535383467157,1535383467157,1535383467157],
-                },
-                {
-                    id: 2,
-                    name: 'receipt-lolo-2',
-                    content: 'tod ocontent popo',
-                    dateTime : {
-                        date: null,
-                        time: null,
-                        minutes : null,
-                        expiry: true,
-                        toString: null
-                    },
-                    status: 'receipt',
-                    isActive: false,
-                    visible: true,
-                    tags:[
-                        {name:'location',value: 'Bureau', button: true},
-                        {name:'contact',value: null, button: false},
-                        {name:'tools',value: 'Ordinateur', button: false},
-                        {name:'priority',value: 1, button: false},
-                        {name:'duration',value: 30, button: false},
-                        {name:'date',value: 'Date', button: true},
-                    ],
-                    autoTags:[1535383467157,1535383467157,1535383467157]
-                },
-            ]
+            list: []
         }
         this.todo = {
-            index:1,
+            index: 1,
             name: 'todo',
             toString: 'A faire',
             toSwitch: 'done',
             acceptSwitch: {todo: false, done: true, incubation: true, destroy: true},
-            defaultSearch:[
-                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
-                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
-                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
-                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
-                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
-                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
+            defaultSearch: [
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
             ],
             currentSearch: [
-                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
-                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
-                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
-                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
-                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
-                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
             ],
             sortAsc: true,
             sortTag: 'autoTag-0',
             sortAscDefault: true,
             sortTagDefault: 'autoTag-0',
-            list: [
-                {
-                    id: 0,
-                    name: 'todo-popo-0',
-                    content: 'todo content popo',
-                    dateTime : {
-                        date: '30/09/2018',
-                        time: '15:35',
-                        minutes : '',
-                        expiry: true,
-                        toString: ''
-                    },
-                    status: 'todo',
-                    isActive: false,
-                    visible: true,
-                    tags:[
-                        {name:'location',value:'Rennes', button: true},
-                        {name:'contact',value:'Alexandre', button: true},
-                        {name:'tools',value:'Ordinateur', button: false},
-                        {name:'priority',value:3, button: false},
-                        {name:'duration',value:10, button: false},
-                        {name:'date',value: '30/09/2018', button: true},
-                    ],
-                    autoTags:[1535383467157,1535383467157,1535383467157]
-                    },
-                {
-                    id: 1,
-                    name: 'todo-toto-1',
-                    content: 'todo content lolo',
-                    dateTime : {
-                        date: null,
-                        time: null,
-                        minutes : null,
-                        expiry: true,
-                        toString: null
-                    },
-                    status: 'todo',
-                    isActive: false,
-                    visible: true,
-                    tags:[
-                        {name:'location',value: 'Jardin', button: true},
-                        {name:'contact',value: 'Jojo', button: true},
-                        {name:'tools',value: 'Tel', button: false},
-                        {name:'priority',value: 2, button: false},
-                        {name:'duration',value: null, button: false},
-                        {name:'date',value: null, button: false},
-                    ],
-                    autoTags:[1535383467157,1535383467157,1535383467157],
-                },
-                {
-                    id: 2,
-                    name: 'todo-lolo-2',
-                    content: 'tod ocontent popo',
-                    dateTime : {
-                        date: null,
-                        time: null,
-                        minutes : null,
-                        expiry: true,
-                        toString: null
-                    },
-                    status: 'todo',
-                    isActive: false,
-                    visible: true,
-                    tags:[
-                        {name:'location',value: 'Bureau', button: true},
-                        {name:'contact',value: null, button: false},
-                        {name:'tools',value: 'Ordinateur', button: false},
-                        {name:'priority',value: 1, button: false},
-                        {name:'duration',value: 30, button: false},
-                        {name:'date',value: 'Date', button: true},
-                    ],
-                    autoTags:[1535383467157,1535383467157,1535383467157]
-                },
-            ]
+            list: []
         }
         this.done = {
-            index:2,
+            index: 2,
             name: 'done',
             toString: 'Fait',
             toSwitch: 'destroy',
             acceptSwitch: {todo: true, done: false, incubation: false, destroy: true},
-            defaultSearch:[
-                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
-                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
-                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
-                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
-                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
-                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
+            defaultSearch: [
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
             ],
             currentSearch: [
-                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
-                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
-                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
-                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
-                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
-                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
             ],
             sortAsc: true,
             sortTag: 'autoTag-0',
             sortAscDefault: true,
             sortTagDefault: 'autoTag-0',
-            list: [
-                {
-                    id: 0,
-                    name: 'done-popo-0',
-                    content: 'done content popo',
-                    dateTime : {
-                        date: '30/09/2018',
-                        time: '15:35',
-                        minutes : '',
-                        expiry: true,
-                        toString: ''
-                    },
-                    status: 'done',
-                    isActive: false,
-                    visible: true,
-                    tags:[
-                        {name:'location',value:'Rennes', button: true},
-                        {name:'contact',value:'Alexandre', button: true},
-                        {name:'tools',value:'Ordinateur', button: false},
-                        {name:'priority',value:3, button: false},
-                        {name:'duration',value:10, button: false},
-                        {name:'date',value: '30/09/2018', button: true},
-                    ],
-                    autoTags:[1535383467157,1535383467157,1535383467157]
-                },
-                {
-                    id: 1,
-                    name: 'done-toto-1',
-                    content: 'done content lolo',
-                    dateTime : {
-                        date: null,
-                        time: null,
-                        minutes : null,
-                        expiry: true,
-                        toString: null
-                    },
-                    status: 'done',
-                    isActive: false,
-                    visible: true,
-                    tags:[
-                        {name:'location',value: 'Jardin', button: true},
-                        {name:'contact',value: 'Jojo', button: true},
-                        {name:'tools',value: 'Tel', button: false},
-                        {name:'priority',value: 2, button: false},
-                        {name:'duration',value: null, button: false},
-                        {name:'date',value: null, button: false},
-                    ],
-                    autoTags:[1535383467157,1535383467157,1535383467157],
-                },
-                {
-                    id: 2,
-                    name: 'done-lolo-2',
-                    content: 'tod ocontent popo',
-                    dateTime : {
-                        date: null,
-                        time: null,
-                        minutes : null,
-                        expiry: true,
-                        toString: null
-                    },
-                    status: 'done',
-                    isActive: false,
-                    visible: true,
-                    tags:[
-                        {name:'location',value: 'Bureau', button: true},
-                        {name:'contact',value: null, button: false},
-                        {name:'tools',value: 'Ordinateur', button: false},
-                        {name:'priority',value: 1, button: false},
-                        {name:'duration',value: 30, button: false},
-                        {name:'date',value: 'Date', button: true},
-                    ],
-                    autoTags:[1535383467157,1535383467157,1535383467157]
-                },
-            ]
+            list: []
         }
         this.incubation = {
-            index:3,
+            index: 3,
             name: 'incubation',
             toString: 'Incubation',
             toSwitch: 'todo',
             acceptSwitch: {todo: true, done: false, incubation: false, destroy: true},
-            defaultSearch:[
-                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
-                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
-                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
-                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
-                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
-                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
+            defaultSearch: [
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
             ],
             currentSearch: [
-                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
-                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
-                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
-                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
-                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
-                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
             ],
             sortAsc: true,
             sortTag: 'autoTag-0',
             sortAscDefault: true,
             sortTagDefault: 'autoTag-0',
-            list: [
-                {
-                    id: 0,
-                    name: 'incubation-popo-0',
-                    content: 'incubation content popo',
-                    dateTime : {
-                        date: '30/09/2018',
-                        time: '15:35',
-                        minutes : '',
-                        expiry: true,
-                        toString: ''
-                    },
-                    status: 'incubation',
-                    isActive: false,
-                    visible: true,
-                    tags:[
-                        {name:'location',value:'Rennes', button: true},
-                        {name:'contact',value:'Alexandre', button: true},
-                        {name:'tools',value:'Ordinateur', button: false},
-                        {name:'priority',value:3, button: false},
-                        {name:'duration',value:10, button: false},
-                        {name:'date',value: '30/09/2018', button: true},
-                    ],
-                    autoTags:[1535383467157,1535383467157,1535383467157]
-                },
-                {
-                    id: 1,
-                    name: 'incubation-toto-1',
-                    content: 'incubation content lolo',
-                    dateTime : {
-                        date: null,
-                        time: null,
-                        minutes : null,
-                        expiry: true,
-                        toString: null
-                    },
-                    status: 'incubation',
-                    isActive: false,
-                    visible: true,
-                    tags:[
-                        {name:'location',value: 'Jardin', button: true},
-                        {name:'contact',value: 'Jojo', button: true},
-                        {name:'tools',value: 'Tel', button: false},
-                        {name:'priority',value: 2, button: false},
-                        {name:'duration',value: null, button: false},
-                        {name:'date',value: null, button: false},
-                    ],
-                    autoTags:[1535383467157,1535383467157,1535383467157],
-                },
-                {
-                    id: 2,
-                    name: 'incubation-lolo-2',
-                    content: 'tod ocontent popo',
-                    dateTime : {
-                        date: null,
-                        time: null,
-                        minutes : null,
-                        expiry: true,
-                        toString: null
-                    },
-                    status: 'incubation',
-                    isActive: false,
-                    visible: true,
-                    tags:[
-                        {name:'location',value: 'Bureau', button: true},
-                        {name:'contact',value: null, button: false},
-                        {name:'tools',value: 'Ordinateur', button: false},
-                        {name:'priority',value: 1, button: false},
-                        {name:'duration',value: 30, button: false},
-                        {name:'date',value: 'Date', button: true},
-                    ],
-                    autoTags:[1535383467157,1535383467157,1535383467157]
-                },
-            ]
+            list: []
         }
         this.destroy = {
-            index:4,
+            index: 4,
             name: 'destroy',
             toString: 'Corbeille',
             toSwitch: 'todo',
             acceptSwitch: {todo: true, done: false, incubation: true, destroy: false},
-            defaultSearch:[
-                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
-                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
-                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
-                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
-                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
-                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
+            defaultSearch: [
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
             ],
             currentSearch: [
-                {name:'location',value:null, toString: 'Location', min: null, max: null, interval: false,  button: false},
-                {name:'contact',value:null, toString: 'Contact', min: null, max: null, interval: false,  button: false},
-                {name:'tools',value: null, toString: 'Outils', min: null, max:null, interval: false,  button: false},
-                {name:'priority',value:null, toString: 'Priorité', min: null, max: null, interval: false, button: false},
-                {name:'duration',value:null, toString: 'Durée', min: null, max: null, interval: false,  button: false},
-                {name:'date',value:null, toString: 'Date', min: null, max: null, interval: false,  button: false},
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
             ],
             sortAsc: true,
             sortTag: 'autoTag-0',
             sortAscDefault: true,
             sortTagDefault: 'autoTag-0',
-            list: [
-                {
-                    id: 0,
-                    name: 'destroy-popo-0',
-                    content: 'destroy content popo',
-                    dateTime : {
-                        date: '30/09/2018',
-                        time: '15:35',
-                        minutes : '',
-                        expiry: true,
-                        toString: ''
-                    },
-                    status: 'destroy',
-                    isActive: false,
-                    visible: true,
-                    tags:[
-                        {name:'location',value:'Rennes', button: true},
-                        {name:'contact',value:'Alexandre', button: true},
-                        {name:'tools',value:'Ordinateur', button: false},
-                        {name:'priority',value:3, button: false},
-                        {name:'duration',value:10, button: false},
-                        {name:'date',value: '30/09/2018', button: true},
-                    ],
-                    autoTags:[1535383467157,1535383467157,1535383467157]
-                },
-                {
-                    id: 1,
-                    name: 'destroy-toto-1',
-                    content: 'destroy content lolo',
-                    dateTime : {
-                        date: null,
-                        time: null,
-                        minutes : null,
-                        expiry: true,
-                        toString: null
-                    },
-                    status: 'destroy',
-                    isActive: false,
-                    visible: true,
-                    tags:[
-                        {name:'location',value: 'Jardin', button: true},
-                        {name:'contact',value: 'Jojo', button: true},
-                        {name:'tools',value: 'Tel', button: false},
-                        {name:'priority',value: 2, button: false},
-                        {name:'duration',value: null, button: false},
-                        {name:'date',value: null, button: false},
-                    ],
-                    autoTags:[1535383467157,1535383467157,1535383467157],
-                },
-                {
-                    id: 2,
-                    name: 'destroy-lolo-2',
-                    content: 'tod ocontent popo',
-                    dateTime : {
-                        date: null,
-                        time: null,
-                        minutes : null,
-                        expiry: true,
-                        toString: null
-                    },
-                    status: 'destroy',
-                    isActive: false,
-                    visible: true,
-                    tags:[
-                        {name:'location',value: 'Bureau', button: true},
-                        {name:'contact',value: null, button: false},
-                        {name:'tools',value: 'Ordinateur', button: false},
-                        {name:'priority',value: 1, button: false},
-                        {name:'duration',value: 30, button: false},
-                        {name:'date',value: 'Date', button: true},
-                    ],
-                    autoTags:[1535383467157,1535383467157,1535383467157]
-                },
-            ]
+            list: []
         }
         this.data = {
             currentAction: this.todo.list[0],
             currentList: this.todo,
             currentSearch: null,
+            currentLocation: 'currentLocation',
             userData: this.userData,
             option: {
-              endOfDay : '18:00',
-              endOfWeek : 'friday'
+                endOfDay: '18:00',
+                endOfWeek: 'friday'
             },
             actions: {
                 receipt: this.receipt,
@@ -579,9 +628,9 @@ class AppStore {
                 done: this.done,
                 incubation: this.incubation,
                 destroy: this.destroy,
-                tags:[]
+                tags: []
             },
-            control:{
+            control: {
                 editSeen: 'todoEdit',
                 menuSeen: 'todo',
                 tagModalSeen: false,
@@ -589,16 +638,25 @@ class AppStore {
                 actionChange: false,
                 currentIndex: 0,
                 currentList: 'todo',
-                tagsSearch:[
-                    {name:'location',value:null, button: false},
-                    {name:'contact',value:'Michel', button: true},
-                    {name:'tools',value:'Ordinateur', button: false},
-                    {name:'priority',value:1, button: false},
-                    {name:'duration',value:10, button: false},
-                    {name:'date',value:null, button: false},
+                tagsSearch: [
+                    {name: 'location', value: null, button: false},
+                    {name: 'contact', value: 'Michel', button: true},
+                    {name: 'tools', value: 'Ordinateur', button: false},
+                    {name: 'priority', value: 1, button: false},
+                    {name: 'duration', value: 10, button: false},
+                    {name: 'date', value: null, button: false},
                 ],
             },
-            tags:[
+            tags: [
+                {
+                    name: 'project',
+                    toString: 'project',
+                    selected: '',
+                    modal: false,
+                    options: [
+                        {text: 'webGtd', value: 'webGtd', shortcut: true},
+                    ]
+                },
                 {
                     name: 'location',
                     toString: 'Localisation',
@@ -644,7 +702,7 @@ class AppStore {
                         {text: '3', value: 3, shortcut: true},
                         {text: '@', value: '@', shortcut: true}
                     ]
-                 },
+                },
                 {
                     name: 'duration',
                     toString: 'Durée',
@@ -677,26 +735,26 @@ class AppStore {
                     ]
                 },
             ],
-            autoTags:{
-                createOn:{
-                    position:0,
+            autoTags: {
+                createOn: {
+                    position: 0,
                     name: 'createOn',
                     toString: 'Création',
                 },
-                updateOn:{
-                    position:1,
+                updateOn: {
+                    position: 1,
                     name: 'updateOn',
                     toString: 'Modification',
                 },
-                inListOn:{
-                    position:2,
+                inListOn: {
+                    position: 2,
                     name: 'inListOn',
                     toString: 'inListOn',
                 }
             },
-            date:{
-                expiryDate:{
-                    position:5,
+            date: {
+                expiryDate: {
+                    position: 5,
                     name: 'expiryDate',
                     toString: 'Date',
                     selected: '',
@@ -720,8 +778,8 @@ class AppStore {
                         {text: '+', value: '+'},
                     ]
                 },
-                expiryTime:{
-                    position:6,
+                expiryTime: {
+                    position: 6,
                     name: 'expiryTime',
                     toString: 'Heure',
                     selected: '',
@@ -729,46 +787,82 @@ class AppStore {
                         {text: '+', value: 'Tel'},
                     ]
                 },
-            }
+            },
+            test: 'test'
         }
+        this.ca = this.data.currentAction
+        this.cl = this.data.currentList
+    }
+
+    init(){
+        console.log('> app_store/init')
+        this.data.currentList = this.data.actions.todo
+        this.data.control.editSeen = 'hello'
+        this.data.currentAction = this.newAction('todo')
+        db.actionsImport()
     }
 
     /*------------------------------------------------------------------!!!CURRENT!!!!---------------------------------*/
 
-    saveTest(){
-        console.log('> app_store/saveTest')
+    addContact() {
+        console.log('> app_store/addContact')
 
+        let contact = new Contact
+        contact.id = 'rennes'
+        contact.firstName = 'LE CAM'
+        contact.lastName = 'alexandre'
+        contact.shortcut = true
+        contact.created = true
+        contact.tel = '1234'
+
+        db.addContact(contact)
     }
+
+    updateContact() {
+        console.log('> app_store/updateContact')
+        db.updateContact()
+    }
+
+    getContactFB(){
+        console.log('> app_store/getContactFB')
+        let id = 'rennes'
+        db.getContactFB(id)
+    }
+
 
     /*--------------------------------------------------------------------USERDATA------------------------------------*/
-    getLocation(){
+    getLocation() {
         console.log('> app_store/getLocation')
         let actionLocation = this.getOnceActionTag('location')
-        if(actionLocation.value === null)
+        if (!actionLocation.value)
             return new Location()
 
-        return this.data.userData.locations.find(function (obj) { return obj.id === actionLocation.value })
+        return this.data.userData.locations.find(function (obj) {
+            return obj.id === actionLocation.value
+        })
     }
 
-    getContact(){
+    getContact() {
         console.log('> app_store/getContact')
         let actionContact = this.getOnceActionTag('contact')
-        if(actionContact.value === null)
+        if (actionContact.value === null)
             return new Contact()
 
-        return this.data.userData.contacts.find(function (obj) { return obj.id === actionContact.value })
+        return this.data.userData.contacts.find(function (obj) {
+            return obj.id === actionContact.value
+        })
     }
 
     /*---------------------------------------------------------------------SETTER-------------------------------------*/
 
-    setCurrentAction(currentAction){
+    setCurrentAction(currentAction) {
         console.log('> app_store/setCurrentAction')
         this.data.currentAction.isActive = false
         this.data.currentAction = currentAction
         this.data.currentAction.isActive = true
     }
 
-    setCurrentList(listName){
+    setCurrentList(listName) {
         console.log('> app_store/setCurrentList')
         this.data.control.currentList = listName
         return this.getList()
@@ -779,10 +873,10 @@ class AppStore {
     getList(listName) {
         let a = this.data.actions
 
-        if(!listName)
+        if (!listName)
             return this.data.currentList
 
-        switch (listName){
+        switch (listName) {
             case 'receipt':
                 return a.receipt;
 
@@ -803,36 +897,44 @@ class AppStore {
         }
     }
 
-    getOnceSelectTag(tagName){
-        return this.data.tags.find(function (obj) { return obj.name === tagName })
+    getOnceSelectTag(tagName) {
+        return this.data.tags.find(function (obj) {
+            return obj.name === tagName
+        })
     }
 
-    getOnceSelectTagOption(tagName, optionValue){
+    getOnceSelectTagOption(tagName, optionValue) {
         let selectTag = this.getOnceSelectTag(tagName)
-        return selectTag.options.find(function (obj) { return obj.value === optionValue })
+        return selectTag.options.find(function (obj) {
+            return obj.value === optionValue
+        })
     }
 
-    getOnceActionTag(tagName, action){
-        if(!action)
+    getOnceActionTag(tagName, action) {
+        if (!action)
             action = this.data.currentAction
 
-        return action.tags.find(function (obj) { return obj.name === tagName })
+        return action.tags.find(function (obj) {
+            return obj.name === tagName
+        })
     }
 
-    getOnceSearchTag(tagName){
-        return this.data.currentList.currentSearch.find(function (obj) { return obj.name === tagName })
+    getOnceSearchTag(tagName) {
+        return this.data.currentList.currentSearch.find(function (obj) {
+            return obj.name === tagName
+        })
         // return this.data.control.tagsSearch.find(function (obj) { return obj.name === tagName })
     }
 
     /*--------------------------------------------------------------------CHANGE-VUE----------------------------------*/
-    setMenuSeen(listName){
+    setMenuSeen(listName) {
         console.log('> app_store/setMenuSeen')
         this.data.currentList = this.getList(listName)
         let cl = this.data.currentList
 
         this.data.control.menuSeen = listName
 
-        if(cl.list.length <= 0){
+        if (cl.list.length <= 0) {
             this.data.control.editSeen = 'empty'
             return
         }
@@ -841,7 +943,7 @@ class AppStore {
         this.setCurrentAction(cl.list[0])
     }
 
-    actionAddSeen () {
+    actionAddSeen() {
         console.log('> app_store/actionAddSeen')
 
         this.data.currentAction.isActive = false
@@ -855,14 +957,15 @@ class AppStore {
         console.log('> app_store/speedAdd')
 
         let name = AppStore.generateName(content)
-        let currentAction =  this.newAction('receipt')
-        currentAction.name = name
-        currentAction.content = content
+        let ca = this.newAction('receipt')
+        ca.name = name
+        ca.content = content
 
-        this.data.actions.receipt.list.push(currentAction)
+        this.data.actions.receipt.list.push(ca)
+        db.addAction(ca)
     }
 
-    actionEdit (index){
+    actionEdit(index) {
         console.log('> app_store/actionEdit')
         let list = this.data.currentList.list
 
@@ -874,30 +977,42 @@ class AppStore {
         this.data.control.editSeen = 'edit'
     }
 
-    inputChange (event, isTextarea) {
+    inputChange(event, isTextarea) {
         console.log('> app_store/inputChange')
 
-        if (this.data.control.actionCreated){
+        if (this.data.control.actionCreated) {
             if (!event.target.value)
                 return
 
             if (isTextarea)
-                if(!this.data.currentAction.name)
+                if (!this.data.currentAction.name)
                     this.data.currentAction.name = AppStore.generateName(this.data.currentAction.content)
 
             this.actionAdd()
-        }else {
-            this.setUpdateOn()
+        } else {
+            this.actionUpdate()
         }
     }
 
-    switch(newListName,listName,index){
+    actionTagChange(tag, tagValue, currentSelect){
+        console.log('> app_store/actionTagChange')
+
+        isNaN(Number(tagValue)) ? tagValue : tagValue = Number(tagValue)
+        tagValue === 'null' ? tagValue = null : tagValue
+        currentSelect.value = tagValue
+        if(tag.modal === true)
+            currentSelect.button = true
+
+        this.actionUpdate()
+    }
+
+    switch(newListName, listName, index) {
         console.log('> app_store/switch')
 
-        if(!listName)
+        if (!listName)
             listName = this.getList()
 
-        if(!index)
+        if (!index)
             index = this.data.control.currentIndex
 
         let list = this.getList(listName).list
@@ -909,62 +1024,75 @@ class AppStore {
         newList.push(this.data.currentAction)
         list.splice(index, 1)
 
+        db.switch(newListName, listName, this.data.currentAction)
+
         let i = 0;
         let l = list.length;
-        if(l){
+        if (l) {
             index < l ? i = index : i = index - 1;
             this.actionEdit(i)
-        }else {
+        } else {
             this.data.control.editSeen = 'empty'
         }
     }
 
-    actionAdd () {
+    actionAdd() {
         console.log('> app_store/actionAdd')
 
-        this.data.control.currentIndex = this.data.currentList.list.push(this.data.currentAction) -1
+        this.data.control.currentIndex = this.data.currentList.list.push(this.data.currentAction) - 1
         this.data.control.actionCreated = false
+
+        db.addAction(this.data.currentAction)
+
         this.data.currentAction.isActive = true
     }
 
-    newAction (status) {
+    actionUpdate() {
+        let ca = this.data.currentAction
+
+        db.updateAction(ca)
+        this.setUpdateOn()
+    }
+
+    newAction(status) {
         let time = new Date().getTime()
         return {
             id: this.guid(),
             name: '',
             content: '',
-            dateTime : {
+            dateTime: {
                 date: null,
                 time: null,
-                minutes : null,
+                minutes: null,
                 expiry: true,
                 toString: null
             },
             status: status,
             isActive: false,
             visible: true,
-            tags:[
-                {name:'location',value: null, button: false},
-                {name:'contact',value: null, button: false},
-                {name:'tools',value: null, button: false},
-                {name:'priority',value: null, button: false},
-                {name:'duration',value: null, button: false},
-                {name:'date',value: 'Date', button: true},
+            tags: [
+                {name: 'project', value: null, button: false},
+                {name: 'location', value: null, button: false},
+                {name: 'contact', value: null, button: false},
+                {name: 'tools', value: null, button: false},
+                {name: 'priority', value: null, button: false},
+                {name: 'duration', value: null, button: false},
+                {name: 'date', value: 'Date', button: true},
             ],
-            autoTags:[time,time,time]
+            autoTags: [time, time, time]
         }
 
     }
 
     /*---------------------------------------------------------------------AUTO-TAGS----------------------------------*/
-    setUpdateOn(){
+    setUpdateOn() {
         console.log('> app_store/setUpdateOn')
         let array = this.data.currentAction.autoTags.slice()
         array[1] = new Date().getTime()
         this.data.currentAction.autoTags = array
     }
 
-    setInListOn(){
+    setInListOn() {
         console.log('> app_store/setInListOn')
         let array = this.data.currentAction.autoTags.slice()
         array[2] = new Date().getTime()
@@ -973,7 +1101,7 @@ class AppStore {
     }
 
     /*---------------------------------------------------------------------SELECT-TAG---------------------------------*/
-    createTag(tagName,tag,shortcut){
+    createTag(tagName, tag, shortcut) {
         console.log('> app_store/createTag')
         let actionTag = this.getOnceActionTag(tagName)
         let appTagList = this.getOnceSelectTag(tagName)
@@ -985,70 +1113,73 @@ class AppStore {
         actionTag.button = true
 
         appTagList.options.push({text: tag.id, value: tag.id, shortcut: shortcut})
-        var compare = function(ascending){
-            return function(a,b){
-                if(a.value === "+"){
+        var compare = function (ascending) {
+            return function (a, b) {
+                if (a.value === "+") {
                     return 1;
                 }
-                else if(b.value === "+"){
+                else if (b.value === "+") {
                     return -1;
                 }
-                else if(a.value === b.value){
+                else if (a.value === b.value) {
                     return 0;
                 }
-                else if(ascending) {
+                else if (ascending) {
                     return a.value < b.value ? -1 : 1;
                 }
-                else if(!ascending) {
+                else if (!ascending) {
                     return a.value < b.value ? 1 : -1;
                 }
             };
         }
         appTagList.options.sort(compare(true))
 
-        return tag
+        this.data.userData.contacts.push(tag)
+        this.actionUpdate()
     }
 
-    deleteActionTag(tagName){
+    deleteActionTag(tagName) {
         console.log('> app_store/deleteActionTag')
         let actionLocation = this.getOnceActionTag(tagName)
         actionLocation.value = null
         actionLocation.button = false
     }
 
-    shortcutChange(tagName,optionName,isShortCut){
+    shortcutChange(tagName, optionName, isShortCut) {
         console.log('>app_store/shortcutChange')
         let dt = this.getOnceSelectTag(tagName)
-        let option = dt.options.find(function (obj) { return obj.value === optionName })
+        let option = dt.options.find(function (obj) {
+            return obj.value === optionName
+        })
 
         isShortCut ? option.shortcut = true : option.shortcut = false
     }
 
 
     /*---------------------------------------------------------------------TAGS-SEARCH--------------------------------*/
-    searchAll(){
+    searchAll() {
         console.log('> app_store/searchAll')
         let actions = this.getList().list.slice()
         for (var i = 0; i < actions.length; i++) {
             actions[i].visible = true
         }
-        this.sortByTag('autoTag-0',true)
+        this.sortByTag('autoTag-0', true)
 
         this.actionEdit(0)
     }
 
-    searchAuto(){
+    searchAuto() {
         console.log('> app_store/searchAuto')
 
         let cl = this.data.currentList
         let list = cl.list
 
         this.tagsCompare(cl.defaultSearch)
-        this.sortByTag(cl.sortTagDefault,cl.sortAscDefault)
+        this.sortByTag(cl.sortTagDefault, cl.sortAscDefault)
 
         //editSenn empty if no result
         for (var i = 0; i < list.length; i++) {
-            if(list[i].visible){
+            if (list[i].visible) {
                 this.actionEdit(i)
                 return
             }
@@ -1056,64 +1187,66 @@ class AppStore {
         }
     }
 
-    searchEdit(){
+    searchEdit() {
         console.log('> app_store/searchEdit')
         this.tagsCompare()
         this.data.control.editSeen = 'search'
         this.data.currentAction.isActive = false
     }
 
-    tagsCompare(search){
+    tagsCompare(search) {
         console.log('> app_store/tagsCompare')
 
         let cl = this.data.currentList
         let actions = cl.list.slice()
 
-        if(!search)
+        if (!search)
             search = cl.currentSearch
 
-        for (let i = 0; i < actions.length ; i++ )
-            actions[i].visible = this.arrayCompare(actions[i],search)
+        for (let i = 0; i < actions.length; i++)
+            actions[i].visible = this.arrayCompare(actions[i], search)
 
         cl.list = actions;
     }
 
-    setDefaultSearch(){
+    setDefaultSearch() {
         console.log('> app_store/setDefaultSearch')
         let cl = this.data.currentList
         let clCs = cl.currentSearch
         let clDs = cl.defaultSearch
-/*        for (let i=0;i<list.currentSearch.length;i++)
-            list.defaultSearch[i].value = list.currentSearch[i].value*/
+        /*        for (let i=0;i<list.currentSearch.length;i++)
+                    list.defaultSearch[i].value = list.currentSearch[i].value*/
 
-        for (let i=0;i<clCs.length;i++){
-                clDs[i].name = clCs[i].name ,
-                clDs[i].value = clCs[i].value
-                clDs[i].min = clCs[i].min
-                clDs[i].max = clCs[i].max
-                clDs[i].interval = clCs[i].interval
+        for (let i = 0; i < clCs.length; i++) {
+            clDs[i].name = clCs[i].name
+            clDs[i].value = clCs[i].value
+            clDs[i].min = clCs[i].min
+            clDs[i].max = clCs[i].max
+            clDs[i].interval = clCs[i].interval
         }
 
-        cl.sortTagDefault  = cl.sortTag
-        cl.sortAscDefault  = cl.sortAsc
+        cl.sortTagDefault = cl.sortTag
+        cl.sortAscDefault = cl.sortAsc
+
+        db.setDefaultSearch(cl.name,cl.sortTag,cl.sortAsc,clDs)
     }
 
-    intervalSearch(){
+    intervalSearch() {
         let cs = this.data.currentSearch
         cs.value = null
         cs.interval = true
-        cs.button = cs.toString  + ': '
-        if(cs.min)
+        cs.button = cs.toString + ': '
+        if (cs.min)
             cs.button += cs.min
         cs.button += ' > '
-        if(cs.max)
+        if (cs.max)
             cs.button += cs.max
 
         this.data.currentSearch = null
         this.tagsCompare()
     }
 
-    intervalSearchDestroy(){
+    intervalSearchDestroy() {
         let cs = this.data.currentSearch
         cs.interval = false
         cs.button = false
@@ -1138,41 +1271,41 @@ class AppStore {
         this.getList().list;
     }
 
-    arrayCompare(currentAction,search){
+    arrayCompare(currentAction, search) {
         console.log('> app_store/arrayCompare')
 
         for (var i = 0; i < search.length; i++) {
             let tagName = search[i].name
             let value = search[i].value
-            let actionTagValue = this.getOnceActionTag(tagName,currentAction).value
+            let actionTagValue = this.getOnceActionTag(tagName, currentAction).value
 
-            if(search[i].interval)
-                if(!this.arrayIntervalCompare(search[i],actionTagValue))
+            if (search[i].interval)
+                if (!this.arrayIntervalCompare(search[i], actionTagValue))
                     return false
 
-            if(value)
-                if(value !== actionTagValue)
+            if (value)
+                if (value !== actionTagValue)
                     return false
         }
         return true
     }
 
-    arrayIntervalCompare(searchTag,actionTagValue){
-        console.log('> app_store/arrayCompare2')
+    arrayIntervalCompare(searchTag, actionTagValue) {
+        console.log('> app_store/arrayIntervalCompare')
 
         let min = searchTag.min
         let max = searchTag.max
 
-        if(min && max)
-            if(actionTagValue >= min && actionTagValue <= max)
+        if (min && max)
+            if (actionTagValue >= min && actionTagValue <= max)
                 return true
 
-        if(min && !max)
-            if(actionTagValue >= min)
+        if (min && !max)
+            if (actionTagValue >= min)
                 return true
 
-        if(!min && max)
-            if(actionTagValue <= max)
+        if (!min && max)
+            if (actionTagValue <= max)
                 return true
 
         return false
@@ -1181,17 +1314,17 @@ class AppStore {
     /*---------------------------------------------------------------------TAGS-SORT----------------------------------*/
 
     //init
-    getSortFilters(){
+    getSortFilters() {
         console.log('> app_store/getSortFilters')
 
         let options = []
 
         Object.entries(this.data.tags).forEach(([key, value]) => {
-            options.push({text:value.toString, value: 'tag-' + value.name})
+            options.push({text: value.toString, value: 'tag-' + value.name})
         });
 
         Object.entries(this.data.autoTags).forEach(([key, value]) => {
-            options.push({text:value.toString, value: 'autoTag-' + value.position})
+            options.push({text: value.toString, value: 'autoTag-' + value.position})
         });
 
         return options
@@ -1203,13 +1336,14 @@ class AppStore {
         let asc = this.getList().sortAsc
 
         this.getList().sortTag = tag
-        this.sortByTag(tag,asc)
+        this.sortByTag(tag, asc)
     }
+
     sortAscChange(asc) {
         console.log('> app_store/sortAscChange')
         let tag = this.getList().sortTag
         this.getList().sortAsc = asc
-        this.sortByTag(tag,asc)
+        this.sortByTag(tag, asc)
     }
 
     //function
@@ -1221,28 +1355,29 @@ class AppStore {
         let actions = currentList.list.slice()
         let tagName = tag[1]
 
-        if (tag[0] === 'tag'){
-            var tagsCompare = function(ascending){
-                return function(a,b){
-                    let indexA = a.tags.map(function (e) { return e.name}).indexOf(tagName)
-                    let indexB = b.tags.map(function (e) { return e.name}).indexOf(tagName)
+        if (tag[0] === 'tag') {
+            let tagsCompare = function (ascending) {
+                return function (a, b) {
+                    let indexA = a.tags.map(function (e) {
+                        return e.name
+                    }).indexOf(tagName)
+                    let indexB = b.tags.map(function (e) {
+                        return e.name
+                    }).indexOf(tagName)
 
-                    console.log(a.tags[indexA].value)
-                    console.log(b.tags[indexB].value)
-
-                    if(!a.tags[indexA].value){
+                    if (!a.tags[indexA].value) {
                         return 1;
                     }
-                    else if(!b.tags[indexB].value){
+                    else if (!b.tags[indexB].value) {
                         return -1;
                     }
-                    else if(a.tags[indexA].value === b.tags[indexB].value){
+                    else if (a.tags[indexA].value === b.tags[indexB].value) {
                         return 1;
                     }
-                    else if(ascending) {
+                    else if (ascending) {
                         return a.tags[indexA].value < b.tags[indexB].value ? -1 : 1;
                     }
-                    else if(!ascending) {
+                    else if (!ascending) {
                         return a.tags[indexA].value < b.tags[indexB].value ? 1 : -1;
                     }
                 };
@@ -1250,17 +1385,17 @@ class AppStore {
             currentList.list = actions.sort(tagsCompare(ascending))
         }
 
-        if(tag[0] === 'autoTag'){
-            var tagsCompare = function(ascending){
+        if (tag[0] === 'autoTag') {
+            let tagsCompare = function (ascending) {
                 let index = tag[1]
-                return function(a,b){
-                    if(a.autoTags[index] === b.autoTags[index]){
+                return function (a, b) {
+                    if (a.autoTags[index] === b.autoTags[index]) {
                         return 0;
                     }
-                    else if(ascending) {
+                    else if (ascending) {
                         return a.autoTags[index] < b.autoTags[index] ? -1 : 1;
                     }
-                    else if(!ascending) {
+                    else if (!ascending) {
                         return a.autoTags[index] < b.autoTags[index] ? 1 : -1;
                     }
                 };
@@ -1271,14 +1406,14 @@ class AppStore {
 
     /*-----------------------------------------------------------------------DATE-------------------------------------*/
 
-    dateAutoEdit(tagValue,tagPosition, tagName) {
+    dateAutoEdit(tagValue, tagPosition, tagName) {
         console.log('> app_store/dateAutoEdit')
         let currentAction = this.data.currentAction
 
         currentAction.dateTime.date = '20180830'
     }
 
-    preDateEdit(){
+    preDateEdit() {
         console.log('> app_store/preDateEdit')
         let t = this.data.currentAction.dateTime.time
 
@@ -1286,25 +1421,25 @@ class AppStore {
 
     }
 
-    dateEdit(tagPosition){
+    dateEdit(tagPosition) {
         console.log('> app_store/dateEdit')
         let dt = this.data.currentAction.dateTime
-        dt.minutes = parseToMinutes(dt.date,dt.time)
+        dt.minutes = parseToMinutes(dt.date, dt.time)
         this.getOnceActionTag('date').value = dt.date
     }
 
-    dateTimeRefresh(){
+    dateTimeRefresh() {
         console.log('> app_store/dateTimeRefresh')
         this.data.currentAction.dateTime = {
             date: null,
             time: null,
-            minutes : null,
+            minutes: null,
             expiry: true,
             toString: null
         }
     }
 
-    getTodayDate(){
+    getTodayDate() {
         return todayDate()
     }
 
@@ -1312,7 +1447,7 @@ class AppStore {
     static generateName(content) {
         console.log('> app_store/generateName')
         let firstLine = content.match(/[^\r\n]+/g);
-        let name = firstLine[0].substring(0,20)
+        let name = firstLine[0].substring(0, 20)
 
         if (name.length < firstLine[0].length)
             name = name + '...'
@@ -1320,12 +1455,13 @@ class AppStore {
         return name
     }
 
-    guid () {
+    guid() {
         function s4() {
             return Math.floor((1 + Math.random()) * 0x10000)
                 .toString(16)
                 .substring(1);
         }
+
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
 
@@ -1423,9 +1559,9 @@ function Contact() {
 }
 
 /*-------------------------------TOOLS---------------------------*/
-function parseToMinutes (dateStr,timeStr) {
+function parseToMinutes(dateStr, timeStr) {
     const [day, month, year] = dateStr.split("/")
-    const [hour,minute] = timeStr.split(":")
+    const [hour, minute] = timeStr.split(":")
     return new Date(year, month - 1, day, hour, minute).getTime() / 10000
 }
 
@@ -1447,3 +1583,19 @@ function todayDate() {
     return today;
 }
 
+function loadDistantFile (url) {
+    return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+
+        xhr.onload = function (event) {
+            resolve(xhr.responseText); // Si la requête réussit, on résout la promesse en indiquant le contenu du fichier
+        };
+
+        xhr.onerror = function (err) {
+            reject(err); // Si la requête échoue, on rejette la promesse en envoyant les infos de l'erreur
+        }
+
+        xhr.open('GET', url, true);
+        xhr.send(null);
+    });
+}

@@ -1,21 +1,13 @@
-import Vue from 'vue'
 import BootstrapVue from "bootstrap-vue"
 import App from './App.vue'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
 import jQuery from 'jquery'
 import app_store from "./store/app_store"
+import Vue from 'vue'
 
 
-Vue.use(BootstrapVue)
-
-new Vue({
-  el: '#app',
-  render: h => h(App)
-})
-
-app_store.data.currentAction.isActive = true
-app_store.data.control.editSeen = 'edit'
+app_store.init()
 
 window.jQuery = jQuery
 window.$ = jQuery
@@ -33,6 +25,15 @@ jQuery.extend(true, jQuery.fn.datetimepicker.defaults, {
         close: 'far fa-times-circle'
     }
 });
+
+Vue.use(BootstrapVue)
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
+})
+
+
 
 
 

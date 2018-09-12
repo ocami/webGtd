@@ -1,16 +1,17 @@
 <template>
     <section>
-        <p>{{this.data.currentList.name}}</p>
-        <p>{{this.data.currentAction.name}}</p>
-        <pre>{{this.data.currentList.currentSearch[3]}}</pre>
-        <pre>{{this.data.currentList.defaultSearch[3]}}</pre>
-        <button @="saveTest">Save</button>
+        <pre>{{data.currentAction.isActive}} / {{data.currentAction.id}}</pre>
+        <pre>{{data.currentLocation}}</pre>
+        <button @click="addContact">addContact</button>
+        <button @click="updateContact">updateContact</button>
+        <button @click="getContactFB">getContactFB</button>
     </section>
 </template>
 
 <script>
 
     import app_store from '../../store/app_store'
+    import repo from '../../repository/fireBase_repository'
 
     export default {
         name: 'model',
@@ -20,6 +21,7 @@
         data ()  {
             return {
                 data : app_store.data,
+                result: 'result'
             }
         },
         computed:{
@@ -38,12 +40,20 @@
 
         },
         methods:{
-            saveTest: function () {
-                app_store.saveTest()
+            addContact: function () {
+                app_store.addContact()
+            },
+            updateContact: function () {
+                app_store.updateContact()
+            },
+            getContactFB: function () {
+                app_store.getContactFB()
             }
         }
     }
 </script>
+
+
 
 <style scoped>
 

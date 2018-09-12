@@ -53,8 +53,8 @@
         methods:{
             submit : function () {
                 if(!this.contact.created){
-                    let tag = app_store.createTag('contact',this.contact, this.checked)
-                    this.data.userData.contacts.push(tag)
+                    app_store.createTag('contact',this.contact, this.checked)
+
                 }
 
                 this.$emit('submit')

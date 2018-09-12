@@ -60,11 +60,7 @@
                     return
                 }
 
-                isNaN(Number(tagValue)) ? tagValue : tagValue = Number(tagValue)
-                tagValue === 'null' ? tagValue = null : tagValue
-                this.currentSelect.value = tagValue
-                if(this.tag.modal === true)
-                    this.currentSelect.button = true
+                app_store.actionTagChange(this.tag, tagValue, this.currentSelect)
             },
             tagBtnChange: function (tagName) {
                 this.$emit('open-form-modal', tagName)
