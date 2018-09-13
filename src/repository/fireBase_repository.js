@@ -17,7 +17,7 @@ var db = firebase.database();
 class DbStore {
 
     actionsImport(){
-        console.log('> fireBase/actionsImport2')
+        console.log('> fireBase/actionsImport')
         firebase.database().ref('actions/').once('value').then(function(snapshot) {
             actionsListInit(snapshot.val())
         }, function(error) {
@@ -25,8 +25,18 @@ class DbStore {
         });
     }
 
+    tagsImport(){
+        console.log('> fireBase/tagsImport')
+        firebase.database().ref('tags/').once('value').then(function(snapshot) {
+            tagsListInit(snapshot.val())
+        }, function(error) {
+            console.error('> fireBase/actionsImport : '+error);
+        });
+    }
+
+    /*----------------------------------------------------------------------------------------------------------------*/
     addAction(action) {
-        console.log('> fireBase/writeTest')
+        console.log('> fireBase/addAction')
 
         let path = 'actions/'+action.status+'/list/'
 
@@ -37,7 +47,7 @@ class DbStore {
     }
 
     updateAction(action) {
-        console.log('> fireBase/updateTest')
+        console.log('> fireBase/updateAction')
         let path = 'actions/'+action.status+'/list/'+action.id
         let updates = {};
         action = JSON.parse(JSON.stringify(action));
@@ -49,6 +59,8 @@ class DbStore {
     }
 
     switch(newListName, listName, action){
+        console.log('> fireBase/switch')
+
         let oldPath = 'actions/'+listName+'/list/'+action.id
         let newPath = 'actions/'+newListName+'/list/'+action.id
 
@@ -74,64 +86,29 @@ class DbStore {
     addContact(contact) {
         console.log('> fireBase/addContact')
 
-        let path = 'contacts/'+contact.id
+        let path = 'user_data/contact/'+contact.id
         return db.ref(path).set(contact);
     }
 
-    updateContact(contact) {
-        console.log('> fireBase/updateContact')
+    getUserData(dataName,id){
+        console.log('> fireBase/getUserData')
+        let path = 'user_data/'+dataName+'/'+id
 
-    }
-
-    getContactFB(id) {
-        console.log('> fireBase/getContactFB')
-
-        let path = 'contacts/'+id
+        console.log(path)
 
         firebase.database().ref(path).once('value').then(function(snapshot) {
-            app_store.data.currentLocation = snapshot.val()
+            console.log(snapshot.val())
+            app_store.data.currentUserData = snapshot.val()
         }, function(error) {
             console.error('> fireBase/getContactFB : '+error);
         });
     }
 
     /*----------------------------------------------------------------------------------------------------------------*/
-    readTest2() {
-        console.log('> fireBase/readTest')
-
-        let actions = 'tututu'
-
-        firebase.database().ref('/receipt/list').on('value', function(snapshot) {
-            console.log(snapshot.val());
-            actions = snapshotToArray(snapshot)
-        });
-
-        return actions
-    }
-
-    readTest() {
-        console.log('> fireBase/readTest')
-
-        let actions = 'tututu'
-
-        firebase.database().ref('/receipt/list').once('value').then(function(snapshot) {
-            // The Promise was "fulfilled" (it succeeded).
-            console.log(snapshot.val());
-            app_store.data.actions.receipt.list = snapshotToArray(snapshot)
-        }, function(error) {
-            // The Promise was rejected.
-            console.error(error);
-        });
-
-        return actions
-    }
-
-    updateTest(path,action){
-        console.log('> fireBase/updateTest')
-        let updates = {};
-        updates[path] = action;
-
-        db.ref().update(updates)
+    updateTags(tag) {
+        console.log('> fireBase/addTags')
+            let path = 'tags/'+tag.name
+        return db.ref(path).set(tag);
     }
 
     guid() {
@@ -158,6 +135,21 @@ function actionsListInit(actionsList){
         list.defaultSearch = value.defaultSearch
         list.list = snapshotToArray(value.list)
     });
+}
+
+function tagsListInit(tagsList){
+    console.log('> app_store/tagsListInit')
+    let tagsArray = snapshotToArray(tagsList)
+
+    function compare(a,b) {
+        if (a.position < b.position)
+            return -1;
+        if (a.position > b.position)
+            return 1;
+        return 0;
+    }
+
+    app_store.data.tags = tagsArray.sort(compare);
 }
 
 function snapshotToArray(list) {

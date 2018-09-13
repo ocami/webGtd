@@ -1,366 +1,11 @@
 {
   "actions" : {
     "destroy" : {
-      "list" : {
-        "18cb4df8-663e-3658-f894-af7f64b302db" : {
-          "active" : false,
-          "autoTags" : [ 1536622275172, 1536632282272, 1536673243665 ],
-          "content" : "todo base toto 1",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "18cb4df8-663e-3658-f894-af7f64b302db",
-          "isActive" : false,
-          "key" : "18cb4df8-663e-3658-f894-af7f64b302db",
-          "name" : "todo base toto 1",
-          "status" : "destroy",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "218e9437-2e2b-85bb-d1e8-b79ae7928da0" : {
-          "autoTags" : [ 1536669404145, 1536669404145, 1536669641849 ],
-          "content" : "speed add",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "218e9437-2e2b-85bb-d1e8-b79ae7928da0",
-          "isActive" : false,
-          "name" : "speed add",
-          "status" : "destroy",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "22593b5e-d977-ae27-2e8b-fa75c853fa33" : {
-          "active" : false,
-          "autoTags" : [ 1536699696716, 1536699696716, 1536699752747 ],
-          "content" : "",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "22593b5e-d977-ae27-2e8b-fa75c853fa33",
-          "isActive" : false,
-          "name" : "test todo",
-          "status" : "destroy",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "8524d5b8-de2d-6b97-0f8e-d3a0b0ffccbd" : {
-          "active" : false,
-          "autoTags" : [ 1536622321348, 1536622321348, 1536674048206 ],
-          "content" : "",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "8524d5b8-de2d-6b97-0f8e-d3a0b0ffccbd",
-          "isActive" : false,
-          "key" : "8524d5b8-de2d-6b97-0f8e-d3a0b0ffccbd",
-          "name" : "done base",
-          "status" : "destroy",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "a34e149d-9953-6d8f-92fc-b10f9020c9a9" : {
-          "active" : false,
-          "autoTags" : [ 1536622434466, 1536622434466, 1536673163669 ],
-          "content" : "",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "a34e149d-9953-6d8f-92fc-b10f9020c9a9",
-          "isActive" : false,
-          "key" : "a34e149d-9953-6d8f-92fc-b10f9020c9a9",
-          "name" : "incubation base",
-          "status" : "destroy",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "a6425d86-1bbd-34a3-d0c1-445d15bf11ab" : {
-          "active" : false,
-          "autoTags" : [ 1536622300113, 1536622300113, 1536673234208 ],
-          "content" : "",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "a6425d86-1bbd-34a3-d0c1-445d15bf11ab",
-          "isActive" : false,
-          "key" : "a6425d86-1bbd-34a3-d0c1-445d15bf11ab",
-          "name" : "receipt base",
-          "status" : "destroy",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "e01d7ced-0cf3-c67f-8510-ea15efbccbd1" : {
-          "autoTags" : [ 1536622506303, 1536622506303, 1536622506303 ],
-          "content" : "",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "e01d7ced-0cf3-c67f-8510-ea15efbccbd1",
-          "isActive" : false,
-          "name" : "destroy base",
-          "status" : "destroy",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "ec8cd781-107e-f05a-f4cf-9b3bf061612c" : {
-          "autoTags" : [ 1536669096349, 1536669096349, 1536669641044 ],
-          "content" : "",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "ec8cd781-107e-f05a-f4cf-9b3bf061612c",
-          "isActive" : false,
-          "key" : "ec8cd781-107e-f05a-f4cf-9b3bf061612c",
-          "name" : "receipt base re new ",
-          "status" : "destroy",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "f0a9bece-e468-c9b0-885d-a2ac3e991856" : {
-          "active" : false,
-          "autoTags" : [ 1536632289196, 1536632307035, 1536673236498 ],
-          "content" : "todo base lolo 2",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "f0a9bece-e468-c9b0-885d-a2ac3e991856",
-          "isActive" : false,
-          "key" : "f0a9bece-e468-c9b0-885d-a2ac3e991856",
-          "name" : "todo base lolo 2",
-          "status" : "destroy",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        }
-      },
-      "defaultSearch" : [
-        {
+      "defaultSearch" : [ {
         "button" : false,
         "interval" : false,
         "name" : "project",
-        "toString" : "project",
-        "value" : "webGtd"
+        "toString" : "project"
       }, {
         "button" : false,
         "interval" : false,
@@ -378,9 +23,7 @@
         "toString" : "Outils"
       }, {
         "button" : false,
-        "interval" : true,
-        "max" : "2",
-        "min" : "1",
+        "interval" : false,
         "name" : "priority",
         "toString" : "Priorité"
       }, {
@@ -398,51 +41,11 @@
       "sortTagDefault" : "autoTag-0"
     },
     "done" : {
-      "list" : {
-        "38ee3d2d-8801-a100-2012-952e8c618693" : {
-          "active" : false,
-          "autoTags" : [ 1536682247059, 1536682247059, 1536700330462 ],
-          "content" : "mon test",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "38ee3d2d-8801-a100-2012-952e8c618693",
-          "isActive" : false,
-          "name" : "mon test",
-          "status" : "done",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        }
-      },
-      "defaultSearch" : [
-        {
+      "defaultSearch" : [ {
         "button" : false,
         "interval" : false,
         "name" : "project",
-        "toString" : "project",
-        "value" : "webGtd"
+        "toString" : "project"
       }, {
         "button" : false,
         "interval" : false,
@@ -460,9 +63,7 @@
         "toString" : "Outils"
       }, {
         "button" : false,
-        "interval" : true,
-        "max" : "2",
-        "min" : "1",
+        "interval" : false,
         "name" : "priority",
         "toString" : "Priorité"
       }, {
@@ -480,6 +81,42 @@
       "sortTagDefault" : "autoTag-0"
     },
     "incubation" : {
+      "defaultSearch" : [ {
+        "button" : false,
+        "interval" : false,
+        "name" : "project",
+        "toString" : "project"
+      }, {
+        "button" : false,
+        "interval" : false,
+        "name" : "location",
+        "toString" : "Location"
+      }, {
+        "button" : false,
+        "interval" : false,
+        "name" : "contact",
+        "toString" : "Contact"
+      }, {
+        "button" : false,
+        "interval" : false,
+        "name" : "tools",
+        "toString" : "Outils"
+      }, {
+        "button" : false,
+        "interval" : false,
+        "name" : "priority",
+        "toString" : "Priorité"
+      }, {
+        "button" : false,
+        "interval" : false,
+        "name" : "duration",
+        "toString" : "Durée"
+      }, {
+        "button" : false,
+        "interval" : false,
+        "name" : "date",
+        "toString" : "Date"
+      } ],
       "list" : {
         "1b212287-3a52-cbdd-ea32-4a16347fa405" : {
           "active" : false,
@@ -598,13 +235,15 @@
           "visible" : true
         }
       },
-      "defaultSearch" : [
-        {
+      "sortAscDefault" : true,
+      "sortTagDefault" : "autoTag-0"
+    },
+    "receipt" : {
+      "defaultSearch" : [ {
         "button" : false,
         "interval" : false,
         "name" : "project",
-        "toString" : "project",
-        "value" : "webGtd"
+        "toString" : "project"
       }, {
         "button" : false,
         "interval" : false,
@@ -622,50 +261,6 @@
         "toString" : "Outils"
       }, {
         "button" : false,
-        "interval" : true,
-        "max" : "2",
-        "min" : "1",
-        "name" : "priority",
-        "toString" : "Priorité"
-      }, {
-        "button" : false,
-        "interval" : false,
-        "name" : "duration",
-        "toString" : "Durée"
-      }, {
-        "button" : false,
-        "interval" : false,
-        "name" : "date",
-        "toString" : "Date"
-      } ],
-      "sortAscDefault" : true,
-      "sortTagDefault" : "autoTag-0"
-    },
-    "receipt" : {
-      "defaultSearch" : [ {
-        "button" : false,
-        "interval" : false,
-        "name" : "project",
-        "toString" : "project"
-      }, {
-        "button" : false,
-        "interval" : false,
-        "name" : "location",
-        "toString" : "Location",
-        "value" : "Rennes"
-      }, {
-        "button" : false,
-        "interval" : false,
-        "name" : "contact",
-        "toString" : "Contact",
-        "value" : "Alexandre"
-      }, {
-        "button" : false,
-        "interval" : false,
-        "name" : "tools",
-        "toString" : "Outils"
-      }, {
-        "button" : false,
         "interval" : false,
         "name" : "priority",
         "toString" : "Priorité"
@@ -680,12 +275,406 @@
         "name" : "date",
         "toString" : "Date"
       } ],
+      "list" : {
+        "3b925dde-8f3e-abb5-dafb-984d2c050856" : {
+          "autoTags" : [ 1536781983457, 1536781991250, 1536781983457 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "3b925dde-8f3e-abb5-dafb-984d2c050856",
+          "isActive" : false,
+          "name" : "xx",
+          "status" : "receipt",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : true,
+            "name" : "location"
+          }, {
+            "button" : true,
+            "name" : "contact",
+            "value" : "ee"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "559ac568-dea6-2d32-6869-f7c96e16d2de" : {
+          "autoTags" : [ 1536782055094, 1536782055094, 1536782055094 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "559ac568-dea6-2d32-6869-f7c96e16d2de",
+          "isActive" : false,
+          "name" : "tt",
+          "status" : "receipt",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : true,
+            "name" : "contact",
+            "value" : "tt"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "823d6e31-a472-acdd-305c-988a3fa348c4" : {
+          "autoTags" : [ 1536780282180, 1536780282180, 1536780282180 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "823d6e31-a472-acdd-305c-988a3fa348c4",
+          "isActive" : false,
+          "name" : "bb",
+          "status" : "receipt",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : true,
+            "name" : "contact",
+            "value" : "aa"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "856cb3a3-8325-e284-d7a9-52211bee1bd4" : {
+          "autoTags" : [ 1536782030623, 1536782030623, 1536782030623 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "856cb3a3-8325-e284-d7a9-52211bee1bd4",
+          "isActive" : false,
+          "name" : "rr",
+          "status" : "receipt",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "864d36be-ad91-bce4-eb05-a671c3828138" : {
+          "autoTags" : [ 1536781919512, 1536781919512, 1536781919512 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "864d36be-ad91-bce4-eb05-a671c3828138",
+          "isActive" : false,
+          "name" : "gg",
+          "status" : "receipt",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "b226a59e-cba9-83cc-6c75-a688ed63d087" : {
+          "autoTags" : [ 1536780516255, 1536780516255, 1536780516255 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "b226a59e-cba9-83cc-6c75-a688ed63d087",
+          "isActive" : false,
+          "name" : "dd",
+          "status" : "receipt",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : true,
+            "name" : "contact",
+            "value" : "dd"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "bde92c66-19fc-e8f9-25d8-d7aa75018817" : {
+          "autoTags" : [ 1536781883677, 1536781883677, 1536781883677 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "bde92c66-19fc-e8f9-25d8-d7aa75018817",
+          "isActive" : false,
+          "name" : "ff",
+          "status" : "receipt",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : true,
+            "name" : "contact",
+            "value" : "ff"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "ca571613-ba89-72e3-d3b3-18e654568488" : {
+          "autoTags" : [ 1536780204287, 1536780204287, 1536780204287 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "ca571613-ba89-72e3-d3b3-18e654568488",
+          "isActive" : false,
+          "name" : "test",
+          "status" : "receipt",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : true,
+            "name" : "contact",
+            "value" : "aa"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "dcadc05c-27da-1031-26cd-39a2a60b007d" : {
+          "autoTags" : [ 1536781839582, 1536781915469, 1536781839582 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "dcadc05c-27da-1031-26cd-39a2a60b007d",
+          "isActive" : false,
+          "name" : "ee",
+          "status" : "receipt",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : true,
+            "name" : "contact",
+            "value" : "ee"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "f88295fb-c025-af17-87b6-c4a807357c0e" : {
+          "autoTags" : [ 1536781957867, 1536781957867, 1536781957867 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "f88295fb-c025-af17-87b6-c4a807357c0e",
+          "isActive" : false,
+          "name" : "zz",
+          "status" : "receipt",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "febe3233-913c-319b-7a87-c32e108f6a52" : {
+          "autoTags" : [ 1536780317596, 1536780331742, 1536780317596 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "febe3233-913c-319b-7a87-c32e108f6a52",
+          "isActive" : false,
+          "name" : "cc",
+          "status" : "receipt",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : true,
+            "name" : "contact",
+            "value" : "bb"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        }
+      },
       "sortAscDefault" : true,
       "sortTagDefault" : "autoTag-0"
     },
     "todo" : {
-      "defaultSearch" : [
-        {
+      "defaultSearch" : [ {
         "button" : false,
         "interval" : false,
         "name" : "project",
@@ -725,54 +714,14 @@
         "toString" : "Date"
       } ],
       "list" : {
-        "16f81a4c-6339-cfc0-e7ed-822f519ff355" : {
-          "active" : false,
-          "autoTags" : [ 1536675735933, 1536675735933, 1536675783738 ],
-          "content" : "prob : actions is active is true",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "16f81a4c-6339-cfc0-e7ed-822f519ff355",
-          "isActive" : false,
-          "name" : "prob : actions is ac...",
-          "status" : "todo",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project",
-            "value" : "webGtd"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority",
-            "value" : 1
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "20a82ebc-de1a-cbda-f9d5-ad36b7255dd4" : {
-          "active" : false,
-          "autoTags" : [ 1536669605033, 1536669605033, 1536673198331 ],
+        "556a7c9f-6dd2-c557-e5bc-618727252bef" : {
+          "autoTags" : [ 1536780026642, 1536780026642, 1536780127492 ],
           "content" : "cabane jardin",
           "dateTime" : {
             "expiry" : true
           },
-          "id" : "20a82ebc-de1a-cbda-f9d5-ad36b7255dd4",
+          "id" : "556a7c9f-6dd2-c557-e5bc-618727252bef",
           "isActive" : false,
-          "key" : "20a82ebc-de1a-cbda-f9d5-ad36b7255dd4",
           "name" : "cabane jardin",
           "status" : "todo",
           "tags" : [ {
@@ -780,9 +729,6 @@
             "name" : "project"
           }, {
             "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
             "name" : "location"
           }, {
             "button" : false,
@@ -793,157 +739,6 @@
           }, {
             "button" : false,
             "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "4d1cfe9e-5ce0-25c7-7cfd-c9509a60d025" : {
-          "active" : false,
-          "autoTags" : [ 1536699861262, 1536699861262, 1536699881986 ],
-          "content" : "autre test",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "4d1cfe9e-5ce0-25c7-7cfd-c9509a60d025",
-          "isActive" : false,
-          "name" : "autre test",
-          "status" : "todo",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "52b9818c-7b39-edac-f106-a39608b89fd2" : {
-          "active" : false,
-          "autoTags" : [ 1536673257870, 1536673257870, 1536673257870 ],
-          "content" : "",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "52b9818c-7b39-edac-f106-a39608b89fd2",
-          "isActive" : false,
-          "name" : "auto search in firebase",
-          "status" : "todo",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project",
-            "value" : "webGtd"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "5c8d0bdb-8206-c510-d98d-955e49bca12a" : {
-          "active" : false,
-          "autoTags" : [ 1536669599061, 1536669599061, 1536673221670 ],
-          "content" : "piano owen",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "5c8d0bdb-8206-c510-d98d-955e49bca12a",
-          "isActive" : false,
-          "key" : "5c8d0bdb-8206-c510-d98d-955e49bca12a",
-          "name" : "piano owen",
-          "status" : "todo",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "5dbf0518-2a5c-c60d-a6f9-cf5816b16f79" : {
-          "active" : false,
-          "autoTags" : [ 1536675754086, 1536675798313, 1536675805288 ],
-          "content" : "tags isnt in dt\nevent tag change ?? \n",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "5dbf0518-2a5c-c60d-a6f9-cf5816b16f79",
-          "isActive" : false,
-          "name" : "tags isnt in dt",
-          "status" : "todo",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project",
-            "value" : "webGtd"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority",
-            "value" : 1
           }, {
             "button" : false,
             "name" : "duration"
@@ -996,17 +791,17 @@
           } ],
           "visible" : true
         },
-        "71574faf-cec7-5c2d-6808-73e85bc4a0ef" : {
+        "8f0866ec-22dc-9144-84a0-d2056c9fa396" : {
           "active" : false,
-          "autoTags" : [ 1536669723577, 1536669723577, 1536673205454 ],
-          "content" : "voir avec anne pour trajet musique",
+          "autoTags" : [ 1536669589926, 1536669589926, 1536673211621 ],
+          "content" : "contacter mydigitalSchool\n",
           "dateTime" : {
             "expiry" : true
           },
-          "id" : "71574faf-cec7-5c2d-6808-73e85bc4a0ef",
+          "id" : "8f0866ec-22dc-9144-84a0-d2056c9fa396",
           "isActive" : false,
-          "key" : "71574faf-cec7-5c2d-6808-73e85bc4a0ef",
-          "name" : "voir avec anne pour ...",
+          "key" : "8f0866ec-22dc-9144-84a0-d2056c9fa396",
+          "name" : "contacter mydigitalS...",
           "status" : "todo",
           "tags" : [ {
             "button" : false,
@@ -1036,22 +831,17 @@
           } ],
           "visible" : true
         },
-        "8f0866ec-22dc-9144-84a0-d2056c9fa396" : {
-          "active" : false,
-          "autoTags" : [ 1536669589926, 1536669589926, 1536673211621 ],
-          "content" : "contacter mydigitalSchool\n",
+        "94b4c2ed-078d-d46d-61dc-fa53ee3b994c" : {
+          "autoTags" : [ 1536780010782, 1536780010782, 1536780128101 ],
+          "content" : "piano owen\n",
           "dateTime" : {
             "expiry" : true
           },
-          "id" : "8f0866ec-22dc-9144-84a0-d2056c9fa396",
+          "id" : "94b4c2ed-078d-d46d-61dc-fa53ee3b994c",
           "isActive" : false,
-          "key" : "8f0866ec-22dc-9144-84a0-d2056c9fa396",
-          "name" : "contacter mydigitalS...",
+          "name" : "piano owen",
           "status" : "todo",
           "tags" : [ {
-            "button" : false,
-            "name" : "project"
-          }, {
             "button" : false,
             "name" : "project"
           }, {
@@ -1112,44 +902,6 @@
           } ],
           "visible" : true
         },
-        "c45df372-3bbe-211b-cac6-1b044409511f" : {
-          "active" : false,
-          "autoTags" : [ 1536675378991, 1536681431752, 1536699740025 ],
-          "content" : "",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "c45df372-3bbe-211b-cac6-1b044409511f",
-          "isActive" : false,
-          "key" : "c45df372-3bbe-211b-cac6-1b044409511f",
-          "name" : "parse snapshotToArray",
-          "status" : "todo",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project",
-            "value" : "webGtd"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
         "cd0cad04-b7d6-6957-59e5-20f610938fb2" : {
           "active" : false,
           "autoTags" : [ 1536673458625, 1536673527328, 1536673458625 ],
@@ -1176,7 +928,8 @@
             "name" : "tools"
           }, {
             "button" : false,
-            "name" : "priority"
+            "name" : "priority",
+            "value" : 3
           }, {
             "button" : false,
             "name" : "duration"
@@ -1223,19 +976,15 @@
           } ],
           "visible" : true
         },
-        "fc29a57c-bb1d-d5a7-0154-5d61e5fec935" : {
-          "active" : false,
-          "autoTags" : [ 1536685603277, 1536685603277, 1536699583018 ],
+        "d5cfffb0-5451-2b7e-ac8c-a21e5b332e64" : {
+          "autoTags" : [ 1536782103993, 1536782124846, 1536782126050 ],
           "content" : "",
           "dateTime" : {
-            "date" : "12/09/2018",
-            "expiry" : true,
-            "minutes" : 153674580,
-            "time" : "11:50"
+            "expiry" : true
           },
-          "id" : "fc29a57c-bb1d-d5a7-0154-5d61e5fec935",
+          "id" : "d5cfffb0-5451-2b7e-ac8c-a21e5b332e64",
           "isActive" : false,
-          "name" : "retour musique",
+          "name" : "aa",
           "status" : "todo",
           "tags" : [ {
             "button" : false,
@@ -1244,8 +993,9 @@
             "button" : false,
             "name" : "location"
           }, {
-            "button" : false,
-            "name" : "contact"
+            "button" : true,
+            "name" : "contact",
+            "value" : "ee"
           }, {
             "button" : false,
             "name" : "tools"
@@ -1258,13 +1008,268 @@
           }, {
             "button" : true,
             "name" : "date",
-            "value" : "12/09/2018"
+            "value" : "Date"
           } ],
           "visible" : true
         }
       },
       "sortAscDefault" : true,
       "sortTagDefault" : "tag-priority"
+    }
+  },
+  "tags" : {
+    "contact" : {
+      "position" : 2,
+      "modal" : true,
+      "name" : "contact",
+      "options" : {
+        "7" : {
+          "shortcut" : true,
+          "text" : "+",
+          "value" : "+"
+        }
+      },
+      "selected" : "",
+      "toString" : "Avec"
+    },
+    "date" : {
+      "position" : 6,
+      "modal" : true,
+      "name" : "date",
+      "options" : [ {
+        "shortcut" : true,
+        "text" : "Aujourd hui",
+        "value" : "today"
+      }, {
+        "shortcut" : true,
+        "text" : "Demain",
+        "value" : "tomorrow"
+      }, {
+        "shortcut" : true,
+        "text" : "Dans la semaine",
+        "value" : "inWeek"
+      }, {
+        "shortcut" : true,
+        "text" : "Prochaine semaine",
+        "value" : "nextWeek"
+      }, {
+        "shortcut" : true,
+        "text" : "Prochain mois",
+        "value" : "nextMonth"
+      }, {
+        "shortcut" : true,
+        "text" : "+",
+        "value" : "+"
+      }, {
+        "shortcut" : true,
+        "text" : "@",
+        "value" : "@"
+      } ],
+      "selected" : "",
+      "toString" : "Date"
+    },
+    "duration" : {
+      "position" : 5,
+      "modal" : false,
+      "name" : "duration",
+      "options" : [ {
+        "shortcut" : true,
+        "text" : "10 min",
+        "value" : 10
+      }, {
+        "shortcut" : true,
+        "text" : "20 min",
+        "value" : 20
+      }, {
+        "shortcut" : true,
+        "text" : "30 min",
+        "value" : 30
+      }, {
+        "shortcut" : true,
+        "text" : "45 min",
+        "value" : 45
+      }, {
+        "shortcut" : true,
+        "text" : "1 h",
+        "value" : 60
+      }, {
+        "shortcut" : true,
+        "text" : "2 h",
+        "value" : 120
+      }, {
+        "shortcut" : true,
+        "text" : "3 h",
+        "value" : 180
+      }, {
+        "shortcut" : true,
+        "text" : "@",
+        "value" : "@"
+      } ],
+      "selected" : "",
+      "toString" : "Durée"
+    },
+    "location" : {
+      "position" : 1,
+      "modal" : true,
+      "name" : "location",
+      "options" : [ {
+        "shortcut" : false,
+        "text" : "Bureau",
+        "value" : "Bureau"
+      }, {
+        "shortcut" : true,
+        "text" : "Jardin",
+        "value" : "Jardin"
+      }, {
+        "shortcut" : true,
+        "text" : "Rennes",
+        "value" : "Rennes"
+      }, {
+        "shortcut" : true,
+        "text" : "ss",
+        "value" : "ss"
+      }, {
+        "shortcut" : true,
+        "text" : "+",
+        "value" : "+"
+      } ],
+      "selected" : "",
+      "toString" : "Localisation"
+    },
+    "priority" : {
+      "position" : 4,
+      "modal" : false,
+      "name" : "priority",
+      "options" : [ {
+        "shortcut" : true,
+        "text" : "1",
+        "value" : 1
+      }, {
+        "shortcut" : true,
+        "text" : "2",
+        "value" : 2
+      }, {
+        "shortcut" : true,
+        "text" : "3",
+        "value" : 3
+      }, {
+        "shortcut" : true,
+        "text" : "@",
+        "value" : "@"
+      } ],
+      "selected" : "",
+      "toString" : "Priorité"
+    },
+    "project" : {
+      "position" : 0,
+      "modal" : false,
+      "name" : "project",
+      "options" : [ {
+        "shortcut" : true,
+        "text" : "webGtd",
+        "value" : "webGtd"
+      } ],
+      "selected" : "",
+      "toString" : "project"
+    },
+    "tools" : {
+      "position" : 3,
+      "modal" : false,
+      "name" : "tools",
+      "options" : [ {
+        "shortcut" : true,
+        "text" : "Ordinateur",
+        "value" : "Ordinateur"
+      }, {
+        "shortcut" : true,
+        "text" : "Tel",
+        "value" : "Tel"
+      } ],
+      "selected" : "",
+      "toString" : "Outils"
+    }
+  },
+  "user_data" : {
+    "contact" : {
+      "aa" : {
+        "created" : true,
+        "firstName" : "aa",
+        "id" : "aa",
+        "lastName" : "aa",
+        "mail" : "aa",
+        "shortcut" : true,
+        "tel" : "aa"
+      },
+      "aaaaaaa" : {
+        "created" : true,
+        "firstName" : "aaaaaaaaa",
+        "id" : "aaaaaaa",
+        "lastName" : "aaaaaaa",
+        "mail" : "aaaaaaaaa",
+        "shortcut" : true,
+        "tel" : "aaaaaaaaaaa"
+      },
+      "bb" : {
+        "created" : true,
+        "firstName" : "bb",
+        "id" : "bb",
+        "lastName" : "bb",
+        "mail" : "bb",
+        "shortcut" : true,
+        "tel" : "bb"
+      },
+      "dd" : {
+        "created" : true,
+        "firstName" : "dd",
+        "id" : "dd",
+        "lastName" : "dd",
+        "mail" : "dd",
+        "shortcut" : true,
+        "tel" : "dd"
+      },
+      "ee" : {
+        "created" : true,
+        "firstName" : "ee",
+        "id" : "ee",
+        "lastName" : "ee",
+        "mail" : "ee",
+        "shortcut" : true,
+        "tel" : "ee"
+      },
+      "ff" : {
+        "created" : true,
+        "firstName" : "ff",
+        "id" : "ff",
+        "lastName" : "ff",
+        "mail" : "ff",
+        "shortcut" : true,
+        "tel" : "ff"
+      },
+      "moi" : {
+        "created" : true,
+        "firstName" : "jojo",
+        "id" : "moi",
+        "lastName" : "alexandre",
+        "shortcut" : true,
+        "tel" : "1234"
+      },
+      "rennes" : {
+        "created" : true,
+        "firstName" : "LE CAM",
+        "id" : "rennes",
+        "lastName" : "alexandre",
+        "shortcut" : true,
+        "tel" : "1234"
+      },
+      "tt" : {
+        "created" : true,
+        "firstName" : "tt",
+        "id" : "tt",
+        "lastName" : "tt",
+        "mail" : "tt",
+        "shortcut" : true,
+        "tel" : "tt"
+      }
     }
   }
 }

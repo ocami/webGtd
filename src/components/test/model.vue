@@ -1,10 +1,7 @@
 <template>
     <section>
         <pre>{{data.currentAction.isActive}} / {{data.currentAction.id}}</pre>
-        <pre>{{data.currentLocation}}</pre>
-        <button @click="addContact">addContact</button>
-        <button @click="updateContact">updateContact</button>
-        <button @click="getContactFB">getContactFB</button>
+        <!--<pre>{{data.tags}}</pre>-->
     </section>
 </template>
 
@@ -38,17 +35,10 @@
                 return app_store.getList().sortAscDefault
             },
 
+
         },
         methods:{
-            addContact: function () {
-                app_store.addContact()
-            },
-            updateContact: function () {
-                app_store.updateContact()
-            },
-            getContactFB: function () {
-                app_store.getContactFB()
-            }
+
         }
     }
 </script>

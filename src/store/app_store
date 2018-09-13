@@ -616,7 +616,7 @@ class AppStore {
             currentAction: this.todo.list[0],
             currentList: this.todo,
             currentSearch: null,
-            currentLocation: 'currentLocation',
+            currentUserData: 'currentUserData',
             userData: this.userData,
             option: {
                 endOfDay: '18:00',
@@ -647,94 +647,7 @@ class AppStore {
                     {name: 'date', value: null, button: false},
                 ],
             },
-            tags: [
-                {
-                    name: 'project',
-                    toString: 'project',
-                    selected: '',
-                    modal: false,
-                    options: [
-                        {text: 'webGtd', value: 'webGtd', shortcut: true},
-                    ]
-                },
-                {
-                    name: 'location',
-                    toString: 'Localisation',
-                    selected: '',
-                    modal: true,
-                    options: [
-                        {text: 'Rennes', value: 'Rennes', shortcut: true},
-                        {text: 'Jardin', value: 'Jardin', shortcut: true},
-                        {text: 'Bureau', value: 'Bureau', shortcut: false},
-                        {text: '+', value: '+', shortcut: true},
-                    ]
-                },
-                {
-                    name: 'contact',
-                    toString: 'Avec',
-                    selected: '',
-                    modal: true,
-                    options: [
-                        {text: 'Alexandre', value: 'Alexandre', shortcut: true},
-                        {text: 'Toto', value: 'Toto', shortcut: true},
-                        {text: 'Jojo', value: 'Jojo', shortcut: true},
-                        {text: '+', value: '+', shortcut: true},
-                    ]
-                },
-                {
-                    name: 'tools',
-                    toString: 'Outils',
-                    selected: '',
-                    modal: false,
-                    options: [
-                        {text: 'Ordinateur', value: 'Ordinateur', shortcut: true},
-                        {text: 'Tel', value: 'Tel', shortcut: true},
-                    ]
-                },
-                {
-                    name: 'priority',
-                    toString: 'Priorité',
-                    selected: '',
-                    modal: false,
-                    options: [
-                        {text: '1', value: 1, shortcut: true},
-                        {text: '2', value: 2, shortcut: true},
-                        {text: '3', value: 3, shortcut: true},
-                        {text: '@', value: '@', shortcut: true}
-                    ]
-                },
-                {
-                    name: 'duration',
-                    toString: 'Durée',
-                    selected: '',
-                    modal: false,
-                    options: [
-                        {text: '10 min', value: 10, shortcut: true},
-                        {text: '20 min', value: 20, shortcut: true},
-                        {text: '30 min', value: 30, shortcut: true},
-                        {text: '45 min', value: 45, shortcut: true},
-                        {text: '1 h', value: 60, shortcut: true},
-                        {text: '2 h', value: 120, shortcut: true},
-                        {text: '3 h', value: 180, shortcut: true},
-                        {text: '@', value: '@', shortcut: true}
-                    ]
-                },
-                {
-                    name: 'date',
-                    toString: 'Date',
-                    selected: '',
-                    modal: true,
-                    options: [
-                        {text: 'Aujourd hui', value: 'today', shortcut: true},
-                        {text: 'Demain', value: 'tomorrow', shortcut: true},
-                        {text: 'Dans la semaine', value: 'inWeek', shortcut: true},
-                        {text: 'Prochaine semaine', value: 'nextWeek', shortcut: true},
-                        {text: 'Prochain mois', value: 'nextMonth', shortcut: true},
-                        {text: '+', value: '+', shortcut: true},
-                        {text: '@', value: '@', shortcut: true}
-                    ]
-                },
-            ],
+            tags: [],
             autoTags: {
                 createOn: {
                     position: 0,
@@ -796,38 +709,16 @@ class AppStore {
 
     init(){
         console.log('> app_store/init')
-        this.data.currentList = this.data.actions.todo
         this.data.control.editSeen = 'hello'
+        this.data.currentList = this.data.actions.todo
         this.data.currentAction = this.newAction('todo')
         db.actionsImport()
+        db.tagsImport()
     }
 
     /*------------------------------------------------------------------!!!CURRENT!!!!---------------------------------*/
 
-    addContact() {
-        console.log('> app_store/addContact')
 
-        let contact = new Contact
-        contact.id = 'rennes'
-        contact.firstName = 'LE CAM'
-        contact.lastName = 'alexandre'
-        contact.shortcut = true
-        contact.created = true
-        contact.tel = '1234'
-
-        db.addContact(contact)
-    }
-
-    updateContact() {
-        console.log('> app_store/updateContact')
-        db.updateContact()
-    }
-
-    getContactFB(){
-        console.log('> app_store/getContactFB')
-        let id = 'rennes'
-        db.getContactFB(id)
-    }
 
 
     /*--------------------------------------------------------------------USERDATA------------------------------------*/
@@ -845,12 +736,39 @@ class AppStore {
     getContact() {
         console.log('> app_store/getContact')
         let actionContact = this.getOnceActionTag('contact')
-        if (actionContact.value === null)
+        if (!actionContact.value)
             return new Contact()
 
-        return this.data.userData.contacts.find(function (obj) {
-            return obj.id === actionContact.value
-        })
+        return this.getContactFB(actionContact.id)
+
+        // return this.data.userData.contacts.find(function (obj) {
+        //     return obj.id === actionContact.value
+        // })
+    }
+
+    setCurrentUserData(dataName) {
+        console.log('> app_store/setCurrentUserData')
+        let value = this.getOnceActionTag(dataName).value
+
+        if(!value){
+            this.data.currentUserData = this.newUserData(dataName)
+            return
+        }
+
+        db.getUserData(dataName,value)
+    }
+
+    newUserData (dataName) {
+
+        switch (dataName){
+
+            case 'contact' :
+                return new Contact()
+
+
+        }
+
+
     }
 
     /*---------------------------------------------------------------------SETTER-------------------------------------*/
@@ -1101,8 +1019,8 @@ class AppStore {
     }
 
     /*---------------------------------------------------------------------SELECT-TAG---------------------------------*/
-    createTag(tagName, tag, shortcut) {
-        console.log('> app_store/createTag')
+    createTagOption(tagName, tag, shortcut) {
+        console.log('> app_store/createTagOption')
         let actionTag = this.getOnceActionTag(tagName)
         let appTagList = this.getOnceSelectTag(tagName)
 
@@ -1112,7 +1030,15 @@ class AppStore {
         actionTag.value = tag.id
         actionTag.button = true
 
+        let sailNames = [];
+        $.each(appTagList.options, function(i, names) {
+            sailNames.push(names);
+        });
+
+        appTagList.options = sailNames;
+
         appTagList.options.push({text: tag.id, value: tag.id, shortcut: shortcut})
+
         var compare = function (ascending) {
             return function (a, b) {
                 if (a.value === "+") {
@@ -1134,8 +1060,9 @@ class AppStore {
         }
         appTagList.options.sort(compare(true))
 
-        this.data.userData.contacts.push(tag)
         this.actionUpdate()
+        db.updateTags(appTagList)
+        db.addContact(tag)
     }
 
     deleteActionTag(tagName) {
@@ -1143,6 +1070,7 @@ class AppStore {
         let actionLocation = this.getOnceActionTag(tagName)
         actionLocation.value = null
         actionLocation.button = false
+        this.actionUpdate()
     }
 
     shortcutChange(tagName, optionName, isShortCut) {
@@ -1418,7 +1346,6 @@ class AppStore {
         let t = this.data.currentAction.dateTime.time
 
         t ? t : this.data.currentAction.dateTime.time = this.data.option.endOfDay
-
     }
 
     dateEdit(tagPosition) {
@@ -1551,8 +1478,8 @@ function Location() {
 
 function Contact() {
     this.id = ""
-    this.firstName = null
-    this.lastName = null
+    this.firstName = ""
+    this.lastName = ""
     this.tel = ""
     this.created = false
     this.shortcut = true

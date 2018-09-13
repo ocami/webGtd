@@ -35,7 +35,7 @@
         data ()  {
             return {
                 data : app_store.data,
-                tagName : null
+                tagName : null,
             }
         },
         computed:{
@@ -50,9 +50,8 @@
             },
             openFormModal: function (tagName) {
                 console.log('> FormLayout.vue/openFormModal')
-
+                app_store.setCurrentUserData(tagName)
                 this.tagName = tagName
-                app_store.preDateEdit()
                 this.$refs.formModal.show()
             },
             closeFormModal: function () {

@@ -1,5 +1,6 @@
 <template>
     <section>
+        {{contact}}
         <h2 v-if="this.contact.created">{{contact.id}}</h2>
         <span>Nom</span>
         <input v-model="contact.firstName" class="form-control">
@@ -44,16 +45,12 @@
             }
         },
         computed:{
-            currentAction: function () { return this.data.currentAction},
-            contact: function () { return app_store.getContact() },
-            tag:function () {
-                return this.data.tags.find(function (obj) { return obj.name === 'contact' })
-            }
+            contact: function () { return this.data.currentUserData },
         },
         methods:{
             submit : function () {
                 if(!this.contact.created){
-                    app_store.createTag('contact',this.contact, this.checked)
+                    app_store.createTagOption('contact',this.contact, this.checked)
 
                 }
 

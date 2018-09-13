@@ -77,7 +77,7 @@
         methods:{
             submit : function () {
                 if(!this.location.created){
-                    let tag = app_store.createTag('location',this.location, this.checked)
+                    let tag = app_store.createTagOption('location',this.location, this.checked)
                     this.data.userData.locations.push(tag)
                 }
 

@@ -54,7 +54,6 @@
                 console.log('TagSelect.vue/tagSelected')
 
                 let tagValue = event.target.value
-
                 if(tagValue === '+') {
                     this.$emit('open-form-modal', tagName)
                     return
