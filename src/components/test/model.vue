@@ -1,7 +1,8 @@
 <template>
     <section>
         <pre>{{data.currentAction.isActive}} / {{data.currentAction.id}}</pre>
-        <!--<pre>{{data.tags}}</pre>-->
+        <!--<pre>{{data.currentAction.tags}}</pre>-->
+        <pre>{{test}}</pre>
     </section>
 </template>
 
@@ -34,6 +35,9 @@
             sortAscDefault: function () {
                 return app_store.getList().sortAscDefault
             },
+            test : function () {
+                return app_store.getOnceActionTag('contact')
+            }
 
 
         },

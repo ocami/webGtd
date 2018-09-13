@@ -759,13 +759,14 @@ class AppStore {
     }
 
     newUserData (dataName) {
-
+        console.log('> app_store/newUserData')
         switch (dataName){
 
             case 'contact' :
                 return new Contact()
 
-
+            case 'location':
+                return new Location()
         }
 
 
@@ -1019,15 +1020,15 @@ class AppStore {
     }
 
     /*---------------------------------------------------------------------SELECT-TAG---------------------------------*/
-    createTagOption(tagName, tag, shortcut) {
-        console.log('> app_store/createTagOption')
-        let actionTag = this.getOnceActionTag(tagName)
-        let appTagList = this.getOnceSelectTag(tagName)
+    createUserData(typeOfData, userData, shortcut) {
+        console.log('> app_store/createUserData')
+        let actionTag = this.getOnceActionTag(typeOfData)
+        let appTagList = this.getOnceSelectTag(typeOfData)
 
-        shortcut ? tag.shortcut = true : tag.shortcut = false
-        tag.created = true
+        shortcut ? userData.shortcut = true : userData.shortcut = false
+        userData.created = true
 
-        actionTag.value = tag.id
+        actionTag.value = userData.id
         actionTag.button = true
 
         let sailNames = [];
@@ -1037,7 +1038,7 @@ class AppStore {
 
         appTagList.options = sailNames;
 
-        appTagList.options.push({text: tag.id, value: tag.id, shortcut: shortcut})
+        appTagList.options.push({text: userData.id, value: userData.id, shortcut: shortcut})
 
         var compare = function (ascending) {
             return function (a, b) {
@@ -1062,7 +1063,7 @@ class AppStore {
 
         this.actionUpdate()
         db.updateTags(appTagList)
-        db.addContact(tag)
+        db.addUserData(typeOfData, userData)
     }
 
     deleteActionTag(tagName) {

@@ -49,11 +49,7 @@
         },
         methods:{
             submit : function () {
-                if(!this.contact.created){
-                    app_store.createTagOption('contact',this.contact, this.checked)
-
-                }
-
+                if(!this.contact.created){ app_store.createUserData('contact',this.contact, this.checked) }
                 this.$emit('submit')
             },
             destroy : function () {

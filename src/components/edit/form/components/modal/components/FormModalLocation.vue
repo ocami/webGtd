@@ -62,34 +62,20 @@
             }
         },
         computed:{
-            currentAction: function () { return this.data.currentAction},
-            location: function () {
-                console.log(app_store.getLocation())
-                return app_store.getLocation()
-            },
+            location:function () { return this.data.currentUserData },
             mapHref: function () {
                 return 'http://www.google.com/maps/place/'+this.location.x+','+this.location.y
             },
-            tag:function () {
-                return this.data.tags.find(function (obj) { return obj.name === 'location' })
-            }
         },
         methods:{
             submit : function () {
-                if(!this.location.created){
-                    let tag = app_store.createTagOption('location',this.location, this.checked)
-                    this.data.userData.locations.push(tag)
-                }
-
+                if(!this.location.created) { app_store.createUserData('contact',this.contact, this.checked) }
                 this.$emit('submit')
             },
             destroy : function () {
                 console.log('>FormModalLocation/destroy')
                 app_store.deleteActionTag('location')
                 this.$emit('submit')
-            },
-            test : function () {
-                console.log(this.data.tags.find(function (obj) { return obj.name === 'location' }))
             },
             setMap : function () {
                 if(this.location.x && this.location.y)

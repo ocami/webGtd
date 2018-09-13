@@ -83,11 +83,13 @@ class DbStore {
     }
 
     /*----------------------------------------------------------------------------------------------------------------*/
-    addContact(contact) {
-        console.log('> fireBase/addContact')
+    addUserData(dataName, data) {
+        console.log('> fireBase/addUserData')
 
-        let path = 'user_data/contact/'+contact.id
-        return db.ref(path).set(contact);
+        let path = 'user_data/'+dataName+'/'+data.id
+        console.log(path+' ajouté')
+
+        return db.ref(path).set(data);
     }
 
     getUserData(dataName,id){
@@ -106,7 +108,7 @@ class DbStore {
 
     /*----------------------------------------------------------------------------------------------------------------*/
     updateTags(tag) {
-        console.log('> fireBase/addTags')
+        console.log('> fireBase/updateTags')
             let path = 'tags/'+tag.name
         return db.ref(path).set(tag);
     }
