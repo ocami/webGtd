@@ -1,4 +1,8 @@
 <template>
+    <!--<div>-->
+    <!--<p>-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;{{currentSelect.name}}&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
+    <!--<p>{{tag.options}}</p>-->
+    <!--</div>-->
     <span>
         <select
                 v-if="currentSelect.button === false"
@@ -9,12 +13,12 @@
             <option v-if="currentSelect.value" value = 'null'>-{{tag.name}}</option>
             <option
                     v-for="option in tag.options"
-                    v-if="currentSelect.value === option.value" selected
+                    v-if="option && currentSelect.value === option.value" selected
                     :value="option.value">
                 <span >{{ option.text }}</span>
             </option>
             <option v-for="option in tag.options"
-                    v-if="option.shortcut && currentSelect.value !== option.value && option.value !=='@'"
+                    v-if="option && option.shortcut && currentSelect.value !== option.value && option.value !=='@'"
                     :value="option.value">
                 <span >{{ option.text }}</span>
             </option>

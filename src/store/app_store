@@ -1022,20 +1022,25 @@ class AppStore {
     /*---------------------------------------------------------------------SELECT-TAG---------------------------------*/
     createUserData(typeOfData, userData, shortcut) {
         console.log('> app_store/createUserData')
-        let actionTag = this.getOnceActionTag(typeOfData)
-        let appTagList = this.getOnceSelectTag(typeOfData)
 
+        //createUserData : location || contact
         shortcut ? userData.shortcut = true : userData.shortcut = false
         userData.created = true
+        db.addUserData(typeOfData, userData)
 
+        //change tag value of current action
+        let actionTag = this.getOnceActionTag(typeOfData)
         actionTag.value = userData.id
         actionTag.button = true
+        this.actionUpdate()
+
+        //change options tag of app
+        let appTagList = this.getOnceSelectTag(typeOfData)
 
         let sailNames = [];
         $.each(appTagList.options, function(i, names) {
             sailNames.push(names);
         });
-
         appTagList.options = sailNames;
 
         appTagList.options.push({text: userData.id, value: userData.id, shortcut: shortcut})
@@ -1061,9 +1066,7 @@ class AppStore {
         }
         appTagList.options.sort(compare(true))
 
-        this.actionUpdate()
-        db.updateTags(appTagList)
-        db.addUserData(typeOfData, userData)
+        db.updateAppTagOption(appTagList)
     }
 
     deleteActionTag(tagName) {

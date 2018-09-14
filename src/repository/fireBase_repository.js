@@ -107,10 +107,13 @@ class DbStore {
     }
 
     /*----------------------------------------------------------------------------------------------------------------*/
-    updateTags(tag) {
-        console.log('> fireBase/updateTags')
-            let path = 'tags/'+tag.name
-        return db.ref(path).set(tag);
+    updateAppTagOption(tag) {
+        console.log('> fireBase/updateAppTagOption')
+        let path = 'tags/'+tag.name+'/options'
+        let updates = {};
+        let options = JSON.parse(JSON.stringify(tag.options));
+
+        return db.ref(path).set(options);
     }
 
     guid() {

@@ -69,7 +69,7 @@
         },
         methods:{
             submit : function () {
-                if(!this.location.created) { app_store.createUserData('contact',this.contact, this.checked) }
+                if(!this.location.created) { app_store.createUserData('location',this.location, this.checked) }
                 this.$emit('submit')
             },
             destroy : function () {
