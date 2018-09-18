@@ -1,15 +1,15 @@
 <template>
   <section>
-      <test v-if="test"></test>
+      <form-location v-if="test"></form-location>
 
-      <b-row>
-          <b-col cols="3">
-              <menu-layout></menu-layout>
-          </b-col>
-          <b-col cols="9">
-              <edit-layout></edit-layout>
-          </b-col>
-      </b-row>
+      <!--<b-row>-->
+          <!--<b-col cols="3">-->
+              <!--<menu-layout></menu-layout>-->
+          <!--</b-col>-->
+          <!--<b-col cols="9">-->
+              <!--<edit-layout></edit-layout>-->
+          <!--</b-col>-->
+      <!--</b-row>-->
 
   </section>
 </template>
@@ -20,6 +20,7 @@
   import app_store from './store/app_store'
   import MenuLayout from './components/menu/MenuLayout.vue'
   import EditLayout from './components/edit/EditLayout.vue'
+  import FormLocation from './components/tools/FormLocation.vue'
 
 
   export default {
@@ -27,7 +28,8 @@
       components : {
           Test,
           MenuLayout,
-          EditLayout
+          EditLayout,
+          FormLocation
       },
       data ()  {
           return {
