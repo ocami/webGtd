@@ -3,9 +3,16 @@
         <div>
             <p>{{location.id}}</p>
 
-            <span v-if="!location.created">
-                <input v-model="location.id" class="form-control">
-            </span>
+            <div v-if="errors.length">
+                <ul>
+                    <li v-for="error in errors" class="text-danger">{{ error }}</li>
+                </ul>
+            </div>
+
+            <input
+                    v-if="!location.created"
+                    v-model="location.id"
+                    class="form-control mb-4 id-data">
 
             <form-location
                     @location-change="locationChange"
@@ -20,7 +27,10 @@
             <br>
             <b-button @click="submit">Valider</b-button>
             <b-button @click="destroy">Supprimer</b-button>
-            <a v-if="map" :href="mapHref" target="_blank">map</a>
+
+            <a v-if="mapHref" :href="mapHref" target="_blank" class="float-right">
+                <img border="0" alt="W3Schools" src="https://img.talkandroid.com/uploads/2017/12/google-maps-go.png" width="50" height="50">
+            </a>
         </div>
 
     </section>
@@ -42,14 +52,9 @@
         },
         data() {
             return {
+                errors: [],
                 data: app_store.data,
                 checked: true,
-                map: function () {
-                    if (this.location.x && this.location.y)
-                        return true
-
-                    return false
-                }
             }
         },
         computed: {
@@ -57,15 +62,33 @@
                 return this.data.currentUserData
             },
             mapHref: function () {
-                return 'http://www.google.com/maps/place/' + this.location.x + ',' + this.location.y
+                if(this.location.features.x && this.location.features.y)
+                    return 'http://www.google.com/maps/place/' + this.location.features.y + ',' + this.location.features.x
+                else
+                    return null
             },
         },
         methods: {
             submit: function () {
+                this.errors = []
+                if (!this.location.id) {
+                    this.errors.push('Vous devez indiquer un identifiant');
+                    console.log(this.location.id)
+                    return
+                }
+
+                this.checked = true
+
                 if (!this.location.created) {
                     app_store.createUserData('location', this.location, this.checked)
+                    this.$emit('submit')
+                    return
                 }
+
+                app_store.updateUserData('location', this.location, this.checked)
+
                 this.$emit('submit')
+
             },
             destroy: function () {
                 console.log('>FormModalLocation/destroy')
@@ -93,5 +116,9 @@
 </script>
 
 <style scoped>
+
+    .id-data {
+        background-color: rgba(46, 139, 87, 0.2);
+    }
 
 </style>

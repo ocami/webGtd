@@ -2,7 +2,7 @@
     <section>
 
         <div v-if="features.citycode" class="alert alert-secondary">
-            <span>{{features.city}}</span>
+            <span>{{features.city}} - {{features.postCode}}</span>
             <button @click="editCity" class="float-right">X</button>
         </div>
 
@@ -21,10 +21,8 @@
             <button @click="editAddress" class="float-right">X</button>
         </div>
 
-
-
         <vue-bootstrap-typeahead
-                v-if="selectedCity && !features.address"
+                v-if="!features.address && features.city"
                 class="mb-4"
                 v-model="addressQuery"
                 :data="addresses"
@@ -49,12 +47,10 @@
         },
         data() {
             return {
-                cities: [],
                 cityQuery: '',
-                selectedCity: null,
-                addresses: [],
+                cities: [],
                 addressQuery: '',
-                selectedAddress: null,
+                addresses: [],
             }
         },
         computed: {
@@ -75,8 +71,8 @@
                     })
             },
             addressQuery(newAddressQuery) {
-                if (this.selectedCity && newAddressQuery !== '') {
-                    axios.get(`https://api-adresse.data.gouv.fr/search/?citycode=${this.selectedCity.code}&q=${newAddressQuery}`)
+                if (this.features.citycode && newAddressQuery !== '') {
+                    axios.get(`https://api-adresse.data.gouv.fr/search/?citycode=${this.features.citycode}&q=${newAddressQuery}`)
                         .then((res) => {
                             this.addresses = res.data.features
                         })
@@ -86,25 +82,22 @@
         methods: {
             editCity: function () {
                 console.log('editCity')
-                this.selectedCity = null
-                this.selectedAddress = null
                 this.addressQuery = ''
                 this.features = app_store.refreshLocationFeatures()
             },
             editAddress : function () {
                 console.log('> formLocation.vue/editAddress')
-                this.selectedAddress = null
                 this.addressQuery = ''
                 this.features.address = null
             },
             citySelected: function (event) {
                 console.log('citySelected')
-                this.selectedCity = {query: this.cityQuery, code: event.code, name: event.nom}
-                axios.get(`https://api-adresse.data.gouv.fr/search/?citycode=${this.selectedCity.code}&q=${this.selectedCity.name}&type=municipality&limit=1`)
+                axios.get(`https://api-adresse.data.gouv.fr/search/?citycode=${event.code}&q=${event.nom}&type=municipality&limit=1`)
                     .then((res) => {
                         this.features.idApi = res.data.features[0].properties.id
                         this.features.city = res.data.features[0].properties.name
                         this.features.citycode = res.data.features[0].properties.citycode
+                        this.features.postCode =  res.data.features[0].properties.postcode
                         this.features.x = res.data.features[0].geometry.coordinates[0]
                         this.features.y = res.data.features[0].geometry.coordinates[1]
                         this.$emit('location-change', this.features)
@@ -114,10 +107,11 @@
             },
             addressSelected: function (event) {
                 console.log('addressSelected')
+                console.log(event.properties)
 
                 this.features.idApi = event.properties.id
                 this.features.address = event.properties.name
-                this.features.postcode = event.properties.postcode
+                this.features.postCode = event.properties.postcode
                 this.features.x = event.geometry.coordinates[0]
                 this.features.y = event.geometry.coordinates[1]
                 this.$emit('location-change', this.features)

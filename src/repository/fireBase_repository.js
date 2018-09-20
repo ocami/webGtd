@@ -92,6 +92,14 @@ class DbStore {
         return db.ref(path).set(data);
     }
 
+    updateUserData(dataName, data){
+        let path = 'user_data/'+dataName+'/'+data.id
+        let updates = {};
+        data = JSON.parse(JSON.stringify(data));
+        updates[path] = data;
+        db.ref().update(updates)
+    }
+
     getUserData(dataName,id){
         console.log('> fireBase/getUserData')
         let path = 'user_data/'+dataName+'/'+id

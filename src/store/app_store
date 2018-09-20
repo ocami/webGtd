@@ -721,30 +721,6 @@ class AppStore {
 
 
     /*--------------------------------------------------------------------USERDATA------------------------------------*/
-    getLocation() {
-        console.log('> app_store/getLocation')
-        let actionLocation = this.getOnceActionTag('location')
-        if (!actionLocation.value)
-            return new Location()
-
-        return this.data.userData.locations.find(function (obj) {
-            return obj.id === actionLocation.value
-        })
-    }
-
-    getContact() {
-        console.log('> app_store/getContact')
-        let actionContact = this.getOnceActionTag('contact')
-        if (!actionContact.value)
-            return new Contact()
-
-        return this.getContactFB(actionContact.id)
-
-        // return this.data.userData.contacts.find(function (obj) {
-        //     return obj.id === actionContact.value
-        // })
-    }
-
     setCurrentUserData(dataName) {
         console.log('> app_store/setCurrentUserData')
         let value = this.getOnceActionTag(dataName).value
@@ -767,8 +743,60 @@ class AppStore {
             case 'location':
                 return new Location()
         }
+    }
 
+    createUserData(typeOfData, userData, shortcut) {
+        console.log('> app_store/createUserData')
 
+        //createUserData : location || contact
+        shortcut ? userData.shortcut = true : userData.shortcut = false
+        userData.created = true
+        db.addUserData(typeOfData, userData)
+
+        //change tag value of current action
+        let actionTag = this.getOnceActionTag(typeOfData)
+        actionTag.value = userData.id
+        actionTag.button = true
+        this.actionUpdate()
+
+        //change options tag of app
+        let appTagList = this.getOnceSelectTag(typeOfData)
+
+        let sailNames = [];
+        $.each(appTagList.options, function (i, names) {
+            sailNames.push(names);
+        });
+        appTagList.options = sailNames;
+
+        appTagList.options.push({text: userData.id, value: userData.id, shortcut: shortcut})
+
+        var compare = function (ascending) {
+            return function (a, b) {
+                if (a.value === "+") {
+                    return 1;
+                }
+                else if (b.value === "+") {
+                    return -1;
+                }
+                else if (a.value === b.value) {
+                    return 0;
+                }
+                else if (ascending) {
+                    return a.value < b.value ? -1 : 1;
+                }
+                else if (!ascending) {
+                    return a.value < b.value ? 1 : -1;
+                }
+            };
+        }
+        appTagList.options.sort(compare(true))
+
+        db.updateAppTagOption(appTagList)
+    }
+
+    updateUserData(typeOfData, userData, shortcut) {
+        shortcut ? userData.shortcut = true : userData.shortcut = false
+        db.updateUserData(typeOfData, userData)
     }
 
     /*---------------------------------------------------------------------SETTER-------------------------------------*/
@@ -1019,55 +1047,6 @@ class AppStore {
     }
 
     /*---------------------------------------------------------------------SELECT-TAG---------------------------------*/
-    createUserData(typeOfData, userData, shortcut) {
-        console.log('> app_store/createUserData')
-
-        //createUserData : location || contact
-        shortcut ? userData.shortcut = true : userData.shortcut = false
-        userData.created = true
-        db.addUserData(typeOfData, userData)
-
-        //change tag value of current action
-        let actionTag = this.getOnceActionTag(typeOfData)
-        actionTag.value = userData.id
-        actionTag.button = true
-        this.actionUpdate()
-
-        //change options tag of app
-        let appTagList = this.getOnceSelectTag(typeOfData)
-
-        let sailNames = [];
-        $.each(appTagList.options, function (i, names) {
-            sailNames.push(names);
-        });
-        appTagList.options = sailNames;
-
-        appTagList.options.push({text: userData.id, value: userData.id, shortcut: shortcut})
-
-        var compare = function (ascending) {
-            return function (a, b) {
-                if (a.value === "+") {
-                    return 1;
-                }
-                else if (b.value === "+") {
-                    return -1;
-                }
-                else if (a.value === b.value) {
-                    return 0;
-                }
-                else if (ascending) {
-                    return a.value < b.value ? -1 : 1;
-                }
-                else if (!ascending) {
-                    return a.value < b.value ? 1 : -1;
-                }
-            };
-        }
-        appTagList.options.sort(compare(true))
-
-        db.updateAppTagOption(appTagList)
-    }
-
     deleteActionTag(tagName) {
         console.log('> app_store/deleteActionTag')
         let actionLocation = this.getOnceActionTag(tagName)
@@ -1486,7 +1465,7 @@ function LocationFeatures() {
     this.idApi = null
     this.city = null
     this.citycode = null
-    this.postcode = null
+    this.postCode = null
     this.address = null
     this.x = 0
     this.y = 0

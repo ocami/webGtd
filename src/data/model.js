@@ -401,7 +401,7 @@
             y: f.geometry.coordinates[0],
             street: f.properties.name,
             city: f.properties.city,
-            postCode: f.properties.postcode,
+            postCode: f.properties.postCode,
             dep: depSplit[0] + ' ' + depSplit[1],
             depCode: depSplit[0],
             cityCode: cityCode,
