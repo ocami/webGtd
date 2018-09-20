@@ -1,4 +1,5 @@
 import db from "../repository/fireBase_repository"
+
 var Promise = require('es6-promise').Promise;
 
 class AppStore {
@@ -707,7 +708,7 @@ class AppStore {
         this.cl = this.data.currentList
     }
 
-    init(){
+    init() {
         console.log('> app_store/init')
         this.data.control.editSeen = 'hello'
         this.data.currentList = this.data.actions.todo
@@ -717,8 +718,6 @@ class AppStore {
     }
 
     /*------------------------------------------------------------------!!!CURRENT!!!!---------------------------------*/
-
-
 
 
     /*--------------------------------------------------------------------USERDATA------------------------------------*/
@@ -750,17 +749,17 @@ class AppStore {
         console.log('> app_store/setCurrentUserData')
         let value = this.getOnceActionTag(dataName).value
 
-        if(!value){
+        if (!value) {
             this.data.currentUserData = this.newUserData(dataName)
             return
         }
 
-        db.getUserData(dataName,value)
+        db.getUserData(dataName, value)
     }
 
-    newUserData (dataName) {
+    newUserData(dataName) {
         console.log('> app_store/newUserData')
-        switch (dataName){
+        switch (dataName) {
 
             case 'contact' :
                 return new Contact()
@@ -913,13 +912,13 @@ class AppStore {
         }
     }
 
-    actionTagChange(tag, tagValue, currentSelect){
+    actionTagChange(tag, tagValue, currentSelect) {
         console.log('> app_store/actionTagChange')
 
         isNaN(Number(tagValue)) ? tagValue : tagValue = Number(tagValue)
         tagValue === 'null' ? tagValue = null : tagValue
         currentSelect.value = tagValue
-        if(tag.modal === true)
+        if (tag.modal === true)
             currentSelect.button = true
 
         this.actionUpdate()
@@ -1038,7 +1037,7 @@ class AppStore {
         let appTagList = this.getOnceSelectTag(typeOfData)
 
         let sailNames = [];
-        $.each(appTagList.options, function(i, names) {
+        $.each(appTagList.options, function (i, names) {
             sailNames.push(names);
         });
         appTagList.options = sailNames;
@@ -1160,7 +1159,7 @@ class AppStore {
         cl.sortTagDefault = cl.sortTag
         cl.sortAscDefault = cl.sortAsc
 
-        db.setDefaultSearch(cl.name,cl.sortTag,cl.sortAsc,clDs)
+        db.setDefaultSearch(cl.name, cl.sortTag, cl.sortAsc, clDs)
     }
 
     intervalSearch() {
@@ -1466,6 +1465,11 @@ class AppStore {
         console.log('8 '+ this.arrayCompare(['popo','ff','ddd','eee','papa','czdvrever'],['popo','zz','ddd','eee','','czdvrever']))
         console.log('9 '+ this.arrayCompare(['popo','ff','ddd','eee','papa','czdvrever'],['roro','ff','ddd','eee','papa','czdvrever']))
     }*/
+
+    /*--------------------------------------------------------------------Location------------------------------------*/
+    refreshLocationFeatures() {
+        return new LocationFeatures()
+    }
 }
 
 export default new AppStore();
@@ -1473,11 +1477,19 @@ export default new AppStore();
 /*-------------------------------OBJECTS---------------------------*/
 function Location() {
     this.id = ""
-    this.x = null
-    this.y = null
-    this.city = ""
     this.created = false
     this.shortcut = true
+    this.features = new LocationFeatures()
+}
+
+function LocationFeatures() {
+    this.idApi = null
+    this.city = null
+    this.citycode = null
+    this.postcode = null
+    this.address = null
+    this.x = 0
+    this.y = 0
 }
 
 function Contact() {
@@ -1514,7 +1526,7 @@ function todayDate() {
     return today;
 }
 
-function loadDistantFile (url) {
+function loadDistantFile(url) {
     return new Promise(function (resolve, reject) {
         var xhr = new XMLHttpRequest();
 
