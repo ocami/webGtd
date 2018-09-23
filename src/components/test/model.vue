@@ -1,7 +1,8 @@
 <template>
     <section>
         <pre>{{data.currentAction.isActive}} / {{data.currentAction.id}}</pre>
-        <!--<pre>{{data.actions.receipt.currentSearch}}</pre>-->
+        <pre>{{data.control.editSeen}}</pre>
+        <pre>{{data.control.menuSeen}}</pre>
         <!--<pre>{{test}}</pre>-->
     </section>
 </template>

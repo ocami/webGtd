@@ -14,6 +14,7 @@
 
         <input v-model="currentAction.name" @blur="inputChange($event)" class="form-control">
         <textarea v-model="currentAction.content" @blur="inputChange($event, true)" class="form-control" rows="12"></textarea>
+        <button @click="finish" ></button>
     </section>
 </template>
 
@@ -58,6 +59,10 @@
                 console.log('> FormLayout.vue/closeFormModal')
 
                 this.$refs.formModal.hide()
+            },
+            finish: function () {
+                console.log('> FormLayout.vue/finish')
+                app_store.finishEditAction()
             }
         }
     }

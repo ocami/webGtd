@@ -923,6 +923,12 @@ class AppStore {
         this.data.control.editSeen = 'edit'
     }
 
+    finishEditAction() {
+
+
+
+    }
+
     inputChange(event, isTextarea) {
         console.log('> app_store/inputChange')
 
