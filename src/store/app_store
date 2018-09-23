@@ -977,7 +977,8 @@ class AppStore {
         if (l) {
             index < l ? i = index : i = index - 1;
             this.actionEdit(i)
-        } else {
+        } else
+            {
             this.data.control.editSeen = 'empty'
         }
     }
@@ -1089,7 +1090,8 @@ class AppStore {
 
         //editSenn empty if no result
         for (var i = 0; i < list.length; i++) {
-            if (list[i].visible) {
+            console.log(list[i].name+' / '+list[i].visible)
+            if (this.data.currentList.list[i].visible === true) {
                 this.actionEdit(i)
                 return
             }
@@ -1171,6 +1173,10 @@ class AppStore {
 
         for (var i = 0; i < array.length; i++) {
             array[i].value = null
+            array[i].button = false
+            array[i].interval = null
+            array[i].min = null
+            array[i].max = null
         }
 
         for (var i = 0; i < actions.length; i++) {
@@ -1178,7 +1184,7 @@ class AppStore {
         }
 
         this.getList().currentSearch = array;
-        this.getList().list;
+        this.getList().list = actions;
     }
 
     arrayCompare(currentAction, search) {
@@ -1447,6 +1453,7 @@ class AppStore {
 
     /*--------------------------------------------------------------------Location------------------------------------*/
     refreshLocationFeatures() {
+        console.log('> app_store/refreshLocationFeatures')
         return new LocationFeatures()
     }
 }

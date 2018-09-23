@@ -37,7 +37,6 @@
         "name" : "date",
         "toString" : "Date"
       } ],
-      "list" : {},
       "sortAscDefault" : true,
       "sortTagDefault" : "autoTag-0"
     },
@@ -79,6 +78,43 @@
         "toString" : "Date"
       } ],
       "list" : {
+        "3618f308-77fd-bb69-c2fe-69097d72b695" : {
+          "autoTags" : [ 1536857553794, 1537713140110, 1537713140245 ],
+          "content" : "git : userData_Crud\n\n> FormLayout.vue/openFormModal\n> app_store/setCurrentUserData\n> app_store/newUserData'\n> app_store/createTagOption\n> fireBase/updateAction\n> app_store/setUpdateOn\n> fireBase/updateTags\n> fireBase/addContact\n==> changer pour addUserData\n> FormLayout.vue/closeFormModal",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "3618f308-77fd-bb69-c2fe-69097d72b695",
+          "isActive" : false,
+          "name" : "étendre ajout tag contact a userData",
+          "status" : "done",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project",
+            "value" : "webGtd"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority",
+            "value" : 1
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
         "487aca2b-e3c0-1aa6-ae53-3f0821469486" : {
           "autoTags" : [ 1536848283448, 1536853258758, 1536857817715 ],
           "content" : "parse observer to object / array",
@@ -105,6 +141,44 @@
           }, {
             "button" : false,
             "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "cd0cad04-b7d6-6957-59e5-20f610938fb2" : {
+          "active" : false,
+          "autoTags" : [ 1536673458625, 1537712999452, 1537712999610 ],
+          "content" : "auto-completion\napi ",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "cd0cad04-b7d6-6957-59e5-20f610938fb2",
+          "isActive" : false,
+          "name" : "form location ",
+          "status" : "done",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project",
+            "value" : "webGtd"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority",
+            "value" : 3
           }, {
             "button" : false,
             "name" : "duration"
@@ -432,43 +506,6 @@
           } ],
           "visible" : true
         },
-        "3618f308-77fd-bb69-c2fe-69097d72b695" : {
-          "autoTags" : [ 1536857553794, 1536860722126, 1536857553794 ],
-          "content" : "git : userData_Crud\n\n\n> FormLayout.vue/openFormModal\n> app_store/setCurrentUserData\n> app_store/newUserData'\n> app_store/createTagOption\n> fireBase/updateAction\n> app_store/setUpdateOn\n> fireBase/updateTags\n> fireBase/addContact\n==> changer pour addUserData\n> FormLayout.vue/closeFormModal",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "3618f308-77fd-bb69-c2fe-69097d72b695",
-          "isActive" : false,
-          "name" : "étendre ajout tag contact a userData",
-          "status" : "todo",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project",
-            "value" : "webGtd"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority",
-            "value" : 1
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
         "556a7c9f-6dd2-c557-e5bc-618727252bef" : {
           "autoTags" : [ 1536780026642, 1536780026642, 1536780127492 ],
           "content" : "cabane jardin",
@@ -583,6 +620,79 @@
           } ],
           "visible" : true
         },
+        "7c80364d-0b4f-d7ec-f587-a9d691e1d320" : {
+          "autoTags" : [ 1537712924523, 1537712924523, 1537712924523 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "7c80364d-0b4f-d7ec-f587-a9d691e1d320",
+          "isActive" : false,
+          "name" : "",
+          "status" : "todo",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project",
+            "value" : "webGtd"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "7d63a3f8-825b-96de-415e-51de18cf5fee" : {
+          "autoTags" : [ 1537712924523, 1537712944110, 1537712924523 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "7d63a3f8-825b-96de-415e-51de18cf5fee",
+          "isActive" : false,
+          "name" : "vider recherche auto",
+          "status" : "todo",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project",
+            "value" : "webGtd"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority",
+            "value" : 1
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
         "8f0866ec-22dc-9144-84a0-d2056c9fa396" : {
           "active" : false,
           "autoTags" : [ 1536669589926, 1536857539687, 1536673211621 ],
@@ -684,44 +794,6 @@
           }, {
             "button" : false,
             "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "cd0cad04-b7d6-6957-59e5-20f610938fb2" : {
-          "active" : false,
-          "autoTags" : [ 1536673458625, 1536844004416, 1536673458625 ],
-          "content" : "Jquery plugin",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "cd0cad04-b7d6-6957-59e5-20f610938fb2",
-          "isActive" : false,
-          "name" : "form location ",
-          "status" : "todo",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project",
-            "value" : "webGtd"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority",
-            "value" : 3
           }, {
             "button" : false,
             "name" : "duration"
@@ -925,14 +997,6 @@
       "position" : 4,
       "selected" : "",
       "toString" : "Outils"
-    }
-  },
-  "user_data" : {
-    "contact" : {
-
-    },
-    "location" : {
-
     }
   }
 }

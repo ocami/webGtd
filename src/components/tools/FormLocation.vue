@@ -81,7 +81,7 @@
         },
         methods: {
             editCity: function () {
-                console.log('editCity')
+                console.log('> formLocation.vue/editCity')
                 this.addressQuery = ''
                 this.features = app_store.refreshLocationFeatures()
             },
@@ -91,7 +91,7 @@
                 this.features.address = null
             },
             citySelected: function (event) {
-                console.log('citySelected')
+                console.log('> formLocation.vue/citySelected')
                 axios.get(`https://api-adresse.data.gouv.fr/search/?citycode=${event.code}&q=${event.nom}&type=municipality&limit=1`)
                     .then((res) => {
                         this.features.idApi = res.data.features[0].properties.id
@@ -106,7 +106,7 @@
                     })
             },
             addressSelected: function (event) {
-                console.log('addressSelected')
+                console.log('> formLocation.vue/addressSelected')
                 console.log(event.properties)
 
                 this.features.idApi = event.properties.id

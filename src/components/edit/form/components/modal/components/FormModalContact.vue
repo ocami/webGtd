@@ -1,20 +1,23 @@
 <template>
     <section>
-        {{contact}}
-        <h2 v-if="this.contact.created">{{contact.id}}</h2>
-        <span>Nom</span>
-        <input v-model="contact.firstName" class="form-control">
-        <span>Prénom</span>
-        <input v-model="contact.lastName"  class="form-control">
-        <span>Couriel</span>
-        <input v-model="contact.mail" class="form-control">
-        <span>Tel</span>
-        <input v-model="contact.tel" class="form-control">
+        <h3>{{contact.id}}</h3>
 
-        <span v-if="!contact.created" >
-                <span>Identifiant</span>
-                <input v-model="contact.id" id="inputId" class="form-control">
-        </span>
+        <span>Identifiant</span>
+        <input
+                v-if="!contact.created"
+                v-model="contact.id"
+                class="form-control mb-4 id-data">
+
+        <span>Nom</span>
+        <input v-model="contact.firstName" class="form-control mb-2">
+        <span>Prénom</span>
+        <input v-model="contact.lastName"  class="form-control mb-2">
+        <span>Couriel</span>
+        <input v-model="contact.mail" class="form-control mb-2">
+        <span>Tel</span>
+        <input v-model="contact.tel" class="form-control mb-2">
+
+
 
         <label>Inclure à la liste</label>
         <input v-if="this.contact.created" type="checkbox" v-model="contact.shortcut" @change="shortcutChange">
@@ -49,6 +52,12 @@
         },
         methods:{
             submit : function () {
+                if (!this.contact.id) {
+                    this.$emit('errors','Vous devez indiquer un identifiant')
+                    return
+                }
+
+                this.checked = true
                 if(!this.contact.created){ app_store.createUserData('contact',this.contact, this.checked) }
                 this.$emit('submit')
             },

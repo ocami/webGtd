@@ -1,7 +1,7 @@
 <template>
     <section>
         <pre>{{data.currentAction.isActive}} / {{data.currentAction.id}}</pre>
-        <!--<pre>{{data.tags}}</pre>-->
+        <!--<pre>{{data.actions.receipt.currentSearch}}</pre>-->
         <!--<pre>{{test}}</pre>-->
     </section>
 </template>

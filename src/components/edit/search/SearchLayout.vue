@@ -7,8 +7,6 @@
                 @open-search-modal="openSearchModal"
         ></search-tags-select>
 
-
-        <button @click="tagsCompare">Appliquer</button>
         <button @click="tagsEmpty">Vider</button>
         <button @click="setDefaultSearch">Définir comme requête auto</button>
 

@@ -64,5 +64,7 @@
 </script>
 
 <style scoped>
-
+    .id-data {
+        background-color: rgba(46, 139, 87, 0.2);
+    }
 </style>
