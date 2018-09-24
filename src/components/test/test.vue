@@ -1,31 +1,30 @@
 <template>
     <section>
         <p>Le Test</p>
-        <date-picker :config="options" v-model=selected></date-picker>
+        <button @click="letest">TEST</button>
+        
     </section>
 </template>
 
 <script>
 
-    import datePicker from 'vue-bootstrap-datetimepicker';
-    import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
+    import app_store from '../../store/app_store'
 
     export default {
         name: 'test',
-        components : {
-            datePicker
-        },
         data ()  {
             return {
-                options : {
-                    locale: 'fr',
-                    format: 'DD/MM/YYYY',
-                    inline: true,
-                },
-                selected : '28/08/2018'
+                data : app_store.data,
+                result: 'result'
             }
         },
         computed:{
+        },
+        methods:{
+            letest : function () {
+                app_store.dateManualAuto('@today')
+            }
+    
         }
 
     }

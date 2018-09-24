@@ -15,7 +15,7 @@
 
 <script>
 
-    import Test from './components/test/model.vue'
+    import Test from './components/test/test.vue'
     import app_store from './store/app_store'
     import MenuLayout from './components/menu/MenuLayout.vue'
     import EditLayout from './components/edit/EditLayout.vue'

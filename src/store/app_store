@@ -1,4 +1,5 @@
 import db from "../repository/fireBase_repository"
+import dateTimeTools from '../tools/DateTime.js'
 
 var Promise = require('es6-promise').Promise;
 
@@ -1363,10 +1364,64 @@ class AppStore {
         tag.button = true
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     dateManualAuto(value) {
         console.log('> app_store/dateManualAuto')
         console.log(value)
+        dateTimeTools.dateTimeTest()
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     dateAutoEdit(tagValue, tagPosition, tagName) {
         console.log('> app_store/dateAutoEdit')
@@ -1381,8 +1436,6 @@ class AppStore {
 
         t ? t : this.data.currentAction.dateTime.time = this.data.option.endOfDay
     }
-
-
 
     dateTimeRefresh() {
         console.log('> app_store/dateTimeRefresh')
