@@ -1354,13 +1354,18 @@ class AppStore {
 
     /*-----------------------------------------------------------------------DATE-------------------------------------*/
 
-    dateEdit() {
-        console.log('> app_store/dateEdit')
+    dateManualEdit() {
+        console.log('> app_store/dateManualEdit')
         let dt = this.data.currentAction.dateTime
         let tag = this.getOnceActionTag('date')
         dt.minutes = parseToMinutes(dt.date, dt.time)
         tag.value = dt.date
         tag.button = true
+    }
+
+    dateManualAuto(value) {
+        console.log('> app_store/dateManualAuto')
+        console.log(value)
     }
 
     dateAutoEdit(tagValue, tagPosition, tagName) {
@@ -1370,8 +1375,8 @@ class AppStore {
         currentAction.dateTime.date = '20180830'
     }
 
-    preDateEdit() {
-        console.log('> app_store/preDateEdit')
+    predateManualEdit() {
+        console.log('> app_store/predateManualEdit')
         let t = this.data.currentAction.dateTime.time
 
         t ? t : this.data.currentAction.dateTime.time = this.data.option.endOfDay

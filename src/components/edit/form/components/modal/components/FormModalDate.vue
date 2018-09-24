@@ -72,7 +72,7 @@
         methods: {
             submit() {
                 console.log('ModalDate.vue/submit')
-                app_store.dateEdit()
+                app_store.dateManualEdit()
                 this.$emit('submit')
             },
             destroy : function () {

@@ -37,7 +37,6 @@
         "name" : "date",
         "toString" : "Date"
       } ],
-      "list" : {},
       "sortAscDefault" : true,
       "sortTagDefault" : "autoTag-0"
     },
@@ -654,113 +653,6 @@
         "toString" : "Date"
       } ],
       "list" : {
-        "179186c9-4a43-6047-8b89-1401d2729570" : {
-          "autoTags" : [ 1537802407852, 1537802407852, 1537802407852 ],
-          "content" : "",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "179186c9-4a43-6047-8b89-1401d2729570",
-          "isActive" : false,
-          "name" : "ssss",
-          "status" : "todo",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "2ad0ee04-3fe2-8dec-5a23-38e05aabb12a" : {
-          "autoTags" : [ 1537802415009, 1537802419282, 1537802415009 ],
-          "content" : "",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "2ad0ee04-3fe2-8dec-5a23-38e05aabb12a",
-          "isActive" : false,
-          "name" : "sssss",
-          "status" : "todo",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project",
-            "value" : "webGtd"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority",
-            "value" : 1
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "301e0f8b-d0e4-9670-025c-b37e368dfb19" : {
-          "autoTags" : [ 1537795440123, 1537795440123, 1537795440123 ],
-          "content" : "",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "301e0f8b-d0e4-9670-025c-b37e368dfb19",
-          "isActive" : false,
-          "name" : "zzzz",
-          "status" : "todo",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
         "556a7c9f-6dd2-c557-e5bc-618727252bef" : {
           "autoTags" : [ 1536780026642, 1536780026642, 1536780127492 ],
           "content" : "cabane jardin",
@@ -1086,32 +978,32 @@
       "name" : "date",
       "options" : [ {
         "shortcut" : true,
-        "text" : "Aujourd hui",
-        "value" : "today"
+        "text" : "Ce jour",
+        "value" : "@today"
       }, {
         "shortcut" : true,
         "text" : "Demain",
-        "value" : "tomorrow"
+        "value" : "@tomorrow"
       }, {
         "shortcut" : true,
-        "text" : "Dans la semaine",
-        "value" : "inWeek"
+        "text" : "Cette semaine",
+        "value" : "@inWeek"
       }, {
         "shortcut" : true,
-        "text" : "Prochaine semaine",
-        "value" : "nextWeek"
+        "text" : "Ce mois",
+        "value" : "@inMonth"
+      }, {
+        "shortcut" : true,
+        "text" : "Prochain smeaine",
+        "value" : "@nextWeek"
       }, {
         "shortcut" : true,
         "text" : "Prochain mois",
-        "value" : "nextMonth"
+        "value" : "@nextMonth"
       }, {
         "shortcut" : true,
         "text" : "+",
         "value" : "+"
-      }, {
-        "shortcut" : true,
-        "text" : "@",
-        "value" : "@"
       } ],
       "position" : 7,
       "selected" : "",
