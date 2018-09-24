@@ -37,6 +37,7 @@
         "name" : "date",
         "toString" : "Date"
       } ],
+      "list" : {},
       "sortAscDefault" : true,
       "sortTagDefault" : "autoTag-0"
     },
@@ -78,6 +79,43 @@
         "toString" : "Date"
       } ],
       "list" : {
+        "01019ee2-4b51-bebe-be94-5b9a30159a40" : {
+          "autoTags" : [ 1536857835227, 1537796506749, 1537796506875 ],
+          "content" : "git : refresh_actionsList\n\nbouton fin de formulaire d édition pour rafraichir la liste ",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "01019ee2-4b51-bebe-be94-5b9a30159a40",
+          "isActive" : false,
+          "name" : "btn refresh action list",
+          "status" : "done",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project",
+            "value" : "webGtd"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority",
+            "value" : 1
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
         "3618f308-77fd-bb69-c2fe-69097d72b695" : {
           "autoTags" : [ 1536857553794, 1537713140110, 1537713140245 ],
           "content" : "git : userData_Crud\n\n> FormLayout.vue/openFormModal\n> app_store/setCurrentUserData\n> app_store/newUserData'\n> app_store/createTagOption\n> fireBase/updateAction\n> app_store/setUpdateOn\n> fireBase/updateTags\n> fireBase/addContact\n==> changer pour addUserData\n> FormLayout.vue/closeFormModal",
@@ -151,6 +189,80 @@
           } ],
           "visible" : true
         },
+        "7336b604-233a-2191-ceac-aab8b7653d76" : {
+          "autoTags" : [ 1536857623033, 1536857793659, 1537721675980 ],
+          "content" : "Quand on selectionne auto dans le menu\n=> première action de la liste actif",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "7336b604-233a-2191-ceac-aab8b7653d76",
+          "isActive" : false,
+          "name" : "auto select first action",
+          "status" : "done",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project",
+            "value" : "webGtd"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority",
+            "value" : 2
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "7d63a3f8-825b-96de-415e-51de18cf5fee" : {
+          "autoTags" : [ 1537712924523, 1537712944110, 1537717963221 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "7d63a3f8-825b-96de-415e-51de18cf5fee",
+          "isActive" : false,
+          "name" : "vider recherche auto",
+          "status" : "done",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project",
+            "value" : "webGtd"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority",
+            "value" : 1
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
         "cd0cad04-b7d6-6957-59e5-20f610938fb2" : {
           "active" : false,
           "autoTags" : [ 1536673458625, 1537712999452, 1537712999610 ],
@@ -179,6 +291,43 @@
             "button" : false,
             "name" : "priority",
             "value" : 3
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "d162cdd3-68de-bc4c-7fdc-caa5928eb1d7" : {
+          "autoTags" : [ 1537744182444, 1537745521771, 1537745899587 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "d162cdd3-68de-bc4c-7fdc-caa5928eb1d7",
+          "isActive" : false,
+          "name" : "test1",
+          "status" : "done",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project",
+            "value" : "webGtd"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority",
+            "value" : 1
           }, {
             "button" : false,
             "name" : "duration"
@@ -348,8 +497,8 @@
         },
         "aac98a40-5b2b-42df-8acd-3ea94f330270" : {
           "active" : false,
-          "autoTags" : [ 1536673082475, 1536673138335, 1536673142231 ],
-          "content" : "> fireBase/actionsImport",
+          "autoTags" : [ 1536673082475, 1537798024753, 1537798028357 ],
+          "content" : "git : init_promess\n\n> fireBase/actionsImport",
           "dateTime" : {
             "expiry" : true
           },
@@ -374,6 +523,41 @@
             "button" : false,
             "name" : "priority",
             "value" : 3
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "f011d8bb-d9b6-f176-26bd-117aabc08ca0" : {
+          "autoTags" : [ 1537713538261, 1537713538261, 1537713538261 ],
+          "content" : "pouvoir changer la taille\nagrandir/diminuer menu",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "f011d8bb-d9b6-f176-26bd-117aabc08ca0",
+          "isActive" : false,
+          "name" : "separateur menu/edit ",
+          "status" : "incubation",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
           }, {
             "button" : false,
             "name" : "duration"
@@ -413,7 +597,8 @@
         "button" : false,
         "interval" : false,
         "name" : "priority",
-        "toString" : "Priorité"
+        "toString" : "Priorité",
+        "value" : 2
       }, {
         "button" : false,
         "interval" : false,
@@ -425,7 +610,7 @@
         "name" : "date",
         "toString" : "Date"
       } ],
-      "sortAscDefault" : true,
+      "sortAscDefault" : false,
       "sortTagDefault" : "autoTag-0"
     },
     "todo" : {
@@ -469,15 +654,50 @@
         "toString" : "Date"
       } ],
       "list" : {
-        "01019ee2-4b51-bebe-be94-5b9a30159a40" : {
-          "autoTags" : [ 1536857835227, 1536951923945, 1536857835227 ],
-          "content" : "quand on change tag d'une action\n=> rafraichir le trie de la liste d actions pour prendre se changement en considération\n\n? sur event actionsChange\n? pareil pour la crétion d'une nouvelle action",
+        "179186c9-4a43-6047-8b89-1401d2729570" : {
+          "autoTags" : [ 1537802407852, 1537802407852, 1537802407852 ],
+          "content" : "",
           "dateTime" : {
             "expiry" : true
           },
-          "id" : "01019ee2-4b51-bebe-be94-5b9a30159a40",
+          "id" : "179186c9-4a43-6047-8b89-1401d2729570",
           "isActive" : false,
-          "name" : "sort tag => refresh action list",
+          "name" : "ssss",
+          "status" : "todo",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "2ad0ee04-3fe2-8dec-5a23-38e05aabb12a" : {
+          "autoTags" : [ 1537802415009, 1537802419282, 1537802415009 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "2ad0ee04-3fe2-8dec-5a23-38e05aabb12a",
+          "isActive" : false,
+          "name" : "sssss",
           "status" : "todo",
           "tags" : [ {
             "button" : false,
@@ -495,7 +715,42 @@
           }, {
             "button" : false,
             "name" : "priority",
-            "value" : 3
+            "value" : 1
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "301e0f8b-d0e4-9670-025c-b37e368dfb19" : {
+          "autoTags" : [ 1537795440123, 1537795440123, 1537795440123 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "301e0f8b-d0e4-9670-025c-b37e368dfb19",
+          "isActive" : false,
+          "name" : "zzzz",
+          "status" : "todo",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
           }, {
             "button" : false,
             "name" : "duration"
@@ -531,6 +786,43 @@
           }, {
             "button" : false,
             "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "5adf90f1-19b5-c136-ddb2-42c8b9ff75b6" : {
+          "autoTags" : [ 1537743910845, 1537743912183, 1537743910845 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "5adf90f1-19b5-c136-ddb2-42c8b9ff75b6",
+          "isActive" : false,
+          "name" : "tester switchMenu à vide",
+          "status" : "todo",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project",
+            "value" : "webGtd"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority",
+            "value" : 1
           }, {
             "button" : false,
             "name" : "duration"
@@ -583,15 +875,15 @@
           } ],
           "visible" : true
         },
-        "7336b604-233a-2191-ceac-aab8b7653d76" : {
-          "autoTags" : [ 1536857623033, 1536857793659, 1536857623033 ],
-          "content" : "Quand on selectionne auto dans le menu\n=> première action de la liste actif",
+        "6cbe0e49-2493-fb42-680b-eb3e0ccb149c" : {
+          "autoTags" : [ 1537721709461, 1537722743031, 1537721829457 ],
+          "content" : "git : view_autoSearch\n\nbouton dans formSelect\naction : met tout les selecteurs de tag tel que défini dans default-search",
           "dateTime" : {
             "expiry" : true
           },
-          "id" : "7336b604-233a-2191-ceac-aab8b7653d76",
+          "id" : "6cbe0e49-2493-fb42-680b-eb3e0ccb149c",
           "isActive" : false,
-          "name" : "auto select first action",
+          "name" : "visualiser default-search",
           "status" : "todo",
           "tags" : [ {
             "button" : false,
@@ -609,80 +901,7 @@
           }, {
             "button" : false,
             "name" : "priority",
-            "value" : 2
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "7c80364d-0b4f-d7ec-f587-a9d691e1d320" : {
-          "autoTags" : [ 1537712924523, 1537712924523, 1537712924523 ],
-          "content" : "",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "7c80364d-0b4f-d7ec-f587-a9d691e1d320",
-          "isActive" : false,
-          "name" : "",
-          "status" : "todo",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project",
-            "value" : "webGtd"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "7d63a3f8-825b-96de-415e-51de18cf5fee" : {
-          "autoTags" : [ 1537712924523, 1537712944110, 1537712924523 ],
-          "content" : "",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "7d63a3f8-825b-96de-415e-51de18cf5fee",
-          "isActive" : false,
-          "name" : "vider recherche auto",
-          "status" : "todo",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project",
-            "value" : "webGtd"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority",
-            "value" : 1
+            "value" : 3
           }, {
             "button" : false,
             "name" : "duration"
@@ -842,7 +1061,7 @@
         }
       },
       "sortAscDefault" : true,
-      "sortTagDefault" : "tag-priority"
+      "sortTagDefault" : "autoTag-0"
     }
   },
   "tags" : {
@@ -850,6 +1069,10 @@
       "modal" : true,
       "name" : "contact",
       "options" : [ {
+        "shortcut" : true,
+        "text" : "alex",
+        "value" : "alex"
+      }, {
         "shortcut" : true,
         "text" : "+",
         "value" : "+"
@@ -939,6 +1162,10 @@
       "name" : "location",
       "options" : [ {
         "shortcut" : true,
+        "text" : "Maison",
+        "value" : "Maison"
+      }, {
+        "shortcut" : true,
         "text" : "+",
         "value" : "+"
       } ],
@@ -997,6 +1224,35 @@
       "position" : 4,
       "selected" : "",
       "toString" : "Outils"
+    }
+  },
+  "user_data" : {
+    "contact" : {
+      "alex" : {
+        "created" : true,
+        "firstName" : "Le Cama",
+        "id" : "alex",
+        "lastName" : "ALexandre",
+        "mail" : "07 50 32 69 97",
+        "shortcut" : true,
+        "tel" : "alexandre.lecam35@gmail.com"
+      }
+    },
+    "location" : {
+      "Maison" : {
+        "created" : true,
+        "features" : {
+          "address" : "38 Néron",
+          "city" : "Amanlis",
+          "citycode" : "35002",
+          "idApi" : "ADRNIVX_0000000357696764",
+          "postCode" : "35150",
+          "x" : -1.477557,
+          "y" : 47.97989
+        },
+        "id" : "Maison",
+        "shortcut" : true
+      }
     }
   }
 }

@@ -918,6 +918,12 @@ class AppStore {
         let list = this.data.currentList.list
 
         this.data.currentAction.isActive = false
+
+        if(!list.length){
+            this.data.control.editSeen = 'empty'
+            return
+        }
+
         this.data.currentAction = list[index]
         this.data.currentAction.isActive = true
 
