@@ -639,6 +639,7 @@ class AppStore {
                 actionChange: false,
                 currentIndex: 0,
                 currentList: 'todo',
+                currentSearchName: 'searchAuto',
                 tagsSearch: [
                     {name: 'location', value: null, button: false},
                     {name: 'contact', value: 'Michel', button: true},
@@ -913,6 +914,7 @@ class AppStore {
 
     actionEdit(index) {
         console.log('> app_store/actionEdit')
+
         let list = this.data.currentList.list
 
         this.data.currentAction.isActive = false
@@ -924,9 +926,21 @@ class AppStore {
     }
 
     finishEditAction() {
+        console.log('> app_store/finishEditAction')
 
+        switch (this.data.control.currentSearchName){
+            case 'searchAll' :
+                this.searchAll()
+                break
 
+            case 'searchAuto' :
+                this.searchAuto()
+                break
 
+            case 'searchEdit' :
+                this.searchEdit()
+                break
+        }
     }
 
     inputChange(event, isTextarea) {
@@ -1076,6 +1090,9 @@ class AppStore {
     /*---------------------------------------------------------------------TAGS-SEARCH--------------------------------*/
     searchAll() {
         console.log('> app_store/searchAll')
+        this.data.control.currentSearchName = 'searchAll'
+
+
         let actions = this.getList().list.slice()
         for (var i = 0; i < actions.length; i++) {
             actions[i].visible = true
@@ -1087,6 +1104,7 @@ class AppStore {
 
     searchAuto() {
         console.log('> app_store/searchAuto')
+        this.data.control.currentSearchName = 'searchAuto'
 
         let cl = this.data.currentList
         let list = cl.list
@@ -1107,6 +1125,8 @@ class AppStore {
 
     searchEdit() {
         console.log('> app_store/searchEdit')
+        this.data.control.currentSearchName = 'searchEdit'
+
         this.tagsCompare()
         this.data.control.editSeen = 'search'
         this.data.currentAction.isActive = false

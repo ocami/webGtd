@@ -14,7 +14,7 @@
 
         <input v-model="currentAction.name" @blur="inputChange($event)" class="form-control">
         <textarea v-model="currentAction.content" @blur="inputChange($event, true)" class="form-control" rows="12"></textarea>
-        <button @click="finish" ></button>
+        <button @click="finish" >Terminer</button>
     </section>
 </template>
 
