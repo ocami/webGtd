@@ -1,6 +1,7 @@
 <template>
     <section>
         <p>Le Test</p>
+        <p>{{result}}</p>
         <button @click="letest">TEST</button>
         
     </section>
@@ -22,7 +23,7 @@
         },
         methods:{
             letest : function () {
-                app_store.dateManualAuto('@today')
+                this.result = app_store.dateManualAuto('@today')
             }
     
         }

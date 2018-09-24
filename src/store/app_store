@@ -1393,7 +1393,7 @@ class AppStore {
     dateManualAuto(value) {
         console.log('> app_store/dateManualAuto')
         console.log(value)
-        dateTimeTools.dateTimeTest()
+        return dateTimeTools.dateTimeTest()
     }
 
 
