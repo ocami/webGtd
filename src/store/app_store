@@ -1036,7 +1036,7 @@ class AppStore {
             content: '',
             dateTime: {
                 date: null,
-                time: null,
+                time: this.data.option.endOfDay,
                 minutes: null,
                 expiry: true,
                 toString: null

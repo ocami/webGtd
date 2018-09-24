@@ -1,8 +1,7 @@
 <template>
     <section>
         <pre>{{data.currentAction.isActive}} / {{data.currentAction.id}}</pre>
-        <pre>{{data.currentList.list.name}}</pre>
-        <pre>{{data.currentAction.name}}</pre>
+        <pre>{{data.currentAction.dateTime}}</pre>
         <!--<pre>{{test}}</pre>-->
     </section>
 </template>
