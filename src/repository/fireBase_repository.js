@@ -148,6 +148,7 @@ function actionsListInit(actionsList){
         list.defaultSearch = value.defaultSearch
         list.list = snapshotToArray(value.list)
     });
+    app_store.searchAll()
 }
 
 function tagsListInit(tagsList){
