@@ -639,7 +639,7 @@ class AppStore {
                 actionChange: false,
                 currentIndex: 0,
                 currentList: 'todo',
-                currentSearchName: 'searchAuto',
+                currentSearchName: 'searchDefault',
                 tagsSearch: [
                     {name: 'location', value: null, button: false},
                     {name: 'contact', value: 'Michel', button: true},
@@ -933,8 +933,8 @@ class AppStore {
                 this.searchAll()
                 break
 
-            case 'searchAuto' :
-                this.searchAuto()
+            case 'searchDefault' :
+                this.searchDefault()
                 break
 
             case 'searchEdit' :
@@ -1102,9 +1102,9 @@ class AppStore {
         this.actionEdit(0)
     }
 
-    searchAuto() {
-        console.log('> app_store/searchAuto')
-        this.data.control.currentSearchName = 'searchAuto'
+    searchDefault() {
+        console.log('> app_store/searchDefault')
+        this.data.control.currentSearchName = 'searchDefault'
 
         let cl = this.data.currentList
         let list = cl.list

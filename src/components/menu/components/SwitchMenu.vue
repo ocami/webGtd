@@ -10,7 +10,7 @@
 
         <b-button-group  size="sm">
             <b-button variant="outline-primary" @click="searchAll">all</b-button>
-            <b-button variant="outline-primary" @click="searchAuto">auto</b-button>
+            <b-button variant="outline-primary" @click="searchDefault">auto</b-button>
             <b-button variant="outline-primary" @click="searchEdit">perso</b-button>
         </b-button-group>
 
@@ -33,9 +33,9 @@
                 console.log('> SwitchMenu.vue/searchAll')
                 app_store.searchAll()
             },
-            searchAuto: function () {
-                console.log('> SwitchMenu.vue/searchAuto')
-                app_store.searchAuto()
+            searchDefault: function () {
+                console.log('> SwitchMenu.vue/searchDefault')
+                app_store.searchDefault()
             },
             searchEdit: function () {
                 console.log('> SwitchMenu.vue/searchEdit')
