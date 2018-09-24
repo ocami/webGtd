@@ -72,7 +72,7 @@
         methods: {
             submit() {
                 console.log('ModalDate.vue/submit')
-                app_store.dateEdit(this.tagPosition)
+                app_store.dateEdit()
                 this.$emit('submit')
             },
             destroy : function () {

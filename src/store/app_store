@@ -1051,7 +1051,7 @@ class AppStore {
                 {name: 'tools', value: null, button: false},
                 {name: 'priority', value: null, button: false},
                 {name: 'duration', value: null, button: false},
-                {name: 'date', value: 'Date', button: true},
+                {name: 'date', value: null, button: false},
             ],
             autoTags: [time, time, time]
         }
@@ -1354,6 +1354,15 @@ class AppStore {
 
     /*-----------------------------------------------------------------------DATE-------------------------------------*/
 
+    dateEdit() {
+        console.log('> app_store/dateEdit')
+        let dt = this.data.currentAction.dateTime
+        let tag = this.getOnceActionTag('date')
+        dt.minutes = parseToMinutes(dt.date, dt.time)
+        tag.value = dt.date
+        tag.button = true
+    }
+
     dateAutoEdit(tagValue, tagPosition, tagName) {
         console.log('> app_store/dateAutoEdit')
         let currentAction = this.data.currentAction
@@ -1368,12 +1377,7 @@ class AppStore {
         t ? t : this.data.currentAction.dateTime.time = this.data.option.endOfDay
     }
 
-    dateEdit(tagPosition) {
-        console.log('> app_store/dateEdit')
-        let dt = this.data.currentAction.dateTime
-        dt.minutes = parseToMinutes(dt.date, dt.time)
-        this.getOnceActionTag('date').value = dt.date
-    }
+
 
     dateTimeRefresh() {
         console.log('> app_store/dateTimeRefresh')

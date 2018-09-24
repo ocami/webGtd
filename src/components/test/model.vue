@@ -2,6 +2,8 @@
     <section>
         <pre>{{data.currentAction.isActive}} / {{data.currentAction.id}}</pre>
         <pre>{{data.currentAction.dateTime}}</pre>
+        <pre>{{data.currentAction.tags[2]}}</pre>
+        <pre>{{data.currentAction.tags[6]}}</pre>
         <!--<pre>{{test}}</pre>-->
     </section>
 </template>
