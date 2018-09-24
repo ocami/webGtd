@@ -14,11 +14,8 @@
                 @location-change="locationChange"
         ></form-location>
 
-        <label>Définir comme raccourcis</label>
-        <input v-if="this.location.created" type="checkbox" v-model="location.shortcut" @change="shortcutChange">
-
-        <input name="Définir comme raccourcis" v-if="!this.location.created" type="checkbox" v-model="checked"
-               @change="shortcutChange">
+        <label>Inclure à la liste</label>
+        <input  type="checkbox" v-model="location.shortcut" >
         <br>
         <b-button @click="submit">Valider</b-button>
         <b-button @click="destroy">Supprimer</b-button>
@@ -51,8 +48,13 @@
             }
         },
         computed: {
-            location: function () {
-                return this.data.currentUserData
+            location: {
+                get: function () {
+                    return app_store.data.currentUserData
+                },
+                set: function (newValue) {
+                    app_store.data.currentUserData = newValue
+                }
             },
             mapHref: function () {
                 if (this.location.features.x && this.location.features.y)
@@ -62,26 +64,14 @@
             },
         },
         methods: {
-            submit: function () {
-                console.log('>FormModalLocation/submit')
-
+            submit : function () {
                 if (!this.location.id) {
-                    this.$emit('errors', 'Vous devez indiquer un identifiant')
+                    this.$emit('errors','Vous devez indiquer un identifiant')
                     return
                 }
 
-                this.checked = true
-
-                if (!this.location.created) {
-                    app_store.createUserData('location', this.location, this.checked)
-                    this.$emit('submit')
-                    return
-                }
-
-                app_store.updateUserData('location', this.location, this.checked)
-
+                app_store.createUserData('location')
                 this.$emit('submit')
-
             },
             destroy: function () {
                 console.log('>FormModalLocation/destroy')

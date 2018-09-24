@@ -1,5 +1,7 @@
 <template>
     <section>
+        {{contact}}
+
         <h3>{{contact.id}}</h3>
 
         <span>Identifiant</span>
@@ -17,12 +19,8 @@
         <span>Tel</span>
         <input v-model="contact.tel" class="form-control mb-2">
 
-
-
         <label>Inclure à la liste</label>
-        <input v-if="this.contact.created" type="checkbox" v-model="contact.shortcut" @change="shortcutChange">
-
-        <input name="Définir comme raccourcis" v-if="!this.contact.created" type="checkbox" v-model="checked" @change="shortcutChange">
+        <input  type="checkbox" v-model="contact.shortcut" >
         <br>
         <b-button @click="submit">Valider</b-button>
         <b-button @click="destroy">Supprimer</b-button>
@@ -48,7 +46,14 @@
             }
         },
         computed:{
-            contact: function () { return this.data.currentUserData },
+            contact: {
+                get: function () {
+                    return app_store.data.currentUserData
+                },
+                set: function (newValue) {
+                    app_store.data.currentUserData = newValue
+                }
+            }
         },
         methods:{
             submit : function () {
@@ -57,8 +62,7 @@
                     return
                 }
 
-                this.checked = true
-                if(!this.contact.created){ app_store.createUserData('contact',this.contact, this.checked) }
+                app_store.createUserData('contact')
                 this.$emit('submit')
             },
             destroy : function () {

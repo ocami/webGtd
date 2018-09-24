@@ -746,13 +746,12 @@ class AppStore {
         }
     }
 
-    createUserData(typeOfData, userData, shortcut) {
-        console.log('> app_store/createUserData')
+    createUserData(typeOfData) {
+        console.log('> app_store/createUserData2!!!!!')
+        console.log(typeOfData)
+        console.log(this.data.currentUserData)
 
-        //createUserData : location || contact
-        shortcut ? userData.shortcut = true : userData.shortcut = false
-        userData.created = true
-        db.addUserData(typeOfData, userData)
+        let userData = this.data.currentUserData
 
         //change tag value of current action
         let actionTag = this.getOnceActionTag(typeOfData)
@@ -763,13 +762,17 @@ class AppStore {
         //change options tag of app
         let appTagList = this.getOnceSelectTag(typeOfData)
 
-        let sailNames = [];
-        $.each(appTagList.options, function (i, names) {
-            sailNames.push(names);
-        });
-        appTagList.options = sailNames;
+            //parse promise
+            let sailNames = [];
+            $.each(appTagList.options, function (i, names) {
+                sailNames.push(names);
+            });
+            appTagList.options = sailNames;
 
-        appTagList.options.push({text: userData.id, value: userData.id, shortcut: shortcut})
+        if(!userData.created)
+            appTagList.options.push({text: userData.id, value: userData.id, shortcut: userData.shortcut})
+        else
+            this.shortcutChange(typeOfData,userData)
 
         var compare = function (ascending) {
             return function (a, b) {
@@ -793,13 +796,11 @@ class AppStore {
         appTagList.options.sort(compare(true))
 
         db.updateAppTagOption(appTagList)
-    }
 
-    updateUserData(typeOfData, userData, shortcut) {
-        shortcut ? userData.shortcut = true : userData.shortcut = false
-        db.updateUserData(typeOfData, userData)
+        //createUserData : location || contact
+        userData.created = true
+        db.addUserData(typeOfData, userData)
     }
-
     /*---------------------------------------------------------------------SETTER-------------------------------------*/
 
     setCurrentAction(currentAction) {
@@ -1073,7 +1074,7 @@ class AppStore {
         this.data.currentAction.autoTags = array
     }
 
-    /*---------------------------------------------------------------------SELECT-TAG---------------------------------*/
+    /*---------------------------------------------------------------------APP-SELECT-TAG---------------------------------*/
     deleteActionTag(tagName) {
         console.log('> app_store/deleteActionTag')
         let actionLocation = this.getOnceActionTag(tagName)
@@ -1082,14 +1083,13 @@ class AppStore {
         this.actionUpdate()
     }
 
-    shortcutChange(tagName, optionName, isShortCut) {
+    shortcutChange(tagName, userData) {
         console.log('>app_store/shortcutChange')
         let dt = this.getOnceSelectTag(tagName)
         let option = dt.options.find(function (obj) {
-            return obj.value === optionName
+            return obj.value === userData.id
         })
-
-        isShortCut ? option.shortcut = true : option.shortcut = false
+        option.shortcut = userData.shortcut
     }
 
 
