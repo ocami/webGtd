@@ -1364,32 +1364,6 @@ class AppStore {
         tag.button = true
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     dateManualAuto(value) {
         console.log('> app_store/dateManualAuto')
         console.log(value)
@@ -1400,31 +1374,6 @@ class AppStore {
         console.log('> app_store/interval')
         return dateTimeTools.interval()
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     dateAutoEdit(tagValue, tagPosition, tagName) {
         console.log('> app_store/dateAutoEdit')

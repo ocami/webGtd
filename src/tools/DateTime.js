@@ -40,11 +40,25 @@ class DateTime {
         return interval
     }
 
+    edit(dateTime, expiry) {
+        let momentDate = moment(dateTime).tz("Europe/Paris")
+
+        return {
+            isActive: true,
+            passed: this.isPassed(momentDate),
+            expiry: expiry,
+            milliseconds: momentDate.valueOf(),
+            moment: momentDate.format('YYYY-MM-DD HH:mm:ssZZ'),
+            longString: momentDate.locale('fr').format('dddd D MMM HH[H]mm'),
+            shortString: this.getShortString(momentDate)
+        }
+    }
+
 
     //***************************ADD DATE
     now() {
-        // return moment.tz("Europe/Paris")
-        return moment('2018-01-31 19:00:00+0200')
+        return moment().tz("Europe/Paris")
+        // return moment('2018-01-31 19:00').tz("Europe/Paris")
     }
 
     today() {

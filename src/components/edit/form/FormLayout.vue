@@ -8,6 +8,8 @@
                           :tag="tag"
         ></form-tags-select>
 
+
+
         <b-modal ref="formModal" id="form-modal" hide-footer hide-header>
             <form-modal-layout @submit="closeFormModal" :tagName="tagName" ></form-modal-layout>
         </b-modal>
