@@ -1036,9 +1036,9 @@ class AppStore {
             name: '',
             content: '',
             dateTime: {
-                date: null,
+                date: 0,
                 time: this.data.option.endOfDay,
-                minutes: null,
+                minutes: 0,
                 expiry: true,
                 toString: null
             },
@@ -1396,7 +1396,10 @@ class AppStore {
         return dateTimeTools.dateTimeTest()
     }
 
-
+    interval(){
+        console.log('> app_store/interval')
+        return dateTimeTools.interval()
+    }
 
 
 

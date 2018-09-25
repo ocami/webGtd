@@ -2,14 +2,14 @@
     <section>
         <test v-if="test"></test>
 
-        <b-row>
-        <b-col cols="3">
-        <menu-layout></menu-layout>
-        </b-col>
-        <b-col cols="9">
-        <edit-layout></edit-layout>
-        </b-col>
-        </b-row>
+        <!--<b-row>-->
+        <!--<b-col cols="3">-->
+        <!--<menu-layout></menu-layout>-->
+        <!--</b-col>-->
+        <!--<b-col cols="9">-->
+        <!--<edit-layout></edit-layout>-->
+        <!--</b-col>-->
+        <!--</b-row>-->
     </section>
 </template>
 
