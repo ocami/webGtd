@@ -1392,8 +1392,19 @@ class AppStore {
 
     dateManualEdit(dateTime, expiry) {
         console.log('> app_store/dateManualEdit')
+        let dt =  dateTimeTools.manualEdit(dateTime, expiry)
+        this.dateEdit(dt)
+    }
 
-        let dt =  dateTimeTools.edit(dateTime, expiry)
+    dateAutoEdit(tagValue) {
+        console.log('> app_store/dateAutoEdit')
+
+        let dt =  dateTimeTools.autoEdit(tagValue)
+        this.dateEdit(dt)
+    }
+
+    dateEdit(dt){
+        console.log('> app_store/dateEdit')
 
         db.updateAction()
 
@@ -1401,12 +1412,6 @@ class AppStore {
         let tag = this.getOnceActionTag('date')
         tag.value = dt.shortString
         tag.button = true
-
-    }
-
-    dateManualAuto() {
-        console.log('> app_store/dateManualAuto')
-        return dateTimeTools.dateTimeTest()
     }
 
     interval() {
@@ -1414,12 +1419,12 @@ class AppStore {
         return dateTimeTools.interval()
     }
 
-    dateAutoEdit(tagValue, tagPosition, tagName) {
-        console.log('> app_store/dateAutoEdit')
-        let currentAction = this.data.currentAction
-
-        currentAction.dateTime.date = '20180830'
-    }
+    // dateAutoEdit(tagValue, tagPosition, tagName) {
+    //     console.log('> app_store/dateAutoEdit')
+    //     let currentAction = this.data.currentAction
+    //
+    //     currentAction.dateTime.date = '20180830'
+    // }
 
     predateManualEdit() {
         console.log('> app_store/predateManualEdit')

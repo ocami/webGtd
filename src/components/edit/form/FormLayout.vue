@@ -8,8 +8,6 @@
                           :tag="tag"
         ></form-tags-select>
 
-
-
         <b-modal ref="formModal" id="form-modal" hide-footer hide-header>
             <form-modal-layout @submit="closeFormModal" :tagName="tagName" ></form-modal-layout>
         </b-modal>
@@ -48,7 +46,6 @@
         methods:{
             inputChange: function (event, isTextarea) {
                 console.log('> FormLayout.vue/inputChange')
-
                 app_store.inputChange(event, isTextarea)
             },
             openFormModal: function (tagName) {

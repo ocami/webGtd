@@ -42,10 +42,8 @@ class DateTime {
         return interval
     }
 
-    edit(dateTime, expiry) {
+    edit(momentDate, expiry) {
         console.log('> DateTime.js/edit')
-        let momentDate = moment(dateTime).tz("Europe/Paris")
-
         return {
             isActive: true,
             passed: this.isPassed(momentDate),
@@ -57,6 +55,54 @@ class DateTime {
             date: momentDate.format('YYYY[-]MM[-]DD'),
             time: momentDate.format('HH[:]mm')
         }
+    }
+
+    manualEdit(dateTime, expiry) {
+        console.log('> DateTime.js/manualEdit')
+        let momentDate = moment(dateTime).tz("Europe/Paris")
+
+        return this.edit(momentDate,expiry)
+    }
+    
+     
+    autoEdit(request) {
+        console.log('> DateTime.js/autoEdit')
+
+        let momentDate
+
+        switch (request) {
+
+            case '@today' :
+                momentDate = this.today()
+                break
+
+            case '@tomorrow' :
+                momentDate = this.tomorrow()
+                break
+
+            case '@inWeek' :
+                momentDate = this.inWeek()
+                break
+
+            case '@inMonth' :
+                momentDate = this.inMonth()
+                break
+
+            case '@nextWeek' :
+                momentDate = this.nextWeek()
+                break
+
+            case '@nextMonth' :
+                momentDate = this.nextMonth()
+                break
+
+            default :
+                console.log('!!ERR!! > DateTime.js/autoEdit => switch param tagValue')
+                return
+        }
+
+        return this.edit(momentDate,false)
+
     }
 
 

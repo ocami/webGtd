@@ -31,7 +31,7 @@
         },
         methods:{
             letest : function () {
-                this.result = app_store.dateManualAuto('@today')
+                this.result = app_store.dateAutoEdit('@today')
             },
             interval : function () {
                 this.intervalResult = app_store.interval()

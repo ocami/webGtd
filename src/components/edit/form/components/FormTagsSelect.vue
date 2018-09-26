@@ -51,7 +51,7 @@
         },
         methods:{
             tagSelected: function (tagName, event) {
-                console.log('TagSelect.vue/tagSelected')
+                console.log('> TagSelect.vue/tagSelected')
 
                 let tagValue = event.target.value
 
@@ -61,7 +61,7 @@
                 }
 
                 if(tagValue.charAt(0) === '@'){
-                    app_store.dateManualAuto()
+                    app_store.dateAutoEdit(tagValue)
                     return
                 }
 
