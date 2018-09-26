@@ -2,6 +2,8 @@
     <section>
         <pre>{{data.currentAction.dateTime}}</pre>
         <hr/>
+        <pre>{{data.currentDateTime}}</pre>
+        <hr/>
         <pre>{{result}}</pre>
         <hr/>
         <pre>{{intervalResult}}</pre>

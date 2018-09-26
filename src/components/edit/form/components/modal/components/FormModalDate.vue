@@ -1,10 +1,10 @@
 <template>
     <div>
         <section>
-            <date-picker :config="fDateOptions" v-model=currentAction.dateTime.date></date-picker>
+            <date-picker :config="fDateOptions" v-model="date"></date-picker>
             <b-row>
                 <b-col cols="6">
-                    <date-picker :config="fTimeOptions" v-model=currentAction.dateTime.time></date-picker>
+                    <date-picker :config="fTimeOptions" v-model="time"></date-picker>
                 </b-col>
                 <b-col cols="6">
                     <b-form-group>
@@ -13,7 +13,7 @@
                                 stacked
                                 button-variant="outline-primary"
                                 size="md"
-                                v-model=currentAction.dateTime.expiry
+                                v-model="expiry"
                                 :options="expiryRadioOptions.options"
                                 name="radioBtnOutline" />
                     </b-form-group>
@@ -25,7 +25,7 @@
             </b-row>
 
 
-            <p>{{currentAction.dateTime}}</p>
+            <p>{{dateTime}}</p>
         </section>
     </div>
 </template>
@@ -46,7 +46,7 @@
                 data: app_store.data,
                 fDateOptions : {
                     locale: 'fr',
-                    format: 'DD/MM/YYYY',
+                    format: 'YYYY-MM-DD',
                     inline: true,
                 },
                 fTimeOptions : {
@@ -60,19 +60,47 @@
                         { text: 'Programmé', value: false },
                         { text: 'Echéance', value: true },
                     ]
-                }
+                },
             }
         },
         computed:{
-            currentAction: function () { return this.data.currentAction},
+            dateTime: function () {
+                return this.data.currentDateTime
+            },
+            date: {
+                get: function () {
+                    return this.dateTime.date
+                },
+                set: function (newValue) {
+                    this.dateTime.date = newValue
+                }
+            },
+            time: {
+                get: function () {
+                    return this.dateTime.time
+                },
+                set: function (newValue) {
+                    this.dateTime.time = newValue
+                }
+            },
+            expiry: {
+                get: function () {
+                    return this.dateTime.expiry
+                },
+                set: function (newValue) {
+                    this.dateTime.expiry = newValue
+                }
+            },
+
         },
         props:{
             tagPosition : Number
         },
         methods: {
             submit() {
-                console.log('ModalDate.vue/submit')
-                app_store.dateManualEdit()
+                console.log('> ModalDate.vue/submit')
+                let dt = this.dateTime.date +' '+ this.dateTime.time
+                app_store.dateManualEdit(dt, this.dateTime.expiry)
                 this.$emit('submit')
             },
             destroy : function () {
@@ -80,6 +108,9 @@
                 app_store.dateTimeRefresh()
                 app_store.tagSelected('',this.tagPosition)
                 this.$emit('submit')
+            },
+            setDateTime : function () {
+                app_store.setDateTime()
             }
         }
     }

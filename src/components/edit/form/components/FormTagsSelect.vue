@@ -61,7 +61,7 @@
                 }
 
                 if(tagValue.charAt(0) === '@'){
-                    app_store.dateManualAuto(tagValue)
+                    app_store.dateManualAuto()
                     return
                 }
 

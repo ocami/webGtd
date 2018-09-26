@@ -37,6 +37,191 @@
         "name" : "date",
         "toString" : "Date"
       } ],
+      "list" : {
+        "2a049e6b-8695-654d-37df-cf4e11a1b993" : {
+          "autoTags" : [ 1537833471287, 1537904314500, 1537906880198 ],
+          "content" : "",
+          "dateTime" : {
+            "date" : 0,
+            "expiry" : true,
+            "minutes" : 0,
+            "time" : "18:00"
+          },
+          "id" : "2a049e6b-8695-654d-37df-cf4e11a1b993",
+          "isActive" : false,
+          "name" : "vvvv",
+          "status" : "destroy",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date"
+          } ],
+          "visible" : true
+        },
+        "3dc7b880-1f8e-7f3f-4005-2fc707d2b7fb" : {
+          "autoTags" : [ 1537905527443, 1537905527443, 1537906860806 ],
+          "content" : "",
+          "dateTime" : {
+            "date" : 0,
+            "expiry" : true,
+            "minutes" : 0,
+            "time" : "18:00"
+          },
+          "id" : "3dc7b880-1f8e-7f3f-4005-2fc707d2b7fb",
+          "isActive" : false,
+          "name" : "ddd",
+          "status" : "destroy",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : false,
+            "name" : "date"
+          } ],
+          "visible" : true
+        },
+        "54a3f036-e3b1-a262-65f4-3cd01beffc52" : {
+          "autoTags" : [ 1537833569017, 1537833569017, 1537906860266 ],
+          "content" : "",
+          "dateTime" : {
+            "date" : 0,
+            "expiry" : true,
+            "minutes" : 0,
+            "time" : "18:00"
+          },
+          "id" : "54a3f036-e3b1-a262-65f4-3cd01beffc52",
+          "isActive" : false,
+          "name" : "xxxx",
+          "status" : "destroy",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : false,
+            "name" : "date"
+          } ],
+          "visible" : true
+        },
+        "9ec78116-f5ce-9a36-a595-418759302290" : {
+          "autoTags" : [ 1537904412796, 1537904412796, 1537906859735 ],
+          "content" : "",
+          "dateTime" : {
+            "date" : 0,
+            "expiry" : true,
+            "minutes" : 0,
+            "time" : "18:00"
+          },
+          "id" : "9ec78116-f5ce-9a36-a595-418759302290",
+          "isActive" : false,
+          "name" : "dddd",
+          "status" : "destroy",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : false,
+            "name" : "date"
+          } ],
+          "visible" : true
+        },
+        "e553c03c-b621-cf99-0e7e-c4af6f0f1d5a" : {
+          "autoTags" : [ 1537832966700, 1537832966700, 1537906858898 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true,
+            "time" : "18:00"
+          },
+          "id" : "e553c03c-b621-cf99-0e7e-c4af6f0f1d5a",
+          "isActive" : false,
+          "name" : "dddd",
+          "status" : "destroy",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : false,
+            "name" : "date"
+          } ],
+          "visible" : true
+        }
+      },
       "sortAscDefault" : true,
       "sortTagDefault" : "autoTag-0"
     },
@@ -178,6 +363,43 @@
           }, {
             "button" : false,
             "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : true,
+            "name" : "date",
+            "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "5adf90f1-19b5-c136-ddb2-42c8b9ff75b6" : {
+          "autoTags" : [ 1537743910845, 1537832659827, 1537832659916 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true
+          },
+          "id" : "5adf90f1-19b5-c136-ddb2-42c8b9ff75b6",
+          "isActive" : false,
+          "name" : "tester switchMenu à vide",
+          "status" : "done",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project",
+            "value" : "webGtd"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority",
+            "value" : 1
           }, {
             "button" : false,
             "name" : "duration"
@@ -609,6 +831,50 @@
         "name" : "date",
         "toString" : "Date"
       } ],
+      "list" : {
+        "576b6e0c-5cf6-12e8-59cc-b7b15c747e35" : {
+          "autoTags" : [ 1537906882873, 1537906889186, 1537906882873 ],
+          "content" : "",
+          "dateTime" : {
+            "isActive": true,
+            "passed": true,
+            "expiry": false,
+            "milliseconds": 1537907064511,
+            "moment": "2018-09-25 22:24:24+0200",
+            "longString": "mardi 25 sept. 22H24",
+            "shortString": "25/09",
+            "date": "2018-09-25",
+            "time": "22:24"
+          },
+          "id" : "576b6e0c-5cf6-12e8-59cc-b7b15c747e35",
+          "isActive" : false,
+          "name" : "test date",
+          "status" : "receipt",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : false,
+            "name" : "date"
+          } ],
+          "visible" : true
+        }
+      },
       "sortAscDefault" : false,
       "sortTagDefault" : "autoTag-0"
     },
@@ -653,6 +919,82 @@
         "toString" : "Date"
       } ],
       "list" : {
+        "0ea3f280-3314-ac90-d397-0ff86bd29ae7" : {
+          "autoTags" : [ 1537881261756, 1537881315578, 1537881261756 ],
+          "content" : "faire une promess le temps que ca se fasse\nempecher l'affichage des dates ou rafraichir qd fini",
+          "dateTime" : {
+            "date" : 0,
+            "expiry" : true,
+            "minutes" : 0,
+            "time" : "18:00"
+          },
+          "id" : "0ea3f280-3314-ac90-d397-0ff86bd29ae7",
+          "isActive" : false,
+          "name" : "au chargement changer les dates",
+          "status" : "todo",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project",
+            "value" : "webGtd"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority",
+            "value" : 2
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : false,
+            "name" : "date"
+          } ],
+          "visible" : true
+        },
+        "52c6f75e-5b99-46c7-403a-2c7ab92b484f" : {
+          "autoTags" : [ 1537832660820, 1537832709624, 1537832660820 ],
+          "content" : "ajouter un currentDateTime",
+          "dateTime" : {
+            "expiry" : true,
+            "time" : "18:00"
+          },
+          "id" : "52c6f75e-5b99-46c7-403a-2c7ab92b484f",
+          "isActive" : false,
+          "name" : "addDateAuto",
+          "status" : "todo",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project",
+            "value" : "webGtd"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority",
+            "value" : 1
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : false,
+            "name" : "date"
+          } ],
+          "visible" : true
+        },
         "556a7c9f-6dd2-c557-e5bc-618727252bef" : {
           "autoTags" : [ 1536780026642, 1536780026642, 1536780127492 ],
           "content" : "cabane jardin",
@@ -678,43 +1020,6 @@
           }, {
             "button" : false,
             "name" : "priority"
-          }, {
-            "button" : false,
-            "name" : "duration"
-          }, {
-            "button" : true,
-            "name" : "date",
-            "value" : "Date"
-          } ],
-          "visible" : true
-        },
-        "5adf90f1-19b5-c136-ddb2-42c8b9ff75b6" : {
-          "autoTags" : [ 1537743910845, 1537743912183, 1537743910845 ],
-          "content" : "",
-          "dateTime" : {
-            "expiry" : true
-          },
-          "id" : "5adf90f1-19b5-c136-ddb2-42c8b9ff75b6",
-          "isActive" : false,
-          "name" : "tester switchMenu à vide",
-          "status" : "todo",
-          "tags" : [ {
-            "button" : false,
-            "name" : "project",
-            "value" : "webGtd"
-          }, {
-            "button" : false,
-            "name" : "location"
-          }, {
-            "button" : false,
-            "name" : "contact"
-          }, {
-            "button" : false,
-            "name" : "tools"
-          }, {
-            "button" : false,
-            "name" : "priority",
-            "value" : 1
           }, {
             "button" : false,
             "name" : "duration"
@@ -801,6 +1106,41 @@
             "button" : true,
             "name" : "date",
             "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "6ff1ee2f-3e44-576e-324b-7b56c22380a1" : {
+          "autoTags" : [ 1537831173372, 1537831342854, 1537831173372 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true,
+            "time" : "18:00"
+          },
+          "id" : "6ff1ee2f-3e44-576e-324b-7b56c22380a1",
+          "isActive" : false,
+          "name" : "ddd",
+          "status" : "todo",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : false,
+            "name" : "date"
           } ],
           "visible" : true
         },
@@ -948,6 +1288,80 @@
             "button" : true,
             "name" : "date",
             "value" : "Date"
+          } ],
+          "visible" : true
+        },
+        "d966eee1-9431-02f6-56ee-aed01e212f94" : {
+          "autoTags" : [ 1537831169033, 1537831169033, 1537831169033 ],
+          "content" : "",
+          "dateTime" : {
+            "expiry" : true,
+            "time" : "18:00"
+          },
+          "id" : "d966eee1-9431-02f6-56ee-aed01e212f94",
+          "isActive" : false,
+          "name" : "sss",
+          "status" : "todo",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority"
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : false,
+            "name" : "date"
+          } ],
+          "visible" : true
+        },
+        "fdc5d9b5-dfc7-4b7a-8f68-5520756ba8c1" : {
+          "autoTags" : [ 1537881261756, 1537881263767, 1537881261756 ],
+          "content" : "",
+          "dateTime" : {
+            "date" : 0,
+            "expiry" : true,
+            "minutes" : 0,
+            "time" : "18:00"
+          },
+          "id" : "fdc5d9b5-dfc7-4b7a-8f68-5520756ba8c1",
+          "isActive" : false,
+          "name" : "",
+          "status" : "todo",
+          "tags" : [ {
+            "button" : false,
+            "name" : "project",
+            "value" : "webGtd"
+          }, {
+            "button" : false,
+            "name" : "location"
+          }, {
+            "button" : false,
+            "name" : "contact"
+          }, {
+            "button" : false,
+            "name" : "tools"
+          }, {
+            "button" : false,
+            "name" : "priority",
+            "value" : 3
+          }, {
+            "button" : false,
+            "name" : "duration"
+          }, {
+            "button" : false,
+            "name" : "date"
           } ],
           "visible" : true
         }

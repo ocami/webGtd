@@ -619,6 +619,7 @@ class AppStore {
             currentList: this.todo,
             currentSearch: null,
             currentUserData: 'currentUserData',
+            currentDateTime: {},
             userData: this.userData,
             option: {
                 endOfDay: '18:00',
@@ -725,6 +726,12 @@ class AppStore {
     /*--------------------------------------------------------------------USERDATA------------------------------------*/
     setCurrentUserData(dataName) {
         console.log('> app_store/setCurrentUserData')
+
+        if(dataName === 'date'){
+            this.updateCurrentDateTime()
+            return
+        }
+
         let value = this.getOnceActionTag(dataName).value
 
         if (!value) {
@@ -744,13 +751,17 @@ class AppStore {
 
             case 'location':
                 return new Location()
+
+            case 'date':
+                return this.updateCurrentDateTime()
+
+            default:
+                return
         }
     }
 
     createUserData(typeOfData) {
         console.log('> app_store/createUserData2!!!!!')
-        console.log(typeOfData)
-        console.log(this.data.currentUserData)
 
         let userData = this.data.currentUserData
 
@@ -763,17 +774,17 @@ class AppStore {
         //change options tag of app
         let appTagList = this.getOnceSelectTag(typeOfData)
 
-            //parse promise
-            let sailNames = [];
-            $.each(appTagList.options, function (i, names) {
-                sailNames.push(names);
-            });
-            appTagList.options = sailNames;
+        //parse promise
+        let sailNames = [];
+        $.each(appTagList.options, function (i, names) {
+            sailNames.push(names);
+        });
+        appTagList.options = sailNames;
 
-        if(!userData.created)
+        if (!userData.created)
             appTagList.options.push({text: userData.id, value: userData.id, shortcut: userData.shortcut})
         else
-            this.shortcutChange(typeOfData,userData)
+            this.shortcutChange(typeOfData, userData)
 
         var compare = function (ascending) {
             return function (a, b) {
@@ -802,6 +813,7 @@ class AppStore {
         userData.created = true
         db.addUserData(typeOfData, userData)
     }
+
     /*---------------------------------------------------------------------SETTER-------------------------------------*/
 
     setCurrentAction(currentAction) {
@@ -921,7 +933,7 @@ class AppStore {
 
         this.data.currentAction.isActive = false
 
-        if(!list.length){
+        if (!list.length) {
             this.data.control.editSeen = 'empty'
             return
         }
@@ -936,7 +948,7 @@ class AppStore {
     finishEditAction() {
         console.log('> app_store/finishEditAction')
 
-        switch (this.data.control.currentSearchName){
+        switch (this.data.control.currentSearchName) {
             case 'searchAll' :
                 this.searchAll()
                 break
@@ -1005,8 +1017,7 @@ class AppStore {
         if (l) {
             index < l ? i = index : i = index - 1;
             this.actionEdit(i)
-        } else
-            {
+        } else {
             this.data.control.editSeen = 'empty'
         }
     }
@@ -1071,7 +1082,6 @@ class AppStore {
         console.log('> app_store/setInListOn')
         let array = this.data.currentAction.autoTags.slice()
         array[2] = new Date().getTime()
-        console.log(array)
         this.data.currentAction.autoTags = array
     }
 
@@ -1121,7 +1131,7 @@ class AppStore {
 
         //editSenn empty if no result
         for (var i = 0; i < list.length; i++) {
-            console.log(list[i].name+' / '+list[i].visible)
+            console.log(list[i].name + ' / ' + list[i].visible)
             if (this.data.currentList.list[i].visible === true) {
                 this.actionEdit(i)
                 return
@@ -1355,22 +1365,51 @@ class AppStore {
 
     /*-----------------------------------------------------------------------DATE-------------------------------------*/
 
-    dateManualEdit() {
-        console.log('> app_store/dateManualEdit')
+    updateCurrentDateTime(){
+        console.log('> app_store/updateCurrentDateTime')
+
+        let date
+        let time
+        let expiry
         let dt = this.data.currentAction.dateTime
-        let tag = this.getOnceActionTag('date')
-        dt.minutes = parseToMinutes(dt.date, dt.time)
-        tag.value = dt.date
-        tag.button = true
+
+        dt.date ? date = dt.date : date = dateTimeTools.thisDay()
+        dt.time ? time = dt.time : time = this.data.option.endOfDay
+        dt.expiry ? expiry = dt.expiry : expiry = false
+
+        this.data.currentDateTime = {
+            date: date,
+            time: time,
+            expiry: expiry
+        }
     }
 
-    dateManualAuto(value) {
+    setDateTime() {
+        console.log('> app_store/setDateTime')
+        let dateTime = this.data.currentAction.dateTime
+        let dt = dateTime.date + ' ' + dateTime.time
+    }
+
+    dateManualEdit(dateTime, expiry) {
+        console.log('> app_store/dateManualEdit')
+
+        let dt =  dateTimeTools.edit(dateTime, expiry)
+
+        db.updateAction()
+
+        this.data.currentAction.dateTime = dt
+        let tag = this.getOnceActionTag('date')
+        tag.value = dt.shortString
+        tag.button = true
+
+    }
+
+    dateManualAuto() {
         console.log('> app_store/dateManualAuto')
-        console.log(value)
         return dateTimeTools.dateTimeTest()
     }
 
-    interval(){
+    interval() {
         console.log('> app_store/interval')
         return dateTimeTools.interval()
     }
@@ -1531,6 +1570,13 @@ function Contact() {
     this.tel = ""
     this.created = false
     this.shortcut = true
+}
+
+function ActionDateTime() {
+        let dt = app_store.data.currentAction.dateTime
+        this.expiry= dt.expiry,
+        this.date= dt.date,
+        this.time= dt.time
 }
 
 /*-------------------------------TOOLS---------------------------*/

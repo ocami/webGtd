@@ -15,20 +15,22 @@ class DateTime {
     dateTimeTest() {
         console.log('> DateTime.js/dateTimeTest')
 
-        let momentDate = this.now()
-        // let momentDate = moment('2018-02-01 19:00:00+0200')
+        // let momentDate = this.now()
+        // // let momentDate = moment('2018-02-01 19:00:00+0200')
+        //
+        // let result = {
+        //     isActive: true,
+        //     passed: this.isPassed(momentDate),
+        //     expiry: false,
+        //     milliseconds: momentDate.valueOf(),
+        //     moment: momentDate.format('YYYY-MM-DD HH:mm:ssZZ'),
+        //     longString: momentDate.locale('fr').format('dddd D MMM HH[H]mm'),
+        //     shortString: this.getShortString(momentDate),
+        //     date: momentDate.format('YYYY[-]MM[-]DD'),
+        //     time: momentDate.format('HH[:]mm')
+        // }
 
-        let result = {
-            isActive: false,
-            passed: this.isPassed(momentDate),
-            expiry: false,
-            milliseconds: momentDate.valueOf(),
-            moment: momentDate.format('YYYY-MM-DD HH:mm:ssZZ'),
-            longString: momentDate.locale('fr').format('dddd D MMM HH[H]mm'),
-            shortString: this.getShortString(momentDate)
-        }
-
-        return result;
+        return this.thisDay();
     }
 
     interval() {
@@ -41,6 +43,7 @@ class DateTime {
     }
 
     edit(dateTime, expiry) {
+        console.log('> DateTime.js/edit')
         let momentDate = moment(dateTime).tz("Europe/Paris")
 
         return {
@@ -50,7 +53,9 @@ class DateTime {
             milliseconds: momentDate.valueOf(),
             moment: momentDate.format('YYYY-MM-DD HH:mm:ssZZ'),
             longString: momentDate.locale('fr').format('dddd D MMM HH[H]mm'),
-            shortString: this.getShortString(momentDate)
+            shortString: this.getShortString(momentDate),
+            date: momentDate.format('YYYY[-]MM[-]DD'),
+            time: momentDate.format('HH[:]mm')
         }
     }
 
@@ -59,6 +64,10 @@ class DateTime {
     now() {
         return moment().tz("Europe/Paris")
         // return moment('2018-01-31 19:00').tz("Europe/Paris")
+    }
+
+    thisDay() {
+        return this.now().format('YYYY-MM-DD')
     }
 
     today() {
@@ -140,7 +149,6 @@ class DateTime {
     }
 
     getShortString(date) {
-
         if (this.isPassed(date))
             return date.format('DD[/]MM')
 

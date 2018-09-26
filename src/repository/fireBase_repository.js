@@ -48,8 +48,11 @@ class DbStore {
 
     updateAction(action) {
         console.log('> fireBase/updateAction')
+        if(!action) action = app_store.data.currentAction
+
         let path = 'actions/'+action.status+'/list/'+action.id
         let updates = {};
+
         action = JSON.parse(JSON.stringify(action));
         action.isActive = false
 
