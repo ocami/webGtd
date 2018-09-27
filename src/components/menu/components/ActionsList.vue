@@ -21,9 +21,7 @@
 
 <script>
 
-    import app_store from '../../../store/app_store'
     import Action_store from "../../../store/Action_store";
-    import ActionsList_store from "../../../store/ActionsList_store";
     import Control_store from "../../../store/Control_store";
 
     export default {
@@ -34,13 +32,11 @@
         methods:{
             actionEdit: function (index) {
                 console.log('>ActionsList.vue/actionEdit')
-
                 Action_store.setCurrentByIndex(index)
                 Control_store.data.editSeen = 'edit'
             },
             switchAction: function (listName, newListName, index) {
                 console.log(' ==> ActionsList.vue/switchAction')
-                // app_store.switch(newListName, listName, index)
                 Action_store.switch(newListName, listName, index)
             },
         }

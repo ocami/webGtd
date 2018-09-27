@@ -16,37 +16,20 @@ class Action_store {
         }
     }
 
-    switchcc(newListName, listName, index) {
-        console.log('> app_store/switch')
+    speedAdd(content) {
+        console.log('> app_store/speedAdd')
 
-        if (!listName)
-            listName = this.getList()
+        let name = this.generateName(content)
+        let action = this.newAction('receipt')
+        action.name = name
+        action.content = content
 
-        if (!index)
-            index = this.data.control.currentIndex
-
-        let list = this.getList(listName).list
-        let newList = this.getList(newListName).list
-        this.data.currentAction.isActive = false
-        this.data.currentAction = list[index]
-        this.data.currentAction.status = newListName
-        this.setInListOn()
-        newList.push(this.data.currentAction)
-        list.splice(index, 1)
-
-        db.switch(newListName, listName, this.data.currentAction)
-
-        let i = 0;
-        let l = list.length;
-        if (l) {
-            index < l ? i = index : i = index - 1;
-            this.actionEdit(i)
-        } else {
-            this.data.control.editSeen = 'empty'
-        }
+        ActionsList_store.getOneListByName('receipt').list.push(action)
+        db.addAction(action)
     }
 
     switch(newListName, listName, index){
+        console.log('> Action_store/switch')
 
         if (!listName)
             listName = ActionsList_store.data.currentList
@@ -58,11 +41,10 @@ class Action_store {
         let newList = ActionsList_store.getOneListByName(newListName).list
 
         this.data.action.status = newListName
+        this.setInListOn()
 
         newList.push(this.data.action)
         list.splice(index, 1)
-
-        this.setInListOn()
 
         this.setCurrentByIndex(0)
 
@@ -110,6 +92,59 @@ class Action_store {
 
     getTagByName () {
 
+    }
+
+    newAction(status) {
+        console.log('Action_store/newAction')
+
+        let time = new Date().getTime()
+        return {
+            id: this.guid(),
+            name: '',
+            content: '',
+            dateTime: {
+                date: 0,
+                time: Control_store.data.options.endOfDay,
+                minutes: 0,
+                expiry: true,
+                toString: null
+            },
+            status: status,
+            isActive: false,
+            visible: true,
+            tags: [
+                {name: 'project', value: null, button: false},
+                {name: 'location', value: null, button: false},
+                {name: 'contact', value: null, button: false},
+                {name: 'tools', value: null, button: false},
+                {name: 'priority', value: null, button: false},
+                {name: 'duration', value: null, button: false},
+                {name: 'date', value: null, button: false},
+            ],
+            autoTags: [time, time, time]
+        }
+
+    }
+
+    generateName(content) {
+        console.log('> app_store/generateName')
+        let firstLine = content.match(/[^\r\n]+/g);
+        let name = firstLine[0].substring(0, 20)
+
+        if (name.length < firstLine[0].length)
+            name = name + '...'
+
+        return name
+    }
+
+    guid() {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        }
+
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
 
 }

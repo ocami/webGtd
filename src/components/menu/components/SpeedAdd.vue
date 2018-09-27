@@ -13,20 +13,14 @@
 
 <script>
 
-    import app_store from '../../../store/app_store'
+    import Action_store from '../../../store/Action_store'
 
     export default {
         name: 'speed-add',
-        components : {
-
-        },
         data ()  {
             return {
-                data : app_store.data,
-                content: ''
+                content : ''
             }
-        },
-        computed:{
         },
         methods:{
             open: function () {
@@ -35,14 +29,16 @@
             speedAdd: function (close) {
                 console.log('> SpeedAdd.vue/speedAdd')
                 if(this.content !== '')
-                    app_store.speedAdd(this.content)
+                    Action_store.speedAdd(this.content)
                 if(close === true)
                     this.close()
 
                 this.content = '';
+
             },
             close: function () {
                 this.$refs.speedAdd.hide()
+                this.content = '';
             }
         }
     }

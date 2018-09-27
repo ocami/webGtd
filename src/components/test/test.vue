@@ -8,6 +8,7 @@
         <hr/>
         <p>currentAction</p>
         <pre>{{currentAction.name}}</pre>
+        <pre>{{currentAction.status}}</pre>
         <hr/>
 
 
