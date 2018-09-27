@@ -1,63 +1,50 @@
 import db from "../repository/fireBase_repository"
+import ActionsList_store from "../store/ActionsList_store"
 import dateTimeTools from '../tools/DateTime.js'
 
 var Promise = require('es6-promise').Promise;
 
 class Action_store {
     constructor() {
-        this.action = {
-            "autoTags" : [ 0, 0, 0 ],
-            "content" : "",
-            "dateTime" : {
-                "date" : "",
-                "expiry" : false,
-                "isActive" : true,
-                "longString" : "",
-                "milliseconds" : 0,
-                "moment" : "",
-                "passed" : false,
-                "shortString" : "",
-                "time" : ""
-            },
-            "id" : "",
-            "isActive" : false,
-            "name" : "",
-            "status" : "",
-            "tags" : [ {
-                "button" : false,
-                "name" : "project",
-                "value" : ""
-            }, {
-                "button" : true,
-                "name" : "location",
-                "value" : ""
-            }, {
-                "button" : true,
-                "name" : "contact",
-                "value" : ""
-            }, {
-                "button" : false,
-                "name" : "tools",
-                "value" : ""
-            }, {
-                "button" : false,
-                "name" : "priority",
-                "value" : 0
-            }, {
-                "button" : false,
-                "name" : "duration",
-                "value" : 0
-            }, {
-                "button" : true,
-                "name" : "date",
-                "value" : ""
-            } ],
-            "visible" : true
+
+        this.action = {}
+        this.index = 0
+        this.data = {
+            action: this.action,
+            index: this.index,
         }
     }
 
-    setCurrent (action) {
-        this.action = action
+    edit(){
+        console.log('> Action_store/edit')
+        this.data.action.isActive = false
+
+    }
+
+    // actionEdit(index) {
+    //     console.log('> app_store/actionEdit')
+    //
+    //     let list = this.data.currentList.list
+    //
+    //     this.data.currentAction.isActive = false
+    //
+    //     if (!list.length) {
+    //         this.data.control.editSeen = 'empty'
+    //         return
+    //     }
+    //
+    //     this.data.currentAction = list[index]
+    //     this.data.currentAction.isActive = true
+    //
+    //     this.data.control.currentIndex = index
+    //     this.data.control.editSeen = 'edit'
+    // }
+
+    setCurrentByIndex (index) {
+        this.data.action.isActive = false
+        this.data.action = ActionsList_store.data.currentList.list[index]
+        this.data.action.isActive = true
+        this.data.index = index
     }
 
     add () {

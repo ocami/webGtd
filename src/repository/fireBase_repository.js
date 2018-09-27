@@ -1,5 +1,8 @@
 import firebase from 'firebase';
 import app_store from "../store/app_store"
+import ActionsList_store from "../store/ActionsList_store"
+import Action_store from "../store/Action_store"
+import Control_store from "../store/Control_store"
 var Promise = require('es6-promise').Promise;
 
 firebase.initializeApp({
@@ -143,6 +146,8 @@ export default new DbStore();
 
 function actionsListInit(actionsList){
     console.log('> app_store/actionsListInit')
+
+    //delet
     $.each(actionsList, function(index, value) {
         let list = app_store.getList(index)
 
@@ -151,6 +156,20 @@ function actionsListInit(actionsList){
         list.defaultSearch = value.defaultSearch
         list.list = snapshotToArray(value.list)
     });
+
+
+    $.each(actionsList, function(index, value) {
+        let list = ActionsList_store.getOneListByName(index)
+        list.sortTagDefault = value.sortTagDefault
+        list.sortAscDefault = value.sortAscDefault
+        list.defaultSearch = value.defaultSearch
+        list.list = snapshotToArray(value.list)
+    });
+
+    ActionsList_store.setCurrent('todo')
+    Action_store.setCurrentByIndex(0)
+    Control_store.data.editSeen = 'hello'
+
     app_store.searchAll()
 }
 

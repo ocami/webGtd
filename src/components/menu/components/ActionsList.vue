@@ -22,21 +22,25 @@
 <script>
 
     import app_store from '../../../store/app_store'
+    import Action_store from "../../../store/Action_store";
+    import ActionsList_store from "../../../store/ActionsList_store";
+    import Control_store from "../../../store/Control_store";
 
     export default {
         name: 'actions-list',
-        data ()  {
-            return {
-                data : app_store.data
-            }
-        },
         props: {
             actions: Object
         },
         methods:{
             actionEdit: function (index) {
-                console.log(' ==>ActionsList.vue/actionEdit')
-                app_store.actionEdit(index)
+                console.log('>ActionsList.vue/actionEdit')
+                //delet
+                //app_store.actionEdit(index)
+
+
+
+                Action_store.setCurrentByIndex(index)
+                Control_store.data.editSeen = 'edit'
             },
             switchAction: function (listName, newListName, index) {
                 console.log(' ==> ActionsList.vue/switchAction')

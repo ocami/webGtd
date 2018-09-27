@@ -570,10 +570,14 @@ class ActionsList_store {
 
     setCurrent (name) {
         console.log('>> ActionsList_store/setCurrent')
-        console.log(name)
         this.data.currentList = this.data.actionsList[name]
-        console.log(this.data.currentList.name)
     }
+
+    getOneListByName (name) {
+        console.log('>> ActionsList_store/getOneListByName')
+        return this.data.actionsList[name]
+    }
+
 
     add () {
 

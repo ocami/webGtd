@@ -13,6 +13,7 @@
 <script>
 
     import app_store from '../../store/app_store'
+    import ActionsList_store from '../../store/ActionsList_store'
     import SpeedAdd from './components/SpeedAdd.vue'
     import SwitchMenu from './components/SwitchMenu.vue'
     import ActionsList from './components/ActionsList.vue'
@@ -26,12 +27,14 @@
         },
         data ()  {
             return {
-                data : app_store.data
+                data : app_store.data,
+                actionListData : ActionsList_store.data,
             }
         },
         computed:{
             seen: function () { return this.data.control.menuSeen},
-            actions: function () { return this.data.actions}
+            // actions: function () { return this.data.actions}
+            actions: function () { return this.actionListData.actionsList}
         },
         methods:{
 

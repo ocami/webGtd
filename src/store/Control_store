@@ -5,11 +5,12 @@ var Promise = require('es6-promise').Promise;
 
 class Action_store {
     constructor() {
-        this.seen = 'hello'
+        this.data = {
+            editSeen: 'todoEdit',
+            menuSeen: 'todo',
+        }
+
     }
-
-
-
 }
 
 export default new Action_store();
