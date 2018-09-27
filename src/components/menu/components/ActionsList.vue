@@ -34,17 +34,14 @@
         methods:{
             actionEdit: function (index) {
                 console.log('>ActionsList.vue/actionEdit')
-                //delet
-                //app_store.actionEdit(index)
-
-
 
                 Action_store.setCurrentByIndex(index)
                 Control_store.data.editSeen = 'edit'
             },
             switchAction: function (listName, newListName, index) {
                 console.log(' ==> ActionsList.vue/switchAction')
-                app_store.switch(newListName, listName, index)
+                // app_store.switch(newListName, listName, index)
+                Action_store.switch(newListName, listName, index)
             },
         }
     }

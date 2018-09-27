@@ -1,5 +1,6 @@
 import db from "../repository/fireBase_repository"
 import ActionsList_store from "../store/ActionsList_store"
+import Control_store from "../store/Control_store"
 import dateTimeTools from '../tools/DateTime.js'
 
 var Promise = require('es6-promise').Promise;
@@ -15,36 +16,88 @@ class Action_store {
         }
     }
 
-    edit(){
-        console.log('> Action_store/edit')
-        this.data.action.isActive = false
+    switchcc(newListName, listName, index) {
+        console.log('> app_store/switch')
 
+        if (!listName)
+            listName = this.getList()
+
+        if (!index)
+            index = this.data.control.currentIndex
+
+        let list = this.getList(listName).list
+        let newList = this.getList(newListName).list
+        this.data.currentAction.isActive = false
+        this.data.currentAction = list[index]
+        this.data.currentAction.status = newListName
+        this.setInListOn()
+        newList.push(this.data.currentAction)
+        list.splice(index, 1)
+
+        db.switch(newListName, listName, this.data.currentAction)
+
+        let i = 0;
+        let l = list.length;
+        if (l) {
+            index < l ? i = index : i = index - 1;
+            this.actionEdit(i)
+        } else {
+            this.data.control.editSeen = 'empty'
+        }
     }
 
-    // actionEdit(index) {
-    //     console.log('> app_store/actionEdit')
-    //
-    //     let list = this.data.currentList.list
-    //
-    //     this.data.currentAction.isActive = false
-    //
-    //     if (!list.length) {
-    //         this.data.control.editSeen = 'empty'
-    //         return
-    //     }
-    //
-    //     this.data.currentAction = list[index]
-    //     this.data.currentAction.isActive = true
-    //
-    //     this.data.control.currentIndex = index
-    //     this.data.control.editSeen = 'edit'
-    // }
+    switch(newListName, listName, index){
+
+        if (!listName)
+            listName = ActionsList_store.data.currentList
+
+        if (!index)
+            index = this.data.index
+
+        let list = ActionsList_store.getOneListByName(listName).list
+        let newList = ActionsList_store.getOneListByName(newListName).list
+
+        this.data.action.status = newListName
+
+        newList.push(this.data.action)
+        list.splice(index, 1)
+
+        this.setInListOn()
+
+        this.setCurrentByIndex(0)
+
+        db.switch(newListName, listName, this.data.action)
+    }
+
 
     setCurrentByIndex (index) {
+        console.log('> Action_store/setCurrentByIndex')
+        let list = ActionsList_store.data.currentList.list
+
         this.data.action.isActive = false
-        this.data.action = ActionsList_store.data.currentList.list[index]
+
+        if(!list.length){
+            Control_store.data.editSeen = 'empty'
+            return
+        }
+
+        this.data.action = list[index]
         this.data.action.isActive = true
         this.data.index = index
+    }
+
+    setUpdateOn() {
+        console.log('> Action_store/setUpdateOn')
+        let array = this.data.action.autoTags.slice()
+        array[1] = new Date().getTime()
+        this.data.action.autoTags = array
+    }
+
+    setInListOn() {
+        console.log('> Action_store/setInListOn')
+        let array = this.data.action.autoTags.slice()
+        array[2] = new Date().getTime()
+        this.data.action.autoTags = array
     }
 
     add () {
