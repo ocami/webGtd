@@ -1,0 +1,17 @@
+import db from "../repository/fireBase_repository"
+import dateTimeTools from '../tools/DateTime.js'
+
+var Promise = require('es6-promise').Promise;
+
+class Action_store {
+    constructor() {
+        this.seen = 'hello'
+    }
+
+
+
+}
+
+export default new Action_store();
+
+

@@ -1,15 +1,14 @@
 <template>
     <section>
-        <pre>{{data.currentAction.dateTime}}</pre>
+        <!--<pre>{{actionsList['todo']}}</pre>-->
+        <!--<hr/>-->
+        <pre>{{currentList.name}}</pre>
         <hr/>
-        <pre>{{data.currentDateTime}}</pre>
-        <hr/>
-        <pre>{{result}}</pre>
-        <hr/>
-        <pre>{{intervalResult}}</pre>
+        <!--<pre>{{currentActionsList.name}}</pre>-->
 
-        <button @click="letest">TEST</button>
-        <button @click="interval">interval</button>
+
+        <!--<button @click="letest">TEST</button>-->
+
 
     </section>
 </template>
@@ -17,25 +16,29 @@
 <script>
 
     import app_store from '../../store/app_store'
+    import actionsList_store from '../../store/ActionsList_store'
 
     export default {
         name: 'test',
         data ()  {
             return {
-                data : app_store.data,
                 result: 'result',
-                intervalResult: 'intervalResult'
+                actionsListData : actionsList_store.data
             }
         },
         computed:{
+            actionsList : function () {
+                return this.actionsListData.actionsList
+            },
+            currentList :function () {
+                return this.actionsListData.currentList
+            }
         },
         methods:{
             letest : function () {
-                this.result = app_store.dateAutoEdit('@today')
+
             },
-            interval : function () {
-                this.intervalResult = app_store.interval()
-            }
+
         }
     }
 </script>

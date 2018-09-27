@@ -1,0 +1,594 @@
+import db from "../repository/fireBase_repository"
+import dateTimeTools from '../tools/DateTime.js'
+
+var Promise = require('es6-promise').Promise;
+
+class ActionsList_store {
+    constructor() {
+        this.receipt = {
+            index: 0,
+            name: 'receipt',
+            toString: 'Réception',
+            toSwitch: 'todo',
+            acceptSwitch: {todo: 'true', done: true, incubation: true, destroy: true},
+            defaultSearch: [
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
+            ],
+            currentSearch: [
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
+            ],
+            sortAsc: true,
+            sortTag: 'autoTag-0',
+            sortAscDefault: true,
+            sortTagDefault: 'autoTag-0',
+            list: []
+        }
+        this.todo = {
+            index: 1,
+            name: 'todo',
+            toString: 'A faire',
+            toSwitch: 'done',
+            acceptSwitch: {todo: false, done: true, incubation: true, destroy: true},
+            defaultSearch: [
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
+            ],
+            currentSearch: [
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
+            ],
+            sortAsc: true,
+            sortTag: 'autoTag-0',
+            sortAscDefault: true,
+            sortTagDefault: 'autoTag-0',
+            list: []
+        }
+        this.done = {
+            index: 2,
+            name: 'done',
+            toString: 'Fait',
+            toSwitch: 'destroy',
+            acceptSwitch: {todo: true, done: false, incubation: false, destroy: true},
+            defaultSearch: [
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
+            ],
+            currentSearch: [
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
+            ],
+            sortAsc: true,
+            sortTag: 'autoTag-0',
+            sortAscDefault: true,
+            sortTagDefault: 'autoTag-0',
+            list: []
+        }
+        this.incubation = {
+            index: 3,
+            name: 'incubation',
+            toString: 'Incubation',
+            toSwitch: 'todo',
+            acceptSwitch: {todo: true, done: false, incubation: false, destroy: true},
+            defaultSearch: [
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
+            ],
+            currentSearch: [
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
+            ],
+            sortAsc: true,
+            sortTag: 'autoTag-0',
+            sortAscDefault: true,
+            sortTagDefault: 'autoTag-0',
+            list: []
+        }
+        this.destroy = {
+            index: 4,
+            name: 'destroy',
+            toString: 'Corbeille',
+            toSwitch: 'todo',
+            acceptSwitch: {todo: true, done: false, incubation: true, destroy: false},
+            defaultSearch: [
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
+            ],
+            currentSearch: [
+                {
+                    name: 'project',
+                    value: null,
+                    toString: 'project',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'location',
+                    value: null,
+                    toString: 'Location',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'contact',
+                    value: null,
+                    toString: 'Contact',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'tools', value: null, toString: 'Outils', min: null, max: null, interval: false, button: false},
+                {
+                    name: 'priority',
+                    value: null,
+                    toString: 'Priorité',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {
+                    name: 'duration',
+                    value: null,
+                    toString: 'Durée',
+                    min: null,
+                    max: null,
+                    interval: false,
+                    button: false
+                },
+                {name: 'date', value: null, toString: 'Date', min: null, max: null, interval: false, button: false},
+            ],
+            sortAsc: true,
+            sortTag: 'autoTag-0',
+            sortAscDefault: true,
+            sortTagDefault: 'autoTag-0',
+            list: []
+        }
+        this.data = {
+            currentList: this.todo,
+            actionsList: {
+                receipt: this.receipt,
+                todo: this.todo,
+                done: this.done,
+                incubation: this.incubation,
+                destroy: this.destroy,
+                tags: []
+            },
+        }
+    }
+
+    setCurrent (name) {
+        console.log('>> ActionsList_store/setCurrent')
+        console.log(name)
+        this.data.currentList = this.data.actionsList[name]
+        console.log(this.data.currentList.name)
+    }
+
+    add () {
+
+    }
+
+    update () {
+
+    }
+
+    getTagByName () {
+
+    }
+
+}
+
+export default new ActionsList_store();
+
+

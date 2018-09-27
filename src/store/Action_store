@@ -1,0 +1,79 @@
+import db from "../repository/fireBase_repository"
+import dateTimeTools from '../tools/DateTime.js'
+
+var Promise = require('es6-promise').Promise;
+
+class Action_store {
+    constructor() {
+        this.action = {
+            "autoTags" : [ 0, 0, 0 ],
+            "content" : "",
+            "dateTime" : {
+                "date" : "",
+                "expiry" : false,
+                "isActive" : true,
+                "longString" : "",
+                "milliseconds" : 0,
+                "moment" : "",
+                "passed" : false,
+                "shortString" : "",
+                "time" : ""
+            },
+            "id" : "",
+            "isActive" : false,
+            "name" : "",
+            "status" : "",
+            "tags" : [ {
+                "button" : false,
+                "name" : "project",
+                "value" : ""
+            }, {
+                "button" : true,
+                "name" : "location",
+                "value" : ""
+            }, {
+                "button" : true,
+                "name" : "contact",
+                "value" : ""
+            }, {
+                "button" : false,
+                "name" : "tools",
+                "value" : ""
+            }, {
+                "button" : false,
+                "name" : "priority",
+                "value" : 0
+            }, {
+                "button" : false,
+                "name" : "duration",
+                "value" : 0
+            }, {
+                "button" : true,
+                "name" : "date",
+                "value" : ""
+            } ],
+            "visible" : true
+        }
+    }
+
+    setCurrent (action) {
+        this.action = action
+    }
+
+    add () {
+
+    }
+
+    update () {
+
+    }
+
+    getTagByName () {
+
+    }
+
+}
+
+export default new Action_store();
+
+
