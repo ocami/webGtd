@@ -105,13 +105,9 @@
             },
             destroy : function () {
                 console.log('ModalWhith/destroy')
-                app_store.dateTimeRefresh()
                 app_store.tagSelected('',this.tagPosition)
                 this.$emit('submit')
             },
-            setDateTime : function () {
-                app_store.setDateTime()
-            }
         }
     }
 </script>

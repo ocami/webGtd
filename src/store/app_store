@@ -734,7 +734,7 @@ class AppStore {
 
         let value = this.getOnceActionTag(dataName).value
 
-        if (!value) {
+        if (!value)  {
             this.data.currentUserData = this.newUserData(dataName)
             return
         }
@@ -1085,7 +1085,7 @@ class AppStore {
         this.data.currentAction.autoTags = array
     }
 
-    /*---------------------------------------------------------------------APP-SELECT-TAG---------------------------------*/
+    /*---------------------------------------------------------------------APP-SELECT-TAG------------------------------*/
     deleteActionTag(tagName) {
         console.log('> app_store/deleteActionTag')
         let actionLocation = this.getOnceActionTag(tagName)
@@ -1365,6 +1365,7 @@ class AppStore {
 
     /*-----------------------------------------------------------------------DATE-------------------------------------*/
 
+    /*Edit*/
     updateCurrentDateTime(){
         console.log('> app_store/updateCurrentDateTime')
 
@@ -1382,12 +1383,6 @@ class AppStore {
             time: time,
             expiry: expiry
         }
-    }
-
-    setDateTime() {
-        console.log('> app_store/setDateTime')
-        let dateTime = this.data.currentAction.dateTime
-        let dt = dateTime.date + ' ' + dateTime.time
     }
 
     dateManualEdit(dateTime, expiry) {
@@ -1414,38 +1409,10 @@ class AppStore {
         tag.button = true
     }
 
+    /*Search*/
     interval() {
         console.log('> app_store/interval')
         return dateTimeTools.interval()
-    }
-
-    // dateAutoEdit(tagValue, tagPosition, tagName) {
-    //     console.log('> app_store/dateAutoEdit')
-    //     let currentAction = this.data.currentAction
-    //
-    //     currentAction.dateTime.date = '20180830'
-    // }
-
-    predateManualEdit() {
-        console.log('> app_store/predateManualEdit')
-        let t = this.data.currentAction.dateTime.time
-
-        t ? t : this.data.currentAction.dateTime.time = this.data.option.endOfDay
-    }
-
-    dateTimeRefresh() {
-        console.log('> app_store/dateTimeRefresh')
-        this.data.currentAction.dateTime = {
-            date: null,
-            time: null,
-            minutes: null,
-            expiry: true,
-            toString: null
-        }
-    }
-
-    getTodayDate() {
-        return todayDate()
     }
 
     /*-----------------------------------------------------------------------TOOLS------------------------------------*/
@@ -1472,74 +1439,6 @@ class AppStore {
 
     /*---------------------------------------------------------------------ATTENTE------------------------------------*/
 
-    /*    actionSearch () {
-        console.log('> app_store/actionSearch')
-
-        this.data.control.editSeen = 'actionSearch'
-        this.data.currentAction.isActive = false
-    }
-
-    actionTagSelect (tagValue,position){
-        console.log('> app_store/actionTagSelect')
-
-        let currentAction  = this.data.action
-
-        let array = action.tags.slice(0)
-        array[position] = tagValue;
-        this.data.action.tags = array;
-
-        this.setUpdateOn()
-    }
-
-    preModal(tagName){
-        console.log('> appStore/preModal')
-        if (tagName === 'date'){
-            let dt = this.data.action.dateTime
-            console.log(dt)
-            if(!dt.date)
-                dt.date = todayDate()
-
-            if(!dt.time)
-                dt.time = this.data.option.endOfDay
-        }
-    }
-
-    test(){
-        console.log('-------TRUE------------')
-        console.log('1 '+ this.arrayCompare(['','','',''],['','','','']))
-        console.log('1 '+ this.arrayCompare(['popo','papa','pipi'],['','','','']))
-        console.log('1 '+ this.arrayCompare(['','papa',''],['','','','']))
-        console.log('2 '+ this.arrayCompare(['popo','papa','pipi'],['popo','papa','pipi']))
-        console.log('3 '+ this.arrayCompare(['popo','papa','pipi'],['popo','papa','']))
-        console.log('4 '+ this.arrayCompare(['popo','papa','pipi'],['popo','','']))
-
-        console.log('5 '+ this.arrayCompare(['popo','',''],['popo','','']))
-        console.log('6 '+ this.arrayCompare(['','papa','pipi'],['','papa','']))
-        console.log('7 '+ this.arrayCompare(['','papa','pipi'],['','papa','pipi']))
-
-        console.log('8 '+ this.arrayCompare(['popo','ff','ddd','eee','dezf','czdvrever'],['popo','','','','','']))
-        console.log('9 '+ this.arrayCompare(['popo','ff','ddd','eee','papa','czdvrever'],['popo','','','','papa','']))
-
-        console.log('10 '+ this.arrayCompare(['popo','ff','ddd','eee','papa','czdvrever'],['popo','ff','ddd','eee','papa','czdvrever']))
-        console.log('11 '+ this.arrayCompare(['popo','ff','ddd','eee','papa',''],['popo','ff','ddd','eee','papa','']))
-        console.log('12 '+ this.arrayCompare(['popo','ff','ddd','','papa',''],['popo','ff','ddd','','papa','']))
-
-
-
-        console.log('-------FALSE------------')
-        console.log('1 '+ this.arrayCompare(['','','pipi'],['','roro','']))
-        console.log('1 '+ this.arrayCompare(['popo','papa','pipi'],['roro','rara','riri']))
-
-        console.log('2 '+ this.arrayCompare(['popo','papa','pipi'],['popo','papa','riri']))
-        console.log('3 '+ this.arrayCompare(['popo','papa','pipi'],['popo','rara','']))
-        console.log('4 '+ this.arrayCompare(['popo','papa','pipi'],['roro','','',]))
-
-        console.log('5 '+ this.arrayCompare(['popo','ff','ddd','eee','dezf','czdvrever'],['papa','','','','','','']))
-        console.log('6 '+ this.arrayCompare(['popo','ff','ddd','eee','papa','czdvrever'],['popo','','','','rara','']))
-        console.log('7 '+ this.arrayCompare(['popo','ff','ddd','eee','papa','czdvrever'],['popo','ff','ddd','eee','rara','czdvrever']))
-        console.log('8 '+ this.arrayCompare(['popo','ff','ddd','eee','papa','czdvrever'],['popo','zz','ddd','eee','','czdvrever']))
-        console.log('9 '+ this.arrayCompare(['popo','ff','ddd','eee','papa','czdvrever'],['roro','ff','ddd','eee','papa','czdvrever']))
-    }*/
 
     /*--------------------------------------------------------------------Location------------------------------------*/
     refreshLocationFeatures() {
@@ -1577,51 +1476,3 @@ function Contact() {
     this.shortcut = true
 }
 
-function ActionDateTime() {
-        let dt = app_store.data.currentAction.dateTime
-        this.expiry= dt.expiry,
-        this.date= dt.date,
-        this.time= dt.time
-}
-
-/*-------------------------------TOOLS---------------------------*/
-function parseToMinutes(dateStr, timeStr) {
-    const [day, month, year] = dateStr.split("/")
-    const [hour, minute] = timeStr.split(":")
-    return new Date(year, month - 1, day, hour, minute).getTime() / 10000
-}
-
-function todayDate() {
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
-    var yyyy = today.getFullYear();
-
-    if (dd < 10) {
-        dd = '0' + dd
-    }
-
-    if (mm < 10) {
-        mm = '0' + mm
-    }
-    today = dd + '/' + mm + '/' + yyyy;
-
-    return today;
-}
-
-function loadDistantFile(url) {
-    return new Promise(function (resolve, reject) {
-        var xhr = new XMLHttpRequest();
-
-        xhr.onload = function (event) {
-            resolve(xhr.responseText); // Si la requête réussit, on résout la promesse en indiquant le contenu du fichier
-        };
-
-        xhr.onerror = function (err) {
-            reject(err); // Si la requête échoue, on rejette la promesse en envoyant les infos de l'erreur
-        }
-
-        xhr.open('GET', url, true);
-        xhr.send(null);
-    });
-}
