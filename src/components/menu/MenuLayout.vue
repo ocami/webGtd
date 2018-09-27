@@ -2,17 +2,12 @@
     <section>
         <speed-add></speed-add>
         <switch-menu></switch-menu>
-        <actions-list v-if="seen === 'receipt'" :actions="actions.receipt"></actions-list>
-        <actions-list v-if="seen === 'todo'"    :actions="actions.todo"></actions-list>
-        <actions-list v-if="seen === 'done'"    :actions="actions.done"></actions-list>
-        <actions-list v-if="seen === 'incubation'" :actions="actions.incubation"></actions-list>
-        <actions-list v-if="seen === 'destroy'" :actions="actions.destroy"></actions-list>
+        <actions-list :actions="actions"></actions-list>
     </section>
 </template>
 
 <script>
 
-    import app_store from '../../store/app_store'
     import ActionsList_store from '../../store/ActionsList_store'
     import SpeedAdd from './components/SpeedAdd.vue'
     import SwitchMenu from './components/SwitchMenu.vue'
@@ -27,14 +22,11 @@
         },
         data ()  {
             return {
-                data : app_store.data,
                 actionListData : ActionsList_store.data,
             }
         },
         computed:{
-            seen: function () { return this.data.control.menuSeen},
-            // actions: function () { return this.data.actions}
-            actions: function () { return this.actionListData.actionsList}
+            actions: function () { return this.actionListData.currentList}
         },
         methods:{
 
