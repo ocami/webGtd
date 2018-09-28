@@ -21,8 +21,9 @@
 <script>
 
     import app_store from '../../../store/app_store'
-    import control_store from '../../../store/Control_store'
-    import actionsList_store from '../../../store/ActionsList_store'
+    import Control_store from '../../../store/Control_store'
+    import ActionsList_store from '../../../store/ActionsList_store'
+    import Action_store from '../../../store/Action_store'
 
 
     export default {
@@ -30,16 +31,26 @@
         methods:{
             actionsListChange: function (listName) {
                 console.log('> SwitchMenu/actionsListChange')
-                app_store.setMenuSeen(listName)
-                actionsList_store.setCurrent(listName)
+
+                ActionsList_store.setCurrent(listName)
+
+                Control_store.data.menuSeen = listName
+                Control_store.data.editSeen = 'edit'
             },
             searchAll: function () {
                 console.log('> SwitchMenu.vue/searchAll')
-                app_store.searchAll()
+                ActionsList_store.allVisible()
+                ActionsList_store.sortByTag({nature: 'autoTag',name:'updateOn'}, true)
+                Action_store.setCurrentByIndex(0)
+                Control_store.data.searchSeen = 'all'
             },
             searchDefault: function () {
                 console.log('> SwitchMenu.vue/searchDefault')
-                app_store.searchDefault()
+                let cl = ActionsList_store.data.currentList
+                ActionsList_store.tagsCompare(cl.searchDefault)
+                ActionsList_store.sortByTag(cl.sortTagDefault, cl.sortAscDefault)
+                Action_store.setCurrentByIndex(0)
+                Control_store.data.searchSeen = 'default'
             },
             searchEdit: function () {
                 console.log('> SwitchMenu.vue/searchEdit')

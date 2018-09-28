@@ -1,16 +1,17 @@
 <template>
     <section>
-        <p>currentView</p>
-        <pre>{{currentView}}</pre>
+        <span>currentList</span>
+        <pre>{{currentList.sortTagDefault}}</pre>
         <hr/>
-        <p>currentList</p>
-        <pre>{{currentList.name}}</pre>
-        <hr/>
-        <p>currentAction</p>
+        <span>currentAction</span>
         <pre>{{currentAction.name}}</pre>
-        <pre>{{currentAction.status}}</pre>
         <hr/>
-
+        <!--<span>currentView</span>-->
+        <!--<pre>{{currentView}}</pre>-->
+        <!--<hr/>-->
+        <!--<span>searchSeen</span>-->
+        <!--<pre>{{controlData.searchSeen}}</pre>-->
+        <!--<hr/>-->
 
         <!--<button @click="letest">TEST</button>-->
 

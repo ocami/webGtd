@@ -167,7 +167,6 @@ function actionsListInit(actionsList){
     });
 
     ActionsList_store.setCurrent('todo')
-    Action_store.setCurrentByIndex(0)
     Control_store.data.editSeen = 'hello'
 
     app_store.searchAll()

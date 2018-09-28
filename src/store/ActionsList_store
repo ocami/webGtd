@@ -1,5 +1,7 @@
 import db from "../repository/fireBase_repository"
 import dateTimeTools from '../tools/DateTime.js'
+import Action_store from '../store/Action_store'
+
 
 var Promise = require('es6-promise').Promise;
 
@@ -568,26 +570,163 @@ class ActionsList_store {
         }
     }
 
-    setCurrent (name) {
+    setCurrent(name) {
         console.log('>> ActionsList_store/setCurrent')
         this.data.currentList = this.data.actionsList[name]
+        Action_store.setCurrentByIndex(0)
     }
 
-    getOneListByName (name) {
+    getOneListByName(name) {
         console.log('>> ActionsList_store/getOneListByName')
         return this.data.actionsList[name]
     }
 
+    allVisible() {
+        let list = this.data.currentList.list
 
-    add () {
+        for (var i = 0; i < list.length; i++) {
+            list[i].visible = true
+        }
+    }
+
+    getFirstVisible() {
+        let list = this.data.currentList.list
+
+        for (var i = 0; i < list.length; i++) {
+            if (this.data.currentList.list[i].visible === true) {
+                return i
+            }
+
+            return null
+        }
+    }
+
+    sortByTag(tag, ascending) {
+
+        if(tag.nature === 'autoTag'){
+            this.sortByAutoTag(tag.name, ascending)
+            return
+        }
+
+        let tagName = tag.name
+
+        let currentList = this.data.currentList
+        let actions = currentList.list.slice()
+        let tagsCompare = function (ascending) {
+            return function (a, b) {
+                let indexA = a.tags.map(function (e) {
+                    return e.name
+                }).indexOf(tagName)
+                let indexB = b.tags.map(function (e) {
+                    return e.name
+                }).indexOf(tagName)
+
+                if (!a.tags[indexA].value) {
+                    return 1;
+                }
+                else if (!b.tags[indexB].value) {
+                    return -1;
+                }
+                else if (a.tags[indexA].value === b.tags[indexB].value) {
+                    return 1;
+                }
+                else if (ascending) {
+                    return a.tags[indexA].value < b.tags[indexB].value ? -1 : 1;
+                }
+                else if (!ascending) {
+                    return a.tags[indexA].value < b.tags[indexB].value ? 1 : -1;
+                }
+            };
+        }
+        currentList.list = actions.sort(tagsCompare(ascending))
+    }
+
+    sortByAutoTag(tagName, ascending) {
+
+        let currentList = this.data.currentList
+        let actions = currentList.list.slice()
+
+        let tagsCompare = function (ascending) {
+            return function (a, b) {
+                if (a.autoTags[tagName] === b.autoTags[tagName]) {
+                    return 0;
+                }
+                else if (ascending) {
+                    return a.autoTags[tagName] < b.autoTags[tagName] ? -1 : 1;
+                }
+                else if (!ascending) {
+                    return a.autoTags[tagName] < b.autoTags[tagName] ? 1 : -1;
+                }
+            };
+        }
+        currentList.list = actions.sort(tagsCompare(ascending))
+    }
+
+    tagsCompare(search) {
+        console.log('> ActionsList_store/tagsCompare')
+
+        let cl = this.data.currentList
+        let actions = cl.list.slice()
+
+        if (!search)
+            search = cl.currentSearch
+
+        for (let i = 0; i < actions.length; i++)
+            actions[i].visible = this.arrayCompare(actions[i], search)
+
+        cl.list = actions;
+    }
+
+    arrayCompare(currentAction, search) {
+        console.log('> ActionsList_store/arrayCompare')
+
+        for (var i = 0; i < search.length; i++) {
+            let tagName = search[i].name
+            let value = search[i].value
+            let actionTagValue = Action_store.getTagByName(tagName).value
+
+            if (search[i].interval)
+                if (!this.arrayIntervalCompare(search[i], actionTagValue))
+                    return false
+
+            if (value)
+                if (value !== actionTagValue)
+                    return false
+        }
+        return true
+    }
+
+    arrayIntervalCompare(searchTag, actionTagValue) {
+        console.log('> app_store/arrayIntervalCompare')
+
+        let min = searchTag.min
+        let max = searchTag.max
+
+        if (min && max)
+            if (actionTagValue >= min && actionTagValue <= max)
+                return true
+
+        if (min && !max)
+            if (actionTagValue >= min)
+                return true
+
+        if (!min && max)
+            if (actionTagValue <= max)
+                return true
+
+        return false
+    }
+
+
+    add() {
 
     }
 
-    update () {
+    update() {
 
     }
 
-    getTagByName () {
+    getTagByName() {
 
     }
 

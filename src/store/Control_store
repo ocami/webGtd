@@ -8,6 +8,7 @@ class Action_store {
         this.data = {
             editSeen: 'todoEdit',
             menuSeen: 'todo',
+            searchSeen: 'all',
             options: {
                 endOfDay: '18:00',
                 endOfWeek: 'friday'
