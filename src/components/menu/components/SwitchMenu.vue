@@ -54,7 +54,11 @@
             },
             searchEdit: function () {
                 console.log('> SwitchMenu.vue/searchEdit')
-                app_store.searchEdit()
+                let cl = ActionsList_store.data.currentList
+                ActionsList_store.tagsCompare(cl.currentSearch)
+                ActionsList_store.sortByTag(cl.currentSearch, cl.currentSearch)
+                Action_store.setCurrentByIndex(null)
+                Control_store.data.searchSeen = 'edit'
             },
             actionAdd: function () {
                 console.log('> SwitchMenuS.vue/addAction')

@@ -61,9 +61,18 @@ class Action_store {
             return
         }
 
+        if(!index){
+            this.data.action = null
+            return
+        }
+
         this.data.action = list[index]
         this.data.action.isActive = true
         this.data.index = index
+    }
+
+    setCurrentByEmpty () {
+        this.data.action.
     }
 
     add () {
